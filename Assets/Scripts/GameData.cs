@@ -15,6 +15,10 @@ public class GameData
     public int shield;
     public int gold;
 
+    // Inventory data
+    public int[] itemId;
+    public int[] itemStack;
+
     // Scene data
     public bool[] pickupStatus;
 
@@ -33,8 +37,10 @@ public class GameData
         shield = data.saveShield;
         gold = data.saveGold;
 
-        pickupStatus = data.savePickableStatus;
+        itemId = data.itemsId.ToArray();
+        itemStack = data.itemsStack.ToArray();
 
+        pickupStatus = data.savePickableStatus;
     }
     
 }

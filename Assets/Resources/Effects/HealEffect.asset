@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d901d4360943b34f904b4c6d4d74c38, type: 3}
-  m_Name: DefaultEffect
+  m_Name: HealEffect
   m_EditorClassIdentifier: 
   itemEffect:
     type: 0
-    damage: 50
-    cost: 0
-    name: DefaultEffect
+    magnitude: 50
+    timeout: 0
+    name: Heal

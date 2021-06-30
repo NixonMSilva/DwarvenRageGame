@@ -22,40 +22,43 @@ namespace Effects
         public string name;
     }
 
-    public abstract class EffectAction
+    public static class HealEffect
     {
-        public abstract void ApplyEffect (EffectActionData effect);
-    }
-
-    public class HealEffect : EffectAction
-    {
-        public override void ApplyEffect (EffectActionData effect)
+        public static void ApplyEffect (EffectActionData effect)
         {
             GameObject.Find("Player").GetComponent<StatusController>().Health += effect.magnitude;
         }
     }
 
-    public class BerserkEffect : EffectAction
+    public static class BerserkEffect
     {
-        public override void ApplyEffect (EffectActionData effect)
+        public static  void ApplyEffect (EffectActionData effect)
         {
             GameObject.Find("Player").GetComponent<StatusController>().AddStatus(effect.type, effect.magnitude, effect.timeout);
         }
     }
 
-    public class FireResistanceEffect : EffectAction
+    public static class FireResistanceEffect
     {
-        public override void ApplyEffect (EffectActionData effect)
+        public static void ApplyEffect (EffectActionData effect)
         {
             Debug.Log("logic");
         }
     }
 
-    public class PoisonResistanceEffect : EffectAction
+    public static class PoisonResistanceEffect
     {
-        public override void ApplyEffect (EffectActionData effect)
+        public static void ApplyEffect (EffectActionData effect)
         {
             Debug.Log("logic");
+        }
+    }
+
+    public static class FortuneEffect
+    {
+        public static void ApplyEffect (EffectActionData effect)
+        {
+            Debug.Log("Logic");
         }
     }
 }

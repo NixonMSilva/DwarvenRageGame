@@ -15,9 +15,10 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private KeyCode sprintKey          = KeyCode.LeftShift;
     [SerializeField] private KeyCode interactionKey     = KeyCode.E;
     [SerializeField] private KeyCode escapeKey          = KeyCode.I;
-    [SerializeField] private KeyCode weaponKey1         = KeyCode.Keypad1;
-    [SerializeField] private KeyCode weaponKey2         = KeyCode.Keypad2;
-    [SerializeField] private KeyCode weaponKey3         = KeyCode.Keypad3;
+    [SerializeField] private KeyCode itemKey1           = KeyCode.Keypad1;
+    [SerializeField] private KeyCode itemKey2           = KeyCode.Keypad2;
+    [SerializeField] private KeyCode itemKey3           = KeyCode.Keypad3;
+    [SerializeField] private KeyCode itemKey4           = KeyCode.Keypad4;
 
     [Space(20)]
     [SerializeField] private float powerAttackThreshold = 0.5f;
@@ -47,7 +48,9 @@ public class InputHandler : MonoBehaviour
     public event EventHandler OnInteractionPressed;
     public event EventHandler OnEscapePressed;
 
-    public event Action<int> OnWeaponKeyPressed;
+    //public event Action<int> OnWeaponKeyPressed;
+
+    public event Action<int> OnItemKeyPressed;
 
     private bool isPowerAttacking = false;
     private float powerAttackFill = 0f;
@@ -164,6 +167,7 @@ public class InputHandler : MonoBehaviour
             //  Inventory Weapon
             //================================================================
 
+            /*
             // Weapon Key
             int weaponKey = 0;
 
@@ -176,6 +180,24 @@ public class InputHandler : MonoBehaviour
 
             if (weaponKey > 0)
                 OnWeaponKeyPressed?.Invoke(weaponKey - 1);
+            */
+
+            // Item key
+
+            int itemKey = 0;
+
+            if (Input.GetKeyDown(itemKey1))
+                itemKey = 1;
+            else if (Input.GetKeyDown(itemKey2))
+                itemKey = 2;
+            else if (Input.GetKeyDown(itemKey3))
+                itemKey = 3;
+            else if (Input.GetKeyDown(itemKey4))
+                itemKey = 4;
+
+            if (itemKey > 0)
+                OnItemKeyPressed?.Invoke(itemKey - 1);
+
         }
 
         // Escape key
