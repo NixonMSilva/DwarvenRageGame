@@ -15,6 +15,4 @@ public class Item : ScriptableObject
 
     public Sprite icon;
 
-
-
 }

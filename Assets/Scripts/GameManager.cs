@@ -33,8 +33,8 @@ public class GameManager : MonoBehaviour
         //return _shields.Where(s => s.id == id).First();
     }
 
-    public Item GetItemById (int id)
+    public Consumable GetItemById (int id)
     {
-        return Resources.LoadAll<Item>("Shield").Where(s => s.id == id).First();
+        return Resources.LoadAll<Consumable>("Consumables").Where(s => s.id == id).First();
     }
 }
