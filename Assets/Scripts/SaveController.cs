@@ -21,6 +21,9 @@ public class SaveController : MonoBehaviour
 
     public int saveGold;
 
+    public List<int> itemsId;
+    public List<int> itemsStack;
+
     private GameObject player;
 
     private GameManager manager;
@@ -46,6 +49,9 @@ public class SaveController : MonoBehaviour
         {
             hasPlayer = true;
         }
+
+        itemsId = new List<int>();
+        itemsStack = new List<int>();
         
     }
     
@@ -65,6 +71,11 @@ public class SaveController : MonoBehaviour
             saveWeapon = playerEquipment.PlayerWeapon.id;
             saveShield = playerEquipment.PlayerShield.id;
             saveGold = playerEquipment.Gold;
+
+            Inventory playerInventory = player.GetComponent<Inventory>();
+
+            itemsId = playerInventory.GetItemList();
+            itemsStack = playerInventory.GetItemStacks();
 
             PickableController pickableController = GameObject.Find("Pickables").GetComponent<PickableController>();
 
@@ -99,6 +110,13 @@ public class SaveController : MonoBehaviour
             playerEquipment.PlayerShield = GetShield(data.shield);
             playerEquipment.Gold = data.gold;
 
+            Inventory playerInventory = player.GetComponent<Inventory>();
+
+            for (int i = 0; i < data.itemId.Length; ++i)
+            {
+                playerInventory.AddItem(GetItem(data.itemId[i]), data.itemStack[i]);
+            }
+
             PickableController pickableController = GameObject.Find("Pickables").GetComponent<PickableController>();
 
             pickableController.SetPickedList(data.pickupStatus);
@@ -113,5 +131,10 @@ public class SaveController : MonoBehaviour
     private Shield GetShield (int id)
     {
         return manager.GetShieldById(id);
+    }
+
+    private Consumable GetItem (int id)
+    {
+        return manager.GetItemById(id);
     }
 }
