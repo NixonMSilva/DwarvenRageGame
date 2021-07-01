@@ -8,6 +8,8 @@ public class StatusController : MonoBehaviour, IDamageable
     private PlayerMovement movement;
     private AttackController attack;
 
+    private PlayerEquipment equipment;
+
     private GameObject manager;
 
     [SerializeField] private float maxHealth = 100f;
@@ -89,6 +91,7 @@ public class StatusController : MonoBehaviour, IDamageable
 
         movement = GetComponent<PlayerMovement>();
         attack = GetComponent<AttackController>();
+        equipment = GetComponent<PlayerEquipment>();
 
         manager = GameObject.Find("GameManager");
     }
@@ -119,6 +122,15 @@ public class StatusController : MonoBehaviour, IDamageable
 
     public void TakeDamage (float value)
     {
+        if (isBlocking)
+        {
+            // If player has shield
+            if (!equipment.IsTwoHanded)
+                value -= value * equipment.PlayerShield.damageReduction;
+            else
+                value -= value * equipment.BaseDamageReduction;
+        }
+
         if (Armor > 0)
         {
             Armor -= value;

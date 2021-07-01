@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3863bdbe9927a14eb1c00de9483e39c, type: 3}
-  m_Name: TestShield
+  m_Name: BloodedShield
   m_EditorClassIdentifier: 
-  id: 1
-  itemName: Test Shield
-  worldMesh: {fileID: -1272481795433867914, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
+  id: 10
+  itemName: Blooded Shield
+  worldMesh: {fileID: -1117082489390005245, guid: e1ccdad48c5969544b7c9898472403ee, type: 3}
   materialList:
-  - {fileID: 2100000, guid: 5aaaf2b37a1fb24408b51ba2961ad9ce, type: 2}
-  scaleX: 0.01871416
-  scaleY: 0.01871416
-  scaleZ: 0.01871416
+  - {fileID: 2100000, guid: c5974f91c8f324044b4be88f090b4044, type: 2}
+  scaleX: 0.016
+  scaleY: 0.016
+  scaleZ: 0.016
   icon: {fileID: 0}
   rotX: 26.867
   rotY: 52.819
-  rotZ: -4.477
-  damageReduction: 0.5
+  rotZ: -94.477
+  damageReduction: 0.6

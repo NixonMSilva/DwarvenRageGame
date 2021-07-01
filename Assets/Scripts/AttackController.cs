@@ -11,12 +11,15 @@ public class AttackController : MonoBehaviour
 
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
+    [SerializeField] private float attackSpeed = 1f;
 
     [SerializeField] private LayerMask damageableLayer;
 
-    private float attackDamage = 50f;
+    [SerializeField] private float attackDamage = 50f;
 
     private bool hasBerserk;
+
+    [SerializeField] private bool canAttack = true;
 
     private int animationVariation = 0;
     private int animationLimit = 2;
@@ -32,11 +35,19 @@ public class AttackController : MonoBehaviour
         get { return hasBerserk; }
         set { hasBerserk = value; }
     }
+    
+    public bool CanAttack
+    {
+        get { return canAttack; }
+        set { canAttack = value; }
+    }
 
     private void Awake ()
     {
         anim = GetComponent<Animator>();
         status = GetComponent<StatusController>();
+
+        anim.SetFloat("attackSpeed", attackSpeed);
     }
 
     private void Start ()
@@ -46,6 +57,11 @@ public class AttackController : MonoBehaviour
             InputHandler.instance.OnAttackUnleashed += HandleAttack;
             InputHandler.instance.OnPowerAttackUnleashed += HandlePowerAttack;
         }
+    }
+
+    private void Update ()
+    {
+        anim.SetFloat("attackSpeed", attackSpeed);
     }
 
     private void HandleAttack (object sender, EventArgs e)
@@ -60,24 +76,19 @@ public class AttackController : MonoBehaviour
 
     private void PerformAttack ()
     {
-        if (!status.IsBlocking)
+        if (!status.IsBlocking && canAttack)
         {
-            anim.SetBool("isAttacking", true);
-            animationVariation += 1;
-            if (animationVariation > animationLimit)
-            {
-                animationVariation = 0;
-            }
-            anim.SetInteger("variation", animationVariation);
-
+            anim.Play("attack");
+            canAttack = false;
         }
     }
 
     private void PerformPowerAttack ()
     {
-        if (!status.IsBlocking)
+        if (!status.IsBlocking && canAttack)
         {
-            anim.SetBool("isPowerAttacking", true);
+            anim.Play("power_attack");
+            canAttack = false;
         }
     }
 

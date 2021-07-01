@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fadec00f3e762654fa47fe244c9350ae, type: 3}
-  m_Name: BlueMace
+  m_Name: DwarvenWarhammer
   m_EditorClassIdentifier: 
-  id: 4
-  itemName: Blue Mace
-  worldMesh: {fileID: 2534964839176971238, guid: 96c60401708edf94baeeb654f5d27f10, type: 3}
+  id: 20
+  itemName: DwarvenWarhammer
+  worldMesh: {fileID: -3292925553009838691, guid: c767656752e700e49808232e2fd2f296, type: 3}
   materialList:
-  - {fileID: 2100000, guid: 7f9dd4a2a63798e43a9889dcb3deb888, type: 2}
-  scaleX: 0.0001597687
-  scaleY: 0.0001597687
-  scaleZ: 0.0001597686
+  - {fileID: 2100000, guid: 61f501b6255678a4884ed7a5937adb20, type: 2}
+  scaleX: 0.005
+  scaleY: 0.005
+  scaleZ: 0.005
   icon: {fileID: 0}
-  posX: 0.001494
-  posY: 0.000778
-  posZ: 0.000206
-  damage: 100
-  isTwoHanded: 1
+  posX: -0.00117
+  posY: 0.00052
+  posZ: 0.00003
+  damage: 40
+  isTwoHanded: 0
