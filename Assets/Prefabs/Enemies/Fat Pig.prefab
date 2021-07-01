@@ -711,9 +711,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 7828610339295370968}
   attackRange: 2
+  attackSpeed: 1
   damageableLayer:
     serializedVersion: 2
     m_Bits: 128
+  attackDamage: 50
+  canAttack: 1
 --- !u!95 &7828610339396176165
 Animator:
   serializedVersion: 3
