@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadec00f3e762654fa47fe244c9350ae, type: 3}
+  m_Name: IceBattleaxe
+  m_EditorClassIdentifier: 
+  id: 21
+  itemName: Ice Battleaxe
+  worldMesh: {fileID: -5538598741637245090, guid: b4556f68fbb80e4489dd5898a6ce41b6, type: 3}
+  materialList:
+  - {fileID: 2100000, guid: 11e088ff88d43a44680f5d38b9eafc9d, type: 2}
+  - {fileID: 2100000, guid: 11e088ff88d43a44680f5d38b9eafc9d, type: 2}
+  - {fileID: 2100000, guid: 11e088ff88d43a44680f5d38b9eafc9d, type: 2}
+  - {fileID: 2100000, guid: 11e088ff88d43a44680f5d38b9eafc9d, type: 2}
+  scaleX: 0.005
+  scaleY: 0.005
+  scaleZ: 0.005
+  icon: {fileID: 0}
+  posX: 0.001494
+  posY: 0.000778
+  posZ: 0.000206
+  damage: 55
+  isTwoHanded: 1

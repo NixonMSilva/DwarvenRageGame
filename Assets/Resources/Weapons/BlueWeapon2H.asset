@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fadec00f3e762654fa47fe244c9350ae, type: 3}
-  m_Name: BlueWeapon
+  m_Name: BlueWeapon2H
   m_EditorClassIdentifier: 
-  id: 2
-  itemName: Blue Weapon
+  id: 6
+  itemName: Blue Weapon 2H
   worldMesh: {fileID: 6679310182235787357, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
   materialList:
   - {fileID: 2100000, guid: 7f9dd4a2a63798e43a9889dcb3deb888, type: 2}
@@ -25,4 +25,4 @@ MonoBehaviour:
   posY: 0.000778
   posZ: 0.000206
   damage: 100
-  isTwoHanded: 0
+  isTwoHanded: 1

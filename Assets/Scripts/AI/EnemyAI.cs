@@ -134,7 +134,7 @@ public class EnemyAI : MonoBehaviour
         if (!alreadyAttacked)
         {
             ///Attack code here
-            Debug.Log("Atacando");
+            //Debug.Log("Atacando");
 
             if (attackDirection == 1)
             {

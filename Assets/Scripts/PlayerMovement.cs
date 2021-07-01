@@ -61,12 +61,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleHorizontalInput (float value)
     {
-        xMove = value;
+        if (isGrounded)
+            xMove = value;
     }
 
     private void HandleVerticalInput (float value)
     {
-        zMove = value;
+        if (isGrounded)
+            zMove = value;
     }
 
     private void HandleSprintUp (object sender, EventArgs e)
@@ -99,7 +101,22 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 movement = transform.right * xMove + transform.forward * zMove;
 
-        character.Move(movement * speed * Time.deltaTime); 
+        /*
+        if (!isGrounded)
+        {
+            movement.x *= 0.1f;
+            movement.z *= 0.1f;
+        } */
+
+        // If the character is grounded, move at full speed
+        // if not, move at a tenth of the original speed
+        /*
+        if (isGrounded)
+            character.Move(movement * speed * Time.deltaTime);
+        else
+            character.Move(movement * speed * 0.1f * Time.deltaTime);
+        */
+        character.Move(movement * speed * Time.deltaTime);
 
         velocity.y += gravity * Time.deltaTime;     //velocidade vai ser o tempo*a gravidade
 
