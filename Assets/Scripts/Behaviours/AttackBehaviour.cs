@@ -20,6 +20,7 @@ public class AttackBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("isAttacking", false);
+        animator.gameObject.GetComponent<AttackController>().CanAttack = true;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
