@@ -60,7 +60,7 @@ public class StatusController : MonoBehaviour, IDamageable
         }
     }
 
-    public float MaxHealth
+    public virtual float MaxHealth
     {
         get { return maxHealth; }
         set
@@ -87,6 +87,15 @@ public class StatusController : MonoBehaviour, IDamageable
             {
                 armor = 0f;
             }
+        }
+    }
+
+    public float MaxArmor
+    {
+        get { return maxArmor; }
+        set
+        {
+            maxArmor = value;
         }
     }
 

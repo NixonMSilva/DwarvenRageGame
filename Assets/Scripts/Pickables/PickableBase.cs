@@ -9,6 +9,8 @@ public class PickableBase : MonoBehaviour, IPickable
 
     public event Action<IPickable> OnPickUp;
 
+    [SerializeField] public Consumable item;
+
     private void Update ()
     {
         Rotate();
@@ -29,9 +31,9 @@ public class PickableBase : MonoBehaviour, IPickable
         }
     }
 
-    public virtual void ApplyEffect (StatusController player)
+    public virtual void ApplyEffect (StatusController target)
     {
-
+        item.Use(target);
     }
 
     public void HandlePickUp ()

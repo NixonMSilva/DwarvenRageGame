@@ -4,10 +4,13 @@ using UnityEngine;
 public enum EffectType
 {
     heal,
+    healArmor,
     berserk,
     fortune,
     fireResistance,
     poisonResistance,
+    addMaxHealth,
+    addMaxArmor,
 }
 
 public abstract class EffectBase
@@ -29,6 +32,22 @@ public class Heal : EffectBase
     public override void ApplyEffect (StatusController target, Effect data)
     {
         target.Health += data.magnitude;
+    }
+
+    public override void StatusEnd (StatusController target)
+    {
+
+    }
+}
+
+public class HealArmor : EffectBase
+{
+    public HealArmor () { }
+    public override EffectType Type => EffectType.healArmor;
+
+    public override void ApplyEffect (StatusController target, Effect data)
+    {
+        target.Armor += data.magnitude;
     }
 
     public override void StatusEnd (StatusController target)
@@ -107,6 +126,40 @@ public class Fortune : EffectBase
     public override void ApplyEffect (StatusController target, Effect data)
     {
         target.Health += data.duration;
+    }
+
+    public override void StatusEnd (StatusController target)
+    {
+
+    }
+}
+
+public class AddMaxHealth : EffectBase
+{
+    public AddMaxHealth () { }
+
+    public override EffectType Type => EffectType.addMaxHealth;
+
+    public override void ApplyEffect (StatusController target, Effect data)
+    {
+        target.MaxHealth += data.magnitude;
+    }
+
+    public override void StatusEnd (StatusController target)
+    {
+
+    }
+}
+
+public class AddMaxArmor : EffectBase
+{
+    public AddMaxArmor () { }
+
+    public override EffectType Type => EffectType.addMaxArmor;
+
+    public override void ApplyEffect (StatusController target, Effect data)
+    {
+        target.MaxArmor += data.magnitude;
     }
 
     public override void StatusEnd (StatusController target)

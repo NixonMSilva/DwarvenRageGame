@@ -27,6 +27,20 @@ public class PlayerStatus : StatusController
         }
     }
 
+    public override float MaxHealth
+    {
+        get { return maxHealth; }
+        set
+        {
+            maxHealth = value;
+            if (maxHealth < 0f)
+            {
+                maxHealth = 0f;
+            }
+            UserInterfaceController.instance?.UpdateHealthBar(health / maxHealth);
+        }
+    }
+
     public override float Armor
     {
         get { return armor; }
