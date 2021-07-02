@@ -680,7 +680,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 11400000, guid: 0017ed034e7814d44934cc16f4fde7e5, type: 2}
-  _spawnItem: []
+  _dropItem: []
+  _dropChance: []
 --- !u!114 &3559392843017353730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,7 +699,7 @@ MonoBehaviour:
   maxArmor: 100
   armor: 0
   isBlocking: 0
-  hurtThreshold: 0.1
+  painThreshold: 0.25
 --- !u!114 &7011182560264299458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,7 +718,8 @@ MonoBehaviour:
   damageableLayer:
     serializedVersion: 2
     m_Bits: 128
-  attackDamage: 50
+  attackDamage: 25
+  currentAttackDamage: 0
   canAttack: 1
 --- !u!95 &7828610339396176165
 Animator:

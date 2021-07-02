@@ -436,6 +436,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   attackDamage: 50
+  currentAttackDamage: 0
   canAttack: 1
 --- !u!114 &5072104305726538641
 MonoBehaviour:
@@ -461,11 +462,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf21f87414eb4c43b6de56046158105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponSlots:
-  - {fileID: 11400000, guid: f0ad71d52f70e6c4dbc2a18805af883a, type: 2}
-  - {fileID: 11400000, guid: a7b6a266f573f5a45abd9cc3c22b86fe, type: 2}
-  _itemSlots: []
-  _itemSlotsStack: 
+  _weaponSlots: []
+  _itemSlots:
+  - {fileID: 11400000, guid: 9e034040ca838b24c98d89d2292e14d3, type: 2}
+  - {fileID: 11400000, guid: 059d9897cad16ab489d27135c5d64147, type: 2}
+  _itemSlotsStack: 0100000002000000
   weaponLimit: 2
   itemLimit: 4
 --- !u!95 &5072104305726538643
@@ -1004,6 +1005,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -6707896996668856378, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -6610176441337792208, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -1058,6 +1063,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5782271546770334344, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5732187211972644884, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5322658128444734351, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
@@ -1323,6 +1332,10 @@ PrefabInstance:
     - target: {fileID: 467055130523550947, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 760953875873258693, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 760953875873258693, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
       propertyPath: m_Materials.Array.data[0]

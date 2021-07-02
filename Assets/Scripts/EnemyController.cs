@@ -7,17 +7,26 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private Enemy enemyType;
 
-    private StatusController enemyStatus;
+    private EnemyStatus enemyStatus;
+    private AttackController enemyAttack;
 
     [SerializeField] private List<GameObject> _dropItem;
     [SerializeField] private List<float> _dropChance;
 
+    [SerializeField] private bool useFromDatabase = false;
+
     private void Awake ()
     {
-        enemyStatus             = GetComponent<StatusController>();
+        enemyStatus             = GetComponent<EnemyStatus>();
+        enemyAttack             = GetComponent<AttackController>();
 
         enemyStatus.Health      = enemyType.maxHealth;
-        enemyStatus.MaxHealth  = enemyType.maxHealth;
+        enemyStatus.MaxHealth   = enemyType.maxHealth;
+
+        if (useFromDatabase)
+        {
+            enemyAttack.Damage = enemyType.attackDamage;
+        }
     }
 
     public void SpawnLoot ()

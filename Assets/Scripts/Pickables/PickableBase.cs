@@ -11,6 +11,11 @@ public class PickableBase : MonoBehaviour, IPickable
 
     [SerializeField] public Consumable item;
 
+    private void Awake ()
+    {
+
+    }
+
     private void Update ()
     {
         Rotate();

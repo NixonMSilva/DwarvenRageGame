@@ -387,7 +387,7 @@ public class UserInterfaceController : MonoBehaviour
 
     public void UpdateArmor (float newArmorValue) 
     {
-        armorValue.text = newArmorValue.ToString() + "%";
+        armorValue.text = Mathf.FloorToInt(newArmorValue).ToString() + "%";
     }
 
     public void HideArmorFrame ()
