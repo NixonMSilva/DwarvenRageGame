@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class AttackController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class AttackController : MonoBehaviour
     [SerializeField] private LayerMask damageableLayer;
 
     [SerializeField] private float attackDamage = 50f;
+    [SerializeField] private float currentAttackDamage;
 
     private bool hasBerserk;
 
@@ -27,7 +29,20 @@ public class AttackController : MonoBehaviour
     public float Damage
     {
         get { return attackDamage; }
-        set { attackDamage = value; }
+        set 
+        { 
+            attackDamage = value;
+            currentAttackDamage = value;
+        }
+    }
+
+    public float TemporaryDamage
+    {
+        get { return currentAttackDamage; }
+        set
+        {
+            currentAttackDamage = value;
+        }
     }
 
     public bool Berserk
@@ -40,6 +55,11 @@ public class AttackController : MonoBehaviour
     {
         get { return canAttack; }
         set { canAttack = value; }
+    }
+
+    public Transform AttackPoint
+    {
+        get { return attackPoint; }
     }
 
     private void Awake ()
@@ -106,17 +126,33 @@ public class AttackController : MonoBehaviour
     {
         Collider[] hitObjects = Physics.OverlapSphere(attackPoint.position, attackRange, damageableLayer);
 
-        foreach (Collider obj in hitObjects)
+        // Add all the game objects that were hit and
+        // remove duplicates - in case some object has
+        // more than one collider, it will count as
+        // n hits where n is the number of colliders
+        // from this object the histcan has touched
+        List<GameObject> hitEntities = new List<GameObject>();
+
+        foreach (Collider hit in hitObjects)
+        {
+            hitEntities.Add(hit.gameObject);
+        }
+
+        hitEntities = hitEntities.Distinct().ToList();
+
+        // Apply damage to the entities hit
+        foreach (GameObject hitEntity in hitEntities)
         {
             IDamageable damagedObj;
-            if (obj.TryGetComponent<IDamageable>(out damagedObj))
+
+            //Debug.Log(hitEntity.gameObject.name);
+
+            if (hitEntity.TryGetComponent<IDamageable>(out damagedObj))
             {
                 float finalAttackDamage = attackDamage;
-                if (hasBerserk)
-                    finalAttackDamage *= 2;
 
                 if (isPowerAttack)
-                    finalAttackDamage *= 2;
+                    finalAttackDamage *= 2f;
 
                 if (type != "")
                 {
@@ -126,7 +162,6 @@ public class AttackController : MonoBehaviour
                 {
                     damagedObj.TakeElementalDamage(finalAttackDamage, type);
                 }
-               
             }
         }
     }
