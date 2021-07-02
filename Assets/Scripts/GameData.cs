@@ -15,12 +15,17 @@ public class GameData
     public int shield;
     public int gold;
 
+    // Weapons data
+    public int[] weaponsId;
+
     // Inventory data
     public int[] itemId;
     public int[] itemStack;
 
     // Scene data
-    public bool[] pickupStatus;
+    public bool sceneNumber;
+    public bool[][] enemyStatus;
+    public bool[][] pickupStatus;
 
     public GameData (SaveController data)
     {
@@ -37,10 +42,13 @@ public class GameData
         shield = data.saveShield;
         gold = data.saveGold;
 
+        weaponsId = data.weaponsId.ToArray();
+
         itemId = data.itemsId.ToArray();
         itemStack = data.itemsStack.ToArray();
 
         pickupStatus = data.savePickableStatus;
+        enemyStatus = data.saveEnemyStatus;
     }
     
 }

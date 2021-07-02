@@ -131,6 +131,8 @@ public class AttackController : MonoBehaviour
         {
             IDamageable damagedObj;
 
+            //Debug.Log(hitEntity.gameObject.name);
+
             if (hitEntity.TryGetComponent<IDamageable>(out damagedObj))
             {
                 float finalAttackDamage = attackDamage;

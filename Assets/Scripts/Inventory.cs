@@ -30,28 +30,32 @@ public class Inventory : MonoBehaviour
         DrawWeaponSlots();
         DrawItemSlots();
 
-        //InputHandler.instance.OnWeaponKeyPressed += WeaponChangeHandler;
         InputHandler.instance.OnItemKeyPressed += ItemUseHandler;
-
+        InputHandler.instance.OnWeaponScroll += WeaponChangeHandler;
     }
 
     private void OnDestroy ()
     {
-        //InputHandler.instance.OnWeaponKeyPressed -= WeaponChangeHandler;
         InputHandler.instance.OnItemKeyPressed -= ItemUseHandler;
+        InputHandler.instance.OnWeaponScroll -= WeaponChangeHandler;
     }
 
-    private void WeaponChangeHandler (int index)
+    private void WeaponChangeHandler (bool isUp)
     {
-        Weapon equippedWeapon = equipment.PlayerWeapon;
-        if (_weaponSlots.Count <= index)
-            Debug.Log("Weapon slot out of range!");
-        else
+        if (_weaponSlots.Count > 0)
         {
-            if (_weaponSlots[index] == null)
-                Debug.Log("Weapon slot is empty!");
+            Weapon equippedWeapon = equipment.PlayerWeapon;
+            Weapon newWeapon;
+            if (isUp)
+            {
+                newWeapon = EquipNextWeapon(equippedWeapon);
+            }
             else
-                equipment.PlayerWeapon = EquipWeaponAtSlot(index, equippedWeapon);
+            {
+                newWeapon = EquipPreviousWeapon(equippedWeapon);
+            }
+            equipment.PlayerWeapon = newWeapon;
+            UpdateWeaponSlots();
         }
     }
 
@@ -213,6 +217,35 @@ public class Inventory : MonoBehaviour
         return weaponBeingRemoved;
     }
 
+    private Weapon EquipNextWeapon (Weapon currentWeapon)
+    {
+        Weapon nextWeapon = _weaponSlots[0];
+        int i;
+        for (i = 0; i < _weaponSlots.Count - 1; ++i)
+        {
+            // Shift all weapons one slot to the left
+            _weaponSlots[i] = _weaponSlots[i + 1];
+        }
+        // Put the current weapon at the end of the queue
+        _weaponSlots[i] = currentWeapon;
+        return nextWeapon;
+    }
+
+    private Weapon EquipPreviousWeapon (Weapon currentWeapon)
+    {
+        int lastIndex = _weaponSlots.Count - 1;
+        Weapon nextWeapon = _weaponSlots[lastIndex];
+        int i;
+        for (i = 0; i < _weaponSlots.Count - 1; ++i)
+        {
+            // Shift all weapons one slot to the right
+            _weaponSlots[i + 1] = _weaponSlots[i];
+        }
+        // Put the current weapon at the end of the queue
+        _weaponSlots[0] = currentWeapon;
+        return nextWeapon;
+    }
+
     private Weapon EquipWeaponAtSlot (int slot, Weapon swappedWeapon)
     {
         Weapon weaponBeingEquipped = _weaponSlots[slot];
@@ -223,7 +256,7 @@ public class Inventory : MonoBehaviour
 
     private void DrawWeaponSlots ()
     {
-        UserInterfaceController.instance.CreateWeaponSlots(weaponLimit);
+        UserInterfaceController.instance.ShowWeaponSlots();
         UpdateWeaponSlots();
     }
 
@@ -235,15 +268,8 @@ public class Inventory : MonoBehaviour
 
     private void UpdateWeaponSlots ()
     {
-        List<Sprite> _weaponSprites = new List<Sprite>();
-        foreach (Weapon wpn in _weaponSlots)
-        {
-            if (wpn != null)
-            {
-                _weaponSprites.Add(wpn.icon);
-            }
-        }
-        UserInterfaceController.instance.UpdateWeaponSlot(_weaponSprites);
+        Sprite currentWeaponSprite = equipment.PlayerWeapon.icon;
+        UserInterfaceController.instance.UpdateWeaponSlot(currentWeaponSprite);
     }
 
     private void UpdateItemSlots ()
@@ -285,6 +311,18 @@ public class Inventory : MonoBehaviour
         }
 
         return itemStacks;
+    }
+
+    public List<int> GetWeaponList ()
+    {
+        List<int> weaponIds = new List<int>(_weaponSlots.Count);
+
+        foreach (Weapon weapon in _weaponSlots)
+        {
+            weaponIds.Add(weapon.id);
+        }
+
+        return weaponIds;
     }
 
     private int FirstWhereStackIsNotFull (int itemId)

@@ -36,6 +36,7 @@ public class PlayerEquipment : MonoBehaviour
             {
                 gold = 0;
             }
+            UserInterfaceController.instance.UpdateGoldCount(gold);
         }
     }
 
@@ -99,6 +100,9 @@ public class PlayerEquipment : MonoBehaviour
 
         // Initializes the player damage to that of his weapon
         attack.Damage = playerWeapon.damage;
+
+        // Initializes player gold
+        UserInterfaceController.instance.UpdateGoldCount(gold);
     }
 
     private void ChangeWeaponGraphics (Weapon wpn)

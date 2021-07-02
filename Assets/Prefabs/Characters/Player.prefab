@@ -388,12 +388,14 @@ MonoBehaviour:
   speed: 0
   gravity: -35
   jumpHeight: 2
+  maxSlopAngle: 50
   groundCheck: {fileID: 5072104305588905007}
   groundDistance: 1.25
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
+  debugVector: 0
 --- !u!114 &5072104305726538639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,10 +461,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf21f87414eb4c43b6de56046158105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponSlots: []
+  _weaponSlots:
+  - {fileID: 11400000, guid: f0ad71d52f70e6c4dbc2a18805af883a, type: 2}
+  - {fileID: 11400000, guid: a7b6a266f573f5a45abd9cc3c22b86fe, type: 2}
   _itemSlots: []
   _itemSlotsStack: 
-  weaponLimit: 3
+  weaponLimit: 2
   itemLimit: 4
 --- !u!95 &5072104305726538643
 Animator:
@@ -499,6 +503,7 @@ MonoBehaviour:
   health: 0
   maxArmor: 100
   armor: 0
+  isBlocking: 0
 --- !u!1 &5072104305790942903
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +515,7 @@ GameObject:
   - component: {fileID: 5072104305790942900}
   - component: {fileID: 5072104305790942898}
   - component: {fileID: 5072104305790942901}
+  - component: {fileID: 566548832}
   m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
@@ -580,6 +586,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &566548832
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5072104305790942903}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &5072104306164262323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,6 +1646,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
+--- !u!1 &3397559423398610544 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -331177998084489812, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
+  m_PrefabInstance: {fileID: 6071385659288533980}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1517412443460366691 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4517379235194778945, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
@@ -1634,10 +1659,5 @@ GameObject:
 --- !u!4 &6038021342517156919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
-  m_PrefabInstance: {fileID: 6071385659288533980}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3397559423398610544 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -331177998084489812, guid: d408e4ea310ac9046b2a04354aa8bdaf, type: 3}
   m_PrefabInstance: {fileID: 6071385659288533980}
   m_PrefabAsset: {fileID: 0}

@@ -31,11 +31,16 @@ public class UserInterfaceController : MonoBehaviour
 
     private Image damageFrame;
 
-    private List<GameObject> _weaponSlots;
+    private GameObject weaponSlot;
+    private Image weaponSlotIcon;
+
     private List<GameObject> _itemSlots;
 
     private List<Image> _itemSprites;
     private List<TextMeshProUGUI> _itemStackTexts;
+
+    private GameObject goldFrame;
+    private TextMeshProUGUI goldCount;
 
     private string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
 
@@ -78,7 +83,12 @@ public class UserInterfaceController : MonoBehaviour
         weaponSlotParent = GameObject.Find("WeaponSlots");
         itemSlotParent = GameObject.Find("ItemSlots");
 
-        _weaponSlots = new List<GameObject>();
+        weaponSlot = GameObject.Find("EquippedWeaponIcon");
+        weaponSlotIcon = GameObject.Find("WeaponIcon").GetComponent<Image>();
+
+        goldFrame = GameObject.Find("GoldPanel");
+        goldCount = GameObject.Find("GoldCount").GetComponent<TextMeshProUGUI>();
+
         _itemSlots = new List<GameObject>();
 
         _itemSprites = new List<Image>();
@@ -158,6 +168,7 @@ public class UserInterfaceController : MonoBehaviour
         ShowCharacterFrame();
     }
 
+    /*
     public void CreateWeaponSlots (int count)
     {
         float startX = 600f, startY = 1000;
@@ -167,7 +178,7 @@ public class UserInterfaceController : MonoBehaviour
             AddWeaponSlot(inventoryXCoor[i], startY);
             startX += 150f;
         }
-    }
+    } */
 
     public void CreateItemSlots (int count)
     {
@@ -179,13 +190,14 @@ public class UserInterfaceController : MonoBehaviour
         }
     }
 
+    /*
     public void AddWeaponSlot (float coorX, float coorY)
     {
         GameObject newSlot = Instantiate(weaponSlotPrefab, weaponSlotParent.transform);
         RectTransform slotPosition = newSlot.GetComponent<RectTransform>();
         slotPosition.position = new Vector3(coorX, coorY, 0f);
         _weaponSlots.Add(newSlot);
-    }
+    } */
 
     public void AddItemSlot (float coorX, float coorY, int count)
     {
@@ -204,25 +216,11 @@ public class UserInterfaceController : MonoBehaviour
         _itemSprites.Add(sprite);
     }
 
-    public void UpdateWeaponSlot (List<Sprite> _sprites)
+
+    public void UpdateWeaponSlot (Sprite icon)
     {
-        for (int i = 0; i < _sprites.Count; ++i)
-        {
-            if (_sprites != null)
-            {
-                Image[] sprites = _weaponSlots[i].GetComponentsInChildren<Image>();
-                for (int j = 0; j < sprites.Length; ++j)
-                {
-                    if (!sprites[j].gameObject.Equals(_weaponSlots[i]))
-                    {
-                        sprites[j].sprite = _sprites[i];
-                        // For some reason the sprites might start with a wrong color?
-                        sprites[j].color = Color.white;
-                    }
-                }
-                //_weaponSlots[i].GetComponentInChildren<Image>().sprite = _weapons[i].icon;
-            }
-        }
+        weaponSlotIcon.sprite = icon;
+        weaponSlotIcon.color = Color.white;
     }
 
     public void UpdateItemSlot (List<Sprite> _sprites, List<int> _itemStacks)
@@ -382,6 +380,21 @@ public class UserInterfaceController : MonoBehaviour
     public void HideArmorFrame ()
     {
         armorFrame.SetActive(false);
+    }
+
+    public void ShowGoldFrame ()
+    {
+        goldFrame.SetActive(true);
+    }
+
+    public void UpdateGoldCount (int value)
+    {
+        goldCount.text = value.ToString();
+    }
+
+    public void HideGoldFrame ()
+    {
+        goldFrame.SetActive(false);
     }
 
     public void ShowDamagePanel ()

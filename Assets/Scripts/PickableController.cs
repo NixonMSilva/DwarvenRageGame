@@ -39,6 +39,10 @@ public class PickableController : MonoBehaviour
 
     public void SetPickedList (bool[] arr)
     {
+        // If the array is null then do nothing
+        if (arr == null)
+            return;
+
         _wasNotPicked = arr.ToList();
         for (int i = 0; i < _wasNotPicked.Count; ++i)
         {

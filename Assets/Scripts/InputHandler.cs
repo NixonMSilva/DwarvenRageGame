@@ -52,6 +52,8 @@ public class InputHandler : MonoBehaviour
 
     public event Action<int> OnItemKeyPressed;
 
+    public event Action<bool> OnWeaponScroll;
+
     private bool isPowerAttacking = false;
     private float powerAttackFill = 0f;
 
@@ -197,6 +199,19 @@ public class InputHandler : MonoBehaviour
 
             if (itemKey > 0)
                 OnItemKeyPressed?.Invoke(itemKey - 1);
+
+            // Weapon key
+
+            float mouseScroll = Input.mouseScrollDelta.y;
+
+            if (mouseScroll > 0.1f)
+            {
+                OnWeaponScroll?.Invoke(true);
+            }
+            else if (mouseScroll < -0.1f)
+            {
+                OnWeaponScroll?.Invoke(false);
+            }
 
         }
 

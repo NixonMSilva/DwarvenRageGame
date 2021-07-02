@@ -2444,8 +2444,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5000006, z: 0.8087708}
-  m_Center: {x: 0, y: 0.7500003, z: 0.045615267}
+  m_Size: {x: 1.3681333, y: 1.4613757, z: 0.8087709}
+  m_Center: {x: 0, y: 0.73068786, z: 0.045615267}
 --- !u!195 &7431789895267459522
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2504,6 +2504,7 @@ MonoBehaviour:
   health: 0
   maxArmor: 100
   armor: 0
+  isBlocking: 0
   hurtThreshold: 0.25
 --- !u!114 &7431789895267459521
 MonoBehaviour:

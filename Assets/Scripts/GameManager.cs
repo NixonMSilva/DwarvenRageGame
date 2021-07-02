@@ -9,11 +9,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private List<Shield> _shields;
 
+    [SerializeField] private int sceneNumber = 1;
+
     private void Awake ()
     {
         //_weapons = Resources.LoadAll<Weapon>("Weapons").ToList();
         //_shields = Resources.LoadAll<Shield>("Shields").ToList();
     }
+
+    public int GetSceneNumber () => sceneNumber;
 
     public List<GameObject> GetDropTypes () => _dropTypes;
 
