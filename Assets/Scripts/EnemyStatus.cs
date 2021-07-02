@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System;
 
 public class EnemyStatus : StatusController
 {
-    public event Action<EnemyStatus> OnDeath;
+    public event System.Action<EnemyStatus> OnDeath;
 
     private NavMeshAgent agent;
 
-    [SerializeField] private float hurtThreshold = 0.25f;
+    [SerializeField] private float painThreshold = 0.25f;
 
     public override float Speed
     {
@@ -48,7 +47,8 @@ public class EnemyStatus : StatusController
     {
         base.TakeDamage(value);
         //Debug.Log(MaxHealth * hurtThreshold);
-        if (value >= MaxHealth * hurtThreshold)
+        
+        if (Random.Range(0f, 1f) >= painThreshold)
         {
             PlayDamageAnimation();
         }
@@ -56,6 +56,7 @@ public class EnemyStatus : StatusController
 
     private void PlayDamageAnimation ()
     {
+        Debug.Log("Pain!");
         animator.Play("Hit");
     }
 }

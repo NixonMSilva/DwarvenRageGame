@@ -5,7 +5,6 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _dropTypes;
     [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private List<Shield> _shields;
 
@@ -18,8 +17,6 @@ public class GameManager : MonoBehaviour
     }
 
     public int GetSceneNumber () => sceneNumber;
-
-    public List<GameObject> GetDropTypes () => _dropTypes;
 
     public List<Weapon> GetWeapons () => _weapons;
 
