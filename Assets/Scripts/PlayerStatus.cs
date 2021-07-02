@@ -69,13 +69,15 @@ public class PlayerStatus : StatusController
         }
     }
 
-    private void Start ()
+    private new void Start ()
     {
         Armor = 0f;
     }
 
     public override void Die ()
     {
+        isDying = true;
+        UserInterfaceController.instance.DeathMenu();
     }
 
     public override void TakeDamage (float value)

@@ -9860,6 +9860,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2860795611090259176, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_Name
+      value: DeathMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860795611090259176, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579353544857938975, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_IgnoreParentGroups
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
 --- !u!4 &1306711195729220232 stripped
@@ -10169,12 +10201,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: _weaponSlots.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: _weaponSlots.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: f0ad71d52f70e6c4dbc2a18805af883a, type: 2}
+      objectReference: {fileID: 11400000, guid: 6dd7e475142e0f74f83851ea45077b55, type: 2}
+    - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
+      propertyPath: _weaponSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 79d7123f2c9619d43ac76462281e763c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
 --- !u!1001 &9110105614509115545

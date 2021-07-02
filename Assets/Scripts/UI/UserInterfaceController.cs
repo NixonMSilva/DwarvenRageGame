@@ -34,6 +34,9 @@ public class UserInterfaceController : MonoBehaviour
     private GameObject weaponSlot;
     private Image weaponSlotIcon;
 
+    private GameObject deathScreen;
+    //private CanvasGroup deathScreen;
+
     private List<GameObject> _itemSlots;
 
     private List<Image> _itemSprites;
@@ -89,6 +92,9 @@ public class UserInterfaceController : MonoBehaviour
         goldFrame = GameObject.Find("GoldPanel");
         goldCount = GameObject.Find("GoldCount").GetComponent<TextMeshProUGUI>();
 
+        deathScreen = GameObject.Find("DeathMenu");
+        //deathScreen = GameObject.Find("DeathMenu").GetComponent<CanvasGroup>();
+
         _itemSlots = new List<GameObject>();
 
         _itemSprites = new List<Image>();
@@ -99,13 +105,14 @@ public class UserInterfaceController : MonoBehaviour
     {
         HideTooltip();
         HidePauseMenu();
+        HideDeathMenu();
 
         InputHandler.instance.OnEscapePressed += PauseMenu;
     }
 
     private void OnDestroy ()
     {
-
+        InputHandler.instance.OnEscapePressed -= PauseMenu;
     }
 
     public void DrawTooltip (string text)
@@ -132,6 +139,12 @@ public class UserInterfaceController : MonoBehaviour
             DrawPauseMenu();
             InputHandler.instance.LockCursor(false);
         }
+    }
+
+    public void DeathMenu ()
+    {
+        ShowDeathMenu();
+        InputHandler.instance.LockCursor(false);
     }
 
     public void DrawPauseMenu ()
@@ -400,6 +413,20 @@ public class UserInterfaceController : MonoBehaviour
     public void ShowDamagePanel ()
     {
         StartCoroutine(CanvasFadeUpDown(damageFrame, 0.1f, damageFrame.color.a, 0.25f));
+    }
+
+    public void HideDeathMenu ()
+    {
+        //deathScreen.alpha = 0f;
+        deathScreen.gameObject.SetActive(false);
+    }
+
+    public void ShowDeathMenu ()
+    {
+        CanvasGroup deathMenuCanvas = deathScreen.GetComponent<CanvasGroup>();
+        deathScreen.gameObject.SetActive(true);
+        deathMenuCanvas.alpha = Mathf.Lerp(0f, 1f, 5f);
+        Time.timeScale = 0f;
     }
 
     // 0 - Out | 1 - In
