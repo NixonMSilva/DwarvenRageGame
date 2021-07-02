@@ -10,7 +10,7 @@ public class Armor : PickableBase
 
     public override void ApplyEffect (StatusController player)
     {
-        Debug.Log("Here!");
+        //Debug.Log("Here!");
         player.AddArmor(armorValue);
     }
 }

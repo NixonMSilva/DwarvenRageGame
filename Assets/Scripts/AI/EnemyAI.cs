@@ -11,11 +11,11 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    private Animator anim;
+    protected Animator anim;
 
     [SerializeField] private float baseSpeed = 12f; 
 
-    private AttackController attack;
+    protected AttackController attack;
 
     private EnemyStatus status;
 
@@ -25,18 +25,22 @@ public class EnemyAI : MonoBehaviour
 
     private int attackDirection = 1;
 
-    //Patrol
+    // Patrol
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
-    //Attack
+    // Attack
     public float timeBetweenAttacks;
-    bool alreadyAttacked;
+    protected bool alreadyAttacked;
 
-    //States
+    // States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+
+    // Movement
+    [SerializeField] protected float rotationSpeed = 10f;
+    private Vector3 playerPoint;
 
     private void Awake()
     {
@@ -53,9 +57,8 @@ public class EnemyAI : MonoBehaviour
         // If the enemy is not dying, the perform AI routines
         if (!status.IsDying && !isAttacking)
         {
-            agent.isStopped = false;
-            agent.speed = baseSpeed;
-
+            //agent.isStopped = false;
+            //agent.speed = baseSpeed;
 
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -77,13 +80,19 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            agent.speed = 0f;
             agent.SetDestination(transform.position);
+        }
+
+        if (isAttacking)
+        {
+            LookAtPlayer();
         }
     }
 
     private void Patroling()
     {
+        agent.speed = baseSpeed;
+
         if (!walkPointSet)
         {
             SearchWalkPoint();
@@ -118,23 +127,20 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
+        agent.speed = baseSpeed * 2;
         agent.SetDestination(player.position);
     }
 
-    private void AttackPlayer()
+    public virtual void AttackPlayer()
     {
         //agent.SetDestination(transform.position);
 
-        //transform.LookAt(player);
-
-        agent.speed = 0f;
-        agent.isStopped = true;
-        agent.SetDestination(transform.position);
+        playerPoint = player.transform.position;
+        //LookAtPlayer();
+        StopForAttack();
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
-            //Debug.Log("Atacando");
 
             if (attackDirection == 1)
             {
@@ -154,18 +160,35 @@ public class EnemyAI : MonoBehaviour
                 attackDirection = 1;
             }
             
-            ///
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
 
-    private void ResetAttack()
+    protected void StopForAttack ()
+    {
+        //agent.speed = 0f;
+        //agent.isStopped = true;
+        agent.SetDestination(transform.position);
+    }
+
+    protected void LookAtPlayer ()
+    {
+        Vector3 lookPosition = player.transform.position - transform.position;
+        lookPosition.y = 0;
+        transform.rotation = Quaternion.LookRotation(lookPosition);
+        /*
+        Quaternion targetRotation = Quaternion.LookRotation(playerPoint - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime); */
+        //transform.LookAt(lookPosition);
+    }
+
+    protected void ResetAttack()
     {
         alreadyAttacked = false;
     }
 
-    private void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);

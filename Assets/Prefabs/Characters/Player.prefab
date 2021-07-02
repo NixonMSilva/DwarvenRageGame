@@ -323,9 +323,9 @@ GameObject:
   - component: {fileID: 5072104305726538639}
   - component: {fileID: 5072104305726538638}
   - component: {fileID: 5072104305726538641}
-  - component: {fileID: 5072104305726538640}
   - component: {fileID: 5972964833955649106}
   - component: {fileID: 5072104305726538643}
+  - component: {fileID: 1653969463784507186}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -447,22 +447,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1039e04b7005e6744aac4351b459063a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5072104305726538640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5072104305726538642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42630682e40a67c458e24e4a821a6fd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 0
-  maxArmor: 100
-  armor: 0
 --- !u!114 &5972964833955649106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +483,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1653969463784507186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5072104305726538642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392e8e9267b6a624684045b7fe297761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  health: 0
+  maxArmor: 100
+  armor: 0
 --- !u!1 &5072104305790942903
 GameObject:
   m_ObjectHideFlags: 0

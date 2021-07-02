@@ -47,25 +47,9 @@ public class PlayerEquipment : MonoBehaviour
             playerWeapon = value;
             attack.Damage = playerWeapon.damage;
             ChangeWeaponGraphics(value);
+
             SetTwoHanded(value.isTwoHanded);
-            /*
-            if (isTwoHanded)
-            {
-                anim.SetBool("isTwoHanded", true);
-                //block.CanBlock = false;
-                anim.runtimeAnimatorController = animationSet2H;
-                // Send shield to the inventory
-                SetShieldGraphics(false);
-            }
-            else
-            {
-                anim.SetBool("isTwoHanded", false);
-                //block.CanBlock = true;
-                anim.runtimeAnimatorController = animationSet1H;
-                // Bring back the shield if applicable
-                SetShieldGraphics(true);
-            }
-            */
+
             // JERRYRIGGING: Have to do it twice so it unsuck
             ChangeWeaponGraphics(value);
         }
@@ -102,14 +86,19 @@ public class PlayerEquipment : MonoBehaviour
 
     private void Start ()
     {
+        // Intialize weapon and shield graphics
         ChangeShieldGraphics(playerShield);
         ChangeWeaponGraphics(playerWeapon);
 
+        // Set the correct animation set on start
         if (playerWeapon.isTwoHanded)
         {
             SetTwoHanded(true);
             isTwoHanded = true;
         }
+
+        // Initializes the player damage to that of his weapon
+        attack.Damage = playerWeapon.damage;
     }
 
     private void ChangeWeaponGraphics (Weapon wpn)
@@ -120,18 +109,9 @@ public class PlayerEquipment : MonoBehaviour
         // Adjust the object scale
         weaponHUDObject.transform.localScale = objScale;
 
-        /*
-        Debug.Log("Antes: " + weaponHUDObject.transform.localPosition.x + " | " +
-            weaponHUDObject.transform.localPosition.y + " | " +
-            weaponHUDObject.transform.localPosition.z); */
 
         // Adjust the object position
         weaponHUDObject.transform.localPosition = objPosition;
-
-        /*
-        Debug.Log("Depois: " + weaponHUDObject.transform.localPosition.x + " | " +
-            weaponHUDObject.transform.localPosition.y + " | " +
-            weaponHUDObject.transform.localPosition.z); */
 
         // Adjust the mesh
         weaponHUDObject.GetComponent<MeshFilter>().mesh = wpn.worldMesh;

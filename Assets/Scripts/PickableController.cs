@@ -31,7 +31,7 @@ public class PickableController : MonoBehaviour
         if (name.Contains("Item"))
         {
             string[] subs = name.Split(limits);
-            Debug.Log(subs[1]);
+            //Debug.Log(subs[1]);
             int armorId = Int32.Parse(subs[1]);
             _wasNotPicked[armorId] = false;
         }

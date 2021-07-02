@@ -666,6 +666,7 @@ MonoBehaviour:
   attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
+  rotationSpeed: 10
 --- !u!114 &1918258138775259692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,11 +693,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0654dd7af7367944889efba781e314f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
   health: 0
   maxArmor: 100
   armor: 0
-  hurtThreshold: 0.25
+  hurtThreshold: 0.1
 --- !u!114 &7011182560264299458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,9 +712,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 7828610339295370968}
   attackRange: 2
+  attackSpeed: 5
   damageableLayer:
     serializedVersion: 2
     m_Bits: 128
+  attackDamage: 50
+  canAttack: 1
 --- !u!95 &7828610339396176165
 Animator:
   serializedVersion: 3
@@ -752,7 +756,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.6
-  m_BaseOffset: 0
+  m_BaseOffset: -0.16
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!65 &6730873457162443534

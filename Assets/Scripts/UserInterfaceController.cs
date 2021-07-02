@@ -19,6 +19,18 @@ public class UserInterfaceController : MonoBehaviour
     private GameObject weaponSlotParent;
     private GameObject itemSlotParent;
 
+    private GameObject healthBarFrame;
+    public Slider healthBar;
+
+    private GameObject characterFrame;
+    private Sprite characterImage;
+
+    private GameObject armorFrame;
+    private GameObject armorIndicator;
+    private TextMeshProUGUI armorValue;
+
+    private Image damageFrame;
+
     private List<GameObject> _weaponSlots;
     private List<GameObject> _itemSlots;
 
@@ -26,6 +38,8 @@ public class UserInterfaceController : MonoBehaviour
     private List<TextMeshProUGUI> _itemStackTexts;
 
     private string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
+
+    private float[] inventoryXCoor = { 768f, 896f, 1024f, 1152f };
 
     [SerializeField] private GameObject weaponSlotPrefab;
     [SerializeField] private GameObject itemSlotPrefab;
@@ -49,6 +63,17 @@ public class UserInterfaceController : MonoBehaviour
         pauseMenu = GameObject.Find("PauseMenu");
 
         inventory = GameObject.Find("Inventory");
+
+        healthBarFrame = GameObject.Find("HealthBar");
+        healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
+
+        characterFrame = GameObject.Find("PlayerPhotoSquare");
+
+        armorFrame = GameObject.Find("PlayerArmorSquare");
+        //armorIndicator = GameObject.Find("PlayerArmorIcon");
+        armorValue = armorFrame.GetComponentInChildren<TextMeshProUGUI>();
+
+        damageFrame = GameObject.Find("BloodPanel").GetComponent<Image>();
 
         weaponSlotParent = GameObject.Find("WeaponSlots");
         itemSlotParent = GameObject.Find("ItemSlots");
@@ -118,32 +143,39 @@ public class UserInterfaceController : MonoBehaviour
     public void HidePlayerInterface ()
     {
         HideWeaponSlots();
+        HideItemSlots();
+        HideArmorFrame();
+        HideHealthBar();
+        HideCharacterFrame();
     }
 
     public void ShowPlayerInterface ()
     {
         ShowWeaponSlots();
+        ShowItemSlots();
+        ShowArmorFrame();
+        ShowHealthBar();
+        ShowCharacterFrame();
     }
 
     public void CreateWeaponSlots (int count)
     {
-        float startX = 250f, startY = 1000;
+        float startX = 600f, startY = 1000;
 
         for (int i = 0; i < count; ++i)
         {
-            AddWeaponSlot(startX, startY);
+            AddWeaponSlot(inventoryXCoor[i], startY);
             startX += 150f;
         }
     }
 
     public void CreateItemSlots (int count)
     {
-        float startX = 250f, startY = 100;
+        float startY = 192f;
 
         for (int i = 0; i < count; ++i)
         {
-            AddItemSlot(startX, startY, i);
-            startX += 150;
+            AddItemSlot(inventoryXCoor[i], startY, i);
         }
     }
 
@@ -241,7 +273,8 @@ public class UserInterfaceController : MonoBehaviour
     {
         for (int i = index; i < _itemSlots.Count; ++i)
         {
-            _itemSprites[i].sprite = defaultItemSprite;
+            _itemSprites[i].sprite = null;
+            _itemSprites[i].color = new Color(1f, 1f, 1f, 0f);
             _itemStackTexts[i].text = "";
         }
     }
@@ -305,4 +338,104 @@ public class UserInterfaceController : MonoBehaviour
     {
 
     }
+
+    public void UpdateHealthBar (float newHealthValue)
+    {
+        healthBar.value = newHealthValue;
+    }
+
+    public void ShowHealthBar ()
+    {
+        healthBarFrame.SetActive(true);
+    }
+
+    public void HideHealthBar ()
+    {
+        healthBarFrame.SetActive(false);
+    }
+
+    public void ShowCharacterFrame ()
+    {
+        characterFrame.SetActive(true);
+    }
+
+    public void UpdateCharacterFrame ()
+    {
+
+    }
+
+    public void HideCharacterFrame ()
+    {
+        characterFrame.SetActive(false);
+    }
+
+    public void ShowArmorFrame () 
+    {
+        armorFrame.SetActive(true);
+    }
+
+    public void UpdateArmor (float newArmorValue) 
+    {
+        armorValue.text = newArmorValue.ToString() + "%";
+    }
+
+    public void HideArmorFrame ()
+    {
+        armorFrame.SetActive(false);
+    }
+
+    public void ShowDamagePanel ()
+    {
+        StartCoroutine(CanvasFadeUpDown(damageFrame, 0.1f, damageFrame.color.a, 0.25f));
+    }
+
+    // 0 - Out | 1 - In
+    IEnumerator CanvasFade (Image element, float duration, float startAlpha, float endAlpha)
+    {
+        float startTime = Time.time;
+        float endTime = Time.time + duration;
+        float elapsedTime = 0f;
+
+        while (Time.time <= endTime)
+        {
+            elapsedTime = Time.time - startTime; // update the elapsed time
+            var percentage = 1 / (duration / elapsedTime); // calculate how far along the timeline we are
+            if (startAlpha > endAlpha) // if we are fading out/down 
+            {
+                element.color = new Color(element.color.r, element.color.g, element.color.b, startAlpha - percentage);
+            }
+            else // if we are fading in/up
+            {
+                element.color = new Color(element.color.r, element.color.g, element.color.b, startAlpha + percentage);
+            }
+            yield return new WaitForEndOfFrame();
+        }
+        element.color = new Color(element.color.r, element.color.g, element.color.b, endAlpha);
+    }
+
+    IEnumerator CanvasFadeUpDown (Image element, float duration, float startAlpha, float endAlpha)
+    {
+        float startTime = Time.time;
+        float endTime = Time.time + duration;
+        float elapsedTime = 0f;
+
+        while (Time.time <= endTime)
+        {
+            elapsedTime = Time.time - startTime; // update the elapsed time
+            var percentage = 1 / (duration / elapsedTime); // calculate how far along the timeline we are
+            if (startAlpha > endAlpha) // if we are fading out/down 
+            {
+                element.color = new Color(element.color.r, element.color.g, element.color.b, startAlpha - percentage);
+            }
+            else // if we are fading in/up
+            {
+                element.color = new Color(element.color.r, element.color.g, element.color.b, startAlpha + percentage);
+            }
+            yield return new WaitForEndOfFrame();
+        }
+        element.color = new Color(element.color.r, element.color.g, element.color.b, endAlpha);
+        StartCoroutine(CanvasFade(element, duration, element.color.a, 0f));
+    }
+
+
 }

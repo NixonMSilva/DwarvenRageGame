@@ -5,28 +5,27 @@ using UnityEngine;
 
 public class StatusController : MonoBehaviour, IDamageable
 {
-    private PlayerMovement movement;
-    private AttackController attack;
+    protected AttackController attack;
 
-    private PlayerEquipment equipment;
+    protected Animator animator;
 
-    private GameObject manager;
+    protected GameObject manager;
 
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] protected float maxHealth = 100f;
 
-    [SerializeField] private float health;
+    [SerializeField] protected float health;
 
-    [SerializeField] private float maxArmor = 100f;
+    [SerializeField] protected float maxArmor = 100f;
 
-    [SerializeField] private float armor;
+    [SerializeField] protected float armor;
 
-    private float fireResistance = 0f, poisonResistance = 0f;
+    protected float fireResistance = 0f, poisonResistance = 0f;
 
-    private bool isBlocking;
+    [SerializeField] protected bool isBlocking;
 
     protected bool isDying = false;
 
-    public float Health
+    public virtual float Health
     {
         get { return health; }
         set 
@@ -56,7 +55,7 @@ public class StatusController : MonoBehaviour, IDamageable
         }
     }
 
-    public float Armor
+    public virtual float Armor
     {
         get { return armor; }
         set 
@@ -85,27 +84,19 @@ public class StatusController : MonoBehaviour, IDamageable
         set { isDying = value; }
     }
 
-    protected void Awake ()
+    protected void Start ()
     {
-        Health = maxHealth;
-
-        movement = GetComponent<PlayerMovement>();
-        attack = GetComponent<AttackController>();
-        equipment = GetComponent<PlayerEquipment>();
-
-        manager = GameObject.Find("GameManager");
+        Armor = 0f;
     }
 
     private void Update ()
     {
         if (Health <= 0f)
         {
-
             if (!isDying)
             {
                 Die();
             }
-            
         }
     }
 
@@ -120,17 +111,8 @@ public class StatusController : MonoBehaviour, IDamageable
         Armor += delta;
     }
 
-    public void TakeDamage (float value)
+    public virtual void TakeDamage (float value)
     {
-        if (isBlocking)
-        {
-            // If player has shield
-            if (!equipment.IsTwoHanded)
-                value -= value * equipment.PlayerShield.damageReduction;
-            else
-                value -= value * equipment.BaseDamageReduction;
-        }
-
         if (Armor > 0)
         {
             Armor -= value;
@@ -170,8 +152,6 @@ public class StatusController : MonoBehaviour, IDamageable
             // Deactivate status upon timeout completion
             HandleStatus(statusType, magnitude, false);
 
-            Debug.Log("Aqui!!");
-
             // Destroy timer
             Destroy(statusTimeout);
         });
@@ -191,10 +171,10 @@ public class StatusController : MonoBehaviour, IDamageable
                 AddPoisonResistance(magnitude);
                 break;
             case EffectDataType.berserk:
-                Berserk(isActivation);
+                Berserk(isActivation, magnitude);
                 break;
             case EffectDataType.fortune:
-                Fortune(isActivation);
+                Fortune(isActivation, magnitude);
                 break;
         }
     }
@@ -209,18 +189,22 @@ public class StatusController : MonoBehaviour, IDamageable
         poisonResistance += value;
     }
 
-    private void Berserk (bool status)
+    private void Fortune (bool status, float magnitude)
+    {
+
+    }
+
+    public virtual void Berserk (bool status, float magnitude)
     {
         attack.Berserk = status;
 
         if (status)
-            movement.Speed *= 2f;
+        {
+            attack.Damage *= magnitude;
+        }
         else
-            movement.Speed /= 2f;
-    }
-
-    private void Fortune (bool status)
-    {
-
+        {
+            attack.Damage *= magnitude;
+        }
     }
 }

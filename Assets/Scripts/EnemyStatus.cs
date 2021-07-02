@@ -8,26 +8,28 @@ public class EnemyStatus : StatusController
 
     [SerializeField] private float hurtThreshold = 0.25f;
 
-    private new void Awake ()
+    private void Awake ()
     {
-        base.Awake();
+        Health = maxHealth;
+        Armor = 0f;
 
-        anim = GetComponentInChildren<Animator>();
+        attack = GetComponent<AttackController>();
+        animator = GetComponent<Animator>();
     }
 
     public override void Die ()
     {
         // Enemy death
         isDying = true;
-        anim.Play("Death");
+        animator.Play("Death");
         GetComponent<EnemyController>().SpawnLoot();
         Destroy(gameObject, 10f);
     }
 
-    public new void TakeDamage (float value)
+    public override void TakeDamage (float value)
     {
         base.TakeDamage(value);
-
+        //Debug.Log(MaxHealth * hurtThreshold);
         if (value >= MaxHealth * hurtThreshold)
         {
             PlayDamageAnimation();
@@ -36,6 +38,6 @@ public class EnemyStatus : StatusController
 
     private void PlayDamageAnimation ()
     {
-        anim.Play("Hit");
+        animator.Play("Hit");
     }
 }
