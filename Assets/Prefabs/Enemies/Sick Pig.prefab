@@ -2429,10 +2429,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.7813721
-  m_Height: 1.8865354
+  m_Radius: 0.94535285
+  m_Height: 1.8907057
   m_Direction: 1
-  m_Center: {x: 0, y: 0.44326702, z: 0.3110537}
+  m_Center: {x: 0, y: 0.44326702, z: 0.14707294}
 --- !u!65 &7431789895267459525
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2522,6 +2522,7 @@ MonoBehaviour:
   enemyType: {fileID: 11400000, guid: 0017ed034e7814d44934cc16f4fde7e5, type: 2}
   _dropItem: []
   _dropChance: []
+  useFromDatabase: 0
 --- !u!114 &8404256492337632627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2547,9 +2548,10 @@ MonoBehaviour:
   feetPosition: {fileID: 3016075032903905889}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 30
-  timeBetweenAttacks: 2
+  isPatrolling: 0
+  timeBetweenAttacks: 1
   sightRange: 30
-  attackRange: 10
+  attackRange: 15
   playerInSightRange: 0
   playerInAttackRange: 0
   rotationSpeed: 10

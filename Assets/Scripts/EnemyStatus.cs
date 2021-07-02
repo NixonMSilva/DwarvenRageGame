@@ -56,7 +56,7 @@ public class EnemyStatus : StatusController
 
     private void PlayDamageAnimation ()
     {
-        Debug.Log("Pain!");
-        animator.Play("Hit");
+        if (!isDying)
+            animator.Play("Hit");
     }
 }

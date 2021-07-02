@@ -26,9 +26,9 @@ public class EnemyAI : MonoBehaviour
     private int attackDirection = 1;
 
     // Patrol
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    [SerializeField] private Vector3 walkPoint;
+    [SerializeField] private float walkPointRange;
+    [SerializeField] private bool isPatrolling = false;
 
     // Attack
     public float timeBetweenAttacks;
@@ -40,7 +40,8 @@ public class EnemyAI : MonoBehaviour
 
     // Movement
     [SerializeField] protected float rotationSpeed = 10f;
-    private Vector3 playerPoint;
+    private float currSpeed;
+    protected Vector3 playerPoint;
 
     private void Awake()
     {
@@ -57,8 +58,10 @@ public class EnemyAI : MonoBehaviour
         // If the enemy is not dying, the perform AI routines
         if (!status.IsDying && !isAttacking)
         {
-            //agent.isStopped = false;
-            //agent.speed = baseSpeed;
+            // Update player speed in order to
+            // decide which animator status
+            // to play
+            UpdateSpeed();
 
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -75,8 +78,6 @@ public class EnemyAI : MonoBehaviour
             {
                 AttackPlayer();
             }
-
-            anim.SetFloat("speed", agent.speed);
         }
         else
         {
@@ -89,40 +90,49 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private void UpdateSpeed ()
+    {
+        currSpeed = agent.velocity.magnitude / agent.speed;
+        anim.SetFloat("speed", currSpeed);
+    }
+
     private void Patroling()
     {
         agent.speed = baseSpeed;
-
-        if (!walkPointSet)
+      
+        if (!isPatrolling)
         {
-            SearchWalkPoint();
-        }
-
-        if (walkPointSet)
-        {
+            walkPoint = SearchWalkPoint();
+            
             agent.SetDestination(walkPoint);
+            isPatrolling = true;
         }
-
-        float distanceToWalkPoint = Vector3.Distance(transform.position, walkPoint);
-
-        if (distanceToWalkPoint < 1f)
+        else
         {
-            walkPointSet = false;
+            if (Vector3.Distance(transform.position, walkPoint) <= 1f)
+                isPatrolling = false;
         }
     }
 
-    private void SearchWalkPoint()
+    private Vector3 SearchWalkPoint()
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        Vector3 newWalkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        NavMeshHit hit;
+
+        Debug.DrawRay(newWalkPoint, Vector3.up * 100f, Color.magenta, 2f);
+
+        // If the new random point is inside NavMesh, then move
+        if (NavMesh.SamplePosition(newWalkPoint, out hit, 5f, NavMesh.AllAreas))
         {
-            walkPointSet = true;
+            return newWalkPoint;
         }
 
+        // Else, stand still and try again
+        return transform.position;
     }
 
     private void ChasePlayer()

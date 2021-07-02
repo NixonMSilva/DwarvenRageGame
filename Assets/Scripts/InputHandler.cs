@@ -15,10 +15,10 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private KeyCode sprintKey          = KeyCode.LeftShift;
     [SerializeField] private KeyCode interactionKey     = KeyCode.E;
     [SerializeField] private KeyCode escapeKey          = KeyCode.I;
-    [SerializeField] private KeyCode itemKey1           = KeyCode.Keypad1;
-    [SerializeField] private KeyCode itemKey2           = KeyCode.Keypad2;
-    [SerializeField] private KeyCode itemKey3           = KeyCode.Keypad3;
-    [SerializeField] private KeyCode itemKey4           = KeyCode.Keypad4;
+    [SerializeField] private KeyCode itemKey1           = KeyCode.Alpha1;
+    [SerializeField] private KeyCode itemKey2           = KeyCode.Alpha2;
+    [SerializeField] private KeyCode itemKey3           = KeyCode.Alpha3;
+    [SerializeField] private KeyCode itemKey4           = KeyCode.Alpha4;
 
     [Space(20)]
     [SerializeField] private float powerAttackThreshold = 0.5f;
@@ -167,21 +167,6 @@ public class InputHandler : MonoBehaviour
             //  Inventory Weapon
             //================================================================
 
-            /*
-            // Weapon Key
-            int weaponKey = 0;
-
-            if (Input.GetKeyDown(weaponKey1))
-                weaponKey = 1;
-            else if (Input.GetKeyDown(weaponKey2))
-                weaponKey = 2;
-            else if (Input.GetKeyDown(weaponKey3))
-                weaponKey = 3;
-
-            if (weaponKey > 0)
-                OnWeaponKeyPressed?.Invoke(weaponKey - 1);
-            */
-
             // Item key
 
             int itemKey = 0;
@@ -198,7 +183,7 @@ public class InputHandler : MonoBehaviour
             if (itemKey > 0)
                 OnItemKeyPressed?.Invoke(itemKey - 1);
 
-            // Weapon key
+            // Weapon scroll
 
             float mouseScroll = Input.mouseScrollDelta.y;
 
