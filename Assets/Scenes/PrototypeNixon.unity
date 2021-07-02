@@ -10017,7 +10017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3821770183356289559, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
       propertyPath: canLoadGame
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
@@ -10200,8 +10200,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
+      propertyPath: _itemSlots.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: _weaponSlots.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
+      propertyPath: _itemSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e034040ca838b24c98d89d2292e14d3, type: 2}
+    - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
+      propertyPath: _itemSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 059d9897cad16ab489d27135c5d64147, type: 2}
+    - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
+      propertyPath: _itemSlotsStack.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: _weaponSlots.Array.data[0]
@@ -10211,6 +10227,14 @@ PrefabInstance:
       propertyPath: _weaponSlots.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 79d7123f2c9619d43ac76462281e763c, type: 2}
+    - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
+      propertyPath: _itemSlotsStack.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
+      propertyPath: _itemSlotsStack.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
 --- !u!1001 &9110105614509115545

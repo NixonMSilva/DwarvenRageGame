@@ -113,7 +113,6 @@ public class PlayerEquipment : MonoBehaviour
         // Adjust the object scale
         weaponHUDObject.transform.localScale = objScale;
 
-
         // Adjust the object position
         weaponHUDObject.transform.localPosition = objPosition;
 

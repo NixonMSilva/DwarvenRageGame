@@ -45,6 +45,22 @@ public class PlayerStatus : StatusController
         }
     }
 
+    public PlayerMovement Movement
+    {
+        get { return movement; }
+    }
+
+    public override float Speed
+    {
+        get { return movement.Speed; }
+        set { movement.Speed = value; }
+    }
+
+    public override float DefaultSpeed
+    {
+        get { return movement.DefaultSpeed; }
+    }
+
     private void Awake ()
     {
         Health = maxHealth;
@@ -97,21 +113,5 @@ public class PlayerStatus : StatusController
         UserInterfaceController.instance.ShowDamagePanel();
 
         base.TakeDamage(value);
-    }
-
-    public override void Berserk (bool status, float magnitude)
-    {
-        attack.Berserk = status;
-
-        if (status)
-        {
-            movement.Speed *= magnitude;
-            attack.Damage *= magnitude;
-        }
-        else
-        {
-            movement.Speed = movement.DefaultSpeed;
-            attack.Damage /= magnitude;
-        }
     }
 }

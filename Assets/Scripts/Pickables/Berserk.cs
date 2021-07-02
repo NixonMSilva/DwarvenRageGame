@@ -8,7 +8,6 @@ public class Berserk : PickableBase
 {
     public override void ApplyEffect (StatusController player)
     {
-        Debug.Log("Here!");
-        player.AddStatus(EffectDataType.berserk, 1f, 5f);
+        //player.AddStatus(EffectType.berserk, 1f, 5f);
     }
 }

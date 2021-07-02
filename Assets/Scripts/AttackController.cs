@@ -17,6 +17,7 @@ public class AttackController : MonoBehaviour
     [SerializeField] private LayerMask damageableLayer;
 
     [SerializeField] private float attackDamage = 50f;
+    [SerializeField] private float currentAttackDamage;
 
     private bool hasBerserk;
 
@@ -28,7 +29,20 @@ public class AttackController : MonoBehaviour
     public float Damage
     {
         get { return attackDamage; }
-        set { attackDamage = value; }
+        set 
+        { 
+            attackDamage = value;
+            currentAttackDamage = value;
+        }
+    }
+
+    public float TemporaryDamage
+    {
+        get { return currentAttackDamage; }
+        set
+        {
+            currentAttackDamage = value;
+        }
     }
 
     public bool Berserk

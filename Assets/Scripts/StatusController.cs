@@ -25,6 +25,24 @@ public class StatusController : MonoBehaviour, IDamageable
 
     protected bool isDying = false;
 
+    protected float speed = 0f;
+
+    public AttackController Attack 
+    { 
+        get { return attack; } 
+    }
+
+    public virtual float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+
+    public virtual float DefaultSpeed
+    {
+        get { return speed; }
+    }
+
     public virtual float Health
     {
         get { return health; }
@@ -141,70 +159,13 @@ public class StatusController : MonoBehaviour, IDamageable
         TakeDamage(value);
     }
 
-    public void AddStatus (EffectDataType statusType, float magnitude, float timeout)
+    public void WearStatus (EffectBase effect, float duration)
     {
-        ActionOnTimer statusTimeout = manager.AddComponent<ActionOnTimer>();
-
-        HandleStatus(statusType, magnitude, true);
-
-        statusTimeout.SetTimer(timeout, () =>
+        ActionOnTimer timeout = gameObject.AddComponent<ActionOnTimer>();
+        timeout.SetTimer(duration, () =>
         {
-            // Deactivate status upon timeout completion
-            HandleStatus(statusType, magnitude, false);
-
-            // Destroy timer
-            Destroy(statusTimeout);
+            effect.StatusEnd(this);
+            Destroy(timeout);
         });
-    }
-
-    private void HandleStatus (EffectDataType statusType, float magnitude, bool isActivation)
-    {
-        if (!isActivation)
-            magnitude *= -1;
-
-        switch (statusType)
-        {
-            case EffectDataType.fireResistance:
-                AddFireResistance(magnitude);
-                break;
-            case EffectDataType.poisonResistance:
-                AddPoisonResistance(magnitude);
-                break;
-            case EffectDataType.berserk:
-                Berserk(isActivation, magnitude);
-                break;
-            case EffectDataType.fortune:
-                Fortune(isActivation, magnitude);
-                break;
-        }
-    }
-
-    private void AddFireResistance (float value)
-    {
-        fireResistance += value;
-    }
-
-    private void AddPoisonResistance (float value)
-    {
-        poisonResistance += value;
-    }
-
-    private void Fortune (bool status, float magnitude)
-    {
-
-    }
-
-    public virtual void Berserk (bool status, float magnitude)
-    {
-        attack.Berserk = status;
-
-        if (status)
-        {
-            attack.Damage *= magnitude;
-        }
-        else
-        {
-            attack.Damage *= magnitude;
-        }
     }
 }

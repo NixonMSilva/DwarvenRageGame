@@ -16,10 +16,12 @@ public class Inventory : MonoBehaviour
     private int weaponLimit, itemLimit;
 
     private PlayerEquipment equipment;
+    private PlayerStatus playerStatus;
 
     private void Awake ()
     {
         equipment = GetComponent<PlayerEquipment>();
+        playerStatus = GetComponent<PlayerStatus>();
 
         //_weaponSlots = new List<Weapon>(weaponLimit);
         //_itemSlots = new List<Item>(itemLimit);
@@ -190,7 +192,9 @@ public class Inventory : MonoBehaviour
 
     private void UseItemAtSlot (int slot)
     {
-        _itemSlots[slot].itemEffect.Use();
+        //_itemSlots[slot].itemEffect.Use();
+        _itemSlots[slot].Use(playerStatus);
+        //_itemSlots[slot].itemEffect.Use(playerStatus);
 
         if (_itemSlotsStack[slot] == 1)
         {

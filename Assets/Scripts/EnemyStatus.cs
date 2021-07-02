@@ -1,21 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using System;
 
 public class EnemyStatus : StatusController
 {
-    private Animator anim;
-
     public event Action<EnemyStatus> OnDeath;
 
+    private NavMeshAgent agent;
+
     [SerializeField] private float hurtThreshold = 0.25f;
+
+    public override float Speed
+    {
+        get { return agent.speed; }
+        set { agent.speed = value; }
+    }
 
     private void Awake ()
     {
         Health = maxHealth;
         Armor = 0f;
 
+        agent = GetComponent<NavMeshAgent>();
+        speed = agent.speed;
         attack = GetComponent<AttackController>();
         animator = GetComponent<Animator>();
     }
