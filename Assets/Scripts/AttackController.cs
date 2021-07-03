@@ -162,6 +162,8 @@ public class AttackController : MonoBehaviour
                 {
                     damagedObj.TakeElementalDamage(finalAttackDamage, type);
                 }
+
+                damagedObj.PlayImpactSound();
             }
         }
     }

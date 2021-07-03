@@ -15,6 +15,11 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private bool useFromDatabase = false;
 
+    public Enemy Type
+    {
+        get { return enemyType; }
+    }
+
     private void Awake ()
     {
         enemyStatus             = GetComponent<EnemyStatus>();

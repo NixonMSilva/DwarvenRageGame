@@ -132,9 +132,17 @@ public class PlayerStatus : StatusController
 
             // If player has shield
             if (!equipment.IsTwoHanded)
+            {
                 value -= value * equipment.PlayerShield.damageReduction;
+                AudioManager.instance.PlaySoundRandom("shield_block");
+            }
             else
                 value -= value * equipment.BaseDamageReduction;
+        }
+        else
+        {
+            // Play damage sound
+            PlayDamageSound();
         }
 
         UserInterfaceController.instance.ShowDamagePanel();
@@ -146,4 +154,15 @@ public class PlayerStatus : StatusController
     {
         UserInterfaceController.instance?.UpdateCharacterFrame(Health, MaxHealth, Armor, MaxArmor);
     }
+
+    private new void PlayDamageSound ()
+    {
+        float verify = UnityEngine.Random.Range(0f, 1f);
+        if (verify <= 0.5f)
+        {
+            AudioManager.instance.PlaySoundRandom("damage");
+        }
+    }
+
+    public override void PlayImpactSound () { }
 }

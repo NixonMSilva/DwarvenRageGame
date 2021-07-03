@@ -14,4 +14,10 @@ public class Enemy : ScriptableObject
     public List<string> dropList;
 
     public List<float> dropChance;
+
+    public string soundIdle;
+    public string soundAttack;
+    public string soundDamage;
+    public string soundDeath;
+    public string impactType;
 }

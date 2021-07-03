@@ -15,8 +15,12 @@ MonoBehaviour:
   enemyName: Test
   maxHealth: 200
   attackDamage: 25
-  enemyMesh: {fileID: 0}
   dropList:
   - Armor
   dropChance:
   - 0.2
+  soundIdle: 
+  soundAttack: 
+  soundDamage: 
+  soundDeath: 
+  impactType: flesh_hit_1
