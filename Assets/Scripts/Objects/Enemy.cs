@@ -11,8 +11,6 @@ public class Enemy : ScriptableObject
 
     public float attackDamage;
 
-    public Mesh enemyMesh;
-
     public List<string> dropList;
 
     public List<float> dropChance;

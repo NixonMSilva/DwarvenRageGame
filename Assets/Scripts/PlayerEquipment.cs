@@ -47,12 +47,15 @@ public class PlayerEquipment : MonoBehaviour
         {
             playerWeapon = value;
             attack.Damage = playerWeapon.damage;
-            ChangeWeaponGraphics(value);
 
+            anim.Play("weapon_down");
+
+            /*
+            ChangeWeaponGraphics(value);
             SetTwoHanded(value.isTwoHanded);
 
             // JERRYRIGGING: Have to do it twice so it unsuck
-            ChangeWeaponGraphics(value);
+            ChangeWeaponGraphics(value); */
         }
     }
 
@@ -105,11 +108,10 @@ public class PlayerEquipment : MonoBehaviour
         UserInterfaceController.instance.UpdateGoldCount(gold);
     }
 
-    private void ChangeWeaponGraphics (Weapon wpn)
+    public void ChangeWeaponGraphics (Weapon wpn)
     {
         Vector3 objScale = new Vector3(wpn.scaleX, wpn.scaleY, wpn.scaleZ);
         Vector3 objPosition = new Vector3(wpn.posX, wpn.posY, wpn.posZ);
-        Vector3 objRotation = new Vector3(wpn.rotX, wpn.rotY, wpn.rotZ);
 
         // Adjust the object position
         weaponHUDObject.transform.localPosition = objPosition;
@@ -117,15 +119,10 @@ public class PlayerEquipment : MonoBehaviour
         // Adjust the object scale
         weaponHUDObject.transform.localScale = objScale;
 
-        // Adjust the object roation
-        weaponHUDObject.transform.localEulerAngles = objRotation;
-
         // Adjust the mesh
         weaponHUDObject.GetComponent<MeshFilter>().mesh = wpn.worldMesh;
-
         weaponHUDObject.GetComponent<MeshRenderer>().materials = wpn.materialList;
     }
-
     private void ChangeShieldGraphics (Shield shd)
     {
         Vector3 objScale = new Vector3(shd.scaleX, shd.scaleY, shd.scaleZ);
@@ -142,7 +139,7 @@ public class PlayerEquipment : MonoBehaviour
         shieldHUDObject.GetComponent<MeshRenderer>().materials = shd.materialList;
     }
 
-    private void SetTwoHanded (bool status)
+    public void SetTwoHanded (bool status)
     {
         isTwoHanded = status;
         if (status)

@@ -408,8 +408,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15ca08d8ca05cb54f98665992fb0993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWeapon: {fileID: 11400000, guid: 5ea59a045d69a0548b2eecd88e59b053, type: 2}
-  playerShield: {fileID: 11400000, guid: fc5af39a00c4d2245822fc010a0b0734, type: 2}
+  playerWeapon: {fileID: 11400000, guid: b748fb3f62991ef458f5c10a18d69738, type: 2}
+  playerShield: {fileID: 11400000, guid: 854ac48cfe01f6e4ba59c6bb7bcccc78, type: 2}
   inventory: {fileID: 0}
   weaponHUDObject: {fileID: 3397559423398610544}
   shieldHUDObject: {fileID: 1517412443460366691}
@@ -462,11 +462,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf21f87414eb4c43b6de56046158105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponSlots: []
+  _weaponSlots:
+  - {fileID: 11400000, guid: cc3e57b2fc206e64d9a2a7cb2a346901, type: 2}
   _itemSlots:
   - {fileID: 11400000, guid: 9e034040ca838b24c98d89d2292e14d3, type: 2}
   - {fileID: 11400000, guid: 059d9897cad16ab489d27135c5d64147, type: 2}
-  _itemSlotsStack: 0100000002000000
+  _itemSlotsStack: 0200000002000000
   weaponLimit: 2
   itemLimit: 4
 --- !u!95 &5072104305726538643
