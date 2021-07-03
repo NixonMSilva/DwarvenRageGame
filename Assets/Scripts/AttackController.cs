@@ -76,6 +76,7 @@ public class AttackController : MonoBehaviour
         {
             InputHandler.instance.OnAttackUnleashed += HandleAttack;
             InputHandler.instance.OnPowerAttackUnleashed += HandlePowerAttack;
+            InputHandler.instance.OnRangedAttackUnleashed += HandleRangedAttack;
         }
     }
 
@@ -94,12 +95,18 @@ public class AttackController : MonoBehaviour
         PerformPowerAttack();        
     }
 
+    private void HandleRangedAttack (object sender, EventArgs e)
+    {
+        Debug.Log("Atirou algo");
+        PerformRangedAttack();        
+    }
     private void PerformAttack ()
     {
         if (!status.IsBlocking && canAttack)
         {
-            anim.Play("attack");
-            canAttack = false;
+           AudioManager.instance.PlaySound("PlayerAttack");
+           anim.Play("attack");
+           canAttack = false;
         }
     }
 
@@ -108,6 +115,14 @@ public class AttackController : MonoBehaviour
         if (!status.IsBlocking && canAttack)
         {
             anim.Play("power_attack");
+            canAttack = false;
+        }
+    }
+
+    private void PerformRangedAttack ()
+    {
+        if (!status.IsBlocking && canAttack)
+        {
             canAttack = false;
         }
     }

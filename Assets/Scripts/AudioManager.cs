@@ -24,15 +24,6 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        /*
-        foreach (Sound sound in _sounds)
-        {
-            sound.audioSource = gameObject.AddComponent<AudioSource>();
-            sound.audioSource.clip = sound.clip;
-            sound.audioSource.volume = sound.volume;
-            sound.audioSource.pitch = sound.pitch;
-            sound.audioSource.loop = sound.loop;
-        } */
     }
 
     public void PlaySound (string name)
@@ -115,6 +106,7 @@ public class AudioManager : MonoBehaviour
         soundSource.Play();
         Destroy(soundObject, (soundSource.clip.length + 0.1f));
     }
+
 
     public void PlaySoundAt (Vector3 source, Sound sound)
     {
