@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3863bdbe9927a14eb1c00de9483e39c, type: 3}
+  m_Name: BloodedShield
+  m_EditorClassIdentifier: 
+  id: 10
+  itemName: Blooded Shield
+  worldMesh: {fileID: -1117082489390005245, guid: 4947dc06b07d5bb4591e03cb5e789b6e, type: 3}
+  materialList:
+  - {fileID: 2100000, guid: c5974f91c8f324044b4be88f090b4044, type: 2}
+  scaleX: 0.016
+  scaleY: 0.016
+  scaleZ: 0.016
+  icon: {fileID: 0}
+  rotX: 26.867
+  rotY: 52.819
+  rotZ: -94.477
+  damageReduction: 0.6

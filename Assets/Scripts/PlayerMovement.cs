@@ -15,26 +15,39 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float jumpHeight = 4f;
 
+    [SerializeField] private float maxSlopAngle = 50f;
+
     public Transform groundCheck;
 
     public float groundDistance = 0.4f;
 
     public LayerMask groundMask;
 
+    private Vector3 forward;
+    private RaycastHit hitInfo;
     public bool isGrounded;
+    private float angle;
+    private float groundAngle;
 
-    Vector3 velocity;
+    private Vector3 velocity;
 
-    Vector3 position;
+    private Vector3 position;
 
     private float xMove = 1f, zMove = 1f;
 
     private Animator anim;
 
+    public bool debugVector = false;
+
     public float Speed
     {
         get { return speed; }
         set { speed = value; }
+    }
+
+    public float DefaultSpeed
+    {
+        get { return defaultSpeed; }
     }
 
     private void Awake ()
@@ -61,12 +74,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleHorizontalInput (float value)
     {
-        xMove = value;
+        if (isGrounded)
+            xMove = value;
     }
 
     private void HandleVerticalInput (float value)
     {
-        zMove = value;
+        if (isGrounded)
+            zMove = value;
     }
 
     private void HandleSprintUp (object sender, EventArgs e)
@@ -99,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 movement = transform.right * xMove + transform.forward * zMove;
 
-        character.Move(movement * speed * Time.deltaTime); 
+        character.Move(movement * speed * Time.deltaTime);
 
         velocity.y += gravity * Time.deltaTime;     //velocidade vai ser o tempo*a gravidade
 

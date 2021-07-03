@@ -5,26 +5,45 @@ using UnityEngine;
 
 public class StatusController : MonoBehaviour, IDamageable
 {
-    private PlayerMovement movement;
-    private AttackController attack;
+    protected AttackController attack;
 
-    private GameObject manager;
+    protected Animator animator;
 
-    [SerializeField] private float maxHealth = 100f;
+    protected GameObject manager;
 
-    [SerializeField] private float health;
+    [SerializeField] protected float maxHealth = 100f;
 
-    [SerializeField] private float maxArmor = 100f;
+    [SerializeField] protected float health;
 
-    [SerializeField] private float armor;
+    [SerializeField] protected float maxArmor = 100f;
 
-    private float fireResistance = 0f, poisonResistance = 0f;
+    [SerializeField] protected float armor;
 
-    private bool isBlocking;
+    protected float fireResistance = 0f, poisonResistance = 0f;
+
+    [SerializeField] protected bool isBlocking;
 
     protected bool isDying = false;
 
-    public float Health
+    protected float speed = 0f;
+
+    public AttackController Attack 
+    { 
+        get { return attack; } 
+    }
+
+    public virtual float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+
+    public virtual float DefaultSpeed
+    {
+        get { return speed; }
+    }
+
+    public virtual float Health
     {
         get { return health; }
         set 
@@ -41,7 +60,7 @@ public class StatusController : MonoBehaviour, IDamageable
         }
     }
 
-    public float MaxHealth
+    public virtual float MaxHealth
     {
         get { return maxHealth; }
         set
@@ -54,7 +73,7 @@ public class StatusController : MonoBehaviour, IDamageable
         }
     }
 
-    public float Armor
+    public virtual float Armor
     {
         get { return armor; }
         set 
@@ -71,6 +90,15 @@ public class StatusController : MonoBehaviour, IDamageable
         }
     }
 
+    public virtual float MaxArmor
+    {
+        get { return maxArmor; }
+        set
+        {
+            maxArmor = value;
+        }
+    }
+
     public bool IsBlocking
     {
         get { return isBlocking; }
@@ -83,26 +111,19 @@ public class StatusController : MonoBehaviour, IDamageable
         set { isDying = value; }
     }
 
-    protected void Awake ()
+    protected void Start ()
     {
-        Health = maxHealth;
-
-        movement = GetComponent<PlayerMovement>();
-        attack = GetComponent<AttackController>();
-
-        manager = GameObject.Find("GameManager");
+        Armor = 0f;
     }
 
     private void Update ()
     {
         if (Health <= 0f)
         {
-
             if (!isDying)
             {
                 Die();
             }
-            
         }
     }
 
@@ -117,12 +138,12 @@ public class StatusController : MonoBehaviour, IDamageable
         Armor += delta;
     }
 
-    public void TakeDamage (float value)
+    public virtual void TakeDamage (float value)
     {
         if (Armor > 0)
         {
-            Armor -= value;
             float remainder = value - armor;
+            Armor -= value;
             if (remainder > 0f)
             {
                 Health -= remainder;
@@ -147,68 +168,13 @@ public class StatusController : MonoBehaviour, IDamageable
         TakeDamage(value);
     }
 
-    public void AddStatus (EffectDataType statusType, float magnitude, float timeout)
+    public void WearStatus (EffectBase effect, float duration)
     {
-        ActionOnTimer statusTimeout = manager.AddComponent<ActionOnTimer>();
-
-        HandleStatus(statusType, magnitude, true);
-
-        statusTimeout.SetTimer(timeout, () =>
+        ActionOnTimer timeout = gameObject.AddComponent<ActionOnTimer>();
+        timeout.SetTimer(duration, () =>
         {
-            // Deactivate status upon timeout completion
-            HandleStatus(statusType, magnitude, false);
-
-            Debug.Log("Aqui!!");
-
-            // Destroy timer
-            Destroy(statusTimeout);
+            effect.StatusEnd(this);
+            Destroy(timeout);
         });
-    }
-
-    private void HandleStatus (EffectDataType statusType, float magnitude, bool isActivation)
-    {
-        if (!isActivation)
-            magnitude *= -1;
-
-        switch (statusType)
-        {
-            case EffectDataType.fireResistance:
-                AddFireResistance(magnitude);
-                break;
-            case EffectDataType.poisonResistance:
-                AddPoisonResistance(magnitude);
-                break;
-            case EffectDataType.berserk:
-                Berserk(isActivation);
-                break;
-            case EffectDataType.fortune:
-                Fortune(isActivation);
-                break;
-        }
-    }
-
-    private void AddFireResistance (float value)
-    {
-        fireResistance += value;
-    }
-
-    private void AddPoisonResistance (float value)
-    {
-        poisonResistance += value;
-    }
-
-    private void Berserk (bool status)
-    {
-        attack.Berserk = status;
-
-        if (status)
-            movement.Speed *= 2f;
-        else
-            movement.Speed /= 2f;
-    }
-
-    private void Fortune (bool status)
-    {
-
     }
 }

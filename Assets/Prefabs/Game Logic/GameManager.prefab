@@ -48,10 +48,14 @@ MonoBehaviour:
   saveHealth: 0
   saveMaxHealth: 0
   saveArmor: 0
-  savePickableStatus: 
+  sceneNumber: 0
+  maxScenes: 50
   saveWeapon: 0
   saveShield: 0
   saveGold: 0
+  weaponsId: 
+  itemsId: 
+  itemsStack: 
   canLoadGame: 0
 --- !u!114 &3821770183356289553
 MonoBehaviour:
@@ -65,7 +69,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93561e891464bfb4ab32e4f104162edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dropTypes:
-  - {fileID: 9110105612890260092, guid: 38d3a6763941bbd40b9855aa2dc1239c, type: 3}
   _weapons: []
   _shields: []
+  sceneNumber: 1

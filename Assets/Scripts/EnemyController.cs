@@ -7,41 +7,39 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private Enemy enemyType;
 
-    private StatusController damageStatus;
+    private EnemyStatus enemyStatus;
+    private AttackController enemyAttack;
 
-    private MeshFilter enemyMesh;
+    [SerializeField] private List<GameObject> _dropItem;
+    [SerializeField] private List<float> _dropChance;
 
-    private List<string> _dropName;
-
-    private List<float> _dropChance;
-
-    [SerializeField] private List<GameObject> _spawnItem;
+    [SerializeField] private bool useFromDatabase = false;
 
     private void Awake ()
     {
-        damageStatus            = GetComponent<StatusController>();
-        enemyMesh               = GetComponent<MeshFilter>();
-        _spawnItem              = GameObject.Find("GameManager").GetComponent<GameManager>().GetDropTypes();
+        enemyStatus             = GetComponent<EnemyStatus>();
+        enemyAttack             = GetComponent<AttackController>();
 
-        damageStatus.Health     = enemyType.maxHealth;
-        damageStatus.MaxHealth  = enemyType.maxHealth;
-        _dropName               = enemyType.dropList;
-        _dropChance             = enemyType.dropChance;
+        enemyStatus.Health      = enemyType.maxHealth;
+        enemyStatus.MaxHealth   = enemyType.maxHealth;
+
+        if (useFromDatabase)
+        {
+            enemyAttack.Damage = enemyType.attackDamage;
+        }
     }
 
     public void SpawnLoot ()
     {
-        for (int i = 0; i < _dropName.Count; ++i)
+        for (int i = 0; i < _dropItem.Count; ++i)
         {
             float diceRoll = Random.Range(0f, 1f);
             if (diceRoll <= _dropChance[i])
             {
-                GameObject item = _spawnItem.Where(item => item.name.Equals(_dropName[i])).ToList().First<GameObject>();
-                Instantiate(item, transform.position, Quaternion.identity);
+                Instantiate(_dropItem[i], transform.position, Quaternion.identity);
                 break;
             }
         }
-        //Destroy(gameObject);
     }
 
     
