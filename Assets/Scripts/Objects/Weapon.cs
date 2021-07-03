@@ -12,7 +12,7 @@ public class Weapon : Item
 
     // Combat data
     public float damage;
+    public float criticalChance = 0.01f;
     public bool isTwoHanded;
-
 
 }

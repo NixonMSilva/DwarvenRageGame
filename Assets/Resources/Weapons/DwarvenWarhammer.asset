@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DwarvenWarhammer
   m_EditorClassIdentifier: 
   id: 20
-  itemName: DwarvenWarhammer
+  itemName: Dwarven Warhammer
   worldMesh: {fileID: -3292925553009838691, guid: c767656752e700e49808232e2fd2f296, type: 3}
   materialList:
   - {fileID: 2100000, guid: 61f501b6255678a4884ed7a5937adb20, type: 2}
@@ -25,4 +25,5 @@ MonoBehaviour:
   posY: 0.00052
   posZ: 0.00003
   damage: 40
+  criticalChance: 0.01
   isTwoHanded: 0

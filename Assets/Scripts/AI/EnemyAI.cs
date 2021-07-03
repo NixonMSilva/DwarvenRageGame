@@ -73,11 +73,13 @@ public class EnemyAI : MonoBehaviour
             else if (playerInSightRange && !playerInAttackRange)
             {
                 isPatrolling = false;
+                agent.ResetPath();
                 ChasePlayer();
             }
             else if (playerInSightRange && playerInAttackRange && !alreadyAttacked)
             {
                 isPatrolling = false;
+                agent.ResetPath();
                 AttackPlayer();
             }
         }
@@ -100,19 +102,21 @@ public class EnemyAI : MonoBehaviour
 
     private void Patroling()
     {
-        agent.speed = baseSpeed;
-      
-        if (!isPatrolling)
+        if (!playerInSightRange)
         {
-            walkPoint = SearchWalkPoint();
-            
-            agent.SetDestination(walkPoint);
-            isPatrolling = true;
-        }
-        else
-        {
-            if (Vector3.Distance(transform.position, walkPoint) <= 1f)
-                isPatrolling = false;
+            agent.speed = baseSpeed;
+
+            if (!isPatrolling)
+            {
+                walkPoint = SearchWalkPoint();
+                agent.SetDestination(walkPoint);
+                isPatrolling = true;
+            }
+            else
+            {
+                if (Vector3.Distance(transform.position, walkPoint) <= 1f)
+                    isPatrolling = false;
+            }
         }
     }
 

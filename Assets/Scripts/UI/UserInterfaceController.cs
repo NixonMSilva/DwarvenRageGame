@@ -71,6 +71,8 @@ public class UserInterfaceController : MonoBehaviour
             return;
         }
 
+        //DontDestroyOnLoad(gameObject);
+
         tooltipText = GameObject.Find("TooltipText").GetComponent<TextMeshProUGUI>();
 
         pauseMenu = GameObject.Find("PauseMenu");
@@ -397,8 +399,6 @@ public class UserInterfaceController : MonoBehaviour
             }
             else
             {
-                // Normal
-                characterImage.sprite = playerNormal;
             }
         }
         else
