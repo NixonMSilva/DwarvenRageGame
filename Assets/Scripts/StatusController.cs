@@ -90,7 +90,7 @@ public class StatusController : MonoBehaviour, IDamageable
         }
     }
 
-    public float MaxArmor
+    public virtual float MaxArmor
     {
         get { return maxArmor; }
         set
@@ -142,8 +142,8 @@ public class StatusController : MonoBehaviour, IDamageable
     {
         if (Armor > 0)
         {
-            Armor -= value;
             float remainder = value - armor;
+            Armor -= value;
             if (remainder > 0f)
             {
                 Health -= remainder;

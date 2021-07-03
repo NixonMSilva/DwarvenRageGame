@@ -24,6 +24,7 @@ public class PlayerStatus : StatusController
             }
 
             UserInterfaceController.instance?.UpdateHealthBar(health / maxHealth);
+            UpdateCharacterUI();
         }
     }
 
@@ -38,6 +39,7 @@ public class PlayerStatus : StatusController
                 maxHealth = 0f;
             }
             UserInterfaceController.instance?.UpdateHealthBar(health / maxHealth);
+            UpdateCharacterUI();
         }
     }
 
@@ -56,6 +58,17 @@ public class PlayerStatus : StatusController
                 armor = 0f;
             }
             UserInterfaceController.instance?.UpdateArmor(armor);
+            UpdateCharacterUI();
+        }
+    }
+
+    public override float MaxArmor
+    {
+        get { return maxArmor; }
+        set
+        {
+            maxArmor = value;
+            UpdateCharacterUI();
         }
     }
 
@@ -127,5 +140,10 @@ public class PlayerStatus : StatusController
         UserInterfaceController.instance.ShowDamagePanel();
 
         base.TakeDamage(value);
+    }
+
+    private void UpdateCharacterUI ()
+    {
+        UserInterfaceController.instance?.UpdateCharacterFrame(Health, MaxHealth, Armor, MaxArmor);
     }
 }

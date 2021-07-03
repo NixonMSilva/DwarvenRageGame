@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 20758b33473822c45b6f3549f5ab853d, type: 2}
   m_LightingSettings: {fileID: 1224082217}
 --- !u!196 &4
 NavMeshSettings:
@@ -9723,6 +9723,22 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 322292988}
+    - target: {fileID: 164138210076557854, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: playerHurt
+      value: 
+      objectReference: {fileID: 21300000, guid: ae891989424bf484ab2f331afdd475e9, type: 3}
+    - target: {fileID: 164138210076557854, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: playerNormal
+      value: 
+      objectReference: {fileID: 21300000, guid: c9a7a26729351f64e847985e3139dc28, type: 3}
+    - target: {fileID: 164138210076557854, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: playerVeryHurt
+      value: 
+      objectReference: {fileID: 21300000, guid: 18e2747693af0ed41a4ab0a8bcb86539, type: 3}
+    - target: {fileID: 164138210076557854, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: playerVeryDrunk
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f1dd55bcc9d74141b1126c0ae2a07dd, type: 3}
     - target: {fileID: 164138211792009418, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_Name
       value: UIBase
@@ -9769,38 +9785,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 164138211792009419, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2860795611090259176, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_Name
-      value: DeathMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 2860795611090259176, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5579353544857938975, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_IgnoreParentGroups
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
