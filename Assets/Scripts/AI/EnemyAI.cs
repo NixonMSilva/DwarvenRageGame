@@ -72,10 +72,12 @@ public class EnemyAI : MonoBehaviour
             }
             else if (playerInSightRange && !playerInAttackRange)
             {
+                isPatrolling = false;
                 ChasePlayer();
             }
             else if (playerInSightRange && playerInAttackRange && !alreadyAttacked)
             {
+                isPatrolling = false;
                 AttackPlayer();
             }
         }

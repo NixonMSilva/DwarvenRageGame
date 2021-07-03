@@ -23,7 +23,7 @@ public class UserInterfaceController : MonoBehaviour
     public Slider healthBar;
 
     private GameObject characterFrame;
-    private Sprite characterImage;
+    private Image characterImage;
 
     private GameObject armorFrame;
     private GameObject armorIndicator;
@@ -54,6 +54,11 @@ public class UserInterfaceController : MonoBehaviour
 
     [SerializeField] private Sprite defaultItemSprite;
 
+    [SerializeField] private Sprite playerNormal;
+    [SerializeField] private Sprite playerHurt;
+    [SerializeField] private Sprite playerVeryHurt;
+    [SerializeField] private Sprite playerVeryDrunk;
+
     private void Awake ()
     {
         if (instance == null)
@@ -76,6 +81,7 @@ public class UserInterfaceController : MonoBehaviour
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
 
         characterFrame = GameObject.Find("PlayerPhotoSquare");
+        characterImage = GameObject.Find("PlayerPhoto").GetComponent<Image>();
 
         armorFrame = GameObject.Find("PlayerArmorSquare");
         //armorIndicator = GameObject.Find("PlayerArmorIcon");
@@ -370,9 +376,36 @@ public class UserInterfaceController : MonoBehaviour
         characterFrame.SetActive(true);
     }
 
-    public void UpdateCharacterFrame ()
+    public void UpdateCharacterFrame (float health, float maxHealth, float armor, float maxArmor)
     {
-
+        if (health / maxHealth <= 0.5f)
+        {
+            // Hurt
+            characterImage.sprite = playerHurt;
+        }
+        else if (health/maxHealth <= 0.25f)
+        {
+            // Very hurt
+            characterImage.sprite = playerVeryHurt;
+        }
+        else if (health / maxHealth == 1f)
+        {
+            if (armor / maxArmor >= 0.5f)
+            {
+                // Drunk
+                characterImage.sprite = playerVeryDrunk;
+            }
+            else
+            {
+                // Normal
+                characterImage.sprite = playerNormal;
+            }
+        }
+        else
+        {
+            // Normal
+            characterImage.sprite = playerNormal;
+        }
     }
 
     public void HideCharacterFrame ()

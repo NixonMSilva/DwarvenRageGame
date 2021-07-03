@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 20758b33473822c45b6f3549f5ab853d, type: 2}
   m_LightingSettings: {fileID: 1224082217}
 --- !u!196 &4
 NavMeshSettings:
@@ -9771,38 +9771,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2860795611090259176, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_Name
-      value: DeathMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 2860795611090259176, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5579353544857938975, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5898185634891138696, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_IgnoreParentGroups
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
 --- !u!4 &543450652944853752 stripped
@@ -9833,26 +9801,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1723578542238071834, guid: c86f6c63bdcce8048bc67aa9f8f46338, type: 3}
-      propertyPath: jumpKey
-      value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723578542238071834, guid: c86f6c63bdcce8048bc67aa9f8f46338, type: 3}
-      propertyPath: itemKey1
-      value: 49
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723578542238071834, guid: c86f6c63bdcce8048bc67aa9f8f46338, type: 3}
-      propertyPath: itemKey2
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723578542238071834, guid: c86f6c63bdcce8048bc67aa9f8f46338, type: 3}
-      propertyPath: itemKey3
-      value: 51
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723578542238071834, guid: c86f6c63bdcce8048bc67aa9f8f46338, type: 3}
-      propertyPath: itemKey4
-      value: 52
-      objectReference: {fileID: 0}
     - target: {fileID: 1723578542238071835, guid: c86f6c63bdcce8048bc67aa9f8f46338, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -10016,17 +9964,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3821770183356289553, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
-      propertyPath: sceneNumber
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3821770183356289558, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3821770183356289559, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
-      propertyPath: canLoadGame
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}

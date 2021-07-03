@@ -72,7 +72,7 @@ public class Berserker : EffectBase
         // If it's the player, double the speed as well
         if (target.gameObject.CompareTag("Player"))
         {
-            target.Speed *= data.magnitude;
+            target.Speed = target.DefaultSpeed * data.magnitude;
         }
     }
 
