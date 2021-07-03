@@ -10,6 +10,10 @@ public class Weapon : Item
     public float posY = 0.000778f; 
     public float posZ = 0.000206f;
 
+    public float rotX = 2.216f;
+    public float rotY = -91.993f;
+    public float rotZ = -161.967f;
+
     // Combat data
     public float damage;
     public bool isTwoHanded;
