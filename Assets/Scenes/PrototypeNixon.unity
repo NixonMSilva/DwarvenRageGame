@@ -172,6 +172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sick Pig
       objectReference: {fileID: 0}
+    - target: {fileID: 5781715332010636627, guid: e50ef063aea038f42a81fe643f8694bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6590762807809814505, guid: e50ef063aea038f42a81fe643f8694bc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -582,6 +586,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6c021be6ddc5c644824cdcaabee2adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &516452852 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7431789895267459520, guid: e50ef063aea038f42a81fe643f8694bc, type: 3}
+  m_PrefabInstance: {fileID: 390436713}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0654dd7af7367944889efba781e314f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &537280802 stripped
@@ -3507,6 +3522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyList:
+  - {fileID: 516452852}
+  - {fileID: 1855413406}
   - {fileID: 344907929}
   _wasNotKilled: 
 --- !u!43 &1149335305
@@ -3744,6 +3761,10 @@ PrefabInstance:
     - target: {fileID: 1835015753923183693, guid: 6a622e67bd7f6734bb443e8ce3554a04, type: 3}
       propertyPath: m_Name
       value: Barbarian Pig
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835015753923183693, guid: 6a622e67bd7f6734bb443e8ce3554a04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4638356277028699558, guid: 6a622e67bd7f6734bb443e8ce3554a04, type: 3}
       propertyPath: m_RootOrder
@@ -9532,6 +9553,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7163305338665221063, guid: 57eac5d66a838f94d8c48dba3080f25c, type: 3}
   m_PrefabInstance: {fileID: 1823546326}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1855413406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7855911575546945047, guid: deb1fa58eb0f47246bcb3de17b2c9b52, type: 3}
+  m_PrefabInstance: {fileID: 6656405024741698470}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0654dd7af7367944889efba781e314f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1978004283
 GameObject:
   m_ObjectHideFlags: 0
@@ -9992,6 +10024,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3821770183356289559, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
+      propertyPath: canLoadGame
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
 --- !u!1001 &6071385657974819258
@@ -10001,6 +10037,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1653969463784507186, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
+      propertyPath: maxHealth
+      value: 999999
+      objectReference: {fileID: 0}
     - target: {fileID: 5072104305726538642, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -10061,6 +10101,10 @@ PrefabInstance:
     - target: {fileID: 5049559283989394739, guid: deb1fa58eb0f47246bcb3de17b2c9b52, type: 3}
       propertyPath: m_Name
       value: Fat Pig
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049559283989394739, guid: deb1fa58eb0f47246bcb3de17b2c9b52, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5573331836748623753, guid: deb1fa58eb0f47246bcb3de17b2c9b52, type: 3}
       propertyPath: m_RootOrder
