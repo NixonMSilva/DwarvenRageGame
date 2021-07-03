@@ -111,17 +111,18 @@ public class PlayerEquipment : MonoBehaviour
         Vector3 objPosition = new Vector3(wpn.posX, wpn.posY, wpn.posZ);
         Vector3 objRotation = new Vector3(wpn.rotX, wpn.rotY, wpn.rotZ);
 
-        // Adjust the object scale
-        weaponHUDObject.transform.localScale = objScale;
-
         // Adjust the object position
         weaponHUDObject.transform.localPosition = objPosition;
+
+        // Adjust the object scale
+        weaponHUDObject.transform.localScale = objScale;
 
         // Adjust the object roation
         weaponHUDObject.transform.localEulerAngles = objRotation;
 
         // Adjust the mesh
         weaponHUDObject.GetComponent<MeshFilter>().mesh = wpn.worldMesh;
+
         weaponHUDObject.GetComponent<MeshRenderer>().materials = wpn.materialList;
     }
 

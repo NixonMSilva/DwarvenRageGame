@@ -13,16 +13,19 @@ MonoBehaviour:
   m_Name: TwoHandedHammer
   m_EditorClassIdentifier: 
   id: 23
-  itemName: Ice Battleaxe
-  worldMesh: {fileID: 4300000, guid: 30a2c9d937a53e44cb6415ca4ae42996, type: 3}
+  itemName: Warrior Hammer
+  worldMesh: {fileID: 6555520670264125538, guid: 93e067b37e0ab8a40a39680f1e524e46, type: 3}
   materialList:
-  - {fileID: 2100000, guid: 1e8a8f26f7cfb9541b79f9fc37a3f30b, type: 2}
-  scaleX: 0.0005
-  scaleY: 0.0005
-  scaleZ: 0.0005
+  - {fileID: 2100000, guid: 05c6f312255bd424f90d5a5a76e0bac5, type: 2}
+  scaleX: 0.0006
+  scaleY: 0.0006
+  scaleZ: 0.0006
   icon: {fileID: 21300000, guid: 9e9e64a68fc33874681dc4a3c9fb7e5f, type: 3}
   posX: 0.001494
   posY: 0.000778
   posZ: 0.000206
+  rotX: 2.216
+  rotY: -91.993
+  rotZ: -161.967
   damage: 25
   isTwoHanded: 1

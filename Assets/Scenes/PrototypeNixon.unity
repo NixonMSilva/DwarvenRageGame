@@ -170,7 +170,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5781715332010636627, guid: e50ef063aea038f42a81fe643f8694bc, type: 3}
       propertyPath: m_Name
-      value: Sick Pig
+      value: Sick Pig (0)
       objectReference: {fileID: 0}
     - target: {fileID: 5781715332010636627, guid: e50ef063aea038f42a81fe643f8694bc, type: 3}
       propertyPath: m_IsActive
@@ -1043,7 +1043,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17640
+  m_Name: pb_Mesh157738
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3532,7 +3532,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17666
+  m_Name: pb_Mesh157764
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3760,7 +3760,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1835015753923183693, guid: 6a622e67bd7f6734bb443e8ce3554a04, type: 3}
       propertyPath: m_Name
-      value: Barbarian Pig
+      value: Barbarian Pig (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1835015753923183693, guid: 6a622e67bd7f6734bb443e8ce3554a04, type: 3}
       propertyPath: m_IsActive
@@ -10026,7 +10026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3821770183356289559, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
       propertyPath: canLoadGame
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
@@ -10037,21 +10037,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1653969463784507186, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
-      propertyPath: maxHealth
-      value: 999999
-      objectReference: {fileID: 0}
     - target: {fileID: 5072104305726538642, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5072104305726538643, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fd5af732ebc012948b70db5aafbef2d6, type: 2}
     - target: {fileID: 5072104306430892850, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5072104306430892850, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35.43
+      value: -101.1
       objectReference: {fileID: 0}
     - target: {fileID: 5072104306430892850, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10059,11 +10059,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5072104306430892850, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.64
+      value: 123.6
       objectReference: {fileID: 0}
     - target: {fileID: 5072104306430892850, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.88524926
+      value: 0.7377596
       objectReference: {fileID: 0}
     - target: {fileID: 5072104306430892850, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -10071,7 +10071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5072104306430892850, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.46511698
+      value: 0.67506355
       objectReference: {fileID: 0}
     - target: {fileID: 5072104306430892850, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_LocalRotation.z
@@ -10083,7 +10083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5072104306430892850, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 55.436
+      value: 84.918
       objectReference: {fileID: 0}
     - target: {fileID: 5072104306430892850, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -10091,8 +10091,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: _weaponSlots.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
+      propertyPath: _weaponSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d7f9b597e617a2e4cb40d53880f0f8f2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
 --- !u!1001 &6656405024741698470
@@ -10104,7 +10108,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5049559283989394739, guid: deb1fa58eb0f47246bcb3de17b2c9b52, type: 3}
       propertyPath: m_Name
-      value: Fat Pig
+      value: Fat Pig (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5049559283989394739, guid: deb1fa58eb0f47246bcb3de17b2c9b52, type: 3}
       propertyPath: m_IsActive
