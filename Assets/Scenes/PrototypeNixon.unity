@@ -9723,22 +9723,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 322292988}
-    - target: {fileID: 164138210076557854, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: playerHurt
-      value: 
-      objectReference: {fileID: 21300000, guid: ae891989424bf484ab2f331afdd475e9, type: 3}
-    - target: {fileID: 164138210076557854, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: playerNormal
-      value: 
-      objectReference: {fileID: 21300000, guid: c9a7a26729351f64e847985e3139dc28, type: 3}
-    - target: {fileID: 164138210076557854, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: playerVeryHurt
-      value: 
-      objectReference: {fileID: 21300000, guid: 18e2747693af0ed41a4ab0a8bcb86539, type: 3}
-    - target: {fileID: 164138210076557854, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: playerVeryDrunk
-      value: 
-      objectReference: {fileID: 21300000, guid: 1f1dd55bcc9d74141b1126c0ae2a07dd, type: 3}
     - target: {fileID: 164138211792009418, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_Name
       value: UIBase
@@ -9817,26 +9801,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1723578542238071834, guid: c86f6c63bdcce8048bc67aa9f8f46338, type: 3}
-      propertyPath: jumpKey
-      value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723578542238071834, guid: c86f6c63bdcce8048bc67aa9f8f46338, type: 3}
-      propertyPath: itemKey1
-      value: 49
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723578542238071834, guid: c86f6c63bdcce8048bc67aa9f8f46338, type: 3}
-      propertyPath: itemKey2
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723578542238071834, guid: c86f6c63bdcce8048bc67aa9f8f46338, type: 3}
-      propertyPath: itemKey3
-      value: 51
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723578542238071834, guid: c86f6c63bdcce8048bc67aa9f8f46338, type: 3}
-      propertyPath: itemKey4
-      value: 52
-      objectReference: {fileID: 0}
     - target: {fileID: 1723578542238071835, guid: c86f6c63bdcce8048bc67aa9f8f46338, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -10000,17 +9964,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3821770183356289553, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
-      propertyPath: sceneNumber
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3821770183356289558, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3821770183356289559, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
-      propertyPath: canLoadGame
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}

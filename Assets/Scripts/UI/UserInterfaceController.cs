@@ -395,10 +395,14 @@ public class UserInterfaceController : MonoBehaviour
                 // Drunk
                 characterImage.sprite = playerVeryDrunk;
             }
+            else
+            {
+                // Normal
+                characterImage.sprite = playerNormal;
+            }
         }
         else
         {
-            Debug.Log("Normal!");
             // Normal
             characterImage.sprite = playerNormal;
         }
