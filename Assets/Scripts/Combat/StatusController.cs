@@ -182,6 +182,12 @@ public class StatusController : MonoBehaviour, IDamageable
         DeduceHealth(newValue);
     }
 
+    public void WearStatus (EffectBase effect, float duration, Action onEnd)
+    {
+        ActionOnTimer timeout = gameObject.AddComponent<ActionOnTimer>();
+        timeout.SetTimer(duration, onEnd);
+    }
+
     public void WearStatus (EffectBase effect, float duration)
     {
         ActionOnTimer timeout = gameObject.AddComponent<ActionOnTimer>();

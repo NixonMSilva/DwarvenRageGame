@@ -91,18 +91,26 @@ public class AttackController : MonoBehaviour
         set { rangedCooldown = value; }
     }
 
+    public float AttackSpeed
+    {
+        get { return attackSpeed; }
+        set
+        {
+            attackSpeed = value;
+            anim.SetFloat("attackSpeed", value);
+        }
+    }
+
     private void Awake ()
     {
-        if (gameObject.CompareTag("Player"))
-            isPlayer = true;
-
         anim = GetComponent<Animator>();
         status = GetComponent<StatusController>();
 
+        if (gameObject.CompareTag("Player"))
+            isPlayer = true;
+
         if (isPlayer)
             equipment = GetComponent<PlayerEquipment>();
-
-        anim.SetFloat("attackSpeed", attackSpeed);
     }
 
     private void Start ()
@@ -113,6 +121,8 @@ public class AttackController : MonoBehaviour
             InputHandler.instance.OnPowerAttackUnleashed += HandlePowerAttack;
             InputHandler.instance.OnRangedAttackUnleashed += HandleRangedAttack;
         }
+
+        anim.SetFloat("attackSpeed", attackSpeed);
     }
 
     private void Update ()
@@ -160,7 +170,6 @@ public class AttackController : MonoBehaviour
             canAttack = false;
             canAttackRanged = false;
             CooldownController cooldown = gameObject.AddComponent<CooldownController>();
-            Debug.Log("Teste: " + rangedCooldown);
             cooldown.SetTimer(rangedCooldown,
             () =>
             {
@@ -250,6 +259,13 @@ public class AttackController : MonoBehaviour
                 if (isPlayer)
                 {
                     float damageModifier = equipment.PlayerWeapon.AttackEffect(status, damagedObj);
+
+                    if (TryForCritical())
+                    {
+                        Debug.Log("Critical Hit!");
+                        damageModifier *= 2f;
+                    }
+
                     damagedObj.TakeDamage(damage * damageModifier, equipment.PlayerWeapon.damageType);
                 }
                 else
@@ -258,6 +274,17 @@ public class AttackController : MonoBehaviour
                 damagedObj.PlayImpactSound();
             }
         }
+    }
+
+    private bool TryForCritical ()
+    {
+        if (equipment != null && equipment.PlayerWeapon != null)
+        {
+            float diceRoll = UnityEngine.Random.Range(0f, 1f);
+            if (diceRoll <= equipment.PlayerWeapon.criticalChance)
+                return true;
+        }
+        return false;
     }
 
     private void OnDestroy ()

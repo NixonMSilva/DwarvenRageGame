@@ -25,8 +25,14 @@ public class PlayerStatus : StatusController
                 health = 0f;
             }
 
+            if (equipment != null && equipment.PlayerWeapon != null)
+            {
+                equipment.PlayerWeapon.HealthChangeEffect(this);
+            }
+
             UserInterfaceController.instance?.UpdateHealthBar(health / maxHealth);
             UpdateCharacterUI();
+            
         }
     }
 
@@ -79,6 +85,20 @@ public class PlayerStatus : StatusController
         get { return movement; }
     }
 
+    public PlayerEquipment Equipment
+    {
+        get { return equipment; }
+    }
+
+    public float GoldDropRate
+    {
+        get { return goldDropRate; }
+        set 
+        {
+            goldDropRate = value;
+        }
+    }
+
     public override float Speed
     {
         get { return movement.Speed; }
@@ -92,9 +112,6 @@ public class PlayerStatus : StatusController
 
     private void Awake ()
     {
-        Health = maxHealth;
-        Armor = 0f;
-
         movement = GetComponent<PlayerMovement>();
         attack = GetComponent<AttackController>();
         equipment = GetComponent<PlayerEquipment>();
@@ -116,7 +133,9 @@ public class PlayerStatus : StatusController
 
     private new void Start ()
     {
+        Health = maxHealth;
         Armor = 0f;
+
         _resistances = resistanceSheet.BuildSheet();
     }
 
@@ -162,6 +181,8 @@ public class PlayerStatus : StatusController
         }
 
         UserInterfaceController.instance.ShowDamagePanel();
+
+        Debug.Log("Health reduced:" + newValue);
 
         DeduceHealth(newValue);
     }

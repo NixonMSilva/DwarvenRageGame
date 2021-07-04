@@ -50,7 +50,7 @@ public static class WeaponEffectProcessor
 
         foreach (KeyValuePair<WeaponEffectType, WeaponEffect> kvp in _weaponEffects)
         {
-            Debug.Log("Key = {" + kvp.Key + "}, Value = {" + kvp.Value + "}");
+            //Debug.Log("Key = {" + kvp.Key + "}, Value = {" + kvp.Value + "}");
         }
         var currentEffect = _weaponEffects[effect];
         currentEffect.ApplyEffectOnEquip(user);
@@ -63,9 +63,23 @@ public static class WeaponEffectProcessor
 
         foreach (KeyValuePair<WeaponEffectType, WeaponEffect> kvp in _weaponEffects)
         {
-            Debug.Log("Key = {" + kvp.Key + "}, Value = {" + kvp.Value + "}");
+            //Debug.Log("Key = {" + kvp.Key + "}, Value = {" + kvp.Value + "}");
         }
         var currentEffect = _weaponEffects[effect];
         currentEffect.ApplyEffectOnUnequip(user);
+    }
+
+    public static void ProcessWeaponEffectOnHealthChange (WeaponEffectType effect, StatusController user)
+    {
+        if (isInitialized == false)
+            Initialize();
+
+        foreach (KeyValuePair<WeaponEffectType, WeaponEffect> kvp in _weaponEffects)
+        {
+            //Debug.Log("Key = {" + kvp.Key + "}, Value = {" + kvp.Value + "}");
+        }
+
+        var currentEffect = _weaponEffects[effect];
+        currentEffect.ApplyEffectOnHealthChange(user);
     }
 }

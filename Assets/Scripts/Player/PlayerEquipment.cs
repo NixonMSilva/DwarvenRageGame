@@ -20,6 +20,7 @@ public class PlayerEquipment : MonoBehaviour
 
     private AttackController attack;
     private BlockController block;
+    private StatusController player;
 
     [SerializeField] private bool isTwoHanded = false;
     [SerializeField] private bool hasShield = false;
@@ -45,9 +46,18 @@ public class PlayerEquipment : MonoBehaviour
         get { return playerWeapon; }
         set
         {
-            playerWeapon = value;
-            attack.Damage = playerWeapon.damage;
-
+            if (playerWeapon.Equals(value) || playerWeapon == null)
+            {
+                playerWeapon = value;
+            }
+            else
+            {
+                playerWeapon.UnequipEffect(player);
+                playerWeapon = value;
+                playerWeapon.EquipEffect(player);
+                attack.Damage = playerWeapon.damage;
+            }
+            
             anim.Play("weapon_down");
 
             /*
@@ -64,7 +74,6 @@ public class PlayerEquipment : MonoBehaviour
         get { return playerShield; }
         set
         {
-
             hasShield = (value != null);
             anim.SetBool("hasShield", hasShield);
             ChangeShieldGraphics(value);
@@ -96,14 +105,31 @@ public class PlayerEquipment : MonoBehaviour
     {
         get { return baseDamageReduction; }
     }
+    
+    public bool HasShield
+    {
+        get { return hasShield; }
+        set
+        {
+            hasShield = value;
+            anim.SetBool("hasShield", value);
+        }
+    }
 
     private void Awake ()
     {
         anim = GetComponent<Animator>();
         attack = GetComponent<AttackController>();
         block = GetComponent<BlockController>();
+        player = GetComponent<StatusController>();
 
         anim.runtimeAnimatorController = animationSet1H;
+
+        // Set the correct shield status
+        HasShield = (playerShield != null);
+
+        // Set the effect of the starting weapon
+        playerWeapon.EquipEffect(player);
     }
 
     private void Start ()
@@ -118,10 +144,6 @@ public class PlayerEquipment : MonoBehaviour
             SetTwoHanded(true);
             isTwoHanded = true;
         }
-
-        // Set the correct shield status
-        hasShield = (playerShield != null);
-        anim.SetBool("hasShield", hasShield);
 
         // Set the correct fire point for the ranged weapon
         UpdateRangedFirePosition(playerRanged);
@@ -218,6 +240,7 @@ public class PlayerEquipment : MonoBehaviour
         {
             anim.SetBool("isTwoHanded", true);
             anim.runtimeAnimatorController = animationSet2H;
+            anim.SetBool("hasShield", HasShield);
             // Send shield to the inventory
             SetShieldGraphics(false);
         }
@@ -225,6 +248,7 @@ public class PlayerEquipment : MonoBehaviour
         {
             anim.SetBool("isTwoHanded", false);
             anim.runtimeAnimatorController = animationSet1H;
+            anim.SetBool("hasShield", HasShield);
             // Bring back the shield if applicable
             SetShieldGraphics(true);
         }

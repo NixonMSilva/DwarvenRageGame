@@ -34,4 +34,9 @@ public class Weapon : Item
     {
         WeaponEffectProcessor.ProcessWeaponEffectOnUnequip(effectType, user);
     }
+
+    public void HealthChangeEffect (StatusController user)
+    {
+        WeaponEffectProcessor.ProcessWeaponEffectOnHealthChange(effectType, user);
+    }
 }

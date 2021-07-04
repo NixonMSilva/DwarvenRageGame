@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,19 +31,4 @@ public class EnemyController : MonoBehaviour
             enemyAttack.Damage = enemyType.attackDamage;
         }
     }
-
-    public void SpawnLoot ()
-    {
-        for (int i = 0; i < enemyType.drops.Length; ++i)
-        {
-            float diceRoll = Random.Range(0f, 1f);
-            if (diceRoll <= enemyType.drops[i].dropChance)
-            {
-                Instantiate(enemyType.drops[i].item, transform.position, Quaternion.identity);
-                break;
-            }
-        }
-    }
-
-    
 }

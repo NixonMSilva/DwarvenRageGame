@@ -27,6 +27,7 @@ public class GameData
     public bool sceneNumber;
     public bool[][] enemyStatus;
     public bool[][] pickupStatus;
+    public bool[][] eventStatus;
 
     public GameData (SaveController data)
     {
@@ -51,6 +52,7 @@ public class GameData
 
         pickupStatus = data.savePickableStatus;
         enemyStatus = data.saveEnemyStatus;
+        eventStatus = data.saveEventStatus;
     }
     
 }

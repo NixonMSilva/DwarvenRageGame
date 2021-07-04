@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7427351875032802191}
   - component: {fileID: 4981418425437301719}
   m_Layer: 0
-  m_Name: Berserk
+  m_Name: MaxHealthIncrease
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationRate: 20
-  item: {fileID: 11400000, guid: 059d9897cad16ab489d27135c5d64147, type: 2}
+  item: {fileID: 11400000, guid: 3fd5fd822a377794885850641cd85382, type: 2}
 --- !u!135 &4981418425437301719
 SphereCollider:
   m_ObjectHideFlags: 0

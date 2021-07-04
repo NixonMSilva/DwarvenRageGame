@@ -12,6 +12,9 @@ public class Enemy : ScriptableObject
 
     public DropSheet[] drops;
 
+    public int goldDrop;
+    public int goldDropVariance;
+
     public DamageType damageType;
 
     public string soundIdle;

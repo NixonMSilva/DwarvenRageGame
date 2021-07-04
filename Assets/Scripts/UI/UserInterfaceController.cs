@@ -50,6 +50,8 @@ public class UserInterfaceController : MonoBehaviour
 
     private GameObject goldFrame;
     private TextMeshProUGUI goldCount;
+    private GameObject goldAnimPoint;
+    
 
     private readonly string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
 
@@ -57,6 +59,8 @@ public class UserInterfaceController : MonoBehaviour
 
     [SerializeField] private GameObject weaponSlotPrefab;
     [SerializeField] private GameObject itemSlotPrefab;
+
+    [SerializeField] private GameObject goldAnimPrefab;
 
     [SerializeField] private Sprite defaultItemSprite;
 
@@ -111,6 +115,7 @@ public class UserInterfaceController : MonoBehaviour
 
         goldFrame = GameObject.Find("GoldPanel");
         goldCount = GameObject.Find("GoldCount").GetComponent<TextMeshProUGUI>();
+        goldAnimPoint = GameObject.Find("GoldAnimation");
 
         deathScreen = GameObject.Find("DeathMenu");
         //deathScreen = GameObject.Find("DeathMenu").GetComponent<CanvasGroup>();
@@ -464,6 +469,18 @@ public class UserInterfaceController : MonoBehaviour
     public void UpdateGoldCount (int value)
     {
         goldCount.text = value.ToString();
+    }
+    
+    public void PlayGoldAnimation (int value)
+    {
+        // Play animation
+        GameObject goldAnimation = Instantiate(goldAnimPrefab, goldAnimPoint.transform);
+        TextMeshProUGUI goldText = goldAnimation.GetComponent<TextMeshProUGUI>();
+        if (value >= 0)
+            goldText.text = "+" + value.ToString();
+        else
+            goldText.text = "-" + value.ToString();
+        goldAnimation.GetComponent<Animator>().SetInteger("value", value);
     }
 
     public void HideGoldFrame ()

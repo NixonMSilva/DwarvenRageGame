@@ -19,6 +19,11 @@ public class EnemyStatus : StatusController
         set { agent.speed = value; }
     }
 
+    public EnemyController Enemy
+    {
+        get { return enemy; }
+    }
+
     private void Awake ()
     {
         Health = maxHealth;
@@ -36,7 +41,6 @@ public class EnemyStatus : StatusController
         // Enemy death
         isDying = true;
         animator.Play("Death");
-        GetComponent<EnemyController>().SpawnLoot();
         PlayDeathSound();
         HandleDeath();
         Destroy(gameObject, 10f);

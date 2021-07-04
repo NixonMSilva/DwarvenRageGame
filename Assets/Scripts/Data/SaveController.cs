@@ -18,6 +18,7 @@ public class SaveController : MonoBehaviour
 
     public bool[][] savePickableStatus;
     public bool[][] saveEnemyStatus;
+    public bool[][] saveEventStatus;
 
     public int saveWeapon;
 
@@ -60,6 +61,7 @@ public class SaveController : MonoBehaviour
 
         savePickableStatus = new bool[maxScenes][];
         saveEnemyStatus = new bool[maxScenes][];
+        saveEventStatus = new bool[maxScenes][];
 
         itemsId = new List<int>();
         itemsStack = new List<int>();
@@ -102,10 +104,18 @@ public class SaveController : MonoBehaviour
 
             PickableController pickableController = GameObject.Find("Pickables").GetComponent<PickableController>();
             EnemySpawnManager enemyController = GameObject.Find("Enemies").GetComponent<EnemySpawnManager>();
+            EventController eventController = GameObject.Find("Events").GetComponent<EventController>();
 
             sceneNumber = manager.GetSceneNumber();
-            savePickableStatus[sceneNumber] = pickableController.GetPickedList();
-            saveEnemyStatus[sceneNumber] = enemyController.GetKilledList();
+
+            if (pickableController)
+                savePickableStatus[sceneNumber] = pickableController.GetPickedList();
+
+            if (enemyController)
+                saveEnemyStatus[sceneNumber] = enemyController.GetKilledList();
+
+            if (eventController)
+                saveEventStatus[sceneNumber] = eventController.GetTriggeredList();
 
             SaveSystem.Save(this);
         }
@@ -159,11 +169,15 @@ public class SaveController : MonoBehaviour
 
             PickableController pickableController = GameObject.Find("Pickables").GetComponent<PickableController>();
             EnemySpawnManager enemyController = GameObject.Find("Enemies").GetComponent<EnemySpawnManager>();
+            EventController eventController = GameObject.Find("Events").GetComponent<EventController>();
 
             sceneNumber = manager.GetSceneNumber();
 
-            pickableController.SetPickedList(data.pickupStatus[sceneNumber]);
-            enemyController.SetKilledList(data.enemyStatus[sceneNumber]);
+            pickableController?.SetPickedList(data.pickupStatus[sceneNumber]);
+
+            enemyController?.SetKilledList(data.enemyStatus[sceneNumber]);
+
+            eventController?.SetTriggeredList(data.eventStatus[sceneNumber]);
         }
     }
 
