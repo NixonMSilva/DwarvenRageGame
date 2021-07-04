@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1ab2dbed5f8474295afd6854ce5fea, type: 3}
   m_Name: TestEnemy
   m_EditorClassIdentifier: 
-  enemyName: TestEnemy
   maxHealth: 200
   attackDamage: 25
-  dropList:
-  - Armor
-  dropChance:
-  - 1
+  drops:
+  - item: {fileID: 0}
+    dropChance: 0.25
+  damageType: 0
   soundIdle: 
   soundAttack: 
   soundDamage: 

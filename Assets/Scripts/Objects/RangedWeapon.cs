@@ -21,7 +21,9 @@ public class RangedWeapon : Item
 
     // Combat data
     public float damage;
+    public DamageType damageType = DamageType.ranged;
     public float criticalChance = 0.01f;
+    public float cooldown = 10f;
     public GameObject projectile;
     public AnimatorOverrideController animationSet;
 }

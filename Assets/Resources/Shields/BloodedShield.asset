@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BloodedShield
   m_EditorClassIdentifier: 
   id: 10
-  itemName: Blooded Shield
+  itemName: Viking Shield
   worldMesh: {fileID: -1117082489390005245, guid: 4947dc06b07d5bb4591e03cb5e789b6e, type: 3}
   materialList:
   - {fileID: 2100000, guid: c5974f91c8f324044b4be88f090b4044, type: 2}
@@ -24,4 +24,18 @@ MonoBehaviour:
   rotX: 26.867
   rotY: 52.819
   rotZ: -94.477
-  damageReduction: 0.6
+  protections:
+  - type: 0
+    resistance: 0.5
+  - type: 1
+    resistance: 0.3
+  - type: 2
+    resistance: 0
+  - type: 3
+    resistance: 0
+  - type: 4
+    resistance: 0
+  - type: 5
+    resistance: 0
+  - type: 6
+    resistance: 0

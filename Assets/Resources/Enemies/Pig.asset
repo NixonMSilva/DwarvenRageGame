@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1ab2dbed5f8474295afd6854ce5fea, type: 3}
   m_Name: Pig
   m_EditorClassIdentifier: 
-  enemyName: Pig
   maxHealth: 200
   attackDamage: 25
-  dropList:
-  - Armor
-  dropChance:
-  - 0.2
+  drops:
+  - item: {fileID: 7163305338665221067, guid: 57eac5d66a838f94d8c48dba3080f25c, type: 3}
+    dropChance: 0.25
+  goldDrop: 200
+  goldDropVariance: 50
+  damageType: 0
   soundIdle: pig_idle
   soundAttack: pig_attack
   soundDamage: pig_hit
