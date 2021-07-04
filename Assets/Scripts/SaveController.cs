@@ -13,13 +13,19 @@ public class SaveController : MonoBehaviour
 
     public float saveArmor;
 
-    public bool[] savePickableStatus;
+    public int sceneNumber;
+    public int maxScenes = 50;
+
+    public bool[][] savePickableStatus;
+    public bool[][] saveEnemyStatus;
 
     public int saveWeapon;
 
     public int saveShield;
 
     public int saveGold;
+
+    public List<int> weaponsId;
 
     public List<int> itemsId;
     public List<int> itemsStack;
@@ -50,6 +56,9 @@ public class SaveController : MonoBehaviour
             hasPlayer = true;
         }
 
+        savePickableStatus = new bool[maxScenes][];
+        saveEnemyStatus = new bool[maxScenes][];
+
         itemsId = new List<int>();
         itemsStack = new List<int>();
         
@@ -74,12 +83,17 @@ public class SaveController : MonoBehaviour
 
             Inventory playerInventory = player.GetComponent<Inventory>();
 
+            weaponsId = playerInventory.GetWeaponList();
+
             itemsId = playerInventory.GetItemList();
             itemsStack = playerInventory.GetItemStacks();
 
             PickableController pickableController = GameObject.Find("Pickables").GetComponent<PickableController>();
+            EnemySpawnManager enemyController = GameObject.Find("Enemies").GetComponent<EnemySpawnManager>();
 
-            savePickableStatus = pickableController.GetPickedList();
+            sceneNumber = manager.GetSceneNumber();
+            savePickableStatus[sceneNumber] = pickableController.GetPickedList();
+            saveEnemyStatus[sceneNumber] = enemyController.GetKilledList();
 
             SaveSystem.Save(this);
         }
@@ -112,14 +126,22 @@ public class SaveController : MonoBehaviour
 
             Inventory playerInventory = player.GetComponent<Inventory>();
 
+            for (int i = 0; i < data.weaponsId.Length; ++i)
+            {
+                playerInventory.AddWeapon(GetWeapon(data.weaponsId[i]));
+            }
+            
             for (int i = 0; i < data.itemId.Length; ++i)
             {
                 playerInventory.AddItem(GetItem(data.itemId[i]), data.itemStack[i]);
             }
 
             PickableController pickableController = GameObject.Find("Pickables").GetComponent<PickableController>();
+            EnemySpawnManager enemyController = GameObject.Find("Enemies").GetComponent<EnemySpawnManager>();
 
-            pickableController.SetPickedList(data.pickupStatus);
+            sceneNumber = manager.GetSceneNumber();
+            pickableController.SetPickedList(data.pickupStatus[sceneNumber]);
+            enemyController.SetKilledList(data.enemyStatus[sceneNumber]);
         }
     }
 

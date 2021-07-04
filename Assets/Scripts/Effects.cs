@@ -1,64 +1,48 @@
+using System;
+using System.Linq;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EffectDataType
+public static class EffectProcessor
 {
-    heal,
-    berserk,
-    fortune,
-    fireResistance,
-    poisonResistance,
-}
+    private static Dictionary<EffectType, EffectBase> _effects = new Dictionary<EffectType, EffectBase>();
 
-namespace Effects
-{
-    [System.Serializable]
-    public struct EffectActionData
+    private static bool isInitialized;
+
+    private static void Initialize ()
     {
-        public EffectDataType type;
-        public float magnitude;
-        public float timeout;
-        public string name;
+        _effects.Clear();
+
+        // Reflection: Get all types that are derivate from EffectBase
+        var assembly = Assembly.GetAssembly(typeof(EffectBase));
+        var allEffectTypes = assembly.GetTypes()
+            .Where(t => typeof(EffectBase).IsAssignableFrom(t) && t.IsAbstract == false);
+        
+
+        foreach (var effectType in allEffectTypes)
+        {
+            EffectBase effect = Activator.CreateInstance(effectType) as EffectBase;
+            // Assign the effect type on the enum to its equivalent effect children class
+            _effects.Add(effect.Type, effect);
+        }
+
+        isInitialized = true;
+
     }
 
-    public static class HealEffect
+    public static void ProcessEffect (Effect effect, StatusController target)
     {
-        public static void ApplyEffect (EffectActionData effect)
-        {
-            GameObject.Find("Player").GetComponent<StatusController>().Health += effect.magnitude;
-        }
-    }
+        if (isInitialized == false)
+            Initialize();
 
-    public static class BerserkEffect
-    {
-        public static  void ApplyEffect (EffectActionData effect)
+        foreach (KeyValuePair<EffectType, EffectBase> kvp in _effects)
         {
-            GameObject.Find("Player").GetComponent<StatusController>().AddStatus(effect.type, effect.magnitude, effect.timeout);
+            //Debug.Log("Key = {" + kvp.Key + "}, Value = {" + kvp.Value + "}");
         }
-    }
 
-    public static class FireResistanceEffect
-    {
-        public static void ApplyEffect (EffectActionData effect)
-        {
-            Debug.Log("logic");
-        }
-    }
-
-    public static class PoisonResistanceEffect
-    {
-        public static void ApplyEffect (EffectActionData effect)
-        {
-            Debug.Log("logic");
-        }
-    }
-
-    public static class FortuneEffect
-    {
-        public static void ApplyEffect (EffectActionData effect)
-        {
-            Debug.Log("Logic");
-        }
+        var currentEffect = _effects[effect.type];
+        currentEffect.ApplyEffect(target, effect);
     }
 }

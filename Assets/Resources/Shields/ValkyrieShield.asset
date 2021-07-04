@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3863bdbe9927a14eb1c00de9483e39c, type: 3}
+  m_Name: ValkyrieShield
+  m_EditorClassIdentifier: 
+  id: 12
+  itemName: Valkyrie Shield
+  worldMesh: {fileID: -2354724906271059767, guid: 22f12a1c49faece4e82266310f036178, type: 3}
+  materialList:
+  - {fileID: 2100000, guid: ee0de180f5a64a447926d6038f3e9224, type: 2}
+  scaleX: 0.0055
+  scaleY: 0.0055
+  scaleZ: 0.0055
+  icon: {fileID: 0}
+  rotX: 26.867
+  rotY: 52.819
+  rotZ: -94.477
+  damageReduction: 0.6

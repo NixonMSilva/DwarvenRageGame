@@ -36,6 +36,7 @@ public class PlayerEquipment : MonoBehaviour
             {
                 gold = 0;
             }
+            UserInterfaceController.instance.UpdateGoldCount(gold);
         }
     }
 
@@ -46,28 +47,15 @@ public class PlayerEquipment : MonoBehaviour
         {
             playerWeapon = value;
             attack.Damage = playerWeapon.damage;
+
+            anim.Play("weapon_down");
+
+            /*
             ChangeWeaponGraphics(value);
             SetTwoHanded(value.isTwoHanded);
-            /*
-            if (isTwoHanded)
-            {
-                anim.SetBool("isTwoHanded", true);
-                //block.CanBlock = false;
-                anim.runtimeAnimatorController = animationSet2H;
-                // Send shield to the inventory
-                SetShieldGraphics(false);
-            }
-            else
-            {
-                anim.SetBool("isTwoHanded", false);
-                //block.CanBlock = true;
-                anim.runtimeAnimatorController = animationSet1H;
-                // Bring back the shield if applicable
-                SetShieldGraphics(true);
-            }
-            */
+
             // JERRYRIGGING: Have to do it twice so it unsuck
-            ChangeWeaponGraphics(value);
+            ChangeWeaponGraphics(value); */
         }
     }
 
@@ -102,42 +90,39 @@ public class PlayerEquipment : MonoBehaviour
 
     private void Start ()
     {
+        // Intialize weapon and shield graphics
         ChangeShieldGraphics(playerShield);
         ChangeWeaponGraphics(playerWeapon);
 
+        // Set the correct animation set on start
         if (playerWeapon.isTwoHanded)
         {
             SetTwoHanded(true);
             isTwoHanded = true;
         }
+
+        // Initializes the player damage to that of his weapon
+        attack.Damage = playerWeapon.damage;
+
+        // Initializes player gold
+        UserInterfaceController.instance.UpdateGoldCount(gold);
     }
 
-    private void ChangeWeaponGraphics (Weapon wpn)
+    public void ChangeWeaponGraphics (Weapon wpn)
     {
         Vector3 objScale = new Vector3(wpn.scaleX, wpn.scaleY, wpn.scaleZ);
         Vector3 objPosition = new Vector3(wpn.posX, wpn.posY, wpn.posZ);
 
-        // Adjust the object scale
-        weaponHUDObject.transform.localScale = objScale;
-
-        /*
-        Debug.Log("Antes: " + weaponHUDObject.transform.localPosition.x + " | " +
-            weaponHUDObject.transform.localPosition.y + " | " +
-            weaponHUDObject.transform.localPosition.z); */
-
         // Adjust the object position
         weaponHUDObject.transform.localPosition = objPosition;
 
-        /*
-        Debug.Log("Depois: " + weaponHUDObject.transform.localPosition.x + " | " +
-            weaponHUDObject.transform.localPosition.y + " | " +
-            weaponHUDObject.transform.localPosition.z); */
+        // Adjust the object scale
+        weaponHUDObject.transform.localScale = objScale;
 
         // Adjust the mesh
         weaponHUDObject.GetComponent<MeshFilter>().mesh = wpn.worldMesh;
         weaponHUDObject.GetComponent<MeshRenderer>().materials = wpn.materialList;
     }
-
     private void ChangeShieldGraphics (Shield shd)
     {
         Vector3 objScale = new Vector3(shd.scaleX, shd.scaleY, shd.scaleZ);
@@ -154,7 +139,7 @@ public class PlayerEquipment : MonoBehaviour
         shieldHUDObject.GetComponent<MeshRenderer>().materials = shd.materialList;
     }
 
-    private void SetTwoHanded (bool status)
+    public void SetTwoHanded (bool status)
     {
         isTwoHanded = status;
         if (status)
