@@ -15,6 +15,9 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private KeyCode sprintKey          = KeyCode.LeftShift;
     [SerializeField] private KeyCode interactionKey     = KeyCode.E;
     [SerializeField] private KeyCode escapeKey          = KeyCode.I;
+	
+    [SerializeField] private KeyCode rangedKey          = KeyCode.F;
+	
     [SerializeField] private KeyCode itemKey1           = KeyCode.Alpha1;
     [SerializeField] private KeyCode itemKey2           = KeyCode.Alpha2;
     [SerializeField] private KeyCode itemKey3           = KeyCode.Alpha3;
@@ -37,7 +40,7 @@ public class InputHandler : MonoBehaviour
 
     public event EventHandler OnAttackUnleashed;
     public event EventHandler OnPowerAttackUnleashed;
-
+    public event EventHandler OnRangedAttackUnleashed;
     public event EventHandler OnBlockPressed;
     public event EventHandler OnBlockReleased;
 
@@ -151,6 +154,12 @@ public class InputHandler : MonoBehaviour
             else if (Input.GetKeyUp(blockKey))
             {
                 OnBlockReleased?.Invoke(this, EventArgs.Empty);
+            }
+
+            // Ranged Key
+            if (Input.GetKey(rangedKey))
+            {
+                OnRangedAttackUnleashed?.Invoke(this, EventArgs.Empty);
             }
 
             //================================================================

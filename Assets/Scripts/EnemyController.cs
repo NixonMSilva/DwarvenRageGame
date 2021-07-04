@@ -14,6 +14,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private List<float> _dropChance;
 
     [SerializeField] private bool useFromDatabase = false;
+	
+    public Enemy Type
+    {
+        get { return enemyType; }
+    }
 
     private void Awake ()
     {

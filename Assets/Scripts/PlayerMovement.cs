@@ -98,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded)
         {
+            AudioManager.instance.PlaySoundRandom("jump");
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }

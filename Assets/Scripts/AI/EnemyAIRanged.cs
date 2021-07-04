@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyAIRanged : EnemyAI
 {
-    [SerializeField] private GameObject projectile;
-
     public override void AttackPlayer ()
     {
         //LookAtPlayer();
@@ -20,11 +18,8 @@ public class EnemyAIRanged : EnemyAI
         }
     }
 
-    public void CreateProjectile ()
+    public void SpawnProjectile ()
     {
-        //LookAtPlayer();
-        GameObject attackProjectile;
-        attackProjectile = Instantiate(projectile, attack.AttackPoint.position, Quaternion.identity);
-        attackProjectile.GetComponent<ProjectileController>().SetDirection(player.transform.position - attack.AttackPoint.position);
+        attack.CreateProjectile(player.transform);
     }
 }

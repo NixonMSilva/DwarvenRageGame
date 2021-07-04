@@ -319,7 +319,9 @@ public class Inventory : MonoBehaviour
 
     public List<int> GetWeaponList ()
     {
-        List<int> weaponIds = new List<int>(_weaponSlots.Count);
+        List<int> weaponIds = new List<int>(_weaponSlots.Count + 1);
+
+        weaponIds.Add(equipment.PlayerWeapon.id);
 
         foreach (Weapon weapon in _weaponSlots)
         {
@@ -340,4 +342,17 @@ public class Inventory : MonoBehaviour
         }
         return 0;
     }
+
+    public void ClearWeapons () 
+    {
+        _weaponSlots.Clear();
+    }
+
+    public void ClearItems () 
+    {
+        _itemSlots.Clear();
+        _itemSlotsStack.Clear();
+    }
+
+        
 }

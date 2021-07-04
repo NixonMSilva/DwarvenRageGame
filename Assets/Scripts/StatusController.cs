@@ -177,4 +177,11 @@ public class StatusController : MonoBehaviour, IDamageable
             Destroy(timeout);
         });
     }
+
+    protected void PlayDamageSound () {  }
+
+    public virtual void PlayImpactSound () 
+    {
+        Debug.Log("Here!");
+    }
 }
