@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &594245314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 594245315}
+  m_Layer: 7
+  m_Name: ProjectileFirePoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &594245315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594245314}
+  m_LocalRotation: {x: -0.018041555, y: -0, z: -0, w: 0.9998373}
+  m_LocalPosition: {x: 0.19999976, y: -0.76375264, z: -0.41796333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4017718342687549338}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &918954893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 918954894}
+  m_Layer: 7
+  m_Name: ProjectileFirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &918954894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918954893}
+  m_LocalRotation: {x: -0.018041555, y: -0, z: -0, w: 0.9998373}
+  m_LocalPosition: {x: 0.19999976, y: -0.76375264, z: -0.41796333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4017718342687549338}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4772061914498168841
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,8 +468,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15ca08d8ca05cb54f98665992fb0993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWeapon: {fileID: 11400000, guid: 12b707256fbc15d44922675c564c036f, type: 2}
-  playerShield: {fileID: 11400000, guid: 8a66deb61018c3d4d8df1cd58e6dfaae, type: 2}
+  playerWeapon: {fileID: 11400000, guid: f0ad71d52f70e6c4dbc2a18805af883a, type: 2}
+  playerShield: {fileID: 11400000, guid: 854ac48cfe01f6e4ba59c6bb7bcccc78, type: 2}
+  playerRanged: {fileID: 11400000, guid: c821ecdb319f5ec4f9f7f7e520728aa6, type: 2}
   inventory: {fileID: 0}
   weaponHUDObject: {fileID: 3397559423398610544}
   shieldHUDObject: {fileID: 1517412443460366691}
@@ -430,6 +491,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 5072104306581554441}
+  firePointA: {fileID: 918954894}
+  firePointB: {fileID: 594245315}
   attackRange: 1.5
   attackSpeed: 1
   damageableLayer:
@@ -437,6 +500,8 @@ MonoBehaviour:
     m_Bits: 256
   attackDamage: 50
   currentAttackDamage: 0
+  equipment: {fileID: 0}
+  projectile: {fileID: 0}
   canAttack: 1
 --- !u!114 &5072104305726538641
 MonoBehaviour:
@@ -831,13 +896,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5688888452821942803}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21, y: -0.68, z: 0.34}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 918954894}
+  - {fileID: 594245315}
   m_Father: {fileID: 5072104305548094985}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.068, y: 0, z: 0}
 --- !u!20 &3368851355180068518
 Camera:
   m_ObjectHideFlags: 0

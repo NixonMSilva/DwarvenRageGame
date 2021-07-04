@@ -126,11 +126,16 @@ public class SaveController : MonoBehaviour
 
             Inventory playerInventory = player.GetComponent<Inventory>();
 
+            playerInventory.ClearWeapons();
             for (int i = 0; i < data.weaponsId.Length; ++i)
             {
-                playerInventory.AddWeapon(GetWeapon(data.weaponsId[i]));
+                if (i == 0)
+                    playerEquipment.PlayerWeapon = GetWeapon(data.weaponsId[i]);
+                else
+                    playerInventory.AddWeapon(GetWeapon(data.weaponsId[i]));
             }
-            
+
+            playerInventory.ClearItems();
             for (int i = 0; i < data.itemId.Length; ++i)
             {
                 playerInventory.AddItem(GetItem(data.itemId[i]), data.itemStack[i]);

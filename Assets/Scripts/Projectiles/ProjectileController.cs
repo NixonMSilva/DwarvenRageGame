@@ -11,7 +11,7 @@ public class ProjectileController : MonoBehaviour
 
     [SerializeField] private float damageValue;
 
-    private Vector3 flightDirection;
+    private Vector3 target;
 
     private Rigidbody rigidBody;
 
@@ -29,26 +29,33 @@ public class ProjectileController : MonoBehaviour
     private void Update ()
     {
         // Atualizar a velocidade conforme a direção e a velocidade padrão
-        rigidBody.velocity = flightDirection * flightSpeed;
+        rigidBody.MovePosition(transform.position + target * flightSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter (Collider other)
     {
+        int layerId = other.gameObject.layer;
+        string layerName = LayerMask.LayerToName(layerId);
         // Realizar as colisões
-        if (_canCollideWith.Contains(other.gameObject.tag))
+        if (_canCollideWith.Contains(layerName))
         {
-            if (other.gameObject.CompareTag("Player"))
+            IDamageable target;
+            if (other.gameObject.TryGetComponent<IDamageable>(out target))
             {
-                other.gameObject.GetComponent<PlayerStatus>().TakeDamage(damageValue);
+                target.TakeDamage(damageValue);
             }
             Destroy(gameObject);
         }
     }
 
-    public void SetDirection (Vector3 direction)
+    public void SetTarget (Vector3 newTarget)
     {
-        // Muda a direção do projétil para ele "olhar" para a direção do ataque
-        flightDirection = direction.normalized;
-        transform.LookAt(direction);
+        target = newTarget.normalized;
+        transform.LookAt(target);
+    }
+
+    public void FaceTowards (Vector3 origin, Vector3 newTarget)
+    {
+        transform.LookAt(newTarget - origin);
     }
 }

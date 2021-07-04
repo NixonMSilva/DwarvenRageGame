@@ -69,6 +69,19 @@ public class PlayerEquipment : MonoBehaviour
         }
     }
 
+    public RangedWeapon RangedWeapon
+    {
+        get { return playerRanged; }
+        set
+        {
+            if (value != null)
+            {
+                attack.FirePointA.localPosition = new Vector3(value.firePos1X, value.firePos1Y, value.firePos1Z);
+                attack.FirePointB.localPosition = new Vector3(value.firePos2X, value.firePos2Y, value.firePos2Z);
+            }
+        }
+    }
+
     public bool IsTwoHanded
     {
         get { return isTwoHanded; }
@@ -101,6 +114,9 @@ public class PlayerEquipment : MonoBehaviour
             isTwoHanded = true;
         }
 
+        // Set the correct fire point for the ranged weapon
+        UpdateRangedFirePosition();
+
         // Initializes the player damage to that of his weapon
         attack.Damage = playerWeapon.damage;
 
@@ -123,6 +139,7 @@ public class PlayerEquipment : MonoBehaviour
         weaponHUDObject.GetComponent<MeshFilter>().mesh = wpn.worldMesh;
         weaponHUDObject.GetComponent<MeshRenderer>().materials = wpn.materialList;
     }
+
     private void ChangeShieldGraphics (Shield shd)
     {
         Vector3 objScale = new Vector3(shd.scaleX, shd.scaleY, shd.scaleZ);
@@ -137,6 +154,22 @@ public class PlayerEquipment : MonoBehaviour
         // Adjust the mesh
         shieldHUDObject.GetComponent<MeshFilter>().mesh = shd.worldMesh;
         shieldHUDObject.GetComponent<MeshRenderer>().materials = shd.materialList;
+    }
+
+    public void ChangeWeaponGraphics (RangedWeapon wpn)
+    {
+        Vector3 objScale = new Vector3(wpn.scaleX, wpn.scaleY, wpn.scaleZ);
+        Vector3 objPosition = new Vector3(wpn.posX, wpn.posY, wpn.posZ);
+
+        // Adjust the object position
+        weaponHUDObject.transform.localPosition = objPosition;
+
+        // Adjust the object scale
+        weaponHUDObject.transform.localScale = objScale;
+
+        // Adjust the mesh
+        weaponHUDObject.GetComponent<MeshFilter>().mesh = wpn.worldMesh;
+        weaponHUDObject.GetComponent<MeshRenderer>().materials = wpn.materialList;
     }
 
     public void SetTwoHanded (bool status)
@@ -161,5 +194,10 @@ public class PlayerEquipment : MonoBehaviour
     private void SetShieldGraphics (bool active)
     {
         shieldHUDObject.SetActive(active);
+    }
+
+    private void UpdateRangedFirePosition ()
+    {
+        RangedWeapon = playerRanged;
     }
 }

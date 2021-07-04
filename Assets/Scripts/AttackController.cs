@@ -11,6 +11,10 @@ public class AttackController : MonoBehaviour
     private StatusController status;
 
     [SerializeField] private Transform attackPoint;
+
+    [SerializeField] private Transform firePointA;
+    [SerializeField] private Transform firePointB;
+
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private float attackSpeed = 1f;
 
@@ -18,6 +22,10 @@ public class AttackController : MonoBehaviour
 
     [SerializeField] private float attackDamage = 50f;
     [SerializeField] private float currentAttackDamage;
+
+    [SerializeField] private PlayerEquipment equipment;
+
+    [SerializeField] private GameObject projectile;
 
     private bool hasBerserk;
 
@@ -62,10 +70,23 @@ public class AttackController : MonoBehaviour
         get { return attackPoint; }
     }
 
+    public Transform FirePointA
+    {
+        get { return firePointA; }
+        set { firePointA = value; }
+    }
+
+    public Transform FirePointB
+    {
+        get { return firePointB; }
+        set { firePointB = value; }
+    }
+
     private void Awake ()
     {
         anim = GetComponent<Animator>();
         status = GetComponent<StatusController>();
+        TryGetComponent(out equipment);
 
         anim.SetFloat("attackSpeed", attackSpeed);
     }
@@ -97,14 +118,12 @@ public class AttackController : MonoBehaviour
 
     private void HandleRangedAttack (object sender, EventArgs e)
     {
-        Debug.Log("Atirou algo");
         PerformRangedAttack();        
     }
     private void PerformAttack ()
     {
         if (!status.IsBlocking && canAttack)
         {
-           AudioManager.instance.PlaySound("PlayerAttack");
            anim.Play("attack");
            canAttack = false;
         }
@@ -121,8 +140,9 @@ public class AttackController : MonoBehaviour
 
     private void PerformRangedAttack ()
     {
-        if (!status.IsBlocking && canAttack)
+        if (!status.IsBlocking && canAttack && equipment.RangedWeapon != null)
         {
+            anim.Play("weapon_switch_to_ranged");
             canAttack = false;
         }
     }
@@ -136,6 +156,40 @@ public class AttackController : MonoBehaviour
     {
         HitscanAttack (true, "");
     }
+
+    public void FireRangedAttack ()
+    {
+        // Criar projétil
+        CreateProjectile();
+    }
+
+    // Usually used by the player
+    public void CreateProjectile ()
+    {
+        GameObject attackProjectile;
+        if (equipment != null)
+        {
+            Vector3 point = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.farClipPlane));
+            attackProjectile = Instantiate(equipment.RangedWeapon.projectile, firePointB.position, Quaternion.identity);
+            attackProjectile.GetComponent<ProjectileController>().SetTarget(point);
+            //Debug.DrawRay(firePointB.position, point, Color.magenta, 10f);
+        }
+        else
+        {
+            Debug.LogWarning("Ranged weapon not equipped!");
+        }
+    }
+    
+    // Usually used by enemies
+    public void CreateProjectile (Transform target)
+    {
+        GameObject attackProjectile;
+        Vector3 point = target.position - attackPoint.position;
+        attackProjectile = Instantiate(projectile, attackPoint.position, Quaternion.identity);
+        attackProjectile.GetComponent<ProjectileController>().SetTarget(point);
+        attackProjectile.GetComponent<ProjectileController>().FaceTowards(AttackPoint.position, point);
+    }
+
 
     public void HitscanAttack (bool isPowerAttack, string type)
     {
@@ -187,6 +241,7 @@ public class AttackController : MonoBehaviour
     {
         InputHandler.instance.OnAttackUnleashed -= HandleAttack;
         InputHandler.instance.OnPowerAttackUnleashed -= HandlePowerAttack;
+        InputHandler.instance.OnRangedAttackUnleashed -= HandleRangedAttack;
     }
 
     private void OnDrawGizmosSelected ()

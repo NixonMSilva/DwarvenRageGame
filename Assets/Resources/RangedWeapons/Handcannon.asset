@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd6227873006cd46817d04e249abfcb, type: 3}
+  m_Name: Handcannon
+  m_EditorClassIdentifier: 
+  id: 1
+  itemName: Handcannon
+  worldMesh: {fileID: 8989324824668654689, guid: 683e6145aab4e984cac3c86380bda5f3, type: 3}
+  materialList:
+  - {fileID: 2100000, guid: e2a0fe0f40f92184c8c45c73d043ef52, type: 2}
+  scaleX: 0.35
+  scaleY: 0.35
+  scaleZ: 0.35
+  icon: {fileID: 0}
+  posX: 0.001494
+  posY: 0.000778
+  posZ: 0.000206
+  firePos1X: 0.518
+  firePos1Y: -0.275
+  firePos1Z: 0.748
+  firePos2X: 0.3942
+  firePos2Y: -0.1969
+  firePos2Z: 1.4269
+  damage: 25
+  criticalChance: 0.01
+  projectile: {fileID: 5421006502226161192, guid: 3d4347347d1b87441988cf7846aeb1de, type: 3}
+  animationSet: {fileID: 22100000, guid: a76f1dff97aef1148a13d0c0ff3c8145, type: 2}
