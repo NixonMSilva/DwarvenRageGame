@@ -18,6 +18,7 @@ public class UserInterfaceController : MonoBehaviour
 
     private GameObject weaponSlotParent;
     private GameObject itemSlotParent;
+    private GameObject rangedSlotParent;
 
     private GameObject healthBarFrame;
     public Slider healthBar;
@@ -34,6 +35,11 @@ public class UserInterfaceController : MonoBehaviour
     private GameObject weaponSlot;
     private Image weaponSlotIcon;
 
+    private GameObject rangedSlot;
+    private Image rangedSlotIcon;
+    private TextMeshProUGUI rangedKey;
+    private Slider rangedCooldownSlider;
+
     private GameObject deathScreen;
     //private CanvasGroup deathScreen;
 
@@ -45,9 +51,9 @@ public class UserInterfaceController : MonoBehaviour
     private GameObject goldFrame;
     private TextMeshProUGUI goldCount;
 
-    private string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
+    private readonly string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
 
-    private float[] inventoryXCoor = { 768f, 896f, 1024f, 1152f };
+    private readonly float[] inventoryXCoor = { 768f, 896f, 1024f, 1152f };
 
     [SerializeField] private GameObject weaponSlotPrefab;
     [SerializeField] private GameObject itemSlotPrefab;
@@ -93,9 +99,15 @@ public class UserInterfaceController : MonoBehaviour
 
         weaponSlotParent = GameObject.Find("WeaponSlots");
         itemSlotParent = GameObject.Find("ItemSlots");
+        rangedSlotParent = GameObject.Find("RangedSlots");
 
         weaponSlot = GameObject.Find("EquippedWeaponIcon");
         weaponSlotIcon = GameObject.Find("WeaponIcon").GetComponent<Image>();
+
+        rangedSlot = GameObject.Find("EquippedRangedIcon");
+        rangedSlotIcon = GameObject.Find("RangedIcon").GetComponent<Image>();
+        rangedKey = rangedSlot.GetComponentInChildren<TextMeshProUGUI>();
+        rangedCooldownSlider = rangedSlot.GetComponentInChildren<Slider>();
 
         goldFrame = GameObject.Find("GoldPanel");
         goldCount = GameObject.Find("GoldCount").GetComponent<TextMeshProUGUI>();
@@ -114,6 +126,8 @@ public class UserInterfaceController : MonoBehaviour
         HideTooltip();
         HidePauseMenu();
         HideDeathMenu();
+
+        SetRangedSlotKey();
 
         InputHandler.instance.OnEscapePressed += PauseMenu;
     }
@@ -175,6 +189,7 @@ public class UserInterfaceController : MonoBehaviour
     {
         HideWeaponSlots();
         HideItemSlots();
+        HideRangedSlot();
         HideArmorFrame();
         HideHealthBar();
         HideCharacterFrame();
@@ -184,22 +199,11 @@ public class UserInterfaceController : MonoBehaviour
     {
         ShowWeaponSlots();
         ShowItemSlots();
+        ShowRangedSlot();
         ShowArmorFrame();
         ShowHealthBar();
         ShowCharacterFrame();
     }
-
-    /*
-    public void CreateWeaponSlots (int count)
-    {
-        float startX = 600f, startY = 1000;
-
-        for (int i = 0; i < count; ++i)
-        {
-            AddWeaponSlot(inventoryXCoor[i], startY);
-            startX += 150f;
-        }
-    } */
 
     public void CreateItemSlots (int count)
     {
@@ -210,15 +214,6 @@ public class UserInterfaceController : MonoBehaviour
             AddItemSlot(inventoryXCoor[i], startY, i);
         }
     }
-
-    /*
-    public void AddWeaponSlot (float coorX, float coorY)
-    {
-        GameObject newSlot = Instantiate(weaponSlotPrefab, weaponSlotParent.transform);
-        RectTransform slotPosition = newSlot.GetComponent<RectTransform>();
-        slotPosition.position = new Vector3(coorX, coorY, 0f);
-        _weaponSlots.Add(newSlot);
-    } */
 
     public void AddItemSlot (float coorX, float coorY, int count)
     {
@@ -236,7 +231,6 @@ public class UserInterfaceController : MonoBehaviour
         _itemStackTexts.Add(stackText);
         _itemSprites.Add(sprite);
     }
-
 
     public void UpdateWeaponSlot (Sprite icon)
     {
@@ -298,9 +292,22 @@ public class UserInterfaceController : MonoBehaviour
         }
     }
 
+
+    public void UpdateRangedSlot (Sprite icon)
+    {
+        if (icon != null)
+        {
+            rangedSlotIcon.sprite = icon;
+            rangedSlotIcon.color = Color.white;
+            ShowRangedSlot();
+        }
+        
+    }
+
     public void ShowItemSlots ()
     {
-        itemSlotParent.SetActive(true);
+        if (rangedSlotIcon != null)
+            itemSlotParent.SetActive(true);
     }
 
     public void HideItemSlots ()
@@ -316,6 +323,27 @@ public class UserInterfaceController : MonoBehaviour
     public void HideWeaponSlots ()
     {
         weaponSlotParent.SetActive(false);
+    }
+
+    public void ShowRangedSlot ()
+    {
+        rangedSlotParent.SetActive(true);
+    }
+
+    public void HideRangedSlot()
+    {
+        rangedSlotParent.SetActive(false);
+    }
+
+    public void SetRangedSlotKey ()
+    {
+        string keyText = InputHandler.instance.GetRangedKey().ToString();
+        rangedKey.text = "[" + keyText + "]";
+    }
+
+    public void UpdateRangedCooldownSlider (float value)
+    {
+        rangedCooldownSlider.value = value;
     }
 
     public void ShowBerserkIcon ()
@@ -451,13 +479,13 @@ public class UserInterfaceController : MonoBehaviour
     public void HideDeathMenu ()
     {
         //deathScreen.alpha = 0f;
-        deathScreen.gameObject.SetActive(false);
+        deathScreen.SetActive(false);
     }
 
     public void ShowDeathMenu ()
     {
         CanvasGroup deathMenuCanvas = deathScreen.GetComponent<CanvasGroup>();
-        deathScreen.gameObject.SetActive(true);
+        deathScreen.SetActive(true);
         deathMenuCanvas.alpha = Mathf.Lerp(0f, 1f, 5f);
         Time.timeScale = 0f;
     }

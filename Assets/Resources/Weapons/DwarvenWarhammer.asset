@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DwarvenWarhammer
   m_EditorClassIdentifier: 
   id: 20
-  itemName: Dwarven Warhammer
+  itemName: "Brokkr\u2019s Justice"
   worldMesh: {fileID: -3292925553009838691, guid: c767656752e700e49808232e2fd2f296, type: 3}
   materialList:
   - {fileID: 2100000, guid: 61f501b6255678a4884ed7a5937adb20, type: 2}
@@ -25,5 +25,22 @@ MonoBehaviour:
   posY: 0.00052
   posZ: 0.00003
   damage: 40
+  damageType: 0
   criticalChance: 0.01
   isTwoHanded: 0
+  protections:
+  - type: 0
+    resistance: 0.1
+  - type: 1
+    resistance: 0.1
+  - type: 2
+    resistance: 0.1
+  - type: 3
+    resistance: 0.1
+  - type: 4
+    resistance: 0.1
+  - type: 5
+    resistance: 0.1
+  - type: 6
+    resistance: 0.1
+  effectType: 2

@@ -11,6 +11,8 @@ public class ProjectileController : MonoBehaviour
 
     [SerializeField] private float damageValue;
 
+    [SerializeField] private DamageType damageType = DamageType.ranged;
+
     private Vector3 target;
 
     private Rigidbody rigidBody;
@@ -29,7 +31,7 @@ public class ProjectileController : MonoBehaviour
     private void Update ()
     {
         // Atualizar a velocidade conforme a direção e a velocidade padrão
-        rigidBody.MovePosition(transform.position + target * flightSpeed * Time.deltaTime);
+        //rigidBody.MovePosition(transform.position + target * flightSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter (Collider other)
@@ -42,7 +44,7 @@ public class ProjectileController : MonoBehaviour
             IDamageable target;
             if (other.gameObject.TryGetComponent<IDamageable>(out target))
             {
-                target.TakeDamage(damageValue);
+                target.TakeDamage(damageValue, damageType);
             }
             Destroy(gameObject);
         }
@@ -52,6 +54,7 @@ public class ProjectileController : MonoBehaviour
     {
         target = newTarget.normalized;
         transform.LookAt(target);
+        rigidBody.velocity = target * flightSpeed;
     }
 
     public void FaceTowards (Vector3 origin, Vector3 newTarget)

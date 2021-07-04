@@ -21,9 +21,9 @@ public class SwitchToRangedBehaviour : StateMachineBehaviour
     override public void OnStateExit (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         PlayerEquipment equipment = animator.gameObject.GetComponent<PlayerEquipment>();
-        animator.runtimeAnimatorController = equipment.RangedWeapon.animationSet;
+        animator.runtimeAnimatorController = equipment.PlayerRanged.animationSet;
 
-        equipment.ChangeWeaponGraphics(equipment.RangedWeapon);
+        equipment.ChangeWeaponGraphics(equipment.PlayerRanged);
         //equipment.ChangeWeaponGraphics(equipment.RangedWeapon);
     }
 

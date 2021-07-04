@@ -3325,7 +3325,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8719726188439057391}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 108.5, y: -4.11611, z: 9.4}
   m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_Children:
@@ -3417,6 +3417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 1798720329873235137}
+  firePointA: {fileID: 0}
+  firePointB: {fileID: 0}
   attackRange: 2
   attackSpeed: 1
   damageableLayer:
@@ -3424,6 +3426,8 @@ MonoBehaviour:
     m_Bits: 128
   attackDamage: 25
   currentAttackDamage: 0
+  equipment: {fileID: 0}
+  projectile: {fileID: 4471353545854071841, guid: bbc73c16e1cd9ea49951c22ad539c164, type: 3}
   canAttack: 1
 --- !u!114 &5628780702930167676
 MonoBehaviour:
@@ -3442,6 +3446,7 @@ MonoBehaviour:
   maxArmor: 100
   armor: 0
   isBlocking: 0
+  resistanceSheet: {fileID: 11400000, guid: 4151573f6f046cc46a8d7a278a62b6e0, type: 2}
   painThreshold: 0.25
 --- !u!114 &5628780702930167677
 MonoBehaviour:
@@ -3491,7 +3496,6 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   rotationSpeed: 10
-  projectile: {fileID: 4471353545854071841, guid: bbc73c16e1cd9ea49951c22ad539c164, type: 3}
 --- !u!1 &8774240950928196769
 GameObject:
   m_ObjectHideFlags: 0

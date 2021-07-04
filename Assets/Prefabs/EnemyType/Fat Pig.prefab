@@ -2433,7 +2433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcfbeebfe97d63448bd26a9b306b513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: {fileID: 11400000, guid: 0017ed034e7814d44934cc16f4fde7e5, type: 2}
+  enemyType: {fileID: 11400000, guid: 4b288a6880152f24fba4b1450e8b2c7c, type: 2}
   _dropItem: []
   _dropChance: []
   useFromDatabase: 0
@@ -2454,6 +2454,7 @@ MonoBehaviour:
   maxArmor: 100
   armor: 0
   isBlocking: 0
+  resistanceSheet: {fileID: 11400000, guid: 4151573f6f046cc46a8d7a278a62b6e0, type: 2}
   painThreshold: 0.25
 --- !u!114 &4408166959182546903
 MonoBehaviour:
@@ -2468,6 +2469,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 3514077344662928077}
+  firePointA: {fileID: 0}
+  firePointB: {fileID: 0}
   attackRange: 2
   attackSpeed: 5
   damageableLayer:
@@ -2475,6 +2478,8 @@ MonoBehaviour:
     m_Bits: 128
   attackDamage: 25
   currentAttackDamage: 0
+  equipment: {fileID: 0}
+  projectile: {fileID: 0}
   canAttack: 1
 --- !u!95 &3514077344831630640
 Animator:

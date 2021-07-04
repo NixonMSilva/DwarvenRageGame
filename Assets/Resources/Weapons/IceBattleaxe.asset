@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IceBattleaxe
   m_EditorClassIdentifier: 
   id: 21
-  itemName: Ice Battleaxe
+  itemName: Frozen Skull Battleaxe
   worldMesh: {fileID: -5538598741637245090, guid: b4556f68fbb80e4489dd5898a6ce41b6, type: 3}
   materialList:
   - {fileID: 2100000, guid: 11e088ff88d43a44680f5d38b9eafc9d, type: 2}
@@ -28,4 +28,22 @@ MonoBehaviour:
   posY: 0.000778
   posZ: 0.000206
   damage: 25
+  damageType: 0
+  criticalChance: 0.01
   isTwoHanded: 1
+  protections:
+  - type: 0
+    resistance: 0.1
+  - type: 1
+    resistance: 0.1
+  - type: 2
+    resistance: 0.1
+  - type: 3
+    resistance: 0.1
+  - type: 4
+    resistance: 0.1
+  - type: 5
+    resistance: 0.1
+  - type: 6
+    resistance: 0.1
+  effectType: 3
