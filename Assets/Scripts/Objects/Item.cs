@@ -15,4 +15,7 @@ public class Item : ScriptableObject
 
     public Sprite icon;
 
+    // Shop system
+    public float price = 0f;
+
 }

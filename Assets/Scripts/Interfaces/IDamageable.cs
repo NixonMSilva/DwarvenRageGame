@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IDamageable
-{
-    void TakeDamage (float value);
+{ 
+    void TakeDamage (float value, DamageType type);
 
-    void TakeElementalDamage (float value, string type);
+    void PlayImpactSound ();
 }

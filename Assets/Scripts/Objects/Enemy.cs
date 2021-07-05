@@ -2,16 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [CreateAssetMenu(fileName = "New Enemy", menuName = "Datasets/Enemy")]
 public class Enemy : ScriptableObject
 {
-    public string enemyName;
-
     public float maxHealth;
 
     public float attackDamage;
 
-    public List<string> dropList;
+    public DropSheet[] drops;
 
-    public List<float> dropChance;
+    public int goldDrop;
+    public int goldDropVariance;
+
+    public DamageType damageType;
+
+    public string soundIdle;
+    public string soundAttack;
+    public string soundDamage;
+    public string soundDeath;
+    public string impactType;
 }

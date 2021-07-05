@@ -12,7 +12,31 @@ public class Weapon : Item
 
     // Combat data
     public float damage;
+    public DamageType damageType = DamageType.physical;
     public float criticalChance = 0.01f;
     public bool isTwoHanded;
 
+    public DamageSheet[] protections;
+
+    public WeaponEffectType effectType = WeaponEffectType.defaultEffect;
+
+    public float AttackEffect (StatusController attacker, IDamageable target)
+    {
+        return WeaponEffectProcessor.ProcessWeaponEffectOnDamage(effectType, attacker, target);
+    }
+
+    public void EquipEffect (StatusController user)
+    {
+        WeaponEffectProcessor.ProcessWeaponEffectOnEquip(effectType, user);
+    }
+
+    public void UnequipEffect (StatusController user)
+    {
+        WeaponEffectProcessor.ProcessWeaponEffectOnUnequip(effectType, user);
+    }
+
+    public void HealthChangeEffect (StatusController user)
+    {
+        WeaponEffectProcessor.ProcessWeaponEffectOnHealthChange(effectType, user);
+    }
 }
