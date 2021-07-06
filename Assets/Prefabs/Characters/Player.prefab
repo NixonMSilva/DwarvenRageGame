@@ -126,7 +126,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 503
+    m_Bits: 1015
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -295,6 +295,7 @@ MonoBehaviour:
   animationSet1H: {fileID: 22100000, guid: 5828a989bb11cc84b8d3197d31d064d3, type: 2}
   animationSet2H: {fileID: 22100000, guid: 2a8bc52df214aa249a5e2926ef8ce00d, type: 2}
   isTwoHanded: 0
+  hasShield: 0
   baseDamageReduction: 0.15
 --- !u!114 &5072104305726538638
 MonoBehaviour:
@@ -372,6 +373,7 @@ MonoBehaviour:
   armor: 0
   isBlocking: 0
   resistanceSheet: {fileID: 11400000, guid: be1ff71b032fcb341a8b34e6a4c5d68b, type: 2}
+  goldDropRate: 1
 --- !u!95 &5072104305726538643
 Animator:
   serializedVersion: 3

@@ -188,6 +188,11 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(transform.position);
     }
 
+    public void StopForStagger ()
+    {
+        agent.SetDestination(transform.position);
+    }
+
     protected void LookAtPlayer ()
     {
         Vector3 lookPosition = player.transform.position - transform.position;

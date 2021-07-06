@@ -144,6 +144,7 @@ public class AttackController : MonoBehaviour
     {
         PerformRangedAttack();        
     }
+
     private void PerformAttack ()
     {
         if (!status.IsBlocking && canAttack)
@@ -151,6 +152,7 @@ public class AttackController : MonoBehaviour
            anim.Play("attack");
            canAttack = false;
         }
+        PlayAttackSound();
     }
 
     private void PerformPowerAttack ()
@@ -159,6 +161,22 @@ public class AttackController : MonoBehaviour
         {
             anim.Play("power_attack");
             canAttack = false;
+        }
+        PlayAttackSound();
+    }
+
+    private void PlayAttackSound ()
+    {
+        if (isPlayer)
+        {
+            if (equipment.PlayerWeapon.isTwoHanded)
+            {
+                AudioManager.instance.PlaySound("weapon_swing_heavy");
+            }
+            else
+            {
+                AudioManager.instance.PlaySound("weapon_swing_light");
+            }
         }
     }
 
@@ -215,7 +233,10 @@ public class AttackController : MonoBehaviour
         {
             Vector3 point = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.farClipPlane));
             attackProjectile = Instantiate(equipment.PlayerRanged.projectile, firePointB.position, Quaternion.identity);
-            attackProjectile.GetComponent<ProjectileController>().SetTarget(point - firePointB.position);
+            ProjectileController attackProjectileData = attackProjectile.GetComponent<ProjectileController>();
+            attackProjectileData.SetCaster(gameObject);
+            attackProjectileData.SetTarget(point - firePointB.position);
+            attackProjectileData.FaceTowards(AttackPoint.position, point);
             Debug.DrawLine(firePointB.position, point, Color.green, 10f);
             //Debug.DrawRay(firePointB.position, point, Color.magenta, 10f);
         }
@@ -231,8 +252,10 @@ public class AttackController : MonoBehaviour
         GameObject attackProjectile;
         Vector3 point = target.position - attackPoint.position;
         attackProjectile = Instantiate(projectile, attackPoint.position, Quaternion.identity);
-        attackProjectile.GetComponent<ProjectileController>().SetTarget(point);
-        attackProjectile.GetComponent<ProjectileController>().FaceTowards(AttackPoint.position, point);
+        ProjectileController attackProjectileData = attackProjectile.GetComponent<ProjectileController>();
+        attackProjectileData.SetCaster(gameObject);
+        attackProjectileData.SetTarget(point);
+        attackProjectileData.FaceTowards(AttackPoint.position, point);
     }
 
     public void RegisterAttack (float damage)
@@ -269,7 +292,18 @@ public class AttackController : MonoBehaviour
                     damagedObj.TakeDamage(damage * damageModifier, equipment.PlayerWeapon.damageType);
                 }
                 else
-                    damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType);
+                {
+                    // For enemies
+                    Effect attackEffect = GetComponent<EnemyController>().Type.damageEffect;
+                    if (attackEffect != null)
+                    {
+                        damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType, attackEffect);
+                    }
+                    else
+                    {
+                        damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType);
+                    }
+                }
 
                 damagedObj.PlayImpactSound();
             }
