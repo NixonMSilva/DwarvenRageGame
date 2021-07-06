@@ -81,12 +81,15 @@ public class Inventory : MonoBehaviour
 
             if (_itemSlotsStack[index] >= maxStack)
             {
-                Debug.Log(_itemSlots.Count + 1 + " | " + itemLimit);
                 if (_itemSlots.Count +  1 <= itemLimit)
                 {
                     // Add as a new stack if you can
                     _itemSlots.Add(item);
                     _itemSlotsStack.Add(1);
+                }
+                else
+                {
+                    return false;
                 }
             }
             else
@@ -108,7 +111,6 @@ public class Inventory : MonoBehaviour
             {
                 return false;
             }
-            
         }
         //_itemSlots.Add(item);
         UpdateItemSlots();
@@ -192,10 +194,16 @@ public class Inventory : MonoBehaviour
 
     private void UseItemAtSlot (int slot)
     {
+        if (slot > _itemSlots.Count)
+            return;
+
         //_itemSlots[slot].itemEffect.Use();
         _itemSlots[slot].Use(playerStatus);
+
+        SubtractItemFromSlot(slot);
         //_itemSlots[slot].itemEffect.Use(playerStatus);
 
+        /*
         if (_itemSlotsStack[slot] == 1)
         {
             // If it's the last item at the stack
@@ -209,10 +217,30 @@ public class Inventory : MonoBehaviour
         }
 
         // Update view
+        UpdateItemSlots(); */
+    }
+
+    public void SubtractItemFromSlot (int slot)
+    {
+        if (slot > _itemSlots.Count)
+            return;
+
+        if (_itemSlotsStack[slot] == 1)
+        {
+            // If it's the last item at the stack
+            _itemSlotsStack[slot] -= 1;
+            RemoveItemAtSlot(slot);
+        }
+        else
+        {
+            // If it isn't
+            _itemSlotsStack[slot] -= 1;
+        }
+
         UpdateItemSlots();
     }
 
-    private Weapon RemoveWeaponAtSlot (int slot)
+    public Weapon RemoveWeaponAtSlot (int slot)
     {
         Weapon weaponBeingRemoved = _weaponSlots[slot];
         _weaponSlots.RemoveAt(slot);

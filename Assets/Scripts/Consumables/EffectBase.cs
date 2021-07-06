@@ -474,7 +474,7 @@ public class DraconicEffect : WeaponEffect
     {
         PlayerStatus player = user as PlayerStatus;
         // Draconic shield has ID 13
-        if (player.Equipment.PlayerShield.id == 13)
+        if (player.Equipment.PlayerShield != null && player.Equipment.PlayerShield.id == 13)
         {
             player.Equipment.PlayerWeapon.damageType = DamageType.dragonKiller;
         }
