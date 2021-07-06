@@ -78,7 +78,8 @@ public class EnemyStatus : StatusController
 
             PlayDamageSound();
 
-            if (Random.Range(0f, 1f) >= painThreshold)
+            float diceRoll = Random.Range(0f, 1f);
+            if (diceRoll <= painThreshold)
             {
                 PlayDamageAnimation();
             }

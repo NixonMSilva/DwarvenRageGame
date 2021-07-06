@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour
 
     protected AttackController attack;
 
-    private EnemyStatus status;
+    protected EnemyStatus status;
 
     public bool isAttacking = false;
 
@@ -53,7 +53,7 @@ public class EnemyAI : MonoBehaviour
         status = GetComponent<EnemyStatus>();
     }
 
-    private void Update()
+    protected void Update()
     {
         // If the enemy is not dying, the perform AI routines
         if (!status.IsDying && !isAttacking)
@@ -88,7 +88,7 @@ public class EnemyAI : MonoBehaviour
             agent.SetDestination(transform.position);
         }
 
-        if (isAttacking)
+        if (isAttacking && !status.IsDying)
         {
             LookAtPlayer();
         }

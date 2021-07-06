@@ -26,8 +26,8 @@ public class EnemyController : MonoBehaviour
         enemyStatus             = GetComponent<EnemyStatus>();
         enemyAttack             = GetComponent<AttackController>();
 
-        enemyStatus.Health      = enemyType.maxHealth;
         enemyStatus.MaxHealth   = enemyType.maxHealth;
+        enemyStatus.Health      = enemyType.maxHealth;
 
         if (useFromDatabase)
         {
