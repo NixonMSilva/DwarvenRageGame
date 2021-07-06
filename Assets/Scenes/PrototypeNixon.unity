@@ -10110,6 +10110,14 @@ PrefabInstance:
       propertyPath: OnDeathExtraEffect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7961995123745054964, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961995123745054964, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -34.87
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55bc7fb3aedc94349a39a15f8b4de672, type: 3}
 --- !u!1001 &4286996103235246477
@@ -10867,11 +10875,11 @@ PrefabInstance:
     - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: _itemSlots.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: a5c7ff9f6b0820e43b42f803cdabf63d, type: 2}
+      objectReference: {fileID: 11400000, guid: bce080d972aea954f9d60399d172e7a9, type: 2}
     - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: _itemSlots.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: a5c7ff9f6b0820e43b42f803cdabf63d, type: 2}
+      objectReference: {fileID: 11400000, guid: fc883c8dd3a574341b2ec1b724073995, type: 2}
     - target: {fileID: 5972964833955649106, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: _itemSlots.Array.data[2]
       value: 

@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-
 
 public class StatusController : MonoBehaviour, IDamageable
 {
@@ -29,6 +29,9 @@ public class StatusController : MonoBehaviour, IDamageable
     [SerializeField] protected Resistance resistanceSheet;
 
     protected Dictionary<DamageType, float> _resistances;
+
+    //[SerializeField] private List<DamageType> _activeDOTs;
+    [SerializeField] private List<DOTController> _activeDOTs;
 
     public AttackController Attack 
     { 
@@ -182,6 +185,22 @@ public class StatusController : MonoBehaviour, IDamageable
         DeduceHealth(newValue);
     }
 
+    public void TakeDamage (float value, DamageType type, Effect effect)
+    {
+        TakeDamage(value, type);
+
+        for (int i = 0; i < _activeDOTs.Count; ++i)
+        {
+            if (_activeDOTs[i].Type == effect.dotDamageType)
+            {
+                _activeDOTs[i].ResetTimer();
+                return;
+            }
+        }
+
+        EffectProcessor.ProcessEffect(effect, this);
+    }
+
     public void WearStatus (EffectBase effect, float duration, Action onEnd)
     {
         ActionOnTimer timeout = gameObject.AddComponent<ActionOnTimer>();
@@ -205,6 +224,24 @@ public class StatusController : MonoBehaviour, IDamageable
         {
             effect.NormalizeValues(this, originalValue);
             Destroy(timeout);
+        });
+    }
+
+    public void DamageOverTime (float magnitude, DamageType type, float duration, float tickTime)
+    {
+        DOTController dot = gameObject.AddComponent<DOTController>();
+        _activeDOTs.Add(dot);
+        dot.SetTimer(type, duration, tickTime, () =>
+        {
+            // On end
+            //_activeDOTs.Remove(type);
+            _activeDOTs.Remove(dot);
+            Destroy(dot);
+        },
+        () =>
+        {
+            // On tick
+            TakeDamage(magnitude, type);
         });
     }
 

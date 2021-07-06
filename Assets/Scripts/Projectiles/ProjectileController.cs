@@ -12,6 +12,7 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private float damageValue;
 
     [SerializeField] private DamageType damageType = DamageType.ranged;
+    [SerializeField] private Effect effect = null;
 
     private GameObject caster;
 
@@ -41,7 +42,14 @@ public class ProjectileController : MonoBehaviour
             IDamageable target;
             if (other.gameObject.TryGetComponent<IDamageable>(out target))
             {
-                target.TakeDamage(damageValue, damageType);
+                if (effect != null)
+                {
+                    target.TakeDamage(damageValue, damageType, effect);
+                }
+                else
+                {
+                    target.TakeDamage(damageValue, damageType);
+                }
             }
             Destroy(gameObject);
         }

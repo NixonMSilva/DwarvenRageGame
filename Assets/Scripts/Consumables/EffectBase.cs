@@ -11,6 +11,9 @@ public enum EffectType
     poisonResistance,
     addMaxHealth,
     addMaxArmor,
+    poison,
+    burning,
+    none
 }
 
 public enum WeaponEffectType
@@ -201,6 +204,50 @@ public class AddMaxArmor : EffectBase
     {
 
     }
+
+    public override void NormalizeValues (StatusController target, float value) { }
+}
+
+public class Poison : EffectBase
+{
+    public Poison () { }
+
+    public override EffectType Type => EffectType.poison;
+
+    public override void ApplyEffect (StatusController target, Effect data)
+    {
+        target.DamageOverTime(data.magnitude, DamageType.poison, data.duration, data.tick);
+    }
+
+    public override void StatusEnd (StatusController target) { }
+
+    public override void NormalizeValues (StatusController target, float value) { }
+}
+
+public class Burning : EffectBase
+{
+    public Burning () { }
+
+    public override EffectType Type => EffectType.burning;
+
+    public override void ApplyEffect (StatusController target, Effect data)
+    {
+        target.DamageOverTime(data.magnitude, DamageType.fire, data.duration, data.tick);
+    }
+
+    public override void StatusEnd (StatusController target) { }
+
+    public override void NormalizeValues (StatusController target, float value) { }
+}
+
+public class None : EffectBase
+{
+    public None () { }
+
+    public override EffectType Type => EffectType.none;
+    public override void ApplyEffect (StatusController target, Effect data) { }
+
+    public override void StatusEnd (StatusController target) { }
 
     public override void NormalizeValues (StatusController target, float value) { }
 }

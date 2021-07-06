@@ -144,6 +144,7 @@ public class AttackController : MonoBehaviour
     {
         PerformRangedAttack();        
     }
+
     private void PerformAttack ()
     {
         if (!status.IsBlocking && canAttack)
@@ -151,6 +152,7 @@ public class AttackController : MonoBehaviour
            anim.Play("attack");
            canAttack = false;
         }
+        PlayAttackSound();
     }
 
     private void PerformPowerAttack ()
@@ -159,6 +161,22 @@ public class AttackController : MonoBehaviour
         {
             anim.Play("power_attack");
             canAttack = false;
+        }
+        PlayAttackSound();
+    }
+
+    private void PlayAttackSound ()
+    {
+        if (isPlayer)
+        {
+            if (equipment.PlayerWeapon.isTwoHanded)
+            {
+                AudioManager.instance.PlaySound("weapon_swing_heavy");
+            }
+            else
+            {
+                AudioManager.instance.PlaySound("weapon_swing_light");
+            }
         }
     }
 
@@ -274,7 +292,18 @@ public class AttackController : MonoBehaviour
                     damagedObj.TakeDamage(damage * damageModifier, equipment.PlayerWeapon.damageType);
                 }
                 else
-                    damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType);
+                {
+                    // For enemies
+                    Effect attackEffect = GetComponent<EnemyController>().Type.damageEffect;
+                    if (attackEffect != null)
+                    {
+                        damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType, attackEffect);
+                    }
+                    else
+                    {
+                        damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType);
+                    }
+                }
 
                 damagedObj.PlayImpactSound();
             }

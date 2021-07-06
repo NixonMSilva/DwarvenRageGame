@@ -16,6 +16,7 @@ public class Enemy : ScriptableObject
     public int goldDropVariance;
 
     public DamageType damageType;
+    public Effect damageEffect;
 
     public string soundIdle;
     public string soundAttack;
