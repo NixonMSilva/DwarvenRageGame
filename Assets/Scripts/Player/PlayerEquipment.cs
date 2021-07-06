@@ -11,7 +11,7 @@ public class PlayerEquipment : MonoBehaviour
 
     [SerializeField] private GameObject weaponHUDObject;
     [SerializeField] private GameObject shieldHUDObject;
-    private int gold = 0;
+    [SerializeField] private int gold = 0;
 
     private Animator anim;
 

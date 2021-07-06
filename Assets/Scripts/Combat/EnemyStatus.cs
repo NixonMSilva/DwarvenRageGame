@@ -7,9 +7,14 @@ public class EnemyStatus : StatusController
 {
     public event System.Action<EnemyStatus> OnDeath;
 
+    public event System.Action OnDeathEffect;
+
     private NavMeshAgent agent;
 
     private EnemyController enemy;
+    private EnemyAI intelligence;
+
+    private PlayerStatus player;
 
     [SerializeField] private float painThreshold = 0.25f;    
 
@@ -24,6 +29,11 @@ public class EnemyStatus : StatusController
         get { return enemy; }
     }
 
+    public PlayerStatus Player
+    {
+        get { return player; }
+    }
+
     private void Awake ()
     {
         Health = maxHealth;
@@ -34,6 +44,9 @@ public class EnemyStatus : StatusController
         attack = GetComponent<AttackController>();
         animator = GetComponent<Animator>();
         enemy = GetComponent<EnemyController>();
+        intelligence = GetComponent<EnemyAI>();
+
+        player = GameObject.Find("Player").GetComponent<PlayerStatus>();
     }
 
     public override void Die ()
@@ -49,6 +62,8 @@ public class EnemyStatus : StatusController
     public void HandleDeath ()
     {
         OnDeath?.Invoke(this);
+        // Handles the death for different types of enemies
+        OnDeathEffect?.Invoke();
     }
 
     public override void TakeDamage (float value, DamageType type)
@@ -82,10 +97,11 @@ public class EnemyStatus : StatusController
 
     private new void PlayDamageSound ()
     {
-        float verify = UnityEngine.Random.Range(0f, 1f);
+        float verify = Random.Range(0f, 1f);
         if (verify <= 0.7f)
         {
             AudioManager.instance.PlaySoundRandom(enemy.Type.soundDamage);
+            intelligence.StopForStagger();
         }
     }
 

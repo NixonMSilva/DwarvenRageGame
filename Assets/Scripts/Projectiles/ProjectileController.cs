@@ -12,10 +12,13 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private float damageValue;
 
     [SerializeField] private DamageType damageType = DamageType.ranged;
+    [SerializeField] private Effect effect = null;
+
+    private GameObject caster;
 
     private Vector3 target;
 
-    private Rigidbody rigidBody;
+    protected Rigidbody rigidBody;
 
     private void Awake ()
     {
@@ -28,26 +31,33 @@ public class ProjectileController : MonoBehaviour
         Destroy(gameObject, 10f);
     }
 
-    private void Update ()
-    {
-        // Atualizar a velocidade conforme a direção e a velocidade padrão
-        //rigidBody.MovePosition(transform.position + target * flightSpeed * Time.deltaTime);
-    }
-
     private void OnTriggerEnter (Collider other)
     {
         int layerId = other.gameObject.layer;
         string layerName = LayerMask.LayerToName(layerId);
-        // Realizar as colisões
-        if (_canCollideWith.Contains(layerName))
+        
+        // Collide if it's on the collidable layer or it isn't the caster;
+        if (_canCollideWith.Contains(layerName) && !other.gameObject.Equals(caster))
         {
             IDamageable target;
             if (other.gameObject.TryGetComponent<IDamageable>(out target))
             {
-                target.TakeDamage(damageValue, damageType);
+                if (effect != null)
+                {
+                    target.TakeDamage(damageValue, damageType, effect);
+                }
+                else
+                {
+                    target.TakeDamage(damageValue, damageType);
+                }
             }
             Destroy(gameObject);
         }
+    }
+
+    public void SetCaster (GameObject obj)
+    {
+        caster = obj;
     }
 
     public void SetTarget (Vector3 newTarget)
@@ -57,7 +67,7 @@ public class ProjectileController : MonoBehaviour
         rigidBody.velocity = target * flightSpeed;
     }
 
-    public void FaceTowards (Vector3 origin, Vector3 newTarget)
+    public virtual void FaceTowards (Vector3 origin, Vector3 newTarget)
     {
         transform.LookAt(newTarget - origin);
     }

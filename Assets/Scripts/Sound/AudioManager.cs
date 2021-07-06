@@ -37,6 +37,7 @@ public class AudioManager : MonoBehaviour
         AudioSource soundSource = gameObject.AddComponent<AudioSource>();
         ConfigureAudioSource(soundSource, s, false);
         soundSource.Play();
+        Destroy(soundSource, soundSource.clip.length + 0.1f);
         
     }
 

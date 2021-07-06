@@ -72,6 +72,14 @@ public class TooltipController : MonoBehaviour
         UserInterfaceController.instance.DrawTooltip(currentTooltipText);
     }
 
+    private void OnDisable ()
+    {
+        /*
+        HideTooltip();
+        canPressButton = false;
+        */
+    }
+
     public string GetTooltipBaseText () => defaultTooltipText;
 
     public string GetTooltipCurrentText () => currentTooltipText;

@@ -43,6 +43,8 @@ public class UserInterfaceController : MonoBehaviour
     private GameObject deathScreen;
     //private CanvasGroup deathScreen;
 
+    private GameObject shopScreen;
+
     private List<GameObject> _itemSlots;
 
     private List<Image> _itemSprites;
@@ -51,7 +53,6 @@ public class UserInterfaceController : MonoBehaviour
     private GameObject goldFrame;
     private TextMeshProUGUI goldCount;
     private GameObject goldAnimPoint;
-    
 
     private readonly string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
 
@@ -120,6 +121,8 @@ public class UserInterfaceController : MonoBehaviour
         deathScreen = GameObject.Find("DeathMenu");
         //deathScreen = GameObject.Find("DeathMenu").GetComponent<CanvasGroup>();
 
+        shopScreen = GameObject.Find("ShopMenu");
+
         _itemSlots = new List<GameObject>();
 
         _itemSprites = new List<Image>();
@@ -131,6 +134,7 @@ public class UserInterfaceController : MonoBehaviour
         HideTooltip();
         HidePauseMenu();
         HideDeathMenu();
+        HideShopMenu();
 
         SetRangedSlotKey();
 
@@ -151,7 +155,6 @@ public class UserInterfaceController : MonoBehaviour
     public void HideTooltip ()
     {
         tooltipText.gameObject.SetActive(false);
-    
     }
 
     public void PauseMenu (object sender, EventArgs args)
@@ -172,6 +175,29 @@ public class UserInterfaceController : MonoBehaviour
     {
         ShowDeathMenu();
         InputHandler.instance.LockCursor(false);
+    }
+
+    public void ShowShopMenu (GameObject seller)
+    {
+        shopScreen.SetActive(true);
+        shopScreen.GetComponent<ShopInterface>().ShowShopInterface(seller);
+        HidePlayerInterface();
+        ShowGoldFrame();
+        InputHandler.instance.LockCursor(false);
+    }
+
+    public void HideShopMenu ()
+    {
+        shopScreen.SetActive(false);
+        ShowPlayerInterface();
+        InputHandler.instance.LockCursor(true);
+    }
+
+    public void HideShopMenu (bool hasRanged)
+    {
+        HideShopMenu();
+        if (!hasRanged)
+            HideRangedSlot();
     }
 
     public void DrawPauseMenu ()
@@ -198,6 +224,7 @@ public class UserInterfaceController : MonoBehaviour
         HideArmorFrame();
         HideHealthBar();
         HideCharacterFrame();
+        HideGoldFrame();
     }
 
     public void ShowPlayerInterface ()
@@ -208,6 +235,7 @@ public class UserInterfaceController : MonoBehaviour
         ShowArmorFrame();
         ShowHealthBar();
         ShowCharacterFrame();
+        ShowGoldFrame();
     }
 
     public void CreateItemSlots (int count)
@@ -306,7 +334,6 @@ public class UserInterfaceController : MonoBehaviour
             rangedSlotIcon.color = Color.white;
             ShowRangedSlot();
         }
-        
     }
 
     public void ShowItemSlots ()
@@ -331,7 +358,7 @@ public class UserInterfaceController : MonoBehaviour
     }
 
     public void ShowRangedSlot ()
-    {
+    {        
         rangedSlotParent.SetActive(true);
     }
 
@@ -470,16 +497,30 @@ public class UserInterfaceController : MonoBehaviour
     {
         goldCount.text = value.ToString();
     }
-    
+
+    public void UpdateGoldCount (int value, int delta)
+    {
+        goldCount.text = value.ToString();
+        PlayGoldAnimation(delta);
+    }
+
     public void PlayGoldAnimation (int value)
     {
+        if (value > 0)
+            AudioManager.instance.PlaySound("gold_pickup");
+        else
+            AudioManager.instance.PlaySound("gold_sell");
+
         // Play animation
         GameObject goldAnimation = Instantiate(goldAnimPrefab, goldAnimPoint.transform);
         TextMeshProUGUI goldText = goldAnimation.GetComponent<TextMeshProUGUI>();
+
+        // Adds a plus sign if the value is positive
         if (value >= 0)
             goldText.text = "+" + value.ToString();
         else
-            goldText.text = "-" + value.ToString();
+            goldText.text = value.ToString();
+
         goldAnimation.GetComponent<Animator>().SetInteger("value", value);
     }
 

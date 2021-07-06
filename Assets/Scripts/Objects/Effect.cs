@@ -8,4 +8,7 @@ public class Effect : ScriptableObject
     public EffectType type;
     public float magnitude;
     public float duration;
+    public float tick;
+
+    public DamageType dotDamageType;
 }

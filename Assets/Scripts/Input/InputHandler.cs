@@ -206,6 +206,11 @@ public class InputHandler : MonoBehaviour
             }
 
         }
+        else
+        {
+            OnHorizontalPressed?.Invoke(0f);
+            OnVerticalPressed?.Invoke(0f);
+        }
 
         // Escape key
         if (Input.GetKeyDown(escapeKey))

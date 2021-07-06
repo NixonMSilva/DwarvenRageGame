@@ -16,16 +16,16 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
 
     public void OnInteraction ()
     {
-       Debug.Log(player.transform.position);
-       Debug.Log("Entrou na dungeon!");
+        //Debug.Log(player.transform.position);
+        //Debug.Log("Entrou na dungeon!");
 
-       Vector3 position;
+        Vector3 position;
         position.x = positionX;
         position.y = positionY;
         position.z = positionZ;
 
         player.transform.position = position;
 
-        Debug.Log(player.transform.position);
+        //Debug.Log(player.transform.position);
     }
 }
