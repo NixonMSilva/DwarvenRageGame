@@ -15,8 +15,9 @@ MonoBehaviour:
   id: 2
   itemName: Throwing Axe
   itemDescription: Placeholder
-  worldMesh: {fileID: 0}
-  materialList: []
+  worldMesh: {fileID: -2520970379604548150, guid: a9c7fe06575432b4398070ee656d8b25, type: 3}
+  materialList:
+  - {fileID: 2100000, guid: ae527eca4ff7e0144adaf2ceaf3a015d, type: 2}
   scaleX: 0
   scaleY: 0
   scaleZ: 0
@@ -25,15 +26,15 @@ MonoBehaviour:
   posX: 0.001494
   posY: 0.000778
   posZ: 0.000206
-  firePos1X: 0
-  firePos1Y: 0
-  firePos1Z: 0
-  firePos2X: 0
-  firePos2Y: 0
-  firePos2Z: 0
-  damage: 0
+  firePos1X: 0.518
+  firePos1Y: -0.275
+  firePos1Z: 0.748
+  firePos2X: 0.3942
+  firePos2Y: -0.1969
+  firePos2Z: 1.4269
+  damage: 25
   damageType: 1
   criticalChance: 0.01
-  cooldown: 10
-  projectile: {fileID: 0}
-  animationSet: {fileID: 0}
+  cooldown: 1
+  projectile: {fileID: 3675839792663047822, guid: bd07d48f5804b694caa33768740ac0e0, type: 3}
+  animationSet: {fileID: 22100000, guid: 210bf3e5addfe394c88183df38234fac, type: 2}

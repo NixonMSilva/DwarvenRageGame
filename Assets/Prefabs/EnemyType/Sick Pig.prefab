@@ -3427,8 +3427,9 @@ MonoBehaviour:
   attackDamage: 25
   currentAttackDamage: 0
   equipment: {fileID: 0}
-  projectile: {fileID: 4471353545854071841, guid: bbc73c16e1cd9ea49951c22ad539c164, type: 3}
+  projectile: {fileID: 4471353545854071841, guid: 3df1cd01600fa8c4892969c0038880a9, type: 3}
   canAttack: 1
+  canAttackRanged: 1
 --- !u!114 &5628780702930167676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3461,8 +3462,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 11400000, guid: 4b288a6880152f24fba4b1450e8b2c7c, type: 2}
-  _dropItem: []
-  _dropChance: []
+  OnDeathExtraEffect:
+    m_PersistentCalls:
+      m_Calls: []
   useFromDatabase: 0
 --- !u!114 &6746283881243530191
 MonoBehaviour:

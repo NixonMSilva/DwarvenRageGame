@@ -9980,10 +9980,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7688937870627358331, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.00018310547
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
 --- !u!1001 &1723578540683381182
@@ -10795,7 +10791,7 @@ PrefabInstance:
     - target: {fileID: 5072104305726538639, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: playerRanged
       value: 
-      objectReference: {fileID: 11400000, guid: c821ecdb319f5ec4f9f7f7e520728aa6, type: 2}
+      objectReference: {fileID: 11400000, guid: c1e4462c97d7a0946a5095bcdc8f4918, type: 2}
     - target: {fileID: 5072104305726538639, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: playerShield
       value: 
@@ -10808,6 +10804,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5072104305726538643, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 210bf3e5addfe394c88183df38234fac, type: 2}
     - target: {fileID: 5072104306430892850, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
       propertyPath: m_RootOrder
       value: 0

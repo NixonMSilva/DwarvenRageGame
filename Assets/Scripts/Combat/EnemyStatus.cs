@@ -12,6 +12,7 @@ public class EnemyStatus : StatusController
     private NavMeshAgent agent;
 
     private EnemyController enemy;
+    private EnemyAI intelligence;
 
     private PlayerStatus player;
 
@@ -43,6 +44,7 @@ public class EnemyStatus : StatusController
         attack = GetComponent<AttackController>();
         animator = GetComponent<Animator>();
         enemy = GetComponent<EnemyController>();
+        intelligence = GetComponent<EnemyAI>();
 
         player = GameObject.Find("Player").GetComponent<PlayerStatus>();
     }
@@ -95,10 +97,11 @@ public class EnemyStatus : StatusController
 
     private new void PlayDamageSound ()
     {
-        float verify = UnityEngine.Random.Range(0f, 1f);
+        float verify = Random.Range(0f, 1f);
         if (verify <= 0.7f)
         {
             AudioManager.instance.PlaySoundRandom(enemy.Type.soundDamage);
+            intelligence.StopForStagger();
         }
     }
 

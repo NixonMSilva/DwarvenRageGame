@@ -215,7 +215,10 @@ public class AttackController : MonoBehaviour
         {
             Vector3 point = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.farClipPlane));
             attackProjectile = Instantiate(equipment.PlayerRanged.projectile, firePointB.position, Quaternion.identity);
-            attackProjectile.GetComponent<ProjectileController>().SetTarget(point - firePointB.position);
+            ProjectileController attackProjectileData = attackProjectile.GetComponent<ProjectileController>();
+            attackProjectileData.SetCaster(gameObject);
+            attackProjectileData.SetTarget(point - firePointB.position);
+            attackProjectileData.FaceTowards(AttackPoint.position, point);
             Debug.DrawLine(firePointB.position, point, Color.green, 10f);
             //Debug.DrawRay(firePointB.position, point, Color.magenta, 10f);
         }
@@ -231,8 +234,10 @@ public class AttackController : MonoBehaviour
         GameObject attackProjectile;
         Vector3 point = target.position - attackPoint.position;
         attackProjectile = Instantiate(projectile, attackPoint.position, Quaternion.identity);
-        attackProjectile.GetComponent<ProjectileController>().SetTarget(point);
-        attackProjectile.GetComponent<ProjectileController>().FaceTowards(AttackPoint.position, point);
+        ProjectileController attackProjectileData = attackProjectile.GetComponent<ProjectileController>();
+        attackProjectileData.SetCaster(gameObject);
+        attackProjectileData.SetTarget(point);
+        attackProjectileData.FaceTowards(AttackPoint.position, point);
     }
 
     public void RegisterAttack (float damage)
