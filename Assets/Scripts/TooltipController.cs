@@ -38,6 +38,11 @@ public class TooltipController : MonoBehaviour
         }
     }
 
+    private void OnDisable() 
+    {
+        canPressButton = false;
+        HideTooltip();
+    }
     public void OnTriggerEnter (Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
