@@ -152,7 +152,6 @@ public class AttackController : MonoBehaviour
            anim.Play("attack");
            canAttack = false;
         }
-        PlayAttackSound();
     }
 
     private void PerformPowerAttack ()
@@ -162,7 +161,6 @@ public class AttackController : MonoBehaviour
             anim.Play("power_attack");
             canAttack = false;
         }
-        PlayAttackSound();
     }
 
     private void PlayAttackSound ()
@@ -206,7 +204,10 @@ public class AttackController : MonoBehaviour
     public void ConnectAttack ()
     {
         if (isPlayer)
+        {
             RegisterAttack(equipment.PlayerWeapon.damage);
+            PlayAttackSound();
+        }
         else
             RegisterAttack(Damage);
     }
@@ -214,7 +215,10 @@ public class AttackController : MonoBehaviour
     public void ConnectPowerAttack ()
     {
         if (isPlayer)
+        {
             RegisterAttack(equipment.PlayerWeapon.damage * 2f);
+            PlayAttackSound();
+        }
         else
             RegisterAttack(Damage * 2f);
     }

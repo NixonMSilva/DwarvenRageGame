@@ -30,8 +30,7 @@ public class StatusController : MonoBehaviour, IDamageable
 
     protected Dictionary<DamageType, float> _resistances;
 
-    //[SerializeField] private List<DamageType> _activeDOTs;
-    [SerializeField] private List<DOTController> _activeDOTs;
+    [SerializeField] protected List<DOTController> _activeDOTs;
 
     public AttackController Attack 
     { 

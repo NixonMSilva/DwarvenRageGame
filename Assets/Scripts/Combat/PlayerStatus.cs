@@ -182,10 +182,26 @@ public class PlayerStatus : StatusController
 
         UserInterfaceController.instance.ShowDamagePanel();
 
-        Debug.Log("Health reduced:" + newValue);
-
+        //Debug.Log("Health reduced:" + newValue);
         DeduceHealth(newValue);
     }
+
+    /*
+    public override void TakeDamage (float value, DamageType type, Effect effect)
+    {
+        TakeDamage(value, type);
+
+        for (int i = 0; i < _activeDOTs.Count; ++i)
+        {
+            if (_activeDOTs[i].Type == effect.dotDamageType)
+            {
+                _activeDOTs[i].ResetTimer();
+                return;
+            }
+        }
+
+        EffectProcessor.ProcessEffect(effect, this);
+    } */
 
     private void UpdateCharacterUI ()
     {

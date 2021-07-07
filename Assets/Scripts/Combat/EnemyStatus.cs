@@ -78,7 +78,8 @@ public class EnemyStatus : StatusController
 
             PlayDamageSound();
 
-            if (Random.Range(0f, 1f) >= painThreshold)
+            float diceRoll = Random.Range(0f, 1f);
+            if (diceRoll <= painThreshold)
             {
                 PlayDamageAnimation();
             }
@@ -100,18 +101,18 @@ public class EnemyStatus : StatusController
         float verify = Random.Range(0f, 1f);
         if (verify <= 0.7f)
         {
-            AudioManager.instance.PlaySoundRandom(enemy.Type.soundDamage);
+            AudioManager.instance.PlaySoundRandomAt(gameObject, enemy.Type.soundDamage);
             intelligence.StopForStagger();
         }
     }
 
     public override void PlayImpactSound ()
     {
-        AudioManager.instance.PlaySoundRandom(enemy.Type.impactType);
+        AudioManager.instance.PlaySoundRandomAt(gameObject, enemy.Type.impactType);
     }
 
     private void PlayDeathSound ()
     {
-        AudioManager.instance.PlaySoundRandom(enemy.Type.soundDeath);
+        AudioManager.instance.PlaySoundRandomAt(gameObject, enemy.Type.soundDeath);
     }
 }
