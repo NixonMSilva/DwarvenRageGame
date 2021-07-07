@@ -103,6 +103,11 @@ public class AttackController : MonoBehaviour
         }
     }
 
+    public LayerMask Damageables
+    {
+        get { return damageableLayer; }
+    }
+
     private void Awake ()
     {
         anim = GetComponent<Animator>();

@@ -3417,6 +3417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 1798720329873235137}
+  blood: {fileID: 0}
   firePointA: {fileID: 0}
   firePointB: {fileID: 0}
   attackRange: 2
@@ -3448,7 +3449,11 @@ MonoBehaviour:
   armor: 0
   isBlocking: 0
   resistanceSheet: {fileID: 11400000, guid: 4151573f6f046cc46a8d7a278a62b6e0, type: 2}
+  _activeDOTs: []
   painThreshold: 0.25
+  thisLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &5628780702930167677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3462,9 +3467,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 11400000, guid: 4b288a6880152f24fba4b1450e8b2c7c, type: 2}
-  OnDeathExtraEffect:
-    m_PersistentCalls:
-      m_Calls: []
+  deathExtraEffectPoint: {fileID: 0}
+  deathExtraEffectFX: {fileID: 0}
   useFromDatabase: 0
 --- !u!114 &6746283881243530191
 MonoBehaviour:

@@ -20,6 +20,7 @@ public class EnemyAI : MonoBehaviour
     protected EnemyStatus status;
 
     public bool isAttacking = false;
+    public bool isBeingStaggered = false;
 
     [SerializeField] private Transform feetPosition;
 
@@ -56,7 +57,7 @@ public class EnemyAI : MonoBehaviour
     protected void Update()
     {
         // If the enemy is not dying, the perform AI routines
-        if (!status.IsDying && !isAttacking)
+        if (!status.IsDying && !isAttacking && !isBeingStaggered)
         {
             // Update player speed in order to
             // decide which animator status
@@ -190,7 +191,7 @@ public class EnemyAI : MonoBehaviour
 
     public void StopForStagger ()
     {
-        agent.SetDestination(transform.position);
+        isBeingStaggered = true;
     }
 
     protected void LookAtPlayer ()

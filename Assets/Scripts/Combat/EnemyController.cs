@@ -12,7 +12,8 @@ public class EnemyController : MonoBehaviour
     private EnemyStatus enemyStatus;
     private AttackController enemyAttack;
 
-    [SerializeField] private UnityEvent<GameObject> OnDeathExtraEffect;
+    [SerializeField] private GameObject deathExtraEffectPoint;
+    [SerializeField] private GameObject deathExtraEffectFX;
 
     [SerializeField] private bool useFromDatabase = true;
 	
@@ -47,9 +48,6 @@ public class EnemyController : MonoBehaviour
 
         // Add gold
         GoldDrop();
-
-        // Extra effect
-        OnDeathExtraEffect.Invoke(gameObject);
     }
 
     public void SpawnLoot ()
@@ -76,5 +74,29 @@ public class EnemyController : MonoBehaviour
     private void OnDestroy ()
     {
         enemyStatus.OnDeathEffect -= DeathEffect;
+    }
+
+    public void DeathExtraEffect ()
+    {
+        Debug.Log("Here!");
+        // I give up, switch-case statements here are my way of doing this shit
+        switch (enemyType.enemyName)
+        {
+            case "Fat Pig":
+                GameObject blood = Instantiate(deathExtraEffectFX, deathExtraEffectPoint.transform.position, Quaternion.identity);
+                Collider[] hit = Physics.OverlapSphere(deathExtraEffectPoint.transform.position, 5f, enemyAttack.Damageables);
+                foreach  (Collider obj in hit)
+                {
+                    StatusController controller;
+                    if (obj.TryGetComponent<StatusController>(out controller))
+                    {
+                        controller.TakeDamage(100f, DamageType.physical);
+                    }
+                }
+                Destroy(blood, 5f);
+                break;
+            default:
+                break;
+        }
     }
 }

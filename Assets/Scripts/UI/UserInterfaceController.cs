@@ -54,8 +54,6 @@ public class UserInterfaceController : MonoBehaviour
     private TextMeshProUGUI goldCount;
     private GameObject goldAnimPoint;
 
-    private Image blackScreen;
-
     private readonly string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
 
     private readonly float[] inventoryXCoor = { 768f, 896f, 1024f, 1152f };
@@ -121,9 +119,6 @@ public class UserInterfaceController : MonoBehaviour
         goldAnimPoint = GameObject.Find("GoldAnimation");
 
         deathScreen = GameObject.Find("DeathMenu");
-        //deathScreen = GameObject.Find("DeathMenu").GetComponent<CanvasGroup>();
-
-        blackScreen = GameObject.Find("Black").GetComponent<Image>();
 
         shopScreen = GameObject.Find("ShopMenu");
 
@@ -307,16 +302,6 @@ public class UserInterfaceController : MonoBehaviour
 
         // Reset the icons of the slots on the right
         ResetInventoryIcons(i);
-
-        /*
-        // If there's nothing in these lists, reset the icons
-        if (_sprites.Count == 0 && _itemStacks.Count == 0)
-        {
-            for (int i = 0; i < _itemSlots.Count; ++i)
-            {
-                ResetInventoryIcons();
-            }
-        } */
     }
 
     public void ResetInventoryIcons (int index)
@@ -550,17 +535,6 @@ public class UserInterfaceController : MonoBehaviour
         deathScreen.SetActive(true);
         deathMenuCanvas.alpha = Mathf.Lerp(0f, 1f, 5f);
         Time.timeScale = 0f;
-    }
-
-    public void FadeInToBlack (float duration)
-    {
-        blackScreen.color = Color.Lerp(Color.clear, Color.black, duration);
-
-    }
-
-    public void FadeOutFromBlack (float duration)
-    {
-        blackScreen.color = Color.Lerp(Color.black, Color.clear, duration);
     }
 
     // 0 - Out | 1 - In

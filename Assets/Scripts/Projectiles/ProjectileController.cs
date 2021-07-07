@@ -14,7 +14,7 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private DamageType damageType = DamageType.ranged;
     [SerializeField] private Effect effect = null;
 
-    [SerializeField] private GameObject effectOnImpact;
+    [SerializeField] private bool bleedOnImpact;
 
     private GameObject caster;
 
@@ -47,11 +47,16 @@ public class ProjectileController : MonoBehaviour
                 if (effect != null)
                 {
                     target.TakeDamage(damageValue, damageType, effect);
-                    
                 }
                 else
                 {
                     target.TakeDamage(damageValue, damageType);
+                }
+
+                // Make the target bleed if possible
+                if (bleedOnImpact)
+                {
+                    target.SpawnBlood(transform.position);
                 }
             }
             Destroy(gameObject);

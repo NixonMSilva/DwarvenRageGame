@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a208062bf3005b418ad54e207588baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flightSpeed: 100
+  flightSpeed: 50
   _canCollideWith:
   - Ground
   - Wall
@@ -120,6 +120,7 @@ MonoBehaviour:
   damageValue: 25
   damageType: 0
   effect: {fileID: 0}
+  bleedOnImpact: 1
   rotationRate: 420
 --- !u!64 &4594336828762362819
 MeshCollider:

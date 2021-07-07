@@ -2532,9 +2532,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 11400000, guid: 7abeef6272ef7dd4883afde6f1e3f7d2, type: 2}
-  OnDeathExtraEffect:
-    m_PersistentCalls:
-      m_Calls: []
+  deathExtraEffectPoint: {fileID: 0}
+  deathExtraEffectFX: {fileID: 0}
   useFromDatabase: 0
 --- !u!136 &3611232125654592917
 CapsuleCollider:
@@ -2605,6 +2604,9 @@ MonoBehaviour:
   resistanceSheet: {fileID: 11400000, guid: 4151573f6f046cc46a8d7a278a62b6e0, type: 2}
   _activeDOTs: []
   painThreshold: 0.25
+  thisLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &4019368126752441825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2618,6 +2620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 156471358}
+  blood: {fileID: 0}
   firePointA: {fileID: 156471358}
   firePointB: {fileID: 156471358}
   attackRange: 1.5

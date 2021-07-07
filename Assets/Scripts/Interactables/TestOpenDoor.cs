@@ -9,8 +9,6 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
 
     [SerializeField] private Transform teleportLocation;
 
-    [SerializeField] private bool canTeleport = true;
-
     private void Awake() 
     {
         player = GameObject.Find("Player");
@@ -22,6 +20,7 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
         characterController = player.GetComponent<CharacterController>();
         characterController.enabled = false;
         player.transform.position = teleportLocation.position;
-        characterController.enabled = true;        
+        characterController.enabled = true;
+        AudioManager.instance.PlaySoundAt(gameObject, "door_open");
     }
 }
