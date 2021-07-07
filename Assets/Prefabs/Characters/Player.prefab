@@ -92,6 +92,7 @@ Transform:
   m_Children:
   - {fileID: 6038021342517156919}
   - {fileID: 4017718342687549338}
+  - {fileID: 5072104306581554441}
   m_Father: {fileID: 5072104306430892850}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -228,7 +229,6 @@ Transform:
   - {fileID: 5072104305790942900}
   - {fileID: 5072104305548094985}
   - {fileID: 5072104305588905007}
-  - {fileID: 5072104306581554441}
   - {fileID: 8479077023649074196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -292,6 +292,7 @@ MonoBehaviour:
   playerRanged: {fileID: 11400000, guid: c821ecdb319f5ec4f9f7f7e520728aa6, type: 2}
   weaponHUDObject: {fileID: 3397559423398610544}
   shieldHUDObject: {fileID: 1517412443460366691}
+  gold: 0
   animationSet1H: {fileID: 22100000, guid: 5828a989bb11cc84b8d3197d31d064d3, type: 2}
   animationSet2H: {fileID: 22100000, guid: 2a8bc52df214aa249a5e2926ef8ce00d, type: 2}
   isTwoHanded: 0
@@ -310,6 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 5072104306581554441}
+  blood: {fileID: 0}
   firePointA: {fileID: 918954894}
   firePointB: {fileID: 594245315}
   attackRange: 1.5
@@ -373,6 +375,7 @@ MonoBehaviour:
   armor: 0
   isBlocking: 0
   resistanceSheet: {fileID: 11400000, guid: be1ff71b032fcb341a8b34e6a4c5d68b, type: 2}
+  _activeDOTs: []
   goldDropRate: 1
 --- !u!95 &5072104305726538643
 Animator:
@@ -512,12 +515,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5072104306581554440}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.73}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.44, z: 1.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5072104306430892850}
-  m_RootOrder: 3
+  m_Father: {fileID: 5072104305548094985}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5688888452821942803
 GameObject:
@@ -623,7 +626,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5072104306430892850}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6071385659288533980
 PrefabInstance:

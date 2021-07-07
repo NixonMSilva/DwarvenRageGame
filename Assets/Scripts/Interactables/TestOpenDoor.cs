@@ -5,10 +5,10 @@ using UnityEngine;
 public class TestOpenDoor : MonoBehaviour, IInteractable
 {
     private GameObject player;
-    
-    [SerializeField] private float positionX;
-    [SerializeField] private float positionY;
-    [SerializeField] private float positionZ;
+    [SerializeField] private Transform teleportLocation;
+
+    [SerializeField] private bool canTeleport = true;
+
     private void Awake() 
     {
         player = GameObject.Find("Player");
@@ -16,16 +16,21 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
 
     public void OnInteraction ()
     {
-        //Debug.Log(player.transform.position);
-        //Debug.Log("Entrou na dungeon!");
-
-        Vector3 position;
-        position.x = positionX;
-        position.y = positionY;
-        position.z = positionZ;
-
-        player.transform.position = position;
-
-        //Debug.Log(player.transform.position);
+        if (canTeleport)
+        {
+            Debug.Log("Interacted!");
+            canTeleport = false;
+            ActionOnTimer teleportEvent = gameObject.AddComponent<ActionOnTimer>();
+            UserInterfaceController.instance.FadeInToBlack(0.5f);
+            teleportEvent.SetTimer(0.5f, () =>
+            {
+                UserInterfaceController.instance.FadeOutFromBlack(0.5f);
+                player.transform.position = teleportLocation.position;
+                canTeleport = true;
+                Destroy(teleportEvent);
+            });
+        }
+        
+        
     }
 }

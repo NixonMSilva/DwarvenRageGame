@@ -250,4 +250,8 @@ public class StatusController : MonoBehaviour, IDamageable
     {
         Debug.Log("Here!");
     }
+
+    public virtual void SpawnBlood (Vector3 position) { }
+
+    public virtual void SpawnBlood (Transform position) { }
 }

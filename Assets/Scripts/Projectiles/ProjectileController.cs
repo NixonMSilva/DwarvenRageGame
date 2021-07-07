@@ -14,6 +14,8 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private DamageType damageType = DamageType.ranged;
     [SerializeField] private Effect effect = null;
 
+    [SerializeField] private GameObject effectOnImpact;
+
     private GameObject caster;
 
     private Vector3 target;
@@ -45,6 +47,7 @@ public class ProjectileController : MonoBehaviour
                 if (effect != null)
                 {
                     target.TakeDamage(damageValue, damageType, effect);
+                    
                 }
                 else
                 {

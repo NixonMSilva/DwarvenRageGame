@@ -23,4 +23,7 @@ public class Enemy : ScriptableObject
     public string soundDamage;
     public string soundDeath;
     public string impactType;
+
+    public GameObject bloodParticle;
+    public Color bloodColor = Color.red;
 }

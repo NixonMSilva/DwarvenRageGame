@@ -54,6 +54,8 @@ public class UserInterfaceController : MonoBehaviour
     private TextMeshProUGUI goldCount;
     private GameObject goldAnimPoint;
 
+    private Image blackScreen;
+
     private readonly string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
 
     private readonly float[] inventoryXCoor = { 768f, 896f, 1024f, 1152f };
@@ -120,6 +122,8 @@ public class UserInterfaceController : MonoBehaviour
 
         deathScreen = GameObject.Find("DeathMenu");
         //deathScreen = GameObject.Find("DeathMenu").GetComponent<CanvasGroup>();
+
+        blackScreen = GameObject.Find("Black").GetComponent<Image>();
 
         shopScreen = GameObject.Find("ShopMenu");
 
@@ -546,6 +550,16 @@ public class UserInterfaceController : MonoBehaviour
         deathScreen.SetActive(true);
         deathMenuCanvas.alpha = Mathf.Lerp(0f, 1f, 5f);
         Time.timeScale = 0f;
+    }
+
+    public void FadeInToBlack (float duration)
+    {
+        Color.Lerp(Color.clear, Color.black, duration);        
+    }
+
+    public void FadeOutFromBlack (float duration)
+    {
+        Color.Lerp(Color.black, Color.clear, duration);
     }
 
     // 0 - Out | 1 - In
