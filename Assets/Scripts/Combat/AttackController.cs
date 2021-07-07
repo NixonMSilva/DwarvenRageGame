@@ -132,11 +132,6 @@ public class AttackController : MonoBehaviour
         anim.SetFloat("attackSpeed", attackSpeed);
     }
 
-    private void Update ()
-    {
-        //anim.SetFloat("attackSpeed", attackSpeed);
-    }
-
     private void HandleAttack (object sender, EventArgs e)
     {
         PerformAttack();

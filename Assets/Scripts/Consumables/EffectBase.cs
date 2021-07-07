@@ -156,7 +156,6 @@ public class Fortune : EffectBase
     {
         PlayerStatus player = target as PlayerStatus;
 
-        float original = player.GoldDropRate;
         player.GoldDropRate *= data.magnitude;
         player.WearStatus(this, data.duration, data.magnitude);
     }
@@ -432,7 +431,7 @@ public class VengeanceEffect : WeaponEffect
         // Increase attack speed
         PlayerStatus player = user as PlayerStatus;
         float attackSpeed = vengeanceCap - (player.Health / player.MaxHealth);
-        player.Attack.AttackSpeed = 2f;
+        player.Attack.AttackSpeed = attackSpeed;
     }
 }
 

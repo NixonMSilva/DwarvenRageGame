@@ -128,12 +128,10 @@ public class EnemyAI : MonoBehaviour
 
         Vector3 newWalkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        NavMeshHit hit;
-
         Debug.DrawRay(newWalkPoint, Vector3.up * 100f, Color.magenta, 2f);
 
         // If the new random point is inside NavMesh, then move
-        if (NavMesh.SamplePosition(newWalkPoint, out hit, 5f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(newWalkPoint, out NavMeshHit hit, 5f, NavMesh.AllAreas))
         {
             return newWalkPoint;
         }
