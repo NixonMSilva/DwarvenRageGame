@@ -5,6 +5,8 @@ using UnityEngine;
 public class TestOpenDoor : MonoBehaviour, IInteractable
 {
     private GameObject player;
+    private CharacterController characterController;
+
     [SerializeField] private Transform teleportLocation;
 
     [SerializeField] private bool canTeleport = true;
@@ -16,21 +18,10 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
 
     public void OnInteraction ()
     {
-        if (canTeleport)
-        {
-            Debug.Log("Interacted!");
-            canTeleport = false;
-            ActionOnTimer teleportEvent = gameObject.AddComponent<ActionOnTimer>();
-            UserInterfaceController.instance.FadeInToBlack(0.5f);
-            teleportEvent.SetTimer(0.5f, () =>
-            {
-                UserInterfaceController.instance.FadeOutFromBlack(0.5f);
-                player.transform.position = teleportLocation.position;
-                canTeleport = true;
-                Destroy(teleportEvent);
-            });
-        }
-        
-        
+        Debug.Log("Here! " + gameObject.name);
+        characterController = player.GetComponent<CharacterController>();
+        characterController.enabled = false;
+        player.transform.position = teleportLocation.position;
+        characterController.enabled = true;        
     }
 }

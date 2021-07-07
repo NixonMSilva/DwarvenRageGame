@@ -554,12 +554,13 @@ public class UserInterfaceController : MonoBehaviour
 
     public void FadeInToBlack (float duration)
     {
-        Color.Lerp(Color.clear, Color.black, duration);        
+        blackScreen.color = Color.Lerp(Color.clear, Color.black, duration);
+
     }
 
     public void FadeOutFromBlack (float duration)
     {
-        Color.Lerp(Color.black, Color.clear, duration);
+        blackScreen.color = Color.Lerp(Color.black, Color.clear, duration);
     }
 
     // 0 - Out | 1 - In

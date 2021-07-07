@@ -35,6 +35,8 @@ public class TooltipController : MonoBehaviour
         if (canPressButton)
         {
             OnPressEvent.Invoke();
+            canPressButton = false;
+            HideTooltip();
         }
     }
 
