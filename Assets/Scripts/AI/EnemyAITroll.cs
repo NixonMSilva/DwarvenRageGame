@@ -17,7 +17,6 @@ public class EnemyAITroll : BossAI
     {
         originalPainThreshold = status.PainThreshold;
         status.PainThreshold = 0f;
-        OnFightStageChange += HandleStageChange;
     }
 
     private new void Update ()
@@ -29,10 +28,15 @@ public class EnemyAITroll : BossAI
             Taunt();
         }
 
-        if (FightStage == 0 && status.Health / status.MaxHealth <= 0.5f)
+        if (FightStage == 1 && status.Health / status.MaxHealth <= 0.5f)
         {
             // Second stage of battle
             FightStage = 2;
+        }
+        else if (FightStage == 2 && status.Health >= 0f)
+        {
+            // Battle is over
+            FightStage = 3;
         }
     }
 
@@ -44,16 +48,7 @@ public class EnemyAITroll : BossAI
             StopForAttack();
 
             float diceRoll = Random.Range(0f, 1f);
-            if (diceRoll < 0.2f)
-            {
-                // Power attack
-                anim.Play("PowerAttack");
-            }
-            else
-            {
-                // Normal attack
-                anim.Play("Attack");
-            }
+            anim.Play(diceRoll < 0.2f ? "PowerAttack" : "Attack");
 
             isAttacking = true;
             alreadyAttacked = true;
@@ -80,12 +75,7 @@ public class EnemyAITroll : BossAI
         isAttacking = false;
     }
 
-    private void OnDestroy ()
-    {
-        OnFightStageChange -= HandleStageChange;
-    }
-
-    private void HandleStageChange (int stage)
+    public override void HandleStageChange (int stage)
     {
         if (stage == 0)
         {

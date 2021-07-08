@@ -32,25 +32,19 @@ public class StatusController : MonoBehaviour, IDamageable
 
     [SerializeField] protected List<DOTController> _activeDOTs;
 
-    public AttackController Attack 
-    { 
-        get { return attack; } 
-    }
+    public AttackController Attack => attack;
 
     public virtual float Speed
     {
-        get { return speed; }
-        set { speed = value; }
+        get => speed;
+        set => speed = value;
     }
 
-    public virtual float DefaultSpeed
-    {
-        get { return speed; }
-    }
+    public virtual float DefaultSpeed => speed;
 
     public virtual float Health
     {
-        get { return health; }
+        get => health;
         set 
         { 
             health = value; 
@@ -67,7 +61,7 @@ public class StatusController : MonoBehaviour, IDamageable
 
     public virtual float MaxHealth
     {
-        get { return maxHealth; }
+        get => maxHealth;
         set
         {
             maxHealth = value;
@@ -80,7 +74,7 @@ public class StatusController : MonoBehaviour, IDamageable
 
     public virtual float Armor
     {
-        get { return armor; }
+        get => armor;
         set 
         { 
             armor = value;
@@ -97,35 +91,29 @@ public class StatusController : MonoBehaviour, IDamageable
 
     public virtual float MaxArmor
     {
-        get { return maxArmor; }
-        set
-        {
-            maxArmor = value;
-        }
+        get => maxArmor;
+        set => maxArmor = value;
     }
 
     public bool IsBlocking
     {
-        get { return isBlocking; }
-        set { isBlocking = value; }
+        get => isBlocking;
+        set => isBlocking = value;
     }
 
     public bool IsDying
     {
-        get { return isDying; }
-        set { isDying = value; }
+        get => isDying;
+        set => isDying = value;
     }
 
     public Dictionary<DamageType, float> Resistances
     {
-        get { return _resistances; }
-        set { _resistances = value; }
+        get => _resistances;
+        set => _resistances = value;
     }    
 
-    public Resistance Sheet
-    {
-        get { return resistanceSheet; }
-    }
+    public Resistance Sheet => resistanceSheet;
 
 
     protected void Start ()
@@ -136,16 +124,13 @@ public class StatusController : MonoBehaviour, IDamageable
 
     private void Update ()
     {
-        if (Health <= 0f)
+        if (Health <= 0f && !isDying)
         {
-            if (!isDying)
-            {
-                Die();
-            }
+            Die();
         }
     }
 
-    public virtual void Die ()
+    protected virtual void Die ()
     {
         // Generic death
         isDying = true;
@@ -248,7 +233,7 @@ public class StatusController : MonoBehaviour, IDamageable
 
     public virtual void PlayImpactSound () 
     {
-        Debug.Log("Here!");
+        
     }
 
     public virtual void SpawnBlood (Vector3 position) { }

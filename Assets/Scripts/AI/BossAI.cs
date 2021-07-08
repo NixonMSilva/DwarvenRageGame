@@ -7,7 +7,7 @@ public class BossAI : EnemyAI
 {
     [SerializeField] private float fightStageChangeThreshold;
 
-    protected Action<int> OnFightStageChange;
+    public Action<int> onFightStageChange;
 
     // -1 Pre-Start | 0 - Intro | 1 - Post-Intro
     [SerializeField] private int fightStage = -1;
@@ -16,11 +16,13 @@ public class BossAI : EnemyAI
 
     public int FightStage
     {
-        get { return fightStage; }
+        get => fightStage;
         set 
         { 
+            Debug.Log("Stage changed!");
             fightStage = value;
-            OnFightStageChange.Invoke(value);
+            onFightStageChange.Invoke(fightStage);
+            HandleStageChange(fightStage);
         }
     }
 
@@ -43,7 +45,7 @@ public class BossAI : EnemyAI
             }
             else
             {
-                Debug.Log("Chasing!");
+                Debug.Log("OREWA CHASE!");
                 ChasePlayer();
             }
         }
@@ -55,6 +57,11 @@ public class BossAI : EnemyAI
         {
             LookAtFixedPoint(playerFixedPoint);
             agent.SetDestination(transform.position);
+        }
+        else
+        {
+
+            Debug.Log("Something wrong is not right");
         }
     }
 
@@ -76,5 +83,10 @@ public class BossAI : EnemyAI
     private bool CanAct ()
     {
         return (!status.IsDying && !isAttacking && !isBeingStaggered);
+    }
+    
+    public virtual void HandleStageChange (int stage)
+    {
+        
     }
 }

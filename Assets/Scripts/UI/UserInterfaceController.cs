@@ -563,9 +563,9 @@ public class UserInterfaceController : MonoBehaviour
         progressTitle.text = title;
     }
 
-    public void UpdateProgressBar (float value)
+    public void UpdateProgressBar(float delta)
     {
-        progressSlider.value = Mathf.Clamp(value, 0f, 100f);
+        progressSlider.value = delta;
     }
 
     // 0 - Out | 1 - In

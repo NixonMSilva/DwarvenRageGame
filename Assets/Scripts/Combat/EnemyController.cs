@@ -78,7 +78,6 @@ public class EnemyController : MonoBehaviour
 
     public void DeathExtraEffect ()
     {
-        Debug.Log("Here!");
         // I give up, switch-case statements here are my way of doing this shit
         switch (enemyType.enemyName)
         {

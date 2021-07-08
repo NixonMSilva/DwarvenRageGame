@@ -22,7 +22,7 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
             return;
         }
 
-        Debug.Log("Here! " + gameObject.name);
+        //Debug.Log("Here! " + gameObject.name);
         characterController = player.GetComponent<CharacterController>();
         characterController.enabled = false;
         player.transform.position = teleportLocation.position;
