@@ -41,7 +41,7 @@ public class EnemyAI : MonoBehaviour
 
     // Movement
     [SerializeField] protected float rotationSpeed = 10f;
-    private float currSpeed;
+    protected float currSpeed;
     protected Vector3 playerPoint;
 
     private void Awake()
@@ -95,13 +95,13 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void UpdateSpeed ()
+    protected void UpdateSpeed ()
     {
         currSpeed = agent.velocity.magnitude / agent.speed;
         anim.SetFloat("speed", currSpeed);
     }
 
-    private void Patroling()
+    protected void Patroling()
     {
         if (!playerInSightRange)
         {
@@ -121,7 +121,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private Vector3 SearchWalkPoint()
+    protected Vector3 SearchWalkPoint()
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
@@ -140,7 +140,7 @@ public class EnemyAI : MonoBehaviour
         return transform.position;
     }
 
-    private void ChasePlayer()
+    protected void ChasePlayer()
     {
         agent.speed = baseSpeed * 2;
         agent.SetDestination(player.position);
@@ -201,7 +201,7 @@ public class EnemyAI : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(playerPoint - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime); */
         //transform.LookAt(lookPosition);
-    }
+    }    
 
     protected void ResetAttack()
     {

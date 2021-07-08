@@ -2459,7 +2459,6 @@ GameObject:
   - component: {fileID: 2694932196506284842}
   - component: {fileID: 2186124545520739218}
   - component: {fileID: 3611232125654592917}
-  - component: {fileID: 7340879262092648523}
   - component: {fileID: 5454212064313048671}
   - component: {fileID: 4019368126752441826}
   - component: {fileID: 4019368126752441825}
@@ -2480,7 +2479,7 @@ Transform:
   m_GameObject: {fileID: 2694932196498882864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 89.31, y: -4.1161222, z: 29.201168}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 2694932196498857162}
   - {fileID: 2694932196498857160}
@@ -2549,19 +2548,6 @@ CapsuleCollider:
   m_Height: 4.3004923
   m_Direction: 1
   m_Center: {x: 0, y: 1.6502461, z: 0}
---- !u!65 &7340879262092648523
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2694932196498882864}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.4192445, y: 4.2131777, z: 1.709858}
-  m_Center: {x: 0, y: 1.6065898, z: 0.013742447}
 --- !u!195 &5454212064313048671
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2570,18 +2556,18 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2694932196498882864}
   m_Enabled: 1
-  m_AgentTypeID: -1372625422
-  m_Radius: 1.29
+  m_AgentTypeID: -334000983
+  m_Radius: 1.5
   m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
+  m_Acceleration: 1
+  avoidancePriority: 25
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 3.78
-  m_BaseOffset: 0.03
+  m_Height: 5
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4019368126752441826
@@ -2601,12 +2587,12 @@ MonoBehaviour:
   maxArmor: 100
   armor: 0
   isBlocking: 0
-  resistanceSheet: {fileID: 11400000, guid: 4151573f6f046cc46a8d7a278a62b6e0, type: 2}
+  resistanceSheet: {fileID: 11400000, guid: ae56c7b9e34974d40b8bb8e2ff9f77f5, type: 2}
   _activeDOTs: []
   painThreshold: 0.25
   thisLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!114 &4019368126752441825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2623,7 +2609,7 @@ MonoBehaviour:
   blood: {fileID: 0}
   firePointA: {fileID: 156471358}
   firePointB: {fileID: 156471358}
-  attackRange: 1.5
+  attackRange: 2.25
   attackSpeed: 1
   damageableLayer:
     serializedVersion: 2
@@ -2656,6 +2642,7 @@ MonoBehaviour:
     m_Bits: 128
   baseSpeed: 12
   isAttacking: 0
+  isBeingStaggered: 0
   feetPosition: {fileID: 2694932196498857226}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
@@ -2666,6 +2653,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   rotationSpeed: 10
+  fightStageChangeThreshold: 0
   tauntSounds: []
   tauntCooldown: 2
 --- !u!1 &2694932196498882868

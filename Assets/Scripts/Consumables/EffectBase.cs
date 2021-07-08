@@ -49,6 +49,7 @@ public class Heal : EffectBase
     public override void ApplyEffect (StatusController target, Effect data)
     {
         target.Health += data.magnitude;
+        
     }
 
     public override void StatusEnd (StatusController target) { }
