@@ -54,6 +54,10 @@ public class UserInterfaceController : MonoBehaviour
     private TextMeshProUGUI goldCount;
     private GameObject goldAnimPoint;
 
+    private GameObject progressFrame;
+    private TextMeshProUGUI progressTitle;
+    private Slider progressSlider;
+
     private readonly string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
 
     private readonly float[] inventoryXCoor = { 768f, 896f, 1024f, 1152f };
@@ -118,6 +122,10 @@ public class UserInterfaceController : MonoBehaviour
         goldCount = GameObject.Find("GoldCount").GetComponent<TextMeshProUGUI>();
         goldAnimPoint = GameObject.Find("GoldAnimation");
 
+        progressFrame = GameObject.Find("ProgressBar");
+        progressSlider = progressFrame.GetComponent<Slider>();
+        progressTitle = progressFrame.GetComponentInChildren<TextMeshProUGUI>();
+
         deathScreen = GameObject.Find("DeathMenu");
 
         shopScreen = GameObject.Find("ShopMenu");
@@ -134,6 +142,7 @@ public class UserInterfaceController : MonoBehaviour
         HidePauseMenu();
         HideDeathMenu();
         HideShopMenu();
+        HideProgressMenu();
 
         SetRangedSlotKey();
 
@@ -535,6 +544,28 @@ public class UserInterfaceController : MonoBehaviour
         deathScreen.SetActive(true);
         deathMenuCanvas.alpha = Mathf.Lerp(0f, 1f, 5f);
         Time.timeScale = 0f;
+    }
+
+    public void ShowProgressMenu (string title)
+    {
+        progressFrame.SetActive(true);
+        progressSlider.value = 0f;
+        progressTitle.text = title;
+    }
+
+    public void HideProgressMenu ()
+    {
+        progressFrame.SetActive(false);
+    }
+
+    public void UpdateProgressTitle (string title)
+    {
+        progressTitle.text = title;
+    }
+
+    public void UpdateProgressBar (float value)
+    {
+        progressSlider.value = Mathf.Clamp(value, 0f, 100f);
     }
 
     // 0 - Out | 1 - In

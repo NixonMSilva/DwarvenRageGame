@@ -36,6 +36,12 @@ public class EnemyStatus : StatusController
         get { return player; }
     }
 
+    public float PainThreshold
+    {
+        get { return painThreshold; }
+        set { painThreshold = value; }
+    }
+
     private void Awake ()
     {
         Health = maxHealth;

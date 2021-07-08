@@ -16,6 +16,12 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
 
     public void OnInteraction ()
     {
+        if (teleportLocation == null)
+        {
+            Debug.LogWarning("Door destination not set!");
+            return;
+        }
+
         Debug.Log("Here! " + gameObject.name);
         characterController = player.GetComponent<CharacterController>();
         characterController.enabled = false;
