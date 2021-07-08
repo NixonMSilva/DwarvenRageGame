@@ -7,19 +7,27 @@ public class BossAI : EnemyAI
 {
     [SerializeField] private float fightStageChangeThreshold;
 
-    private int fightStage = -1;
+    protected Action<int> OnFightStageChange;
+
+    // -1 Pre-Start | 0 - Intro | 1 - Post-Intro
+    [SerializeField] private int fightStage = -1;
 
     private Vector3 playerFixedPoint;
 
     public int FightStage
     {
         get { return fightStage; }
-        set { fightStage = value; }
+        set 
+        { 
+            fightStage = value;
+            OnFightStageChange.Invoke(value);
+        }
     }
 
     protected new void Update ()
     {
-        if (CanAct() && fightStage >= 0)
+        // Only proceed to normal routines
+        if (CanAct() && fightStage >= 1)
         {
             // Updates to check if the player is in attack range
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -35,12 +43,9 @@ public class BossAI : EnemyAI
             }
             else
             {
+                Debug.Log("Chasing!");
                 ChasePlayer();
             }
-        }
-        else if (fightStage < 0)
-        {
-            Patroling();
         }
         else if (isAttacking)
         {
@@ -50,18 +55,6 @@ public class BossAI : EnemyAI
         {
             LookAtFixedPoint(playerFixedPoint);
             agent.SetDestination(transform.position);
-        }
-
-        switch (fightStage)
-        {
-            default:
-                break;
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
         }
     }
 

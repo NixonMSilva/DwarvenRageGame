@@ -40,7 +40,7 @@ public class EnemySpawnManager : MonoBehaviour
         string name = sender.gameObject.name;
         string[] subs = name.Split(limits);
         int enemyId = Int32.Parse(subs[1]);
-        _wasNotKilled[enemyId] = false;
+        _wasNotKilled[enemyId - 1] = false;
     }
 
     public void SetKilledList (bool[] arr)

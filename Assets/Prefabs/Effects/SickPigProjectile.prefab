@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4471353545854071855}
   m_Layer: 0
   m_Name: SickPigProjectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,3 +133,4 @@ MonoBehaviour:
   damageValue: 25
   damageType: 1
   effect: {fileID: 11400000, guid: 633cf6337b7ed304b9b0f4d7f6c9142a, type: 2}
+  bleedOnImpact: 0

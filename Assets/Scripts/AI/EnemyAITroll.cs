@@ -8,7 +8,17 @@ public class EnemyAITroll : BossAI
     [SerializeField] private Sound[] tauntSounds;
 
     private bool canTaunt = true;
+
     [SerializeField] private float tauntCooldown = 2f;
+
+    private float originalPainThreshold = 0f;
+
+    private void Start ()
+    {
+        originalPainThreshold = status.PainThreshold;
+        status.PainThreshold = 0f;
+        OnFightStageChange += HandleStageChange;
+    }
 
     private new void Update ()
     {
@@ -22,7 +32,7 @@ public class EnemyAITroll : BossAI
         if (FightStage == 0 && status.Health / status.MaxHealth <= 0.5f)
         {
             // Second stage of battle
-            FightStage = 1;
+            FightStage = 2;
         }
     }
 
@@ -68,5 +78,24 @@ public class EnemyAITroll : BossAI
         alreadyAttacked = false;
         // In case he gets stuck into attack mode
         isAttacking = false;
+    }
+
+    private void OnDestroy ()
+    {
+        OnFightStageChange -= HandleStageChange;
+    }
+
+    private void HandleStageChange (int stage)
+    {
+        if (stage == 0)
+        {
+            anim.SetBool("hasStarted", true);
+            return;
+        }
+        else if (stage == 1)
+        {
+            status.PainThreshold = originalPainThreshold;
+            return;
+        }
     }
 }

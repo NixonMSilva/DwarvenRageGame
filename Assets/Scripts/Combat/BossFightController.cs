@@ -41,7 +41,7 @@ public class BossFightController : MonoBehaviour
     // Triggers the battle when the player enter the boss volume
     public void OnTriggerEnter (Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Projectile"))
         {
             StartBattle();
         }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4471353545854071855}
   m_Layer: 0
   m_Name: ProjectileTemplate
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,3 +130,6 @@ MonoBehaviour:
   - Player
   - Ground
   damageValue: 25
+  damageType: 1
+  effect: {fileID: 0}
+  bleedOnImpact: 0
