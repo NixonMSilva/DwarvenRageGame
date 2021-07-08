@@ -139,7 +139,7 @@ public class PlayerStatus : StatusController
         _resistances = resistanceSheet.BuildSheet();
     }
 
-    public override void Die ()
+    protected override void Die ()
     {
         isDying = true;
         UserInterfaceController.instance.DeathMenu();

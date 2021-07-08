@@ -13,7 +13,7 @@ public class Mover : MonoBehaviour
     private float totalMoveDuration;
     private float elapsedMoveDuration;
 
-    private Action OnCompleteCallback;
+    private Action completeCallback;
     
     private void Update ()
     {
@@ -29,23 +29,19 @@ public class Mover : MonoBehaviour
         transform.position = Interpolate(startPosition, destination.Value, movePercentage);
 
         if (elapsedMoveDuration >= totalMoveDuration)
-            OnCompleteCallback.Invoke();
+            completeCallback.Invoke();
     }
 
-    public void MoveTo (Vector3 destination, Action onComplete = null)
+    public void MoveTo (Vector3 nextDestination, Action onComplete = null)
     {
-        var distanceToFinish = Vector3.Distance(transform.position, destination);
+        float distanceToFinish = Vector3.Distance(transform.position, nextDestination);
         totalMoveDuration = distanceToFinish / moveSpeed;
 
         startPosition = transform.position;
-        this.destination = destination;
+        destination = nextDestination;
         elapsedMoveDuration = 0f;
-        OnCompleteCallback = onComplete;
+        completeCallback = onComplete;
     }
 
-    private Vector3 Interpolate (Vector3 start, Vector3 end, float percentage)
-    {
-        return Vector3.Lerp(start, end, percentage);
-    }
-
+    private Vector3 Interpolate (Vector3 start, Vector3 end, float percentage) => Vector3.Lerp(start, end, percentage);
 }

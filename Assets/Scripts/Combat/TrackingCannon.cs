@@ -8,6 +8,8 @@ public class TrackingCannon : MonoBehaviour
     [SerializeField] private Transform target;
 
     [SerializeField] private GameObject cannonProjectile;
+    
+    [SerializeField] private Boss1FightController bossFight;
 
     private TooltipController cannonTooltip;
 
@@ -18,35 +20,73 @@ public class TrackingCannon : MonoBehaviour
         cannonTooltip = GetComponent<TooltipController>();
     }
 
-    private void Update ()
+    public void CannonInteraction ()
     {
-        LookAtTarget();
+        // Only interact if the boss battle has started or if he isn't defeated
+        if (bossFight.GetStage() > 0 && !bossFight.IsBossDefeated)
+        {
+            Debug.Log(interactionCount);
+            
+            if (interactionCount == 0)
+            {
+                StartCannonUsage();
+            }
+            else
+            {
+                if (bossFight.BloodBar >= 100f)
+                {
+                    LookAtTarget();
+                    Fire();
+                }
+                else
+                {
+                    BloodNotFull();
+                }
+            }
+
+            interactionCount++;
+        }
+
     }
 
-    public void Fire ()
+    private void StartCannonUsage()
     {
+        cannonTooltip.SetTooltipText("Fire");
+        Debug.Log("Can only use this when blood is full!");
+        UserInterfaceController.instance.ShowProgressMenu("Blood Collected");
+        UserInterfaceController.instance.UpdateProgressBar(bossFight.BloodBar);
+    }
+
+    private void BloodNotFull()
+    {
+        Debug.Log("Blood bar is not full!");
+    }
+
+    private void Fire ()
+    {
+        if (target == null)
+            return;
+
         GameObject skull = Instantiate(cannonProjectile, firePoint.position, Quaternion.identity);
         skull.GetComponent<ProjectileController>().SetTarget(target.position - transform.position);
+        
+        // Reset the blood bar
+        bossFight.BloodBar = 0f;
     }
 
     private void LookAtTarget ()
     {
-        Debug.Log("Looking!");
+        if (target == null)
+            return;
+
         Quaternion lookRotation = Quaternion.LookRotation(target.position - transform.position, Vector3.up);
         lookRotation *= Quaternion.Euler(0f, 180f, 0f);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 0.2f);
         //transform.rotation = lookRotation;
     }
 
-    public void Interaction ()
+    public void DisableCannon()
     {
-        switch (interactionCount)
-        {
-            case 0:
-                break;
-            case 1:
-                break;
-        }
-        interactionCount++;
+        cannonTooltip.enabled = false;
     }
 }

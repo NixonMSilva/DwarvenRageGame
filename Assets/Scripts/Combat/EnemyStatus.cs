@@ -57,7 +57,7 @@ public class EnemyStatus : StatusController
         player = GameObject.Find("Player").GetComponent<PlayerStatus>();
     }
 
-    public override void Die ()
+    protected override void Die ()
     {
         // Enemy death
         isDying = true;

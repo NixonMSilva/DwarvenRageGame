@@ -6,29 +6,36 @@ using UnityEngine.Events;
 
 public class BossFightController : MonoBehaviour
 {
-    [SerializeField] private GameObject bossObject;
+    [SerializeField] protected GameObject bossObject;
 
-    [SerializeField] private UnityEvent OnBossDeath;
+    [SerializeField] protected UnityEvent OnBossDeath;
 
-    private BossAI bossAI;
+    protected BossAI bossAI;
 
-    private EnemyStatus bossStatus;
+    protected EnemyStatus bossStatus;
 
-    private bool isBossDefeated = false;
+    protected bool isBossDefeated = false;
 
-    private void Awake ()
+    public bool IsBossDefeated
+    {
+        get => isBossDefeated;
+    }
+
+    protected void Awake ()
     {
         bossAI = bossObject.GetComponent<BossAI>();
         bossStatus = bossObject.GetComponent<EnemyStatus>();
     }
 
-    private void Start ()
+    protected void Start ()
     {
+        bossAI.onFightStageChange += HandleStageChange;
         bossStatus.OnDeath += HandleBossDeath;    
     }
 
-    private void OnDestroy ()
+    protected void OnDestroy ()
     {
+        bossAI.onFightStageChange -= HandleStageChange;
         bossStatus.OnDeath -= HandleBossDeath;
     }
 
@@ -41,7 +48,8 @@ public class BossFightController : MonoBehaviour
     // Triggers the battle when the player enter the boss volume
     public void OnTriggerEnter (Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Projectile"))
+        // Only run if the fight stage is not activated (-1)
+        if ((other.CompareTag("Player") || other.CompareTag("Projectile")) && bossAI.FightStage == -1)
         {
             StartBattle();
         }
@@ -52,4 +60,11 @@ public class BossFightController : MonoBehaviour
         // Initializes boss battle
         bossAI.FightStage = 0;
     }
+    
+    public virtual void HandleStageChange(int stage)
+    {
+        Debug.Log("Parent stage change");
+    }
+
+    public int GetStage() => bossAI.FightStage;
 }

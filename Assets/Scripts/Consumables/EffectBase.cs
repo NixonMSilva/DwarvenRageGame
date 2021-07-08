@@ -509,7 +509,6 @@ public class DraconicEffect : WeaponEffect
     public override float ApplyEffectOnDamage (StatusController attacker, IDamageable target)
     {
         float diceRoll = Random.Range(0f, 1f);
-        Debug.Log(diceRoll);
         if (diceRoll <= 0.2f)
         {
             draconicItem.Use(attacker);
