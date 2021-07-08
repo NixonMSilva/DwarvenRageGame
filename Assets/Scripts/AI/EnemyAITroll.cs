@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAITroll : EnemyAI
+public class EnemyAITroll : BossAI
 {
     [SerializeField] private Sound[] tauntSounds;
 
@@ -18,15 +18,21 @@ public class EnemyAITroll : EnemyAI
         {
             Taunt();
         }
+
+        if (FightStage == 0 && status.Health / status.MaxHealth <= 0.5f)
+        {
+            // Second stage of battle
+            FightStage = 1;
+        }
     }
 
     public override void AttackPlayer ()
     {
-        playerPoint = player.transform.position;
-        StopForAttack();
-
         if (!alreadyAttacked)
         {
+            playerPoint = player.transform.position;
+            StopForAttack();
+
             float diceRoll = Random.Range(0f, 1f);
             if (diceRoll < 0.2f)
             {

@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1ab2dbed5f8474295afd6854ce5fea, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  enemyName: Test
   maxHealth: 200
   attackDamage: 25
-  dropList:
-  - Armor
-  dropChance:
-  - 0.2
+  drops: []
+  goldDrop: 0
+  goldDropVariance: 0
+  damageType: 0
+  damageEffect: {fileID: 0}
   soundIdle: 
   soundAttack: 
   soundDamage: 
   soundDeath: 
   impactType: flesh_hit_1
+  bloodParticle: {fileID: 2170997142744102009, guid: eb3b0c93a71d4c148afcc8e2d2d0991b, type: 3}
+  bloodColor: {r: 1, g: 0, b: 0, a: 1}

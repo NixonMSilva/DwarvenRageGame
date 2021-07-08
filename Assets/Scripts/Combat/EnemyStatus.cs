@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class EnemyStatus : StatusController
 {
@@ -16,7 +17,8 @@ public class EnemyStatus : StatusController
 
     private PlayerStatus player;
 
-    [SerializeField] private float painThreshold = 0.25f;    
+    [SerializeField] private float painThreshold = 0.25f;
+    [SerializeField] private LayerMask thisLayer;
 
     public override float Speed
     {
@@ -93,17 +95,13 @@ public class EnemyStatus : StatusController
         if (!isDying)
         {
             animator.Play("Hit");
+            intelligence.StopForStagger();
         }
     }
 
     private new void PlayDamageSound ()
     {
-        float verify = Random.Range(0f, 1f);
-        if (verify <= 0.7f)
-        {
-            AudioManager.instance.PlaySoundRandomAt(gameObject, enemy.Type.soundDamage);
-            intelligence.StopForStagger();
-        }
+        AudioManager.instance.PlaySoundRandomAt(gameObject, enemy.Type.soundDamage);
     }
 
     public override void PlayImpactSound ()
@@ -114,5 +112,35 @@ public class EnemyStatus : StatusController
     private void PlayDeathSound ()
     {
         AudioManager.instance.PlaySoundRandomAt(gameObject, enemy.Type.soundDeath);
+    }
+
+    public override void SpawnBlood (Vector3 position) 
+    {
+        ParticleSystem bloodSystem = Instantiate(enemy.Type.bloodParticle, position, Quaternion.identity, gameObject.transform).GetComponent <ParticleSystem>();
+        Destroy(bloodSystem.gameObject, bloodSystem.main.duration + 0.1f); ;
+        Debug.DrawLine(position, Vector3.up * 100, Color.red, 10f);
+    }
+
+    public override void SpawnBlood (Transform position)
+    {
+        RaycastHit hit;
+        ParticleSystem bloodSystem;
+
+        bool hasHit = Physics.Raycast(position.position, position.forward, out hit, 1f, thisLayer);
+
+        Debug.DrawRay(position.position, position.forward, Color.magenta, 10f);
+
+        if (hasHit) 
+        {
+            bloodSystem = Instantiate(enemy.Type.bloodParticle, hit.point, Quaternion.identity, gameObject.transform).GetComponent<ParticleSystem>();
+            Debug.Log(hit.collider.gameObject);
+            Debug.DrawRay(hit.point, Vector3.up * 100, Color.red, 10f);
+        }
+        else
+        {
+            bloodSystem = Instantiate(enemy.Type.bloodParticle, position.position + position.forward, Quaternion.identity, gameObject.transform).GetComponent<ParticleSystem>();
+        }
+        
+        Destroy(bloodSystem.gameObject, bloodSystem.main.duration + 0.1f);
     }
 }

@@ -119,7 +119,6 @@ public class UserInterfaceController : MonoBehaviour
         goldAnimPoint = GameObject.Find("GoldAnimation");
 
         deathScreen = GameObject.Find("DeathMenu");
-        //deathScreen = GameObject.Find("DeathMenu").GetComponent<CanvasGroup>();
 
         shopScreen = GameObject.Find("ShopMenu");
 
@@ -303,16 +302,6 @@ public class UserInterfaceController : MonoBehaviour
 
         // Reset the icons of the slots on the right
         ResetInventoryIcons(i);
-
-        /*
-        // If there's nothing in these lists, reset the icons
-        if (_sprites.Count == 0 && _itemStacks.Count == 0)
-        {
-            for (int i = 0; i < _itemSlots.Count; ++i)
-            {
-                ResetInventoryIcons();
-            }
-        } */
     }
 
     public void ResetInventoryIcons (int index)

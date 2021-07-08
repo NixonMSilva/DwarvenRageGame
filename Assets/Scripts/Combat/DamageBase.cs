@@ -9,5 +9,6 @@ public enum DamageType
     ice,
     poison,
     pigKiller,
-    dragonKiller
+    dragonKiller,
+    trollKiller
 }

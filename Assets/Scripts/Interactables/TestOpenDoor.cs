@@ -5,10 +5,10 @@ using UnityEngine;
 public class TestOpenDoor : MonoBehaviour, IInteractable
 {
     private GameObject player;
-    
-    [SerializeField] private float positionX;
-    [SerializeField] private float positionY;
-    [SerializeField] private float positionZ;
+    private CharacterController characterController;
+
+    [SerializeField] private Transform teleportLocation;
+
     private void Awake() 
     {
         player = GameObject.Find("Player");
@@ -16,16 +16,11 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
 
     public void OnInteraction ()
     {
-        //Debug.Log(player.transform.position);
-        //Debug.Log("Entrou na dungeon!");
-
-        Vector3 position;
-        position.x = positionX;
-        position.y = positionY;
-        position.z = positionZ;
-
-        player.transform.position = position;
-
-        //Debug.Log(player.transform.position);
+        Debug.Log("Here! " + gameObject.name);
+        characterController = player.GetComponent<CharacterController>();
+        characterController.enabled = false;
+        player.transform.position = teleportLocation.position;
+        characterController.enabled = true;
+        AudioManager.instance.PlaySoundAt(gameObject, "door_open");
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Enemy", menuName = "Datasets/Enemy")]
 public class Enemy : ScriptableObject
 {
+    public string enemyName;
     public float maxHealth;
 
     public float attackDamage;
@@ -23,4 +24,7 @@ public class Enemy : ScriptableObject
     public string soundDamage;
     public string soundDeath;
     public string impactType;
+
+    public GameObject bloodParticle;
+    public Color bloodColor = Color.red;
 }

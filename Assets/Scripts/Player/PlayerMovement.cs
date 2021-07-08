@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         get { return defaultSpeed; }
     }
 
+
     private void Awake ()
     {
         character = GetComponent<CharacterController>();
@@ -96,7 +97,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded)
         {
-            AudioManager.instance.PlaySoundRandom("jump");
+            // Play the jump sound 75% of the times
+            if (UnityEngine.Random.Range(0f, 1f) <= 0.75f)
+                AudioManager.instance.PlaySoundRandom("jump");
+
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
@@ -147,8 +151,5 @@ public class PlayerMovement : MonoBehaviour
 
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(groundCheck.transform.position, groundDistance);
-
     }
-
-
 }

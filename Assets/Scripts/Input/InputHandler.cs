@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
+
     public static InputHandler instance;
+
+    public Dictionary<KeyCode, EventHandler> inputs;
 
     [Header("Key Binding")]
     [Space(10)]
@@ -76,6 +79,7 @@ public class InputHandler : MonoBehaviour
 
     private void Update ()
     {
+
         //================================================================
         //  Mouse
         //================================================================

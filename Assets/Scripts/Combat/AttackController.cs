@@ -12,6 +12,8 @@ public class AttackController : MonoBehaviour
 
     [SerializeField] private Transform attackPoint;
 
+    [SerializeField] private GameObject blood;
+
     [SerializeField] private Transform firePointA;
     [SerializeField] private Transform firePointB;
 
@@ -101,6 +103,11 @@ public class AttackController : MonoBehaviour
         }
     }
 
+    public LayerMask Damageables
+    {
+        get { return damageableLayer; }
+    }
+
     private void Awake ()
     {
         anim = GetComponent<Animator>();
@@ -123,11 +130,6 @@ public class AttackController : MonoBehaviour
         }
 
         anim.SetFloat("attackSpeed", attackSpeed);
-    }
-
-    private void Update ()
-    {
-        //anim.SetFloat("attackSpeed", attackSpeed);
     }
 
     private void HandleAttack (object sender, EventArgs e)
@@ -294,6 +296,7 @@ public class AttackController : MonoBehaviour
                     }
 
                     damagedObj.TakeDamage(damage * damageModifier, equipment.PlayerWeapon.damageType);
+                    damagedObj.SpawnBlood(attackPoint);
                 }
                 else
                 {
@@ -308,7 +311,6 @@ public class AttackController : MonoBehaviour
                         damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType);
                     }
                 }
-
                 damagedObj.PlayImpactSound();
             }
         }

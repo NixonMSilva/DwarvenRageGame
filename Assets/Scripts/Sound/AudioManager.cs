@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    private AudioSource currentMusic = null;
+
     private void Awake ()
     {
         if (instance == null)
@@ -24,6 +26,39 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+    }
+
+    public void PlayMusic (Sound music)
+    {
+        if (music == null)
+            return;
+
+        // Stop a music if it's playing
+        StopMusic();
+
+        currentMusic = gameObject.AddComponent<AudioSource>();
+        ConfigureAudioSource(currentMusic, music, false);
+    }
+
+    public void PlayMusic (String musicName)
+    {
+        if (musicName == "")
+            return;
+
+        StopMusic();
+
+        Sound musicSound = FindSound(musicName);
+        currentMusic = gameObject.AddComponent<AudioSource>();
+        ConfigureAudioSource(currentMusic, musicSound, false);
+    }
+
+    public void StopMusic ()
+    {
+        if (currentMusic == null)
+            return;
+
+        currentMusic.Stop();
+        Destroy(currentMusic);
     }
 
     public void PlaySound (string name)
@@ -51,7 +86,8 @@ public class AudioManager : MonoBehaviour
         AudioSource soundSource = gameObject.AddComponent<AudioSource>();
         ConfigureAudioSource(soundSource, sound, false);
         soundSource.Play();
-        Destroy(soundSource, soundSource.clip.length + 0.1f);
+        if (!sound.loop)
+            Destroy(soundSource, soundSource.clip.length + 0.1f);
     }
 
     public void StopSound (string name)
