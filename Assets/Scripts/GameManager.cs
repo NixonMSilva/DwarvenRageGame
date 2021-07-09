@@ -5,17 +5,12 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _dropTypes;
     [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private List<Shield> _shields;
 
-    private void Awake ()
-    {
-        //_weapons = Resources.LoadAll<Weapon>("Weapons").ToList();
-        //_shields = Resources.LoadAll<Shield>("Shields").ToList();
-    }
+    [SerializeField] private int sceneNumber = 1;
 
-    public List<GameObject> GetDropTypes () => _dropTypes;
+    public int GetSceneNumber () => sceneNumber;
 
     public List<Weapon> GetWeapons () => _weapons;
 
@@ -29,12 +24,17 @@ public class GameManager : MonoBehaviour
 
     public Shield GetShieldById (int id)
     {
-        return Resources.LoadAll<Shield>("Shields").Where(s => s.id == id).First();
+        return Resources.LoadAll<Shield>("Shields").Where(s => s.id == id)?.First();
         //return _shields.Where(s => s.id == id).First();
     }
 
-    public Item GetItemById (int id)
+    public Consumable GetItemById (int id)
     {
-        return Resources.LoadAll<Item>("Shield").Where(s => s.id == id).First();
+        return Resources.LoadAll<Consumable>("Consumables").Where(i => i.id == id).First();
+    }
+
+    public RangedWeapon GetRangedById (int id)
+    {
+        return Resources.LoadAll<RangedWeapon>("RangedWeapons").Where(r => r.id == id)?.First();
     }
 }

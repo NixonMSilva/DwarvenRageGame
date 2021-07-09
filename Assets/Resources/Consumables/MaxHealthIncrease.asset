@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b334462ab1fa6a7418b6a70075dac4c6, type: 3}
+  m_Name: MaxHealthIncrease
+  m_EditorClassIdentifier: 
+  id: 6
+  itemName: Increase Max Health
+  itemDescription: Placeholder
+  worldMesh: {fileID: 0}
+  materialList: []
+  scaleX: 1
+  scaleY: 1
+  scaleZ: 1
+  icon: {fileID: 21300000, guid: 9979b87fbc5435e4783c66000e294fe6, type: 3}
+  price: 0
+  effect: {fileID: 11400000, guid: 2df774d381f1bff4ab8a27b2bcf26690, type: 2}

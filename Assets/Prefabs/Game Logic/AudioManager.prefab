@@ -1,0 +1,494 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4286996104759631948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4286996104759631950}
+  - component: {fileID: 4286996104759631951}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4286996104759631950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286996104759631948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4286996104759631951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286996104759631948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82c6a78bbef10414f8ff927a4ed481a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - audioSource: {fileID: 0}
+    name: axe_fire_1
+    clip: {fileID: 8300000, guid: 8df28d6ea1c374a4c8ccb1b367168e4f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_fire_2
+    clip: {fileID: 8300000, guid: 5e7355c38d00769419a1fbbb9bb2071f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_fire_3
+    clip: {fileID: 8300000, guid: aea8ecee85b666c4aa91022a2c991c61, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_fire_4
+    clip: {fileID: 8300000, guid: d76fee06d42d12c4d81aa0a11de98379, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_generic_1
+    clip: {fileID: 8300000, guid: 5dc84be9add6ba94c9a43331645a6ff5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_generic_2
+    clip: {fileID: 8300000, guid: 0a3f7bd5f35205a468c10c0af64eb41e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_generic_3
+    clip: {fileID: 8300000, guid: a4f52f115b49ff042857294e4d3e05ea, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_generic_4
+    clip: {fileID: 8300000, guid: 5d36231a3d4092a408c46e03989f4752, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_ice_1
+    clip: {fileID: 8300000, guid: 8e91ed54b56c0714181d55d9a62cb888, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_ice_2
+    clip: {fileID: 8300000, guid: ffb989ee5514f21449bba18fa374c578, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_ice_3
+    clip: {fileID: 8300000, guid: 88f43ff94c6dc324cad5e82dddce6953, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_ice_4
+    clip: {fileID: 8300000, guid: 71c37e5685cc69d4aa61e3f2f6349b40, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_on_flesh_1
+    clip: {fileID: 8300000, guid: 0decdcc98fcaef84cb8c02ae70a96344, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_on_flesh_2
+    clip: {fileID: 8300000, guid: 6ec2cd44975b6da489030b5609c03926, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_on_flesh_3
+    clip: {fileID: 8300000, guid: b20a21eaf707c0d4fbb58741c8411351, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_on_flesh_4
+    clip: {fileID: 8300000, guid: 3463c98ebf8374c4ebcca7b0fbdce40b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: axe_on_flesh_5
+    clip: {fileID: 8300000, guid: 706fe41a93fdd8e4c9ae6603876333d9, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: burp
+    clip: {fileID: 8300000, guid: 6309863f545e0af47b010e303c04a8b7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: damage_1
+    clip: {fileID: 8300000, guid: c33a4ecaa61500e4b849c6b94cf1879b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: drink_and_burp
+    clip: {fileID: 8300000, guid: bc7c43890d4d74643b8db51e251b8060, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: jump_1
+    clip: {fileID: 8300000, guid: 280c7f3c04a8b0543b53fa4ef3e16973, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: jump_2
+    clip: {fileID: 8300000, guid: 744997532a644334998bee3195442638, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: jump_3
+    clip: {fileID: 8300000, guid: 09e989183442fef48a0c5f807155ea57, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: jump_4
+    clip: {fileID: 8300000, guid: 56ab636c5b7a8674e963380b4dd7ff32, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: landing
+    clip: {fileID: 8300000, guid: d3ee6a0ca6980964fb33ccaf6eff5992, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: chest_open
+    clip: {fileID: 8300000, guid: a6670a1ccec4dc743b562798388ff826, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: door_open
+    clip: {fileID: 8300000, guid: 424cd741b39f4884298c825ddb0b9699, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: gold_pickup
+    clip: {fileID: 8300000, guid: 5316cc83320dd8b4ca3f34e8df4d6a13, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: gold_sell
+    clip: {fileID: 8300000, guid: 858bd5c5d5724734b947ceac85965e3c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Machado + carne1
+    clip: {fileID: 8300000, guid: 3ee521d09a659e243ab8f47c25857b99, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Machado + carne2
+    clip: {fileID: 8300000, guid: 029789889445bf7409756572dc8c2134, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Machado + carne3
+    clip: {fileID: 8300000, guid: da4f971fde08b4d48ae0d47ea9f66e47, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Machado + carne4
+    clip: {fileID: 8300000, guid: bdaeb845814302541be2e470b47b7532, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Machado + carne5
+    clip: {fileID: 8300000, guid: 9a6ae1cf1fde6c945ab7e819c8a2836c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: MachadoFogo1
+    clip: {fileID: 8300000, guid: 5de41f7afa88f3d41b0a650320beb223, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: MachadoFogo2
+    clip: {fileID: 8300000, guid: d456402387902324b8a7b180e6710294, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: MachadoFogo3
+    clip: {fileID: 8300000, guid: 9dbc7799532d9e148b6728509cc72b44, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: MachadoFogo4
+    clip: {fileID: 8300000, guid: f8039498cb886f941baba8ec1d021ef7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: MachadoGelo1
+    clip: {fileID: 8300000, guid: 38928d4f1b5bfb542a36db0905fc6119, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: MachadoGelo2
+    clip: {fileID: 8300000, guid: 4a3f1c6f314c3cc499cc9f3ccd93a21e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: MachadoGelo3
+    clip: {fileID: 8300000, guid: 25d0b9d0e9765ac42a62149ee379ae0b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: MachadoGelo4
+    clip: {fileID: 8300000, guid: 51ceb0dc8b419a74292ecbe6a9129777, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Martelo + carne1
+    clip: {fileID: 8300000, guid: b4a368fce254c114db9b531d9279b9b4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Martelo + carne2
+    clip: {fileID: 8300000, guid: c8577b80bb3893a4398c24941d402bfe, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Martelo + carne3
+    clip: {fileID: 8300000, guid: 8e21fd1a2b3d7b548ae66a9bae117ad2, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Martelo + carne4
+    clip: {fileID: 8300000, guid: 936af2c806e2c1d4ba67113a1a19748b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Martelo + carne5
+    clip: {fileID: 8300000, guid: 02b250ad14b7f9e418352292512313c7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Ossos esmagados (critico)
+    clip: {fileID: 8300000, guid: baaf6788dd0f73e4b928464ee5be465d, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: pig_death
+    clip: {fileID: 8300000, guid: 97dfcf999f311fe4ab7e8664f08d9def, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: pig_hit
+    clip: {fileID: 8300000, guid: f9a1b422683632d45bd2062c5242bf2c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: pussioids_death
+    clip: {fileID: 8300000, guid: 8b07297365b9a944a98ccb01fd192825, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: pussioids_idle
+    clip: {fileID: 8300000, guid: 958d45b52f7e274429c5e53d1092c70a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: shield_block_1
+    clip: {fileID: 8300000, guid: c920c5f48d4e6034987855bdbe41f12b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: shield_block_2
+    clip: {fileID: 8300000, guid: 2af321bd45ee50a47a09079f99e805d6, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: bone_hit_1
+    clip: {fileID: 8300000, guid: 01bd630c86b007d449b83db51e637997, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: flesh_hit_1
+    clip: {fileID: 8300000, guid: 3b01eaa172360ee4c9731e49259d7704, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: flesh_hit_2
+    clip: {fileID: 8300000, guid: e360b4700dcde8346957089a26e80b8c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: hammer_on_flesh_1
+    clip: {fileID: 8300000, guid: 9867668dad2fdf64e80616c1e450f8f5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: hammer_on_flesh_2
+    clip: {fileID: 8300000, guid: 1d3262b01b3a65046ae27936daf1597a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: hammer_on_flesh_3
+    clip: {fileID: 8300000, guid: 77f69e8455ff68c46bd292ffa9574fa1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: hammer_on_flesh_4
+    clip: {fileID: 8300000, guid: dd50501cb58beca4c8d30edfbd629559, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: hammer_on_flesh_5
+    clip: {fileID: 8300000, guid: 876ce37d70ab2e245a95fefdb55e8c06, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: weapon_swing_heavy
+    clip: {fileID: 8300000, guid: 1e2b44deff15d0345b651f5a9611b8ac, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: weapon_swing_light
+    clip: {fileID: 8300000, guid: c69c88c609c221f47b494ac8a5fd7ca3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0

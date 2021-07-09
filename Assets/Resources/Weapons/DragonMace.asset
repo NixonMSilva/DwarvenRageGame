@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadec00f3e762654fa47fe244c9350ae, type: 3}
+  m_Name: DragonMace
+  m_EditorClassIdentifier: 
+  id: 25
+  itemName: Draconic Mace
+  itemDescription: Placeholder
+  worldMesh: {fileID: -2072928189253646510, guid: 208ebcc9230fe0b4c88a6b5cfad5aee7, type: 3}
+  materialList:
+  - {fileID: 2100000, guid: 2532e4bd7a172eb48b50aee7a417fc35, type: 2}
+  scaleX: 0.000008
+  scaleY: 0.000008
+  scaleZ: 0.000005
+  icon: {fileID: 21300000, guid: 94bc8fce56b5e694c8c0c9238142f90a, type: 3}
+  price: 13000
+  posX: -0.00117
+  posY: 0.00052
+  posZ: 0.00003
+  damage: 40
+  damageType: 0
+  criticalChance: 0.01
+  isTwoHanded: 0
+  protections:
+  - type: 0
+    resistance: 0.1
+  - type: 1
+    resistance: 0.1
+  - type: 2
+    resistance: 0.1
+  - type: 3
+    resistance: 0.1
+  - type: 4
+    resistance: 0.1
+  - type: 5
+    resistance: 0.1
+  - type: 6
+    resistance: 0.1
+  effectType: 7

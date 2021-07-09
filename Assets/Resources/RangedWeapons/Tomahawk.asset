@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd6227873006cd46817d04e249abfcb, type: 3}
+  m_Name: Tomahawk
+  m_EditorClassIdentifier: 
+  id: 2
+  itemName: Throwing Axe
+  itemDescription: Placeholder
+  worldMesh: {fileID: -2520970379604548150, guid: a9c7fe06575432b4398070ee656d8b25, type: 3}
+  materialList:
+  - {fileID: 2100000, guid: ae527eca4ff7e0144adaf2ceaf3a015d, type: 2}
+  scaleX: 0
+  scaleY: 0
+  scaleZ: 0
+  icon: {fileID: 0}
+  price: 5000
+  posX: 0.001494
+  posY: 0.000778
+  posZ: 0.000206
+  firePos1X: 0.518
+  firePos1Y: -0.275
+  firePos1Z: 0.748
+  firePos2X: 0.3942
+  firePos2Y: -0.1969
+  firePos2Z: 1.4269
+  damage: 25
+  damageType: 1
+  criticalChance: 0.01
+  cooldown: 10
+  projectile: {fileID: 3675839792663047822, guid: bd07d48f5804b694caa33768740ac0e0, type: 3}
+  animationSet: {fileID: 22100000, guid: 210bf3e5addfe394c88183df38234fac, type: 2}

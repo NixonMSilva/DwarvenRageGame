@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b334462ab1fa6a7418b6a70075dac4c6, type: 3}
+  m_Name: Fortune
+  m_EditorClassIdentifier: 
+  id: 7
+  itemName: Fortune Potion
+  itemDescription: Placeholder
+  worldMesh: {fileID: 2534964839176971238, guid: 72ccdb6727a5c1b40b3f692ea7166cbb, type: 3}
+  materialList:
+  - {fileID: 2100000, guid: e963347ecaf05e4468b1f17a11d39cae, type: 2}
+  - {fileID: 6699446615349125189, guid: 72ccdb6727a5c1b40b3f692ea7166cbb, type: 3}
+  scaleX: 1
+  scaleY: 1
+  scaleZ: 1
+  icon: {fileID: 21300000, guid: 869da9381500de64eb1036275c13bf7b, type: 3}
+  price: 5000
+  effect: {fileID: 11400000, guid: 02a6f7c54074bb548bbd064840cdc871, type: 2}

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3863bdbe9927a14eb1c00de9483e39c, type: 3}
+  m_Name: MedievalShield
+  m_EditorClassIdentifier: 
+  id: 11
+  itemName: Dwarven Shield
+  itemDescription: Placeholder
+  worldMesh: {fileID: 6601489501044601497, guid: 1c484509db9d35c49afce2195c71f9ec, type: 3}
+  materialList:
+  - {fileID: 2100000, guid: 09a823a624df8014392680438b4a6952, type: 2}
+  scaleX: 0.0055
+  scaleY: 0.0055
+  scaleZ: 0.0055
+  icon: {fileID: 0}
+  price: 4000
+  rotX: 26.867
+  rotY: 52.819
+  rotZ: -94.477
+  protections:
+  - type: 0
+    resistance: 0.9
+  - type: 1
+    resistance: 0.15
+  - type: 2
+    resistance: 0
+  - type: 3
+    resistance: 0
+  - type: 4
+    resistance: 0
+  - type: 5
+    resistance: 0
+  - type: 6
+    resistance: 0
+  - type: 7
+    resistance: 0

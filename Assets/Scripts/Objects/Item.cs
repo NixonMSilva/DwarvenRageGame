@@ -8,6 +8,9 @@ public class Item : ScriptableObject
 
     public string itemName;
 
+    [TextArea]
+    public string itemDescription;
+
     public Mesh worldMesh;
     public Material[] materialList;
 
@@ -15,6 +18,7 @@ public class Item : ScriptableObject
 
     public Sprite icon;
 
-
+    // Shop system
+    public int price = 0;
 
 }

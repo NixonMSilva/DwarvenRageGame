@@ -2,18 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [CreateAssetMenu(fileName = "New Enemy", menuName = "Datasets/Enemy")]
 public class Enemy : ScriptableObject
 {
     public string enemyName;
-
     public float maxHealth;
 
     public float attackDamage;
 
-    public Mesh enemyMesh;
+    public DropSheet[] drops;
 
-    public List<string> dropList;
+    public int goldDrop;
+    public int goldDropVariance;
 
-    public List<float> dropChance;
+    public DamageType damageType;
+    public Effect damageEffect;
+
+    public string soundIdle;
+    public string soundAttack;
+    public string soundDamage;
+    public string soundDeath;
+    public string impactType;
+
+    public GameObject bloodParticle;
+    public Color bloodColor = Color.red;
 }
