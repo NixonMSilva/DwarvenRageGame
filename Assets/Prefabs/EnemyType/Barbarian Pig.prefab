@@ -404,6 +404,7 @@ Transform:
   - {fileID: 8686132954361588193}
   - {fileID: 5066318648247199520}
   - {fileID: 3260511421084079228}
+  - {fileID: 1531512025494053896}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -475,6 +476,7 @@ MonoBehaviour:
   deathExtraEffectPoint: {fileID: 0}
   deathExtraEffectFX: {fileID: 0}
   useFromDatabase: 0
+  lootSpawnPoint: {fileID: 1531512025494053896}
 --- !u!114 &7952555473772359236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2479,6 +2481,36 @@ Transform:
   m_Father: {fileID: 3424313902237057645}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 29.367388, y: -153.59415, z: 168.15012}
+--- !u!1 &7151828251163406545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1531512025494053896}
+  m_Layer: 8
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1531512025494053896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7151828251163406545}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4638356277028699558}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7242480950725703528
 GameObject:
   m_ObjectHideFlags: 0

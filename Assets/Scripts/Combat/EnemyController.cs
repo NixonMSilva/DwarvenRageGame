@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject deathExtraEffectFX;
 
     [SerializeField] private bool useFromDatabase = true;
+
+    [SerializeField] private Transform lootSpawnPoint;
 	
     public Enemy Type
     {
@@ -50,20 +52,20 @@ public class EnemyController : MonoBehaviour
         GoldDrop();
     }
 
-    public void SpawnLoot ()
+    private void SpawnLoot ()
     {
-        for (int i = 0; i < enemyType.drops.Length; ++i)
+        foreach (var t in enemyType.drops)
         {
             float diceRoll = UnityEngine.Random.Range(0f, 1f);
-            if (diceRoll <= enemyType.drops[i].dropChance)
+            if (diceRoll <= t.dropChance)
             {
-                Instantiate(enemyType.drops[i].item, transform.position, Quaternion.identity);
+                Instantiate(t.item, lootSpawnPoint.position, Quaternion.LookRotation(Vector3.up));
                 break;
             }
         }
     }
 
-    public void GoldDrop ()
+    private void GoldDrop ()
     {
         int delta = enemyType.goldDrop + UnityEngine.Random.Range(-enemyType.goldDropVariance, enemyType.goldDropVariance + 1);
         delta = (int)(delta * enemyStatus.Player.GoldDropRate);
