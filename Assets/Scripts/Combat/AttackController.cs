@@ -295,6 +295,8 @@ public class AttackController : MonoBehaviour
         {
             if (hitEntity.TryGetComponent(out IDamageable damagedObj))
             {
+                damagedObj.CheckForBlock(attackPoint);
+                damagedObj.PlayImpactSound();
                 if (isPlayer)
                 {
                     float damageModifier = equipment.PlayerWeapon.AttackEffect(status, damagedObj);
@@ -304,7 +306,6 @@ public class AttackController : MonoBehaviour
                         Debug.Log("Critical Hit!");
                         damageModifier *= 2f;
                     }
-
                     damagedObj.TakeDamage(damage * damageModifier, equipment.PlayerWeapon.damageType);
                     damagedObj.SpawnBlood(attackPoint);
                 }
@@ -321,7 +322,7 @@ public class AttackController : MonoBehaviour
                         damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType);
                     }
                 }
-                damagedObj.PlayImpactSound();
+                
             }
         }
     }

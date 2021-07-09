@@ -44,6 +44,9 @@ public class ProjectileController : MonoBehaviour
             IDamageable target;
             if (other.gameObject.TryGetComponent<IDamageable>(out target))
             {
+                // Check if the target isn't blocking
+                target.CheckForBlock(transform);
+                
                 if (effect != null)
                 {
                     target.TakeDamage(damageValue, damageType, effect);

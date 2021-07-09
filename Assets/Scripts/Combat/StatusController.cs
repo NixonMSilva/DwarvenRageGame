@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class StatusController : MonoBehaviour, IDamageable
 {
-    protected AttackController attack;
+    [SerializeField] protected AttackController attack;
 
     protected Animator animator;
 
@@ -231,12 +231,11 @@ public class StatusController : MonoBehaviour, IDamageable
 
     protected void PlayDamageSound () {  }
 
-    public virtual void PlayImpactSound () 
-    {
-        
-    }
+    public virtual void PlayImpactSound () { }
 
     public virtual void SpawnBlood (Vector3 position) { }
 
     public virtual void SpawnBlood (Transform position) { }
+    
+    public virtual void CheckForBlock (Transform attackPoint) { }
 }
