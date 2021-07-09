@@ -37,22 +37,30 @@ public class Boss1FightController : BossFightController
     {
         switch (stage)
         {
+            default:
+                break;
             case 1:
                 // Starting spawning pigs
                 spawner.CanSpawn = true;
+                AudioManager.instance.PlaySoundAt(bossObject, "troll_line_1");
+                break;
+            case 2:
+                AudioManager.instance.PlaySoundAt(bossObject, "troll_line_2");
                 break;
             case 3:
-                // Disable the spawner
-                spawner.enabled = false;
-                break;
-            default:
+                AudioManager.instance.PlaySoundAt(bossObject, "troll_line_3");
                 break;
         }
     }
     
-    public void FillProgressBar (float delta)
+    public void FillProgressBar ()
     {
-        bloodBarProgress += delta;
+        bloodBarProgress += percentagePerKill;
         UserInterfaceController.instance.UpdateProgressBar(bloodBarProgress);
+    }
+
+    public void DisableSpawner()
+    {
+        spawner.enabled = false;
     }
 }

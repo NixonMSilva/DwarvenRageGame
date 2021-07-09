@@ -201,9 +201,15 @@ public class ShopInterface : MonoBehaviour
         }        
     }
 
-    private void EventPurchaseConfirmed ()
+    private void EventPurchaseConfirmed (Item purchasedItem)
     {
-        Debug.Log("Hehehehe, thank you!");
+        switch (purchasedItem.itemName)
+        {
+            default:
+                break;
+            case "Health Potion":
+                break;
+        }
     }
 
     private void EventSellConfirmed ()
@@ -283,7 +289,7 @@ public class ShopInterface : MonoBehaviour
             sellerInventory.SubtractItemFromSlot(slotIndex - 1);
             UpdatePlayerItemSlots();
             UpdateShopSlots();
-            EventPurchaseConfirmed();
+            EventPurchaseConfirmed(purchasedItem);
         }
         else
         {
@@ -302,7 +308,7 @@ public class ShopInterface : MonoBehaviour
             DeduceGold(purchasedItem.price);
             UpdateShopSlots();
             UpdatePlayerWeaponSlots();
-            EventPurchaseConfirmed();
+            EventPurchaseConfirmed(purchasedItem);
         }
         else
         {
@@ -325,7 +331,7 @@ public class ShopInterface : MonoBehaviour
             UpdateShopSlots();
             UpdatePlayerShieldSlot();
             DeduceGold(purchasedItem.price);
-            EventPurchaseConfirmed();
+            EventPurchaseConfirmed(purchasedItem);
         }
     }
 
@@ -344,7 +350,7 @@ public class ShopInterface : MonoBehaviour
             UpdateShopSlots();
             UpdatePlayerRangedSlot();
             DeduceGold(purchasedItem.price);
-            EventPurchaseConfirmed();
+            EventPurchaseConfirmed(purchasedItem);
         }
     }
 

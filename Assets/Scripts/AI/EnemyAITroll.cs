@@ -28,15 +28,19 @@ public class EnemyAITroll : BossAI
             Taunt();
         }
 
-        if (FightStage == 1 && status.Health / status.MaxHealth <= 0.5f)
+        if (FightStage == 1 && status.Health / status.MaxHealth <= 0.6f)
         {
             // Second stage of battle
             FightStage = 2;
         }
-        else if (FightStage == 2 && status.Health >= 0f)
+        else if (FightStage == 2 && status.Health <= 0.3f)
         {
-            // Battle is over
+            // Last round
             FightStage = 3;
+        }
+        else if (FightStage == 3 && status.Health <= 0f)
+        {
+            FightStage = 4;
         }
     }
 

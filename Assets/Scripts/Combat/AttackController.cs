@@ -19,6 +19,7 @@ public class AttackController : MonoBehaviour
 
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private float attackSpeed = 1f;
+    [SerializeField] private float powerAttackSpeedMult = 0.7f;
 
     [SerializeField] private LayerMask damageableLayer;
 
@@ -99,7 +100,7 @@ public class AttackController : MonoBehaviour
         set
         {
             attackSpeed = value;
-            anim.SetFloat("attackSpeed", value);
+            SetAttackSpeedOnAnimator();
         }
     }
 
@@ -128,8 +129,17 @@ public class AttackController : MonoBehaviour
             InputHandler.instance.OnPowerAttackUnleashed += HandlePowerAttack;
             InputHandler.instance.OnRangedAttackUnleashed += HandleRangedAttack;
         }
+        
+        SetAttackSpeedOnAnimator();
+    }
 
+    public void SetAttackSpeedOnAnimator()
+    {
         anim.SetFloat("attackSpeed", attackSpeed);
+        if (isPlayer)
+        {
+            anim.SetFloat("powerAttackSpeed", attackSpeed * powerAttackSpeedMult);
+        }
     }
 
     private void HandleAttack (object sender, EventArgs e)
@@ -227,7 +237,7 @@ public class AttackController : MonoBehaviour
 
     public void FireRangedAttack ()
     {
-        // Criar projétil
+        // Criar projï¿½til
         CreateProjectile();
     }
 
