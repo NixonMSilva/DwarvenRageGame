@@ -19,6 +19,7 @@ public class AttackController : MonoBehaviour
 
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private float attackSpeed = 1f;
+    [SerializeField] private float powerAttackSpeedMult = 0.7f;
 
     [SerializeField] private LayerMask damageableLayer;
 
@@ -99,7 +100,7 @@ public class AttackController : MonoBehaviour
         set
         {
             attackSpeed = value;
-            anim.SetFloat("attackSpeed", value);
+            SetAttackSpeedOnAnimator();
         }
     }
 
@@ -128,8 +129,17 @@ public class AttackController : MonoBehaviour
             InputHandler.instance.OnPowerAttackUnleashed += HandlePowerAttack;
             InputHandler.instance.OnRangedAttackUnleashed += HandleRangedAttack;
         }
+        
+        SetAttackSpeedOnAnimator();
+    }
 
+    public void SetAttackSpeedOnAnimator()
+    {
         anim.SetFloat("attackSpeed", attackSpeed);
+        if (isPlayer)
+        {
+            anim.SetFloat("powerAttackSpeed", attackSpeed * powerAttackSpeedMult);
+        }
     }
 
     private void HandleAttack (object sender, EventArgs e)
@@ -227,7 +237,7 @@ public class AttackController : MonoBehaviour
 
     public void FireRangedAttack ()
     {
-        // Criar projétil
+        // Criar projï¿½til
         CreateProjectile();
     }
 
@@ -285,6 +295,8 @@ public class AttackController : MonoBehaviour
         {
             if (hitEntity.TryGetComponent(out IDamageable damagedObj))
             {
+                damagedObj.CheckForBlock(attackPoint);
+                damagedObj.PlayImpactSound();
                 if (isPlayer)
                 {
                     float damageModifier = equipment.PlayerWeapon.AttackEffect(status, damagedObj);
@@ -294,7 +306,6 @@ public class AttackController : MonoBehaviour
                         Debug.Log("Critical Hit!");
                         damageModifier *= 2f;
                     }
-
                     damagedObj.TakeDamage(damage * damageModifier, equipment.PlayerWeapon.damageType);
                     damagedObj.SpawnBlood(attackPoint);
                 }
@@ -311,7 +322,7 @@ public class AttackController : MonoBehaviour
                         damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType);
                     }
                 }
-                damagedObj.PlayImpactSound();
+                
             }
         }
     }

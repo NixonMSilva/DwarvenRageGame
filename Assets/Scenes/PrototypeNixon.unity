@@ -1382,7 +1382,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh2739516
+  m_Name: pb_Mesh109496
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1546,7 +1546,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh2739576
+  m_Name: pb_Mesh109552
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10339,6 +10339,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1836114055, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836114055, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2145891626, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -12735,7 +12743,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1190379352756723230, guid: 3f4d813b548f0bc469a0895dc2a8cacd, type: 3}
       propertyPath: m_Name
-      value: MaxHealth (3)
+      value: Health (3)
       objectReference: {fileID: 0}
     - target: {fileID: 2003753402805666980, guid: 3f4d813b548f0bc469a0895dc2a8cacd, type: 3}
       propertyPath: m_RootOrder
@@ -12751,7 +12759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2003753402805666980, guid: 3f4d813b548f0bc469a0895dc2a8cacd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.0747714
+      value: -5.743
       objectReference: {fileID: 0}
     - target: {fileID: 2003753402805666980, guid: 3f4d813b548f0bc469a0895dc2a8cacd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12781,9 +12789,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7427351875032802191, guid: 3f4d813b548f0bc469a0895dc2a8cacd, type: 3}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 11400000, guid: 3fd5fd822a377794885850641cd85382, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f4d813b548f0bc469a0895dc2a8cacd, type: 3}

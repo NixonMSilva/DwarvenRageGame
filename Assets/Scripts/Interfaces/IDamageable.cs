@@ -13,4 +13,6 @@ public interface IDamageable
     void SpawnBlood (Vector3 position);
 
     void SpawnBlood (Transform position);
+
+    void CheckForBlock(Transform attackPoint);
 }

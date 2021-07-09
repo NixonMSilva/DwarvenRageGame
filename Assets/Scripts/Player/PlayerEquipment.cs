@@ -240,6 +240,7 @@ public class PlayerEquipment : MonoBehaviour
         {
             anim.SetBool("isTwoHanded", true);
             anim.runtimeAnimatorController = animationSet2H;
+            attack.SetAttackSpeedOnAnimator();
             anim.SetBool("hasShield", HasShield);
             // Send shield to the inventory
             SetShieldGraphics(false);
@@ -248,6 +249,7 @@ public class PlayerEquipment : MonoBehaviour
         {
             anim.SetBool("isTwoHanded", false);
             anim.runtimeAnimatorController = animationSet1H;
+            attack.SetAttackSpeedOnAnimator();
             anim.SetBool("hasShield", HasShield);
             // Bring back the shield if applicable
             SetShieldGraphics(true);
