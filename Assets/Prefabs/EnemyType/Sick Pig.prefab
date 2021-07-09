@@ -3466,7 +3466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcfbeebfe97d63448bd26a9b306b513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: {fileID: 11400000, guid: 4b288a6880152f24fba4b1450e8b2c7c, type: 2}
+  enemyType: {fileID: 11400000, guid: b69998d8f17665f468992d74516dd432, type: 2}
   deathExtraEffectPoint: {fileID: 0}
   deathExtraEffectFX: {fileID: 0}
   useFromDatabase: 0
@@ -3492,6 +3492,7 @@ MonoBehaviour:
     m_Bits: 128
   baseSpeed: 12
   isAttacking: 0
+  isBeingStaggered: 0
   feetPosition: {fileID: 64519281723946205}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 15

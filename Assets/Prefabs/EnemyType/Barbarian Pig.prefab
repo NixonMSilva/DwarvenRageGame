@@ -448,11 +448,12 @@ MonoBehaviour:
     m_Bits: 128
   baseSpeed: 12
   isAttacking: 0
+  isBeingStaggered: 0
   feetPosition: {fileID: 3260511421084079228}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 15
   isPatrolling: 0
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 1.5
   sightRange: 30
   attackRange: 6
   playerInSightRange: 0
@@ -470,9 +471,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcfbeebfe97d63448bd26a9b306b513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: {fileID: 11400000, guid: 4b288a6880152f24fba4b1450e8b2c7c, type: 2}
-  _dropItem: []
-  _dropChance: []
+  enemyType: {fileID: 11400000, guid: 6ef58d41bfd915b45ad15c86302805fb, type: 2}
+  deathExtraEffectPoint: {fileID: 0}
+  deathExtraEffectFX: {fileID: 0}
   useFromDatabase: 0
 --- !u!114 &7952555473772359236
 MonoBehaviour:
@@ -492,7 +493,11 @@ MonoBehaviour:
   armor: 0
   isBlocking: 0
   resistanceSheet: {fileID: 11400000, guid: 4151573f6f046cc46a8d7a278a62b6e0, type: 2}
+  _activeDOTs: []
   painThreshold: 0.25
+  thisLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &2605868446395256795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,10 +511,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 5066318648247199520}
+  blood: {fileID: 0}
   firePointA: {fileID: 0}
   firePointB: {fileID: 0}
   attackRange: 2
-  attackSpeed: 5
+  attackSpeed: 3
   damageableLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -518,6 +524,7 @@ MonoBehaviour:
   equipment: {fileID: 0}
   projectile: {fileID: 0}
   canAttack: 1
+  canAttackRanged: 1
 --- !u!195 &2390023529998623699
 NavMeshAgent:
   m_ObjectHideFlags: 0

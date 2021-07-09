@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Fat Pig
   m_EditorClassIdentifier: 
   enemyName: Fat Pig
-  maxHealth: 200
-  attackDamage: 25
+  maxHealth: 100
+  attackDamage: 15
   drops:
   - item: {fileID: 7163305338665221067, guid: 57eac5d66a838f94d8c48dba3080f25c, type: 3}
-    dropChance: 0.25
+    dropChance: 0.75
   goldDrop: 125
   goldDropVariance: 25
   damageType: 0

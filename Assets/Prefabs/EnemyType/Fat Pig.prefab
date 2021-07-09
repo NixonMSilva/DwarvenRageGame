@@ -2442,6 +2442,7 @@ MonoBehaviour:
     m_Bits: 128
   baseSpeed: 12
   isAttacking: 0
+  isBeingStaggered: 0
   feetPosition: {fileID: 3514077346374411477}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 15
@@ -2508,7 +2509,7 @@ MonoBehaviour:
   firePointA: {fileID: 0}
   firePointB: {fileID: 0}
   attackRange: 2
-  attackSpeed: 5
+  attackSpeed: 3
   damageableLayer:
     serializedVersion: 2
     m_Bits: 128
