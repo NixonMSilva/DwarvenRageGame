@@ -25,15 +25,57 @@ public class PickableBase : MonoBehaviour, IPickable
     {
         if (other.gameObject.CompareTag("Player"))
         {
-
             StatusController playerStatus;
             other.TryGetComponent<StatusController>(out playerStatus);
-            if (playerStatus)
+            if (CanPick(item.effect, playerStatus))
             {
-                ApplyEffect(playerStatus);
-                HandlePickUp();
+                if (playerStatus)
+                {
+                    ApplyEffect(playerStatus);
+                    HandlePickUp();
+                }
             }
         }
+    }
+
+    private bool CanPick (Effect itemEffect, StatusController target)
+    {
+        if (target == null)
+            return false;
+        
+        switch (itemEffect.type)
+        {
+            case EffectType.heal:
+                if (target.Health >= target.MaxHealth)
+                    return false;
+                break;
+            case EffectType.healArmor:
+                if (target.Armor >= target.MaxArmor)
+                    return false;
+                break;
+            case EffectType.berserk:
+                break;
+            case EffectType.fortune:
+                break;
+            case EffectType.fireResistance:
+                break;
+            case EffectType.poisonResistance:
+                break;
+            case EffectType.addMaxHealth:
+                break;
+            case EffectType.addMaxArmor:
+                break;
+            case EffectType.poison:
+                break;
+            case EffectType.burning:
+                break;
+            case EffectType.none:
+                break;
+            default:
+                throw new ArgumentException();
+        }
+
+        return true;
     }
 
     public virtual void ApplyEffect (StatusController target)
@@ -56,5 +98,7 @@ public class PickableBase : MonoBehaviour, IPickable
     }
 
     public string GetName () => gameObject.name;
+    
+        
 
 }
