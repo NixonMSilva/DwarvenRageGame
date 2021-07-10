@@ -7,8 +7,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private List<Shield> _shields;
-
+    public static GameManager instance;
     [SerializeField] private int sceneNumber = 1;
+
+    public float volume = 1;
+
 
     public int GetSceneNumber () => sceneNumber;
 
@@ -24,6 +27,20 @@ public class GameManager : MonoBehaviour
         set => timesShopped = value;
     }
 
+
+    private void Awake() {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
+	
     public Weapon GetWeaponById (int id)
     {
         return Resources.LoadAll<Weapon>("Weapons").Where(w => w.id == id).First();

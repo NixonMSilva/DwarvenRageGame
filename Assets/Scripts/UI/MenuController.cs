@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
+    [SerializeField] private Slider slider;
     public void Awake ()
     {
         InputHandler.instance.LockCursor(false);
@@ -21,5 +23,10 @@ public class MenuController : MonoBehaviour
     {
         //Debug.Log("quit!");
         Application.Quit();
+    }
+
+    public void VolumeConfig()
+    {
+        GameManager.instance.volume = slider.value;
     }
 }
