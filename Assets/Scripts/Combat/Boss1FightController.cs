@@ -14,7 +14,9 @@ public class Boss1FightController : BossFightController
     [SerializeField] private Material[] bossMaterials;
 
     [SerializeField] private SkinnedMeshRenderer trollBodyMesh;
-    
+
+    [SerializeField] private GameObject platform;
+
     private PigSpawner spawner;
 
     public float BloodBar

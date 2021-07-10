@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private List<Consumable> _itemSlots = new List<Consumable>();
     [SerializeField] private List<int> _itemSlotsStack = new List<int>();
 
-    private int maxStack = 99;
+    [SerializeField] private int maxStack = 5;
 
     [SerializeField]
     private int weaponLimit, itemLimit;
@@ -71,12 +71,13 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem (Consumable item)
     {
-        if (_itemSlots.Contains(item))
+        //Debug.Log(FirstWhereStackIsNotFull(item.id));
+        if (_itemSlots.Contains(item) && FirstWhereStackIsNotFull(item.id) != -1)
         {
             // If the item exists then check if
-            // itcan be added to the stack
+            // it can be added to the stack
             // int index = _itemSlots.LastIndexOf(item);
-
+            
             int index = FirstWhereStackIsNotFull(item.id);
 
             if (_itemSlotsStack[index] >= maxStack)
@@ -119,15 +120,16 @@ public class Inventory : MonoBehaviour
     
     public bool AddItem (Consumable item, int quantity)
     {
-        if (_itemSlots.Contains(item))
+        Debug.Log(FirstWhereStackIsNotFull(item.id));
+        if (_itemSlots.Contains(item) && FirstWhereStackIsNotFull(item.id) != -1)
         {
             // If the item exists then check if
             // it can be added to the stack
             int index = FirstWhereStackIsNotFull(item.id);
 
             //int index = _itemSlots.LastIndexOf(item);
-
-            if ((_itemSlotsStack[index] + quantity) >= maxStack)
+            
+            if (index != -1 && (_itemSlotsStack[index] + quantity) >= maxStack)
             {
                 // Can we add a new stack?
                 if (_itemSlots.Count + 1 <= itemLimit)
@@ -366,7 +368,7 @@ public class Inventory : MonoBehaviour
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 
     public void ClearWeapons () 

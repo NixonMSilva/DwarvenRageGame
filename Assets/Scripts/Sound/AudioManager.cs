@@ -179,6 +179,27 @@ public class AudioManager : MonoBehaviour
         return _sounds.Find(sound => sound.name == name);
     }
 
+    public void PlaySoundInVolume (AudioSource source, string name)
+    {
+        source.Stop();
+        Sound sound = FindSound(name);
+        ConfigureAudioSource(source, sound,true);
+        source.Play();
+    }
+    
+    public void PlaySoundInVolume (AudioSource source, Sound sound)
+    {
+        source.Stop();
+        ConfigureAudioSource(source, sound,true);
+        source.Play();
+    }
+
+    public void PlaySoundInVolumeRandom(AudioSource source, string name)
+    {
+        Sound pickedName = PickRandomSound(name);
+        PlaySoundInVolume(source, pickedName);
+    }
+
     public void PlaySoundRandom (string name)
     {
         PlaySound(PickRandomSound(name));

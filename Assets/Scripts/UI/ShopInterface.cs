@@ -17,11 +17,8 @@ public class ShopInterface : MonoBehaviour
     private ShopSelectedSlot selectedSlot;
 
     // Seller data
-    [SerializeField] private GameObject seller;
+    [SerializeField] private ShopController seller;
     [SerializeField] private ShopInventory sellerInventory;
-
-    private Animator sellerAnim;
-
     [SerializeField] private ShopList loadedList;
 
     // Player data
@@ -54,14 +51,14 @@ public class ShopInterface : MonoBehaviour
         _sellRangedSlot = GetComponentsInChildren<ShopSlot>().Where(s => s.gameObject.name.Contains("SellRanged")).ToList().First();
 
         selectedSlot = GameObject.Find("PanelItemData").GetComponent<ShopSelectedSlot>();
-
-        sellerAnim = GetComponent<Animator>();
+        
     }
 
     public void ShowShopInterface (GameObject obj)
     {
-        seller = obj;
+        seller = obj.GetComponent<ShopController>();
         sellerInventory = seller.GetComponent<ShopInventory>();
+        seller.NewPurchase();
         InitializeBuySlots();
         InitializeSellSlots();
     }
@@ -79,7 +76,6 @@ public class ShopInterface : MonoBehaviour
         } */
 
         // New way:
-
         for (int i = 0; i < sellerInventory.ItemList.Count && i < _buySlots.Count; ++i)
         {
             _buySlots[i].SlotItem = sellerInventory.ItemList[i];
@@ -197,18 +193,18 @@ public class ShopInterface : MonoBehaviour
 
     private void EventPurchaseConfirmed (Item purchasedItem)
     {
-        switch (purchasedItem.itemName)
-        {
-            default:
-                break;
-            case "Health Potion":
-                break;
-        }
+        Debug.Log("Sold!" + purchasedItem.itemName);
+
+        seller.PlayPurchaseSound(purchasedItem.audioPurchaseName);
+
+        seller.BoughtSomething = true;
+        
+        seller.PlaySellerAnimation();
     }
 
     private void EventSellConfirmed ()
     {
-        Debug.Log("Hehehehe, thank you for your items!");
+        seller.PlaySellerAnimation();
     }
 
     public void EventShopSell (ShopSlot slot)

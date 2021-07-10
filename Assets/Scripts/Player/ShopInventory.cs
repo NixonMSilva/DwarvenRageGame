@@ -34,15 +34,10 @@ public class ShopInventory : MonoBehaviour
             _shopInventoryStack.Add(loadedShopList.sheet[i].quantity);
         }
     }
-
-    public void RemoveItem (int slot)
-    {
-
-    }
-
+    
     public bool AddItem (Item item)
     {
-        if (_shopInventory.Contains(item))
+        if (_shopInventory.Contains(item) && FirstWhereStackIsNotFull(item.id) != -1)
         {
             // If the item exists then check if
             // itcan be added to the stack
