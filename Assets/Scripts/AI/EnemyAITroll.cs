@@ -9,7 +9,7 @@ public class EnemyAITroll : BossAI
 
     private bool canTaunt = true;
 
-    [SerializeField] private float tauntCooldown = 2f;
+    [SerializeField] private float tauntCooldown = 30f;
 
     private float originalPainThreshold = 0f;
 
@@ -64,6 +64,7 @@ public class EnemyAITroll : BossAI
     {
         // Taunt logic
         canTaunt = false;
+        AudioManager.instance.PlaySoundRandomAt(gameObject, "taunt");
         ActionOnTimer onTimeAction = gameObject.AddComponent<ActionOnTimer>();
         onTimeAction.SetTimer(tauntCooldown, () =>
         {
@@ -81,15 +82,14 @@ public class EnemyAITroll : BossAI
 
     public override void HandleStageChange (int stage)
     {
-        if (stage == 0)
+        switch (stage)
         {
-            anim.SetBool("hasStarted", true);
-            return;
-        }
-        else if (stage == 1)
-        {
-            status.PainThreshold = originalPainThreshold;
-            return;
+            case 0:
+                anim.SetBool("hasStarted", true);
+                return;
+            case 1:
+                status.PainThreshold = originalPainThreshold;
+                return;
         }
     }
 }

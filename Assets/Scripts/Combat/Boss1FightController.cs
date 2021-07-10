@@ -7,8 +7,12 @@ public class Boss1FightController : BossFightController
     [SerializeField] private float bloodBarProgress;
 
     [SerializeField] private float percentagePerKill = 15f;
+
+    [SerializeField] private Resistance finalPhaseResistance;
     
     private PigSpawner spawner;
+
+    private Material[] bossMaterials;
 
     public float BloodBar
     {
@@ -42,13 +46,15 @@ public class Boss1FightController : BossFightController
             case 1:
                 // Starting spawning pigs
                 spawner.CanSpawn = true;
-                AudioManager.instance.PlaySoundAt(bossObject, "troll_line_1");
+                
                 break;
             case 2:
-                AudioManager.instance.PlaySoundAt(bossObject, "troll_line_2");
+                // Second phase 
                 break;
             case 3:
-                AudioManager.instance.PlaySoundAt(bossObject, "troll_line_3");
+                // Final phase
+                bossStatus.Resistances = finalPhaseResistance.BuildSheet(); 
+                AudioManager.instance.PlaySoundAt(bossObject, "taunt_3");
                 break;
         }
     }
