@@ -8,11 +8,19 @@ public class Item : ScriptableObject
 
     public string itemName;
 
+    [TextArea]
+    public string itemDescription;
+
     public Mesh worldMesh;
     public Material[] materialList;
 
     public float scaleX, scaleY, scaleZ;
 
     public Sprite icon;
+
+    public string audioPurchaseName;
+
+    // Shop system
+    public int price = 0;
 
 }

@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class TestPassLevel : MonoBehaviour
 {
-    public void EnterDungeon()
+    public void EnterDungeon ()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
+        AudioManager.instance.PlaySound("door_open");
     }
 }

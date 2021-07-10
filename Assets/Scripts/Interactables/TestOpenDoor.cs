@@ -5,6 +5,7 @@ using UnityEngine;
 public class TestOpenDoor : MonoBehaviour, IInteractable
 {
     private GameObject player;
+    private CharacterController characterController;
     private GameObject chave;
     private TooltipController chavecollider;
     private bool haschave = false;
@@ -13,27 +14,31 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
     private bool[] boss;
     
     [SerializeField] private string nomechave;
-    [SerializeField] private float positionX;
-    [SerializeField] private float positionY;
-    [SerializeField] private float positionZ;
+
+    [SerializeField] private Transform teleportLocation;
+
     private void Awake() 
     {
         player = GameObject.Find("Player");
-        chave = GameObject.Find(""+nomechave+"");
-        chavecollider = GetComponent<TooltipController>();    
     }
-    
+
     public void OnInteraction ()
     {
-       Vector3 position;
-        position.x = positionX;
-        position.y = positionY;
-        position.z = positionZ;
+        if (teleportLocation == null)
+        {
+            Debug.LogWarning("Door destination not set!");
+            return;
+        }
 
-        player.transform.position = position;
+        //Debug.Log("Here! " + gameObject.name);
+        characterController = player.GetComponent<CharacterController>();
+        characterController.enabled = false;
+        player.transform.position = teleportLocation.position;
+        characterController.enabled = true;
+        AudioManager.instance.PlaySoundAt(gameObject, "door_open");
     }
 
-    public void PegarChave ()
+     public void PegarChave ()
     {
        chavecollider.enabled = false;
        chave.SetActive(false);
@@ -57,7 +62,7 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
        
     }
 
- public void PortaBoss ()
+    public void PortaBoss ()
     {
         enemies = GameObject.Find("Enemies").GetComponent<EnemySpawnManager>();
         boss = enemies.GetKilledList();
@@ -81,5 +86,4 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
         }
        
     }
-
 }

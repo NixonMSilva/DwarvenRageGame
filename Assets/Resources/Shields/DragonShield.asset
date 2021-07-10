@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: DragonShield
   m_EditorClassIdentifier: 
   id: 13
-  itemName: Dragon Shield
+  itemName: Draconic Shield
+  itemDescription: Placeholder
   worldMesh: {fileID: 3226983304892619782, guid: 6b5fa0e608f0e4848b4bb2501f41543c, type: 3}
   materialList:
   - {fileID: 2100000, guid: 519348ddcd9660042a6ef78096bde5ae, type: 2}
@@ -21,7 +22,25 @@ MonoBehaviour:
   scaleY: 0.000075
   scaleZ: 0.000075
   icon: {fileID: 0}
+  audioPurchaseName: burp
+  price: 20000
   rotX: 26.867
   rotY: 52.819
   rotZ: -94.477
-  damageReduction: 0.6
+  protections:
+  - type: 0
+    resistance: 1
+  - type: 1
+    resistance: 0
+  - type: 2
+    resistance: 0.75
+  - type: 3
+    resistance: 0
+  - type: 4
+    resistance: 0.5
+  - type: 5
+    resistance: 0
+  - type: 6
+    resistance: 0
+  - type: 7
+    resistance: 0

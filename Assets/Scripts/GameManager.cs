@@ -7,14 +7,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private List<Shield> _shields;
-
+    public static GameManager instance;
     [SerializeField] private int sceneNumber = 1;
-
-    private void Awake ()
-    {
-        //_weapons = Resources.LoadAll<Weapon>("Weapons").ToList();
-        //_shields = Resources.LoadAll<Shield>("Shields").ToList();
-    }
+    public float volume = 1;
 
     public int GetSceneNumber () => sceneNumber;
 
@@ -22,6 +17,26 @@ public class GameManager : MonoBehaviour
 
     public List<Shield> GetShields () => _shields;
 
+    private int timesShopped = 0;
+
+    public int TimesShopped
+    {
+        get => timesShopped;
+        set => timesShopped = value;
+    }
+
+    private void Awake() {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
     public Weapon GetWeaponById (int id)
     {
         return Resources.LoadAll<Weapon>("Weapons").Where(w => w.id == id).First();
@@ -30,12 +45,19 @@ public class GameManager : MonoBehaviour
 
     public Shield GetShieldById (int id)
     {
-        return Resources.LoadAll<Shield>("Shields").Where(s => s.id == id).First();
+        return Resources.LoadAll<Shield>("Shields").Where(s => s.id == id)?.First();
         //return _shields.Where(s => s.id == id).First();
     }
 
     public Consumable GetItemById (int id)
     {
-        return Resources.LoadAll<Consumable>("Consumables").Where(s => s.id == id).First();
+        return Resources.LoadAll<Consumable>("Consumables").Where(i => i.id == id).First();
     }
+
+    public RangedWeapon GetRangedById (int id)
+    {
+        return Resources.LoadAll<RangedWeapon>("RangedWeapons").Where(r => r.id == id)?.First();
+    }
+    
+    
 }

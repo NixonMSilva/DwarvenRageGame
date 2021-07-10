@@ -11,5 +11,5 @@ public class Shield : Item
     public float rotZ = -4.477f;
 
     // Combat data
-    public float damageReduction;
+    public DamageSheet[] protections;
 }

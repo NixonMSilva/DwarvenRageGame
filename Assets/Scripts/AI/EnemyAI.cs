@@ -17,9 +17,10 @@ public class EnemyAI : MonoBehaviour
 
     protected AttackController attack;
 
-    private EnemyStatus status;
+    protected EnemyStatus status;
 
     public bool isAttacking = false;
+    public bool isBeingStaggered = false;
 
     [SerializeField] private Transform feetPosition;
 
@@ -40,7 +41,7 @@ public class EnemyAI : MonoBehaviour
 
     // Movement
     [SerializeField] protected float rotationSpeed = 10f;
-    private float currSpeed;
+    protected float currSpeed;
     protected Vector3 playerPoint;
 
     private void Awake()
@@ -53,10 +54,10 @@ public class EnemyAI : MonoBehaviour
         status = GetComponent<EnemyStatus>();
     }
 
-    private void Update()
+    protected void Update()
     {
         // If the enemy is not dying, the perform AI routines
-        if (!status.IsDying && !isAttacking)
+        if (!status.IsDying && !isAttacking && !isBeingStaggered)
         {
             // Update player speed in order to
             // decide which animator status
@@ -88,19 +89,19 @@ public class EnemyAI : MonoBehaviour
             agent.SetDestination(transform.position);
         }
 
-        if (isAttacking)
+        if (isAttacking && !status.IsDying)
         {
             LookAtPlayer();
         }
     }
 
-    private void UpdateSpeed ()
+    protected void UpdateSpeed ()
     {
         currSpeed = agent.velocity.magnitude / agent.speed;
         anim.SetFloat("speed", currSpeed);
     }
 
-    private void Patroling()
+    protected void Patroling()
     {
         if (!playerInSightRange)
         {
@@ -120,19 +121,17 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private Vector3 SearchWalkPoint()
+    protected Vector3 SearchWalkPoint()
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         Vector3 newWalkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        NavMeshHit hit;
-
         Debug.DrawRay(newWalkPoint, Vector3.up * 100f, Color.magenta, 2f);
 
         // If the new random point is inside NavMesh, then move
-        if (NavMesh.SamplePosition(newWalkPoint, out hit, 5f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(newWalkPoint, out NavMeshHit hit, 5f, NavMesh.AllAreas))
         {
             return newWalkPoint;
         }
@@ -141,7 +140,7 @@ public class EnemyAI : MonoBehaviour
         return transform.position;
     }
 
-    private void ChasePlayer()
+    protected void ChasePlayer()
     {
         agent.speed = baseSpeed * 2;
         agent.SetDestination(player.position);
@@ -188,6 +187,11 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(transform.position);
     }
 
+    public void StopForStagger ()
+    {
+        isBeingStaggered = true;
+    }
+
     protected void LookAtPlayer ()
     {
         Vector3 lookPosition = player.transform.position - transform.position;
@@ -197,7 +201,7 @@ public class EnemyAI : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(playerPoint - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime); */
         //transform.LookAt(lookPosition);
-    }
+    }    
 
     protected void ResetAttack()
     {
