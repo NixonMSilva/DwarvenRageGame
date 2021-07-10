@@ -11,6 +11,7 @@ public class TrackingCannon : MonoBehaviour
     
     [SerializeField] private Boss1FightController bossFight;
 
+    private Rotater rotationEvent;
     private TooltipController cannonTooltip;
 
     private int interactionCount = 0;
@@ -18,6 +19,7 @@ public class TrackingCannon : MonoBehaviour
     private void Awake ()
     {
         cannonTooltip = GetComponent<TooltipController>();
+        rotationEvent = GetComponent<Rotater>();
     }
 
     public void CannonInteraction ()
@@ -36,7 +38,6 @@ public class TrackingCannon : MonoBehaviour
                 if (bossFight.BloodBar >= 100f)
                 {
                     LookAtTarget();
-                    Fire();
                 }
                 else
                 {
@@ -72,6 +73,7 @@ public class TrackingCannon : MonoBehaviour
         
         // Reset the blood bar
         bossFight.BloodBar = 0f;
+        UserInterfaceController.instance.UpdateProgressBar(0f);
     }
 
     private void LookAtTarget ()
@@ -81,12 +83,15 @@ public class TrackingCannon : MonoBehaviour
 
         Quaternion lookRotation = Quaternion.LookRotation(target.position - transform.position, Vector3.up);
         lookRotation *= Quaternion.Euler(0f, 180f, 0f);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 0.2f);
+        rotationEvent.MoveTo(lookRotation, Fire);
+       
+        
+        //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 0.2f);
         //transform.rotation = lookRotation;
     }
 
     public void DisableCannon()
     {
-        cannonTooltip.enabled = false;
+        Destroy(cannonTooltip);
     }
 }

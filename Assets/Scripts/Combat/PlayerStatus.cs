@@ -8,7 +8,17 @@ public class PlayerStatus : StatusController
     private PlayerMovement movement;
     private PlayerEquipment equipment;
 
+    private Transform lastAttackPoint;
+
+    private Collider blockCollider;
+
     [SerializeField] private float goldDropRate = 1f;
+
+    public Collider BlockCollider
+    {
+        get => blockCollider;
+        set => blockCollider = value;
+    }
 
     public override float Health
     {
@@ -145,7 +155,7 @@ public class PlayerStatus : StatusController
         UserInterfaceController.instance.DeathMenu();
     }
 
-    public override void TakeDamage (float value, DamageType type)
+    public override void TakeDamage(float value, DamageType type)
     {
         float newValue = value;
 
@@ -153,7 +163,7 @@ public class PlayerStatus : StatusController
         if (_resistances.ContainsKey(type))
             newValue *= (1f - _resistances[type]);
 
-        if (isBlocking)
+        if (IsBlocking())
         {
             // Plays block hit animation
             if (equipment.PlayerShield != null)
@@ -165,13 +175,13 @@ public class PlayerStatus : StatusController
             if (!equipment.IsTwoHanded && equipment.PlayerShield != null)
             {
                 // Apply damage reduction
-                newValue -= newValue * equipment.PlayerShield.protections[(int)type].resistance;
+                newValue -= newValue * equipment.PlayerShield.protections[(int) type].resistance;
                 AudioManager.instance.PlaySoundRandom("shield_block");
             }
             else
             {
                 // Without shield, use weapon protections
-                newValue -= newValue * equipment.PlayerWeapon.protections[(int)type].resistance;
+                newValue -= newValue * equipment.PlayerWeapon.protections[(int) type].resistance;
             }
         }
         else
@@ -218,4 +228,23 @@ public class PlayerStatus : StatusController
     }
 
     public override void PlayImpactSound () { }
+
+    public bool IsBlocking()
+    {
+        return isBlocking;
+    }
+
+    public override void CheckForBlock(Transform attackPoint)
+    {
+        lastAttackPoint = attackPoint;
+    }
+    
+    private void OnDrawGizmosSelected ()
+    {
+        if (attack.AttackPoint == null)
+            return;
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawRay(attack.AttackPoint.position - transform.forward, transform.forward);
+    }
 }
