@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private List<Consumable> _itemSlots = new List<Consumable>();
     [SerializeField] private List<int> _itemSlotsStack = new List<int>();
 
-    private int maxStack = 5;
+    [SerializeField] private int maxStack = 5;
 
     [SerializeField]
     private int weaponLimit, itemLimit;
@@ -71,7 +71,7 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem (Consumable item)
     {
-        Debug.Log(FirstWhereStackIsNotFull(item.id));
+        //Debug.Log(FirstWhereStackIsNotFull(item.id));
         if (_itemSlots.Contains(item) && FirstWhereStackIsNotFull(item.id) != -1)
         {
             // If the item exists then check if

@@ -194,8 +194,8 @@ public class ShopInterface : MonoBehaviour
     private void EventPurchaseConfirmed (Item purchasedItem)
     {
         Debug.Log("Sold!" + purchasedItem.itemName);
-        
-        AudioManager.instance.PlaySoundAt(sellerInventory.gameObject, purchasedItem.audioPurchaseName);
+
+        seller.PlayPurchaseSound(purchasedItem.audioPurchaseName);
 
         seller.BoughtSomething = true;
         

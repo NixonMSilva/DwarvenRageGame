@@ -10,9 +10,13 @@ public class ShopController : MonoBehaviour
     [SerializeField] private Animator sellerAnim;
     [SerializeField] private ShopType type = ShopType.normalShop;
 
+    [SerializeField] private AudioSource soundSource;
+    
     private bool boughtSomething = false;
 
     private int noBeersBought = 0;
+
+    private List<string> _soundsPlayed = new List<string>();
 
     public bool BoughtSomething
     {
@@ -60,6 +64,7 @@ public class ShopController : MonoBehaviour
         switch (type)
         {
             case ShopType.postBoss1Shop:
+                AudioManager.instance.PlaySoundAt(sellerAnim.gameObject, "hello_boss_1");
                 break;
             default:
                 PlayDefaultHello();
@@ -73,12 +78,13 @@ public class ShopController : MonoBehaviour
         if (manager.TimesShopped == 0)
         {
             // Intro Hello
-            Debug.Log("First hello");
+            AudioManager.instance.PlaySoundInVolume(soundSource, "hello_first");
+            
         }
         else
         {
             // Random hello
-            Debug.Log("Hello");
+            AudioManager.instance.PlaySoundRandomAt(sellerAnim.gameObject, "remark");
         }
     }
 
@@ -97,5 +103,20 @@ public class ShopController : MonoBehaviour
     {
         noBeersBought = 0;
         boughtSomething = false;
+        ClearPurchasedSounds();
+    }
+
+    public void PlayPurchaseSound (string purchasedItemAudioPurchaseName)
+    {
+        if (!_soundsPlayed.Contains(purchasedItemAudioPurchaseName))
+        {
+            AudioManager.instance.PlaySoundInVolume(soundSource, purchasedItemAudioPurchaseName);
+            _soundsPlayed.Add(purchasedItemAudioPurchaseName);
+        }
+    }
+
+    public void ClearPurchasedSounds ()
+    {
+        _soundsPlayed.Clear();
     }
 }
