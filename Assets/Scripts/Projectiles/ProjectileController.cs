@@ -5,20 +5,20 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class ProjectileController : MonoBehaviour
 {
-    [SerializeField] private float flightSpeed = 25f;
+    [SerializeField] protected float flightSpeed = 25f;
 
-    [SerializeField] private List<string> _canCollideWith = new List<string>();
+    [SerializeField] protected List<string> _canCollideWith = new List<string>();
 
-    [SerializeField] private float damageValue;
+    [SerializeField] protected float damageValue;
 
-    [SerializeField] private DamageType damageType = DamageType.ranged;
-    [SerializeField] private Effect effect = null;
+    [SerializeField] protected DamageType damageType = DamageType.ranged;
+    [SerializeField] protected Effect effect = null;
 
-    [SerializeField] private bool bleedOnImpact;
+    [SerializeField] protected bool bleedOnImpact;
 
-    private GameObject caster;
+    protected GameObject caster;
 
-    private Vector3 target;
+    protected Vector3 target;
 
     protected Rigidbody rigidBody;
 
@@ -33,7 +33,7 @@ public class ProjectileController : MonoBehaviour
         Destroy(gameObject, 10f);
     }
 
-    private void OnTriggerEnter (Collider other)
+    public virtual void OnTriggerEnter (Collider other)
     {
         int layerId = other.gameObject.layer;
         string layerName = LayerMask.LayerToName(layerId);

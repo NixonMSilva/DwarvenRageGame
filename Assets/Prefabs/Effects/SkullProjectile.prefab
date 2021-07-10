@@ -831,8 +831,8 @@ GameObject:
   - component: {fileID: 7121338929785602961}
   - component: {fileID: 7685263643952420181}
   - component: {fileID: -4043058346604088354}
-  - component: {fileID: 7752414088313431974}
   - component: {fileID: 8893289318278014207}
+  - component: {fileID: 3343643651805478887}
   m_Layer: 0
   m_Name: SkullProjectile
   m_TagString: Projectile
@@ -927,26 +927,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7752414088313431974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6093174438287569282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fef3d2742754584ebb996b84403250f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flightSpeed: 70
-  _canCollideWith:
-  - Damageable
-  - Player
-  damageValue: 190
-  damageType: 7
-  effect: {fileID: 0}
-  bleedOnImpact: 1
 --- !u!135 &8893289318278014207
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -960,6 +940,28 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.112656526
   m_Center: {x: 0, y: 0.06, z: 0.01}
+--- !u!114 &3343643651805478887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093174438287569282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4542ed1c69ace04d931846bf4d0f3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightSpeed: 125
+  _canCollideWith:
+  - Wall
+  - Player
+  - Ground
+  - Damageable
+  damageValue: 50
+  damageType: 7
+  effect: {fileID: 0}
+  bleedOnImpact: 1
 --- !u!1 &6808742071508151977
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Troll
   m_EditorClassIdentifier: 
   enemyName: Troll
-  maxHealth: 500
+  maxHealth: 750
   attackDamage: 40
   drops: []
   goldDrop: 10000
@@ -22,7 +22,7 @@ MonoBehaviour:
   damageEffect: {fileID: 0}
   soundIdle: troll_idle
   soundAttack: troll_attack
-  soundDamage: troll_hit
+  soundDamage: troll_damage
   soundDeath: troll_death
   impactType: axe_on_flesh
   bloodParticle: {fileID: 2170997142744102009, guid: eb3b0c93a71d4c148afcc8e2d2d0991b, type: 3}

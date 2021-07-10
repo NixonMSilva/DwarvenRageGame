@@ -27,8 +27,6 @@ public class TrackingCannon : MonoBehaviour
         // Only interact if the boss battle has started or if he isn't defeated
         if (bossFight.GetStage() > 0 && !bossFight.IsBossDefeated)
         {
-            Debug.Log(interactionCount);
-            
             if (interactionCount == 0)
             {
                 StartCannonUsage();
@@ -53,7 +51,6 @@ public class TrackingCannon : MonoBehaviour
     private void StartCannonUsage()
     {
         cannonTooltip.SetTooltipText("Fire");
-        Debug.Log("Can only use this when blood is full!");
         UserInterfaceController.instance.ShowProgressMenu("Blood Collected");
         UserInterfaceController.instance.UpdateProgressBar(bossFight.BloodBar);
     }
@@ -67,9 +64,11 @@ public class TrackingCannon : MonoBehaviour
     {
         if (target == null)
             return;
-
+        
         GameObject skull = Instantiate(cannonProjectile, firePoint.position, Quaternion.identity);
         skull.GetComponent<ProjectileController>().SetTarget(target.position - transform.position);
+        
+        Debug.Log(skull);
         
         // Reset the blood bar
         bossFight.BloodBar = 0f;
@@ -83,7 +82,7 @@ public class TrackingCannon : MonoBehaviour
 
         Quaternion lookRotation = Quaternion.LookRotation(target.position - transform.position, Vector3.up);
         lookRotation *= Quaternion.Euler(0f, 180f, 0f);
-        rotationEvent.MoveTo(lookRotation, Fire);
+        rotationEvent.MoveTo(lookRotation, true, Fire);
        
         
         //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 0.2f);

@@ -45,7 +45,6 @@ public class BossAI : EnemyAI
             }
             else
             {
-                Debug.Log("OREWA CHASE!");
                 ChasePlayer();
             }
         }
@@ -60,8 +59,7 @@ public class BossAI : EnemyAI
         }
         else
         {
-
-            Debug.Log("Something wrong is not right");
+            
         }
     }
 

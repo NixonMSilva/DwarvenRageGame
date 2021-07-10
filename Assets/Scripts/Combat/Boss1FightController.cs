@@ -8,11 +8,14 @@ public class Boss1FightController : BossFightController
 
     [SerializeField] private float percentagePerKill = 15f;
 
-    [SerializeField] private Resistance finalPhaseResistance;
+    private Resistance originalResistance;
+    [SerializeField] private Resistance invulnerabiltyResistance;
+    
+    [SerializeField] private Material[] bossMaterials;
+
+    [SerializeField] private SkinnedMeshRenderer trollBodyMesh;
     
     private PigSpawner spawner;
-
-    private Material[] bossMaterials;
 
     public float BloodBar
     {
@@ -25,6 +28,8 @@ public class Boss1FightController : BossFightController
         base.Awake();
 
         spawner = GetComponent<PigSpawner>();
+
+        originalResistance = bossStatus.Sheet;
     }
 
     private new void Start ()
@@ -46,15 +51,17 @@ public class Boss1FightController : BossFightController
             case 1:
                 // Starting spawning pigs
                 spawner.CanSpawn = true;
-                
                 break;
             case 2:
-                // Second phase 
+                // Second phase (red)
+                trollBodyMesh.material = bossMaterials[1];
+                ChangeResistance(invulnerabiltyResistance);
                 break;
             case 3:
-                // Final phase
-                bossStatus.Resistances = finalPhaseResistance.BuildSheet(); 
-                AudioManager.instance.PlaySoundAt(bossObject, "taunt_3");
+                // Final phase (purple)
+                trollBodyMesh.material = bossMaterials[2];
+                ChangeResistance(invulnerabiltyResistance);
+                AudioManager.instance.PlaySoundAt(bossObject, "troll_final_phase");
                 break;
         }
     }
@@ -68,5 +75,20 @@ public class Boss1FightController : BossFightController
     public void DisableSpawner()
     {
         spawner.enabled = false;
+    }
+    
+    private void ChangeResistance (Resistance newResistance)
+    {
+        bossStatus.Resistances = newResistance.BuildSheet();
+    }
+
+    public void ResetResistance()
+    {
+        bossStatus.Resistances = originalResistance.BuildSheet();
+    }
+
+    public void ResetColor()
+    {
+        trollBodyMesh.material = bossMaterials[0];
     }
 }

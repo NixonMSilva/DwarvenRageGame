@@ -7,7 +7,7 @@ public class EnemyAITroll : BossAI
 {
     [SerializeField] private Sound[] tauntSounds;
 
-    private bool canTaunt = true;
+    [SerializeField] private bool canTaunt = true;
 
     [SerializeField] private float tauntCooldown = 30f;
 
@@ -22,24 +22,25 @@ public class EnemyAITroll : BossAI
     private new void Update ()
     {
         base.Update();
-
-        if (playerInSightRange && canTaunt && !status.IsDying)
+        
+        if (canTaunt && !status.IsDying)
         {
             Taunt();
         }
 
-        if (FightStage == 1 && status.Health / status.MaxHealth <= 0.6f)
+        if (FightStage == 1 && status.Health / status.MaxHealth <= 0.5f)
         {
-            // Second stage of battle
+            // Initial invulnerability phase
             FightStage = 2;
         }
-        else if (FightStage == 2 && status.Health <= 0.3f)
+        else if (FightStage == 2 && status.Health / status.MaxHealth <= 0.3f)
         {
             // Last round
             FightStage = 3;
         }
         else if (FightStage == 3 && status.Health <= 0f)
         {
+            // Deaded
             FightStage = 4;
         }
     }

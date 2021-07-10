@@ -43,5 +43,14 @@ public class Rotater : MonoBehaviour
         completeCallback = onComplete;
     }
 
+    public void MoveTo (Quaternion nextRotation, bool onlyHorizontal, Action onComplete = null)
+    {
+        if (onlyHorizontal)
+        {
+            nextRotation.eulerAngles = new Vector3(0f, nextRotation.eulerAngles.y, 0f);    
+        }
+        MoveTo(nextRotation, onComplete);
+    }
+
     private Quaternion Interpolate (Quaternion start, Quaternion end, float percentage) => Quaternion.Slerp(start, end, percentage);
 }
