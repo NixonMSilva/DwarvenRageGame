@@ -18,6 +18,8 @@ public class Item : ScriptableObject
 
     public Sprite icon;
 
+    public string audioPurchaseName;
+
     // Shop system
     public int price = 0;
 

@@ -17,6 +17,8 @@ public class TooltipController : MonoBehaviour
 
     private bool canPressButton = false;
 
+    [SerializeField] private bool hideOnAction = true;
+
     private void Awake ()
     {
         currentTooltipText = defaultTooltipText;
@@ -34,9 +36,13 @@ public class TooltipController : MonoBehaviour
     {
         if (canPressButton)
         {
-            canPressButton = false;
-            HideTooltip();
-            OnPressEvent.Invoke();            
+            if (hideOnAction)
+            {
+                canPressButton = false;
+                HideTooltip();
+            }
+                
+            OnPressEvent.Invoke();
         }
     }
 

@@ -16,6 +16,14 @@ public class GameManager : MonoBehaviour
 
     public List<Shield> GetShields () => _shields;
 
+    private int timesShopped = 0;
+
+    public int TimesShopped
+    {
+        get => timesShopped;
+        set => timesShopped = value;
+    }
+
     public Weapon GetWeaponById (int id)
     {
         return Resources.LoadAll<Weapon>("Weapons").Where(w => w.id == id).First();
@@ -37,4 +45,6 @@ public class GameManager : MonoBehaviour
     {
         return Resources.LoadAll<RangedWeapon>("RangedWeapons").Where(r => r.id == id)?.First();
     }
+    
+    
 }
