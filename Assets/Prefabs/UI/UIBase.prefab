@@ -964,7 +964,6 @@ RectTransform:
   - {fileID: 1757327129}
   - {fileID: 1564315633}
   - {fileID: 5812890158662891117}
-  - {fileID: 1575059515}
   m_Father: {fileID: 164138210076557841}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2110,12 +2109,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575059514}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 525171806}
-  m_RootOrder: 4
+  m_Father: {fileID: 164138210076557841}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3101,6 +3100,7 @@ RectTransform:
   - {fileID: 6108115215163973}
   - {fileID: 525171806}
   - {fileID: 1036799143}
+  - {fileID: 1575059515}
   m_Father: {fileID: 164138211792009419}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3199,6 +3199,7 @@ MonoBehaviour:
   playerHurt: {fileID: 21300000, guid: 21f3f92923fbfe74dacec3efbd0f77be, type: 3}
   playerVeryHurt: {fileID: 21300000, guid: e528267ad61b6954e8ce6e6da08433e0, type: 3}
   playerVeryDrunk: {fileID: 21300000, guid: 50e4e8a408429a9448fef942fd64eb76, type: 3}
+  warningPrefab: {fileID: 8602847472170775168, guid: 12e92cd9e89aaef4a8078cf4f0fa411f, type: 3}
 --- !u!1 &164138210265294973
 GameObject:
   m_ObjectHideFlags: 0

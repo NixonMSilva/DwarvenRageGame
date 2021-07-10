@@ -28,10 +28,6 @@ public class ShopInterface : MonoBehaviour
     private Inventory inventory;
     private PlayerEquipment equipment;
 
-    // Warning data
-    private GameObject warningRoot;
-    [SerializeField] private GameObject warningPrefab;
-
     private GameManager manager;
 
     public Inventory PlayerInventory
@@ -60,8 +56,6 @@ public class ShopInterface : MonoBehaviour
         selectedSlot = GameObject.Find("PanelItemData").GetComponent<ShopSelectedSlot>();
 
         sellerAnim = GetComponent<Animator>();
-
-        warningRoot = GameObject.Find("WarningTextPoint");
     }
 
     public void ShowShopInterface (GameObject obj)
@@ -174,7 +168,7 @@ public class ShopInterface : MonoBehaviour
     public void EventNotEnoughCash ()
     {
         Debug.Log("Not enough cash, stranger!");
-        ThrowWarningMessage("You don't have enough cash!");
+        UserInterfaceController.instance.ThrowWarningMessage("You don't have enough cash!");
     }
 
     public void EventShopPurchase (ShopSlot slot)
@@ -244,25 +238,25 @@ public class ShopInterface : MonoBehaviour
     public void EventInventoryFull ()
     {
         Debug.Log("Your inventory is full!");
-        ThrowWarningMessage("Your inventory is full!");
+        UserInterfaceController.instance.ThrowWarningMessage("Your inventory is full!");
     }
 
     public void EventWeaponFull ()
     {
         Debug.Log("Your weapon slots are full!");
-        ThrowWarningMessage("Your weapon slots are full!");
+        UserInterfaceController.instance.ThrowWarningMessage("Your weapon slots are full!");
     }
 
     public void EventShieldFull ()
     {
         Debug.Log("Your shield slot is occupied!");
-        ThrowWarningMessage("Your shield slot is occupied!");
+        UserInterfaceController.instance.ThrowWarningMessage("Your shield slot is occupied!");
     }
 
     public void EventRangedFull ()
     {
         Debug.Log("Your ranged slot is occupied!");
-        ThrowWarningMessage("Your ranged slot is occupied!");
+        UserInterfaceController.instance.ThrowWarningMessage("Your ranged slot is occupied!");
     }
 
     private void HandleItemPurchase (Consumable purchasedItem, ShopSlot slot)
@@ -445,12 +439,6 @@ public class ShopInterface : MonoBehaviour
             UserInterfaceController.instance.HideShopMenu(false);
         else
             UserInterfaceController.instance.HideShopMenu(true);
-    }
-
-    private void ThrowWarningMessage (string message)
-    {
-        GameObject messageObj = Instantiate(warningPrefab, warningRoot.transform);
-        messageObj.GetComponent<TextMeshProUGUI>().text = message;
     }
 
 }

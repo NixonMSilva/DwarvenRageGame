@@ -73,6 +73,9 @@ public class UserInterfaceController : MonoBehaviour
     [SerializeField] private Sprite playerHurt;
     [SerializeField] private Sprite playerVeryHurt;
     [SerializeField] private Sprite playerVeryDrunk;
+    
+    private GameObject warningRoot;
+    [SerializeField] private GameObject warningPrefab;
 
     private void Awake ()
     {
@@ -134,6 +137,8 @@ public class UserInterfaceController : MonoBehaviour
 
         _itemSprites = new List<Image>();
         _itemStackTexts = new List<TextMeshProUGUI>();
+        
+        warningRoot = GameObject.Find("WarningTextPoint");
     }
 
     private void Start ()
@@ -566,6 +571,12 @@ public class UserInterfaceController : MonoBehaviour
     public void UpdateProgressBar(float value)
     {
         progressSlider.value = value;
+    }
+    
+    public void ThrowWarningMessage (string message)
+    {
+        GameObject messageObj = Instantiate(warningPrefab, warningRoot.transform);
+        messageObj.GetComponent<TextMeshProUGUI>().text = message;
     }
 
     // 0 - Out | 1 - In
