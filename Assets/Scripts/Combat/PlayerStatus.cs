@@ -143,10 +143,20 @@ public class PlayerStatus : StatusController
 
     private new void Start ()
     {
-        Health = maxHealth;
-        Armor = 0f;
-
-        _resistances = resistanceSheet.BuildSheet();
+        if (GameManager.instance.Player != null)
+        {
+            Health = GameManager.instance.Player.health;
+            Armor = GameManager.instance.Player.armor;
+            _resistances = GameManager.instance.Player.sheet.BuildSheet();
+        }
+        else
+        {
+            // Reset situation
+            
+            Health = maxHealth;
+            Armor = 0f;
+            _resistances = resistanceSheet.BuildSheet();
+        }
     }
 
     protected override void Die ()
@@ -155,7 +165,7 @@ public class PlayerStatus : StatusController
         UserInterfaceController.instance.DeathMenu();
     }
 
-    public override void TakeDamage(float value, DamageType type)
+    public override void TakeDamage (float value, DamageType type)
     {
         float newValue = value;
 
@@ -190,28 +200,25 @@ public class PlayerStatus : StatusController
             PlayDamageSound();
         }
 
-        UserInterfaceController.instance.ShowDamagePanel();
+        // Blink
+        DamageBlink(type);
 
         //Debug.Log("Health reduced:" + newValue);
         DeduceHealth(newValue);
     }
 
-    /*
-    public override void TakeDamage (float value, DamageType type, Effect effect)
+    private void DamageBlink (DamageType type)
     {
-        TakeDamage(value, type);
-
-        for (int i = 0; i < _activeDOTs.Count; ++i)
+        switch (type)
         {
-            if (_activeDOTs[i].Type == effect.dotDamageType)
-            {
-                _activeDOTs[i].ResetTimer();
-                return;
-            }
+            case DamageType.poison:
+                UserInterfaceController.instance.ShowDamagePanel(new Color(0.3f, 1f, 0f));
+                break;
+            default:
+                UserInterfaceController.instance.ShowDamagePanel(Color.red);
+                break;
         }
-
-        EffectProcessor.ProcessEffect(effect, this);
-    } */
+    }
 
     private void UpdateCharacterUI ()
     {
@@ -241,7 +248,7 @@ public class PlayerStatus : StatusController
     
     private void OnDrawGizmosSelected ()
     {
-        if (attack.AttackPoint == null)
+        if (attack == null || attack.AttackPoint == null)
             return;
 
         Gizmos.color = Color.cyan;

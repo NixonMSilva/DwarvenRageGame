@@ -18,6 +18,9 @@ public class ChestController : MonoBehaviour
     public void ChestEffect()
     {
         onOpen.Invoke();
+        // Destroy the chest
+        Destroy(tooltip);
+        Destroy(this);
     }
 
     public void AddGold (int amount)

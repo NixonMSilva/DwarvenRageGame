@@ -6,6 +6,7 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
 {
     private GameObject player;
     private CharacterController characterController;
+
     private GameObject chave;
     private TooltipController chavecollider;
     private bool haschave = false;
@@ -29,6 +30,13 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
             Debug.LogWarning("Door destination not set!");
             return;
         }
+
+        //Debug.Log("Here! " + gameObject.name);
+        characterController = player.GetComponent<CharacterController>();
+        characterController.enabled = false;
+        player.transform.position = teleportLocation.position;
+        characterController.enabled = true;
+        AudioManager.instance.PlaySoundAt(gameObject, "door_open");
 
         //Debug.Log("Here! " + gameObject.name);
         characterController = player.GetComponent<CharacterController>();
@@ -84,6 +92,6 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
             Debug.Log("Pode entrar");
             OnInteraction ();
         }
-       
+
     }
 }

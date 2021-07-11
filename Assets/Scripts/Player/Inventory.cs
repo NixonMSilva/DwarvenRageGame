@@ -10,13 +10,28 @@ public class Inventory : MonoBehaviour
     [SerializeField] private List<Consumable> _itemSlots = new List<Consumable>();
     [SerializeField] private List<int> _itemSlotsStack = new List<int>();
 
-    private int maxStack = 5;
+    [SerializeField] private int maxStack = 5;
 
     [SerializeField]
     private int weaponLimit, itemLimit;
 
     private PlayerEquipment equipment;
     private PlayerStatus playerStatus;
+
+    public List<Weapon> Weapons
+    {
+        get => _weaponSlots;
+    }
+
+    public List<Consumable> Items
+    {
+        get => _itemSlots;
+    }
+
+    public List<int> Stacks
+    {
+        get => _itemSlotsStack;
+    }
 
     private void Awake ()
     {
@@ -28,7 +43,16 @@ public class Inventory : MonoBehaviour
     }
 
     private void Start ()
-    {       
+    {
+        // Load from the GameManager
+        if (GameManager.instance.Player != null)
+        {
+            Debug.Log("Is entering here but it shouldn't! (Inventory.cs)");
+            _itemSlots = GameManager.instance.Player.itemList;
+            _itemSlotsStack = GameManager.instance.Player.itemStack;
+            _weaponSlots = GameManager.instance.Player.weaponList;
+        }
+        
         DrawWeaponSlots();
         DrawItemSlots();
 
@@ -71,7 +95,7 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem (Consumable item)
     {
-        Debug.Log(FirstWhereStackIsNotFull(item.id));
+        //Debug.Log(FirstWhereStackIsNotFull(item.id));
         if (_itemSlots.Contains(item) && FirstWhereStackIsNotFull(item.id) != -1)
         {
             // If the item exists then check if

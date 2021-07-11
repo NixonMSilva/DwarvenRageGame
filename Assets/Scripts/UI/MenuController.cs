@@ -27,6 +27,6 @@ public class MenuController : MonoBehaviour
 
     public void VolumeConfig()
     {
-        GameManager.instance.volume = slider.value;
+        GameManager.instance.sfxVolume = slider.value;
     }
 }
