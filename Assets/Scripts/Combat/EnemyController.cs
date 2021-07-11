@@ -14,10 +14,13 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private GameObject deathExtraEffectPoint;
     [SerializeField] private GameObject deathExtraEffectFX;
+    [SerializeField] private float deathExtraEffectRange = 0f;
 
     [SerializeField] private bool useFromDatabase = true;
 
     [SerializeField] private Transform lootSpawnPoint;
+
+    private Collider[] _colliders;
 	
     public Enemy Type
     {
@@ -31,6 +34,8 @@ public class EnemyController : MonoBehaviour
 
         enemyStatus.MaxHealth   = enemyType.maxHealth;
         enemyStatus.Health      = enemyType.maxHealth;
+
+        _colliders = gameObject.GetComponentsInChildren<Collider>();
 
         if (useFromDatabase)
         {
@@ -47,9 +52,20 @@ public class EnemyController : MonoBehaviour
     {
         // Spawn loot
         SpawnLoot();
+        
+        // Remove colliders
+        DisableColliders();
 
         // Add gold
         GoldDrop();
+    }
+
+    private void DisableColliders()
+    {
+        foreach (Collider collider in _colliders)
+        {
+            Destroy(collider);
+        }
     }
 
     private void SpawnLoot ()
@@ -85,7 +101,7 @@ public class EnemyController : MonoBehaviour
         {
             case "Fat Pig":
                 GameObject blood = Instantiate(deathExtraEffectFX, deathExtraEffectPoint.transform.position, Quaternion.identity);
-                Collider[] hit = Physics.OverlapSphere(deathExtraEffectPoint.transform.position, 5f, enemyAttack.Damageables);
+                Collider[] hit = Physics.OverlapSphere(deathExtraEffectPoint.transform.position, deathExtraEffectRange, enemyAttack.Damageables);
                 foreach  (Collider obj in hit)
                 {
                     StatusController controller;
@@ -99,5 +115,13 @@ public class EnemyController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        if (deathExtraEffectRange <= 0f || deathExtraEffectPoint == null)
+            return;
+        
+        Gizmos.DrawWireSphere(deathExtraEffectPoint.transform.position, deathExtraEffectRange);
     }
 }

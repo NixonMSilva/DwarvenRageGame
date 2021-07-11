@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.ComponentModel.Design.Serialization;
 
 public class PickableBase : MonoBehaviour, IPickable
 {
@@ -32,6 +33,8 @@ public class PickableBase : MonoBehaviour, IPickable
                 if (playerStatus)
                 {
                     ApplyEffect(playerStatus);
+                    UserInterfaceController.instance.ShowDamagePanel(Color.white);
+                    AudioManager.instance.PlaySound(item.audioPickupName);
                     HandlePickUp();
                 }
             }

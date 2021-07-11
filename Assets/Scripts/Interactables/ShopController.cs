@@ -70,12 +70,12 @@ public class ShopController : MonoBehaviour
                 PlayDefaultHello();
                 break;
         }
-        manager.TimesShopped++;
+        GameManager.instance.timesShopped++;
     }
 
     private void PlayDefaultHello()
     {
-        if (manager.TimesShopped == 0)
+        if (GameManager.instance.timesShopped == 0)
         {
             // Intro Hello
             AudioManager.instance.PlaySoundInVolume(soundSource, "hello_first");

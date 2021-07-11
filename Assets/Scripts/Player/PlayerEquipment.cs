@@ -105,7 +105,7 @@ public class PlayerEquipment : MonoBehaviour
     {
         get { return baseDamageReduction; }
     }
-    
+
     public bool HasShield
     {
         get { return hasShield; }
@@ -134,7 +134,31 @@ public class PlayerEquipment : MonoBehaviour
 
     private void Start ()
     {
-        // Intialize weapon and shield graphics
+        // Load from the GameManager
+        if (GameManager.instance.Player != null)
+        {
+            Debug.Log("Is entering here but it shouldn't! (PlayerEquipment.cs)");
+            PlayerWeapon = GameManager.instance.Player.playerWeapon;
+            PlayerRanged = GameManager.instance.Player.playerRanged;
+            PlayerShield = GameManager.instance.Player.playerShield;
+            Gold = GameManager.instance.Player.gold;
+        }
+
+        InitializeGraphics();
+
+        // Initializes the ranged weapon
+        PlayerRanged = playerRanged;
+
+        // Initializes the player damage to that of his weapon
+        attack.Damage = playerWeapon.damage;
+
+        // Initializes player gold
+        UserInterfaceController.instance.UpdateGoldCount(gold);
+    }
+
+    private void InitializeGraphics()
+    {
+        // Initialize weapon and shield graphics
         ChangeShieldGraphics(playerShield);
         ChangeWeaponGraphics(playerWeapon);
 
@@ -147,15 +171,6 @@ public class PlayerEquipment : MonoBehaviour
 
         // Set the correct fire point for the ranged weapon
         UpdateRangedFirePosition(playerRanged);
-
-        // Initializes the ranged weapon
-        PlayerRanged = playerRanged;
-
-        // Initializes the player damage to that of his weapon
-        attack.Damage = playerWeapon.damage;
-
-        // Initializes player gold
-        UserInterfaceController.instance.UpdateGoldCount(gold);
     }
 
     public void ChangeWeaponGraphics (Weapon wpn)
