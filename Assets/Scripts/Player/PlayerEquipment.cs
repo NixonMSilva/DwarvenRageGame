@@ -137,7 +137,6 @@ public class PlayerEquipment : MonoBehaviour
         // Load from the GameManager
         if (GameManager.instance.Player != null)
         {
-            Debug.Log("Is entering here but it shouldn't! (PlayerEquipment.cs)");
             PlayerWeapon = GameManager.instance.Player.playerWeapon;
             PlayerRanged = GameManager.instance.Player.playerRanged;
             PlayerShield = GameManager.instance.Player.playerShield;

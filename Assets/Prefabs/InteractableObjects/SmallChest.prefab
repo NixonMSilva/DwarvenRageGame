@@ -873,7 +873,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.79444253
+  m_Radius: 1
   m_Center: {x: -0.009710885, y: 0, z: 0}
 --- !u!65 &3078729866634569306
 BoxCollider:
@@ -929,6 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd918e83038bb74aa0c557a802efadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   _children: []
 --- !u!1 &3078729865115172695
 GameObject:

@@ -47,7 +47,6 @@ public class Inventory : MonoBehaviour
         // Load from the GameManager
         if (GameManager.instance.Player != null)
         {
-            Debug.Log("Is entering here but it shouldn't! (Inventory.cs)");
             _itemSlots = GameManager.instance.Player.itemList;
             _itemSlotsStack = GameManager.instance.Player.itemStack;
             _weaponSlots = GameManager.instance.Player.weaponList;
