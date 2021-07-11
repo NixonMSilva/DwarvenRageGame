@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +27,12 @@ public class EventController : MonoBehaviour
 
     private void HandleExecution (EventObject sender)
     {
-        
+        string name = sender.gameObject.name;
+        string[] subs = name.Split(limits);
+        int eventId = Int32.Parse(subs[1]);
+        _wasNotTriggered[eventId - 1] = false;
     }
+    
     public bool[] GetTriggeredList ()
     {
         return _wasNotTriggered.ToArray();
@@ -44,9 +49,15 @@ public class EventController : MonoBehaviour
         {
             if (!_wasNotTriggered[i])
             {
-                Destroy(_eventList[i].gameObject);
+                _eventList[i].DisableEvent();
             }
         }
+    }
+    
+    [ContextMenu("Autofill Events")]
+    void AutofillEnemies ()
+    {
+        _eventList = GetComponentsInChildren<EventObject>().ToList();
     }
 
 }

@@ -34,9 +34,7 @@ public class SaveController : MonoBehaviour
     public List<int> itemsStack;
 
     private GameObject player;
-
-    private GameManager manager;
-
+    
     bool hasPlayer = false;  
 
     [SerializeField] private bool canLoadGame = true;
@@ -52,7 +50,6 @@ public class SaveController : MonoBehaviour
     private void Awake() 
     {
         player = GameObject.Find("Player");
-        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         if (player)
         {
@@ -106,7 +103,7 @@ public class SaveController : MonoBehaviour
             EnemySpawnManager enemyController = GameObject.Find("Enemies").GetComponent<EnemySpawnManager>();
             EventController eventController = GameObject.Find("Events").GetComponent<EventController>();
 
-            sceneNumber = manager.GetSceneNumber();
+            sceneNumber = GameManager.instance.GetSceneNumber();
 
             if (pickableController)
                 savePickableStatus[sceneNumber] = pickableController.GetPickedList();
@@ -171,7 +168,7 @@ public class SaveController : MonoBehaviour
             EnemySpawnManager enemyController = GameObject.Find("Enemies").GetComponent<EnemySpawnManager>();
             EventController eventController = GameObject.Find("Events").GetComponent<EventController>();
 
-            sceneNumber = manager.GetSceneNumber();
+            sceneNumber = GameManager.instance.GetSceneNumber();
 
             pickableController?.SetPickedList(data.pickupStatus[sceneNumber]);
 
@@ -184,7 +181,7 @@ public class SaveController : MonoBehaviour
     private Weapon GetWeapon (int id)
     {
         if (id > 0)
-            return manager.GetWeaponById(id);
+            return GameManager.instance.GetWeaponById(id);
         else
             return null;
     }
@@ -192,7 +189,7 @@ public class SaveController : MonoBehaviour
     private Shield GetShield (int id)
     {
         if (id > 0)
-            return manager.GetShieldById(id);
+            return GameManager.instance.GetShieldById(id);
         else
             return null;
     }
@@ -200,7 +197,7 @@ public class SaveController : MonoBehaviour
     private RangedWeapon GetRanged (int id)
     {
         if (id > 0)
-            return manager.GetRangedById(id);
+            return GameManager.instance.GetRangedById(id);
         else
             return null;
     }
@@ -208,7 +205,7 @@ public class SaveController : MonoBehaviour
     private Consumable GetItem (int id)
     {
         if (id > 0)
-            return manager.GetItemById(id);
+            return GameManager.instance.GetItemById(id);
         else
             return null;
     }

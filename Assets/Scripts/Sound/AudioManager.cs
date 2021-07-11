@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
         StopMusic();
 
         currentMusic = gameObject.AddComponent<AudioSource>();
-        ConfigureAudioSource(currentMusic, music, false);
+        ConfigureMusic(currentMusic, music);
     }
 
     public void PlayMusic (String musicName)
@@ -49,7 +49,15 @@ public class AudioManager : MonoBehaviour
 
         Sound musicSound = FindSound(musicName);
         currentMusic = gameObject.AddComponent<AudioSource>();
-        ConfigureAudioSource(currentMusic, musicSound, false);
+        ConfigureMusic(currentMusic, musicSound);
+    }
+
+    private void ConfigureMusic(AudioSource source, Sound sound)
+    {
+        source.clip = sound.clip;
+        source.volume = sound.volume * GameManager.instance.musicVolume;
+        source.pitch = sound.pitch;
+        source.spatialBlend = 0f;
     }
 
     public void StopMusic ()
@@ -163,7 +171,7 @@ public class AudioManager : MonoBehaviour
     public void ConfigureAudioSource (AudioSource source, Sound sound, bool isDirectional)
     {
         source.clip = sound.clip;
-        source.volume = sound.volume;
+        source.volume = sound.volume * GameManager.instance.sfxVolume;
         source.pitch = sound.pitch;
         if (isDirectional)
         {
