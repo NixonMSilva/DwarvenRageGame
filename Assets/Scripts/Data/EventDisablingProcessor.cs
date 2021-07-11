@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Codice.CM.Common;
 using UnityEngine;
 
 public static class EventDisablingProcessor
 {
     public static void DisableEvent (GameObject obj, EventType type)
     {
+        // Set the event object as "fired"
+        EventObject eventObject = obj.GetComponent<EventObject>();
+        eventObject.IsFired = true;
+        
+        // Handles the deactivation of the event trigger
+        // for each different type of event
         switch (type)
         {
             case EventType.chest:

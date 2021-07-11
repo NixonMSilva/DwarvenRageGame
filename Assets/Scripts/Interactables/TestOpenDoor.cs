@@ -7,14 +7,11 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
     private GameObject player;
     private CharacterController characterController;
 
-    private GameObject chave;
-    private TooltipController chavecollider;
-    private bool haschave = false;
+    [SerializeField] private EventObject key;
+    [SerializeField] private bool isLocked = false;
 
     private EnemySpawnManager enemies;
     private bool[] boss;
-    
-    [SerializeField] private string nomechave;
 
     [SerializeField] private Transform teleportLocation;
 
@@ -31,14 +28,46 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
             return;
         }
 
+        if (isLocked)
+        {
+            if (key.IsFired)
+            {
+                UnlockDoor();
+                Teleport();
+            }
+            else
+            {
+                UserInterfaceController.instance.ThrowWarningMessage("This door needs a key to open!");    
+            }
+            
+        }
+        else
+        {
+            Teleport();
+        }
+
+        /*
         //Debug.Log("Here! " + gameObject.name);
         characterController = player.GetComponent<CharacterController>();
         characterController.enabled = false;
         player.transform.position = teleportLocation.position;
         characterController.enabled = true;
         AudioManager.instance.PlaySoundAt(gameObject, "door_open");
+        */
+    }
 
-        //Debug.Log("Here! " + gameObject.name);
+    public void LockDoor ()
+    {
+        isLocked = true;
+    }
+
+    public void UnlockDoor ()
+    {
+        isLocked = false;
+    }
+
+    private void Teleport ()
+    {
         characterController = player.GetComponent<CharacterController>();
         characterController.enabled = false;
         player.transform.position = teleportLocation.position;
@@ -46,7 +75,8 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
         AudioManager.instance.PlaySoundAt(gameObject, "door_open");
     }
 
-     public void PegarChave ()
+    /*
+    public void PegarChave ()
     {
        chavecollider.enabled = false;
        chave.SetActive(false);
@@ -69,6 +99,7 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
        }
        
     }
+
 
     public void PortaBoss ()
     {
@@ -93,5 +124,5 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
             OnInteraction ();
         }
 
-    }
+    } */
 }
