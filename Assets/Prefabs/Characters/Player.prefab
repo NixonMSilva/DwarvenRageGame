@@ -269,7 +269,7 @@ MonoBehaviour:
   defaultSpeed: 20
   speed: 0
   gravity: -70
-  jumpHeight: 2
+  jumpHeight: 2.5
   groundCheck: {fileID: 5072104305588905007}
   groundDistance: 1.25
   groundMask:
@@ -289,12 +289,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15ca08d8ca05cb54f98665992fb0993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWeapon: {fileID: 11400000, guid: b748fb3f62991ef458f5c10a18d69738, type: 2}
+  playerWeapon: {fileID: 11400000, guid: d7f9b597e617a2e4cb40d53880f0f8f2, type: 2}
   playerShield: {fileID: 0}
   playerRanged: {fileID: 11400000, guid: c1e4462c97d7a0946a5095bcdc8f4918, type: 2}
   weaponHUDObject: {fileID: 3397559423398610544}
   shieldHUDObject: {fileID: 1517412443460366691}
-  gold: 999999
+  gold: 666
   animationSet1H: {fileID: 22100000, guid: 5828a989bb11cc84b8d3197d31d064d3, type: 2}
   animationSet2H: {fileID: 22100000, guid: 2a8bc52df214aa249a5e2926ef8ce00d, type: 2}
   isTwoHanded: 0
@@ -318,6 +318,7 @@ MonoBehaviour:
   firePointB: {fileID: 594245315}
   attackRange: 1.25
   attackSpeed: 1
+  powerAttackSpeedMult: 0.7
   damageableLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -351,14 +352,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf21f87414eb4c43b6de56046158105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponSlots:
-  - {fileID: 11400000, guid: d7f9b597e617a2e4cb40d53880f0f8f2, type: 2}
-  _itemSlots:
-  - {fileID: 11400000, guid: bce080d972aea954f9d60399d172e7a9, type: 2}
-  - {fileID: 11400000, guid: fc883c8dd3a574341b2ec1b724073995, type: 2}
-  - {fileID: 11400000, guid: a5c7ff9f6b0820e43b42f803cdabf63d, type: 2}
-  - {fileID: 11400000, guid: 9e034040ca838b24c98d89d2292e14d3, type: 2}
-  _itemSlotsStack: 0500000005000000050000000a000000
+  _weaponSlots: []
+  _itemSlots: []
+  _itemSlotsStack: 
+  maxStack: 5
   weaponLimit: 1
   itemLimit: 4
 --- !u!114 &1653969463784507186
@@ -373,6 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392e8e9267b6a624684045b7fe297761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: {fileID: 0}
   maxHealth: 100
   health: 0
   maxArmor: 100

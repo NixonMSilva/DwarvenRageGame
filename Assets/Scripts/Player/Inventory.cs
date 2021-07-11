@@ -18,6 +18,21 @@ public class Inventory : MonoBehaviour
     private PlayerEquipment equipment;
     private PlayerStatus playerStatus;
 
+    public List<Weapon> Weapons
+    {
+        get => _weaponSlots;
+    }
+
+    public List<Consumable> Items
+    {
+        get => _itemSlots;
+    }
+
+    public List<int> Stacks
+    {
+        get => _itemSlotsStack;
+    }
+
     private void Awake ()
     {
         equipment = GetComponent<PlayerEquipment>();
@@ -28,7 +43,16 @@ public class Inventory : MonoBehaviour
     }
 
     private void Start ()
-    {       
+    {
+        // Load from the GameManager
+        if (GameManager.instance.Player != null)
+        {
+            Debug.Log("Is entering here but it shouldn't! (Inventory.cs)");
+            _itemSlots = GameManager.instance.Player.itemList;
+            _itemSlotsStack = GameManager.instance.Player.itemStack;
+            _weaponSlots = GameManager.instance.Player.weaponList;
+        }
+        
         DrawWeaponSlots();
         DrawItemSlots();
 

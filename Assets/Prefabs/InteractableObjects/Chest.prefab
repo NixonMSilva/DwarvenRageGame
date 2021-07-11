@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 7606971170986081697}
   - component: {fileID: 3527634327649486629}
   - component: {fileID: 998888312}
+  - component: {fileID: 1175329827}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -273,7 +274,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1175329827}
+        m_TargetAssemblyTypeName: EventObject, Game
+        m_MethodName: HandleExecution
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   defaultTooltipText: Open
+  hideOnAction: 1
 --- !u!114 &3527634327649486629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +312,19 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 250
+          m_IntArgument: 2500
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1175329827}
+        m_TargetAssemblyTypeName: EventObject, Game
+        m_MethodName: HandleExecution
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -316,6 +342,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7547384, y: 0.82580197, z: 1.3249336}
   m_Center: {x: -0.04925282, y: 0.13032112, z: 0}
+--- !u!114 &1175329827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd918e83038bb74aa0c557a802efadd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _children: []
 --- !u!1 &170854
 GameObject:
   m_ObjectHideFlags: 0

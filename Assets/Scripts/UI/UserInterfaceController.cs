@@ -31,6 +31,7 @@ public class UserInterfaceController : MonoBehaviour
     private TextMeshProUGUI armorValue;
 
     private Image damageFrame;
+    private CanvasGroup damageCanvas;
 
     private GameObject weaponSlot;
     private Image weaponSlotIcon;
@@ -57,6 +58,9 @@ public class UserInterfaceController : MonoBehaviour
     private GameObject progressFrame;
     private TextMeshProUGUI progressTitle;
     private Slider progressSlider;
+
+    private GameObject sceneLoader;
+    private Slider sceneSlider;
 
     private readonly string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
 
@@ -108,6 +112,7 @@ public class UserInterfaceController : MonoBehaviour
         armorValue = armorFrame.GetComponentInChildren<TextMeshProUGUI>();
 
         damageFrame = GameObject.Find("BloodPanel").GetComponent<Image>();
+        damageCanvas = damageFrame.GetComponent<CanvasGroup>();
 
         weaponSlotParent = GameObject.Find("WeaponSlots");
         itemSlotParent = GameObject.Find("ItemSlots");
@@ -139,19 +144,28 @@ public class UserInterfaceController : MonoBehaviour
         _itemStackTexts = new List<TextMeshProUGUI>();
         
         warningRoot = GameObject.Find("WarningTextPoint");
+        
+        sceneLoader = GameObject.Find("LoadingMenu");
+        sceneSlider = sceneLoader.GetComponentInChildren<Slider>();
     }
 
     private void Start ()
+    {
+        WipeInterface();
+
+        SetRangedSlotKey();
+
+        InputHandler.instance.OnEscapePressed += PauseMenu;
+    }
+
+    public void WipeInterface()
     {
         HideTooltip();
         HidePauseMenu();
         HideDeathMenu();
         HideShopMenu();
         HideProgressMenu();
-
-        SetRangedSlotKey();
-
-        InputHandler.instance.OnEscapePressed += PauseMenu;
+        HideLoadingMenu();
     }
 
     private void OnDestroy ()
@@ -532,9 +546,10 @@ public class UserInterfaceController : MonoBehaviour
         goldFrame.SetActive(false);
     }
 
-    public void ShowDamagePanel ()
+    public void ShowDamagePanel (Color color)
     {
-        StartCoroutine(CanvasFadeUpDown(damageFrame, 0.1f, damageFrame.color.a, 0.25f));
+        damageFrame.color = color;
+        StartCoroutine(CanvasFadeUpDown(damageCanvas, 0.1f, damageCanvas.alpha, 0.25f));
     }
 
     public void HideDeathMenu ()
@@ -579,31 +594,24 @@ public class UserInterfaceController : MonoBehaviour
         messageObj.GetComponent<TextMeshProUGUI>().text = message;
     }
 
-    // 0 - Out | 1 - In
-    IEnumerator CanvasFade (Image element, float duration, float startAlpha, float endAlpha)
+    public void ShowLoadingMenu()
     {
-        float startTime = Time.time;
-        float endTime = Time.time + duration;
-        float elapsedTime = 0f;
-
-        while (Time.time <= endTime)
-        {
-            elapsedTime = Time.time - startTime; // update the elapsed time
-            var percentage = 1 / (duration / elapsedTime); // calculate how far along the timeline we are
-            if (startAlpha > endAlpha) // if we are fading out/down 
-            {
-                element.color = new Color(element.color.r, element.color.g, element.color.b, startAlpha - percentage);
-            }
-            else // if we are fading in/up
-            {
-                element.color = new Color(element.color.r, element.color.g, element.color.b, startAlpha + percentage);
-            }
-            yield return new WaitForEndOfFrame();
-        }
-        element.color = new Color(element.color.r, element.color.g, element.color.b, endAlpha);
+        UpdateLoadingSlider(0f);
+        sceneLoader.SetActive(true);     
+    }
+    
+    public void HideLoadingMenu()
+    {
+        sceneLoader.SetActive(false);
     }
 
-    IEnumerator CanvasFadeUpDown (Image element, float duration, float startAlpha, float endAlpha)
+    public void UpdateLoadingSlider(float value)
+    {
+        sceneSlider.value = value;
+    }
+
+    // 0 - Out | 1 - In
+    IEnumerator CanvasFade (CanvasGroup canvasGroup, float duration, float startAlpha, float endAlpha)
     {
         float startTime = Time.time;
         float endTime = Time.time + duration;
@@ -615,16 +623,40 @@ public class UserInterfaceController : MonoBehaviour
             var percentage = 1 / (duration / elapsedTime); // calculate how far along the timeline we are
             if (startAlpha > endAlpha) // if we are fading out/down 
             {
-                element.color = new Color(element.color.r, element.color.g, element.color.b, startAlpha - percentage);
+                canvasGroup.alpha = startAlpha - percentage;
             }
             else // if we are fading in/up
             {
-                element.color = new Color(element.color.r, element.color.g, element.color.b, startAlpha + percentage);
+                canvasGroup.alpha = startAlpha + percentage;
             }
             yield return new WaitForEndOfFrame();
         }
-        element.color = new Color(element.color.r, element.color.g, element.color.b, endAlpha);
-        StartCoroutine(CanvasFade(element, duration, element.color.a, 0f));
+
+        canvasGroup.alpha = endAlpha;
+    }
+
+    IEnumerator CanvasFadeUpDown (CanvasGroup canvasGroup, float duration, float startAlpha, float endAlpha)
+    {
+        float startTime = Time.time;
+        float endTime = Time.time + duration;
+        float elapsedTime = 0f;
+
+        while (Time.time <= endTime)
+        {
+            elapsedTime = Time.time - startTime; // update the elapsed time
+            var percentage = 1 / (duration / elapsedTime); // calculate how far along the timeline we are
+            if (startAlpha > endAlpha) // if we are fading out/down 
+            {
+                canvasGroup.alpha = startAlpha - percentage;
+            }
+            else // if we are fading in/up
+            {
+                canvasGroup.alpha = startAlpha + percentage;
+            }
+            yield return new WaitForEndOfFrame();
+        }
+        canvasGroup.alpha = endAlpha;
+        StartCoroutine(CanvasFade(canvasGroup, duration, canvasGroup.alpha, 0f));
     }
 
 
