@@ -193,7 +193,7 @@ public class ShopInterface : MonoBehaviour
 
     private void EventPurchaseConfirmed (Item purchasedItem)
     {
-        Debug.Log("Sold!" + purchasedItem.itemName);
+        //Debug.Log("Sold!" + purchasedItem.itemName);
 
         seller.PlayPurchaseSound(purchasedItem.audioPurchaseName);
 

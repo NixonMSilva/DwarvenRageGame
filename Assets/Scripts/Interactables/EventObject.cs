@@ -30,4 +30,23 @@ public class EventObject : MonoBehaviour
         EventDisablingProcessor.DisableEvent(this.gameObject, type);
     }
 
+    public void SetFired (bool value)
+    {
+        isFired = value;
+    }
+
+    public void HideModel ()
+    {
+        // Disable mesh
+        MeshRenderer mesh = GetComponent<MeshRenderer>();
+        mesh.enabled = false;
+        
+        // Disable colliders
+        Collider[] colliders = GetComponents<Collider>();
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = false;
+        }
+    }
+
 }

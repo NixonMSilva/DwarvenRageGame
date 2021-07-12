@@ -162,6 +162,7 @@ public class PlayerStatus : StatusController
     protected override void Die ()
     {
         isDying = true;
+        UserInterfaceController.instance.HidePlayerInterface();
         UserInterfaceController.instance.DeathMenu();
     }
 

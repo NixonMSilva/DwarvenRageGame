@@ -7,10 +7,14 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
+	private void Awake ()
+	{
+		Time.timeScale = 1f;
+	}
+	
     private void Start ()
     {
         InputHandler.instance.LockCursor(false);
-        Time.timeScale = 1f;
     }
     
     public void PlayGame()

@@ -161,11 +161,11 @@ public class UserInterfaceController : MonoBehaviour
     public void WipeInterface()
     {
         HideTooltip();
-        HidePauseMenu();
         HideDeathMenu();
         HideShopMenu();
         HideProgressMenu();
         HideLoadingMenu();
+        HidePauseMenu();
     }
 
     private void OnDestroy ()
@@ -200,6 +200,7 @@ public class UserInterfaceController : MonoBehaviour
 
     public void DeathMenu ()
     {
+        pauseMenu.SetActive(false);
         ShowDeathMenu();
         InputHandler.instance.LockCursor(false);
     }
@@ -231,8 +232,8 @@ public class UserInterfaceController : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         HidePlayerInterface();
-        isPauseMenuOn = true;
         Time.timeScale = 0f;
+        isPauseMenuOn = true;
     }
 
     public void HidePauseMenu ()

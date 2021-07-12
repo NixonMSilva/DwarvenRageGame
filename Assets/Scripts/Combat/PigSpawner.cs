@@ -14,6 +14,10 @@ public class PigSpawner : MonoBehaviour
     
     [SerializeField] private float spawnCooldown = 5f;
 
+    [SerializeField] private float spawnLimit = 8;
+
+    [SerializeField] private List<GameObject> _spawns;
+
     [SerializeField] private UnityEvent onSpawnedDeath;
 
     public bool CanSpawn { get; set; }
@@ -25,7 +29,7 @@ public class PigSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!CanSpawn)
+        if (!CanSpawn || _spawns.Count >= spawnLimit)
             return;
         
         SpawnEnemy();
@@ -42,6 +46,7 @@ public class PigSpawner : MonoBehaviour
         // Spawn the enemy
         GameObject enemy = Instantiate(_spawnPrefabs[diceRollEnemy], _spawnPoints[diceRollPoint].position, Quaternion.identity);
         enemy.GetComponent<EnemyStatus>().OnDeath += HandleSpawnedDeath;
+        _spawns.Add(enemy);
 
         // Spawn cooldown handling
         CanSpawn = false;
