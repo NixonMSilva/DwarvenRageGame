@@ -524,6 +524,10 @@ public class UserInterfaceController : MonoBehaviour
 
     public void PlayGoldAnimation (int value)
     {
+        // Don't do anything if there's no change
+        if (value == 0)
+            return;
+        
         if (value > 0)
             AudioManager.instance.PlaySound("gold_pickup");
         else
