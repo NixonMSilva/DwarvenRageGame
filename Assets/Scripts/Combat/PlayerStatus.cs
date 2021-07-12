@@ -239,7 +239,7 @@ public class PlayerStatus : StatusController
         float verify = UnityEngine.Random.Range(0f, 1f);
         if (verify <= 0.5f)
         {
-            AudioManager.instance.PlaySoundRandom("damage");
+            AudioManager.instance.PlaySoundRandom("player_damage");
         }
     }
 

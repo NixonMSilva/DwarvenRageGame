@@ -67,9 +67,7 @@ public class TrackingCannon : MonoBehaviour
         
         GameObject skull = Instantiate(cannonProjectile, firePoint.position, Quaternion.identity);
         skull.GetComponent<ProjectileController>().SetTarget(target.position - transform.position);
-        
-        Debug.Log(skull);
-        
+
         // Reset the blood bar
         bossFight.BloodBar = 0f;
         UserInterfaceController.instance.UpdateProgressBar(0f);

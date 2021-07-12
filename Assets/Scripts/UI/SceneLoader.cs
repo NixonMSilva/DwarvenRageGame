@@ -21,6 +21,23 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine((LoadAsynchronously(index)));
     }
 
+    public void LoadSceneWithoutData(int index)
+    {
+        // Stop player from inputting into the character
+        InputHandler.instance.LockCursor(false);
+        
+        // Show the loading screen
+        UserInterfaceController.instance.ShowLoadingMenu();
+
+        // Start the loading operation
+        StartCoroutine((LoadAsynchronously(index)));
+    }
+
+    public void ReloadScene ()
+    {
+        LoadSceneWithoutData(SceneManager.GetActiveScene().buildIndex);
+    }
+
     IEnumerator LoadAsynchronously (int index)
     {
         // Load the scene asynchronously
