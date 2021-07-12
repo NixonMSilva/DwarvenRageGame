@@ -71,9 +71,9 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.43333334
-        value: {x: 19.716, y: 3.508, z: 30.904}
-        inSlope: {x: 0, y: 14.739963, z: 0}
-        outSlope: {x: 0, y: 14.739963, z: 0}
+        value: {x: 33.204, y: 13.283, z: 17.766}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -106,17 +106,17 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.3
         value: {x: -26.028, y: -111.733, z: 47.55}
-        inSlope: {x: 0, y: -185.15306, z: 0}
-        outSlope: {x: 0, y: -185.15306, z: 0}
+        inSlope: {x: 0, y: 0, z: -11.644609}
+        outSlope: {x: 0, y: 0, z: -11.644609}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.43333334
-        value: {x: -60.462, y: -137.508, z: 80.509}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        value: {x: -66.361, y: -99.659, z: 44.255}
+        inSlope: {x: 0, y: 80.49337, z: 0}
+        outSlope: {x: 0, y: 80.49337, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -149,15 +149,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.3
         value: {x: 11.937, y: 18.685, z: -14.352}
-        inSlope: {x: 50.882305, y: -207.66231, z: -132.48}
-        outSlope: {x: 50.882305, y: -207.66231, z: -132.48}
+        inSlope: {x: 50.933075, y: -211.57614, z: -96.64615}
+        outSlope: {x: 50.933075, y: -211.57614, z: -96.64615}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.43333334
-        value: {x: 18.509, y: -27.406, z: -56.8}
+        value: {x: 18.531, y: -29.102, z: -41.272}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -200,9 +200,9 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.43333334
-        value: {x: 2.519, y: 163.161, z: -5.578}
-        inSlope: {x: 78.595, y: 0, z: 0}
-        outSlope: {x: 78.595, y: 0, z: 0}
+        value: {x: 18.223, y: 191.453, z: -7.963}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -263,6 +263,40 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: Main Camera/FP View/basicRig/clavicle.L/deltoid.L/upper_arm.L
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 10.735, y: -10.207, z: -87.095}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 0.43333334
+        value: {x: 10.735, y: -10.207, z: -65.604}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 0.9
+        value: {x: 10.735, y: -10.207, z: -87.095}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Main Camera/FP View/basicRig/clavicle.R
   m_PositionCurves:
   - curve:
       serializedVersion: 2
@@ -418,6 +452,13 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 3772606041
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 4
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2292459506
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -781,7 +822,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: 19.716
+        value: 33.204
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -827,9 +868,9 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: 3.508
-        inSlope: 14.739963
-        outSlope: 14.739963
+        value: 13.283
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -873,7 +914,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: 30.904
+        value: 17.766
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -919,7 +960,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: -60.462
+        value: -66.361
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -957,17 +998,17 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.3
         value: -111.733
-        inSlope: -185.15306
-        outSlope: -185.15306
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: -137.508
-        inSlope: 0
-        outSlope: 0
+        value: -99.659
+        inSlope: 80.49337
+        outSlope: 80.49337
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -1003,15 +1044,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.3
         value: 47.55
-        inSlope: 0
-        outSlope: 0
+        inSlope: -11.644609
+        outSlope: -11.644609
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: 80.509
+        value: 44.255
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1049,15 +1090,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.3
         value: 11.937
-        inSlope: 50.882305
-        outSlope: 50.882305
+        inSlope: 50.933075
+        outSlope: 50.933075
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: 18.509
+        value: 18.531
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1095,15 +1136,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.3
         value: 18.685
-        inSlope: -207.66231
-        outSlope: -207.66231
+        inSlope: -211.57614
+        outSlope: -211.57614
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: -27.406
+        value: -29.102
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1141,15 +1182,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.3
         value: -14.352
-        inSlope: -132.48
-        outSlope: -132.48
+        inSlope: -96.64615
+        outSlope: -96.64615
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: -56.8
+        value: -41.272
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1195,9 +1236,9 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: 2.519
-        inSlope: 78.595
-        outSlope: 78.595
+        value: 18.223
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -1241,7 +1282,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: 163.161
+        value: 191.453
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1287,7 +1328,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: -5.578
+        value: -7.963
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1559,6 +1600,117 @@ AnimationClip:
     path: Main Camera/FP View/basicRig/clavicle.L/deltoid.L/upper_arm.L
     classID: 4
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 10.735
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.43333334
+        value: 10.735
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9
+        value: 10.735
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: Main Camera/FP View/basicRig/clavicle.R
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -10.207
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.43333334
+        value: -10.207
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9
+        value: -10.207
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: Main Camera/FP View/basicRig/clavicle.R
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -87.095
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.43333334
+        value: -65.604
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9
+        value: -87.095
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: Main Camera/FP View/basicRig/clavicle.R
+    classID: 4
+    script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2
@@ -1567,7 +1719,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R/forearm.R/hand.R
+    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R/forearm.R
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1577,7 +1729,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R/forearm.R/hand.R
+    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R/forearm.R
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1587,37 +1739,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R/forearm.R/hand.R
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R
+    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R/forearm.R
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1657,6 +1779,36 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
+    path: Main Camera/FP View/basicRig/clavicle.L/deltoid.L/upper_arm.L/forearm.L
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Main Camera/FP View/basicRig/clavicle.L/deltoid.L/upper_arm.L/forearm.L
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Main Camera/FP View/basicRig/clavicle.L/deltoid.L/upper_arm.L/forearm.L
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
     path: Main Camera/FP View/basicRig/clavicle.L/deltoid.L/upper_arm.L
     classID: 4
     script: {fileID: 0}
@@ -1687,7 +1839,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Main Camera/FP View/basicRig/clavicle.L/deltoid.L/upper_arm.L/forearm.L
+    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R/forearm.R/hand.R
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1697,7 +1849,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Main Camera/FP View/basicRig/clavicle.L/deltoid.L/upper_arm.L/forearm.L
+    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R/forearm.R/hand.R
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1707,27 +1859,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Main Camera/FP View/basicRig/clavicle.L/deltoid.L/upper_arm.L/forearm.L
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R/forearm.R
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R/forearm.R
+    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R/forearm.R/hand.R
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1737,7 +1869,57 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R/forearm.R
+    path: Main Camera/FP View/basicRig/clavicle.R
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Main Camera/FP View/basicRig/clavicle.R
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Main Camera/FP View/basicRig/clavicle.R
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Main Camera/FP View/basicRig/clavicle.R/deltoid.R/upper_arm.R
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
