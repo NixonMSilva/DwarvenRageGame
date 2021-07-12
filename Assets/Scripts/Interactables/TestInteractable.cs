@@ -24,13 +24,10 @@ public class TestInteractable : MonoBehaviour, IInteractable
         switch(aleatorio)
         {
             case 1:
-            AudioManager.instance.PlaySound("burp");
+            AudioManager.instance.PlaySound("bode");
             break;
             case 2:
-            AudioManager.instance.PlaySound("damage_1");
-            break;
-            case 3:
-            AudioManager.instance.PlaySound("landing");
+            AudioManager.instance.PlaySound("bode1");
             break;
         }
         
