@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class ShopController : MonoBehaviour
 {
-    [SerializeField] private GameManager manager;
     [SerializeField] private Animator sellerAnim;
     [SerializeField] private ShopType type = ShopType.normalShop;
 
@@ -17,6 +16,8 @@ public class ShopController : MonoBehaviour
     private int noBeersBought = 0;
 
     private List<string> _soundsPlayed = new List<string>();
+
+    private int timesBoughtHere = 0;
 
     public bool BoughtSomething
     {
@@ -51,6 +52,8 @@ public class ShopController : MonoBehaviour
             {
                 PlayRudeComment();
             }
+
+            timesBoughtHere++;
         }
     }
 
@@ -61,19 +64,27 @@ public class ShopController : MonoBehaviour
 
     private void PlayHello ()
     {
-        switch (type)
+        if (timesBoughtHere == 0)
         {
-            case ShopType.postBoss1Shop:
-                AudioManager.instance.PlaySoundAt(sellerAnim.gameObject, "hello_boss_1");
-                break;
-            default:
-                PlayDefaultHello();
-                break;
+            switch (type)
+            {
+                case ShopType.postBoss1Shop:
+                    AudioManager.instance.PlaySoundInVolume(soundSource, "hello_boss_1");
+                    break;
+                default:
+                    PlayDefaultHello();
+                    break;
+            }
         }
+        else
+        {
+            PlayDefaultHello();
+        }
+        
         GameManager.instance.timesShopped++;
     }
 
-    private void PlayDefaultHello()
+    private void PlayDefaultHello ()
     {
         if (GameManager.instance.timesShopped == 0)
         {
@@ -84,7 +95,7 @@ public class ShopController : MonoBehaviour
         else
         {
             // Random hello
-            AudioManager.instance.PlaySoundRandomAt(sellerAnim.gameObject, "remark");
+            AudioManager.instance.PlaySoundInVolumeRandom(soundSource, "remark");
         }
     }
 

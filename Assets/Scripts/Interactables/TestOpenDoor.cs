@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TestOpenDoor : MonoBehaviour, IInteractable
 {
@@ -28,16 +29,29 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
             return;
         }
 
+        if (key != null)
+        {
+            Debug.Log(key.IsFired);    
+        }
+        
         if (isLocked)
         {
-            if (key.IsFired)
+            if (key == null)
             {
-                UnlockDoor();
-                Teleport();
+                UserInterfaceController.instance.ThrowWarningMessage("This door needs a key to open!");
             }
             else
             {
-                UserInterfaceController.instance.ThrowWarningMessage("This door needs a key to open!");    
+                if (key.IsFired)
+                {
+                    UnlockDoor();
+                    Teleport();
+                }
+                else
+                {
+                    UserInterfaceController.instance.ThrowWarningMessage("This door needs a key to open!");
+                }
+                 
             }
             
         }
