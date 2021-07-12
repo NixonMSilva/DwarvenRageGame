@@ -92,7 +92,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2229581460507717618}
         m_TargetAssemblyTypeName: Boss1FightController, Game
-        m_MethodName: TestFunction
+        m_MethodName: FillProgressBar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -118,9 +118,33 @@ MonoBehaviour:
   OnBossDeath:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2229581460507717618}
+        m_TargetAssemblyTypeName: Boss1FightController, Game
+        m_MethodName: DisableSpawner
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UserInterfaceController, Game
-        m_MethodName: HideProgressMenu
+        m_TargetAssemblyTypeName: TestOpenDoor, Game
+        m_MethodName: UnlockDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TestOpenDoor, Game
+        m_MethodName: UnlockDoor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -142,8 +166,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UserInterfaceController, Game
+        m_MethodName: HideProgressMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   bloodBarProgress: 0
-  percentagePerKill: 15
+  percentagePerKill: 25
+  invulnerabiltyResistance: {fileID: 11400000, guid: 65ce1bfd4c4a5c842846a9320efb3c7b, type: 2}
+  bossMaterials:
+  - {fileID: 2100000, guid: 791fa1a3bfdff164abe3c69d9129f1ce, type: 2}
+  - {fileID: 2100000, guid: 8bae4bccf9b01eb4f8617597689f3771, type: 2}
+  - {fileID: 2100000, guid: 5d134986e92022148889a42f912b12ea, type: 2}
+  trollBodyMesh: {fileID: 0}
+  platform: {fileID: 0}
 --- !u!1 &4647236867376844484
 GameObject:
   m_ObjectHideFlags: 0

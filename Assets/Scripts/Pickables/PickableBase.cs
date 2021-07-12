@@ -12,11 +12,6 @@ public class PickableBase : MonoBehaviour, IPickable
 
     [SerializeField] public Consumable item;
 
-    private void Awake ()
-    {
-
-    }
-
     private void Update ()
     {
         Rotate();
@@ -86,7 +81,7 @@ public class PickableBase : MonoBehaviour, IPickable
         item.Use(target);
     }
 
-    public void HandlePickUp ()
+    public virtual void HandlePickUp ()
     {
         OnPickUp?.Invoke(this);
         Destroy(gameObject);

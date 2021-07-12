@@ -16,6 +16,7 @@ public class TooltipController : MonoBehaviour
     private string currentTooltipText;
 
     private bool canPressButton = false;
+    private bool isDisabled = false;
 
     [SerializeField] private bool hideOnAction = true;
 
@@ -34,7 +35,7 @@ public class TooltipController : MonoBehaviour
 
     public void OnButtonPressed (object sender, EventArgs e)
     {
-        if (canPressButton)
+        if (canPressButton && !isDisabled)
         {
             if (hideOnAction)
             {
@@ -48,7 +49,7 @@ public class TooltipController : MonoBehaviour
 
     public void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isDisabled)
         {
             canPressButton = true;
             ShowTooltip();
@@ -57,11 +58,16 @@ public class TooltipController : MonoBehaviour
 
     public void OnTriggerExit (Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isDisabled)
         {
             canPressButton = false;
             HideTooltip();
         }
+    }
+
+    public void DisableTooltip()
+    {
+        isDisabled = true;
     }
 
     public void ShowTooltip ()
