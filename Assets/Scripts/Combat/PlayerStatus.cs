@@ -201,8 +201,11 @@ public class PlayerStatus : StatusController
             PlayDamageSound();
         }
 
-        // Blink
-        DamageBlink(type);
+        // Blink screen
+        if (IsBlocking())
+            BlockBlink();
+        else
+            DamageBlink(type);
 
         //Debug.Log("Health reduced:" + newValue);
         DeduceHealth(newValue);
@@ -219,6 +222,11 @@ public class PlayerStatus : StatusController
                 UserInterfaceController.instance.ShowDamagePanel(Color.red);
                 break;
         }
+    }
+
+    private void BlockBlink()
+    {
+        UserInterfaceController.instance.ShowDamagePanel(Color.white);
     }
 
     private void UpdateCharacterUI ()
