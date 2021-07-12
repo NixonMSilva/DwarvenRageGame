@@ -34,6 +34,10 @@ public class AttackController : MonoBehaviour
 
     private bool hasBerserk;
 
+    private int attackAnimVariation = 0;
+
+    private string[] attacks = {"attack", "attack_1", "attack_2", "attack_3", "attack_4"};
+
     [SerializeField] private bool canAttack = true;
 
     [SerializeField] private bool canAttackRanged = true;
@@ -161,8 +165,20 @@ public class AttackController : MonoBehaviour
     {
         if (!status.IsBlocking && canAttack)
         {
-           anim.Play("attack");
-           canAttack = false;
+            if (isPlayer)
+            {
+                if (attackAnimVariation >= 5)
+                    attackAnimVariation = 0;
+                
+                anim.Play(attacks[attackAnimVariation]);
+                attackAnimVariation++;    
+            }
+            else
+            {
+                anim.Play("attack");
+            }
+            
+            canAttack = false;
         }
     }
 
@@ -237,7 +253,7 @@ public class AttackController : MonoBehaviour
 
     public void FireRangedAttack ()
     {
-        // Criar proj�til
+        // Creates ranged projectile
         CreateProjectile();
     }
 
