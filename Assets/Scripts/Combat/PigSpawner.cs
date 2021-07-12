@@ -56,7 +56,7 @@ public class PigSpawner : MonoBehaviour
         });
     }
 
-    public void DecreaseSpawnCounter()
+    public void DecreaseSpawnCounter ()
     {
         spawnCount--;
     }
