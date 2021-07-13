@@ -203,6 +203,15 @@ public class AttackController : MonoBehaviour
             {
                 AudioManager.instance.PlaySound("weapon_swing_light");
             }
+            //Martelo + carne
+        }
+    }
+
+    private void PlayCriticalSound()
+    {
+        if (isPlayer)
+        {
+            AudioManager.instance.PlaySound("Ossos esmagados");
         }
     }
 
@@ -255,6 +264,18 @@ public class AttackController : MonoBehaviour
     {
         // Creates ranged projectile
         CreateProjectile();
+        PlayRangedSound();
+    }
+
+    private void PlayRangedSound()
+    {
+        if (isPlayer)
+        {
+            if (equipment.PlayerRanged.fireSound != "")
+            {
+                AudioManager.instance.PlaySound(equipment.PlayerRanged.fireSound);
+            }
+        }
     }
 
     // Usually used by the player
@@ -312,6 +333,7 @@ public class AttackController : MonoBehaviour
             if (hitEntity.TryGetComponent(out IDamageable damagedObj))
             {
                 damagedObj.CheckForBlock(attackPoint);
+                PlayConnectSound(attackPoint);
                 damagedObj.PlayImpactSound();
                 if (isPlayer)
                 {
@@ -320,6 +342,7 @@ public class AttackController : MonoBehaviour
                     if (TryForCritical())
                     {
                         Debug.Log("Critical Hit!");
+                        PlayCriticalSound();
                         damageModifier *= 2f;
                     }
                     damagedObj.TakeDamage(damage * damageModifier, equipment.PlayerWeapon.damageType);
@@ -339,6 +362,24 @@ public class AttackController : MonoBehaviour
                     }
                 }
                 
+            }
+        }
+    }
+
+    private void PlayConnectSound(Transform obj)
+    {
+        if (isPlayer)
+        {
+            switch (equipment.PlayerWeapon.weaponType)
+            {
+                default:
+                    break;
+                case WeaponType.axe:
+                    AudioManager.instance.PlaySoundRandomAt(obj.position, "axe_on_flesh");
+                    break;
+                case WeaponType.hammer:
+                    AudioManager.instance.PlaySoundRandomAt(obj.position, "axe_on_flesh");
+                    break;
             }
         }
     }

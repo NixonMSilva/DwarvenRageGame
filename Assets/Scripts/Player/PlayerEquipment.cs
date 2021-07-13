@@ -153,6 +153,9 @@ public class PlayerEquipment : MonoBehaviour
 
         // Initializes player gold
         UserInterfaceController.instance.UpdateGoldCount(gold);
+        
+        // Initializes the weapon icon
+        UserInterfaceController.instance.UpdateWeaponSlot(PlayerWeapon.icon);
     }
 
     private void InitializeGraphics()

@@ -50,7 +50,7 @@ public class TrackingCannon : MonoBehaviour
 
     private void StartCannonUsage()
     {
-        cannonTooltip.SetTooltipText("Fire");
+        cannonTooltip.SetTooltipText("Atirar");
         UserInterfaceController.instance.ShowProgressMenu("Blood Collected");
         UserInterfaceController.instance.UpdateProgressBar(bossFight.BloodBar);
     }
@@ -67,6 +67,9 @@ public class TrackingCannon : MonoBehaviour
         
         GameObject skull = Instantiate(cannonProjectile, firePoint.position, Quaternion.identity);
         skull.GetComponent<ProjectileController>().SetTarget(target.position - transform.position);
+        
+        // Play cannon sound
+        AudioManager.instance.PlaySound("Canhao");
 
         // Reset the blood bar
         bossFight.BloodBar = 0f;

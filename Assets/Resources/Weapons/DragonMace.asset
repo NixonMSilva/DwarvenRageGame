@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 25
   itemName: Draconic Mace
-  itemDescription: Placeholder
+  itemDescription: "A for\xE7a de um drag\xE3o forjada em arma! Tem uma chance de
+    fornecer resist\xEAncia a fogo e se usada com o Escudo Drac\xF4nico seu dano
+    aumenta!"
   worldMesh: {fileID: -2072928189253646510, guid: 208ebcc9230fe0b4c88a6b5cfad5aee7, type: 3}
   materialList:
   - {fileID: 2100000, guid: 2532e4bd7a172eb48b50aee7a417fc35, type: 2}
@@ -48,3 +50,4 @@ MonoBehaviour:
   - type: 6
     resistance: 0.1
   effectType: 7
+  weaponType: 1
