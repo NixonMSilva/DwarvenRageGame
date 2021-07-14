@@ -8,8 +8,6 @@ public class InputHandler : MonoBehaviour
 
     public static InputHandler instance;
 
-    public Dictionary<KeyCode, EventHandler> inputs;
-
     [Header("Key Binding")]
     [Space(10)]
     [SerializeField] private KeyCode attackKey          = KeyCode.Mouse0;
@@ -75,6 +73,9 @@ public class InputHandler : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        
+        DontDestroyOnLoad(gameObject);
+        
     }
 
     private void Update ()
