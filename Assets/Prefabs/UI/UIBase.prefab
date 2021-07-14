@@ -3258,7 +3258,7 @@ MonoBehaviour:
   playerNormal: {fileID: 21300000, guid: 50e4e8a408429a9448fef942fd64eb76, type: 3}
   playerHurt: {fileID: 21300000, guid: 21f3f92923fbfe74dacec3efbd0f77be, type: 3}
   playerVeryHurt: {fileID: 21300000, guid: e528267ad61b6954e8ce6e6da08433e0, type: 3}
-  playerVeryDrunk: {fileID: 21300000, guid: 50e4e8a408429a9448fef942fd64eb76, type: 3}
+  playerVeryDrunk: {fileID: 21300000, guid: 44164f8c80eed484f89042c350cae07a, type: 3}
   warningPrefab: {fileID: 8602847472170775168, guid: 12e92cd9e89aaef4a8078cf4f0fa411f, type: 3}
 --- !u!1 &164138210265294973
 GameObject:
@@ -3900,7 +3900,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: 0, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3764956092716988230
 MonoBehaviour:
@@ -6483,7 +6483,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6743,8 +6743,8 @@ RectTransform:
   m_Father: {fileID: 8731344307008319396}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9480,8 +9480,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9916,19 +9916,33 @@ MonoBehaviour:
   m_Placeholder: {fileID: 0}
   m_ItemText: {fileID: 4550581799101180657}
   m_ItemImage: {fileID: 0}
-  m_Value: 0
+  m_Value: 3
   m_Options:
     m_Options:
-    - m_Text: ALTA
-      m_Image: {fileID: 0}
-    - m_Text: MEDIA
+    - m_Text: BATATA
       m_Image: {fileID: 0}
     - m_Text: BAIXA
       m_Image: {fileID: 0}
+    - m_Text: MEDIA
+      m_Image: {fileID: 0}
+    - m_Text: ALTA
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
-  m_AlphaFadeSpeed: 0.15
+      m_Calls:
+      - m_Target: {fileID: 6900501136476670191}
+        m_TargetAssemblyTypeName: MenuController, Game
+        m_MethodName: SetQuality
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_AlphaFadeSpeed: 1.71
 --- !u!1 &7923291660276690282
 GameObject:
   m_ObjectHideFlags: 0
@@ -10289,8 +10303,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 62
-  m_fontSizeBase: 62
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11115,7 +11129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3961867824158699321
 RectTransform:
   m_ObjectHideFlags: 0
