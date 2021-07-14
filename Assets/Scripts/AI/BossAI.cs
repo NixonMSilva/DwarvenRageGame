@@ -32,7 +32,7 @@ public class BossAI : EnemyAI
         if (CanAct() && fightStage >= 1)
         {
             // Updates to check if the player is in attack range
-            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+            playerInAttackRange = IsPlayerInAttackRange();
 
             UpdateSpeed();
 
@@ -61,6 +61,11 @@ public class BossAI : EnemyAI
         {
             
         }
+    }
+
+    public virtual bool IsPlayerInAttackRange ()
+    {
+        return Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
     }
 
     private void LookAtFixedPoint (Vector3 point)
