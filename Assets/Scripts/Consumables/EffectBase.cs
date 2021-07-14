@@ -13,6 +13,7 @@ public enum EffectType
     addMaxArmor,
     poison,
     burning,
+    slow,
     none
 }
 
@@ -237,6 +238,34 @@ public class Burning : EffectBase
     public override void StatusEnd (StatusController target) { }
 
     public override void NormalizeValues (StatusController target, float value) { }
+}
+
+public class Slow : EffectBase
+{
+    public Slow () { }
+
+    public override EffectType Type => EffectType.slow;
+
+    public override void ApplyEffect (StatusController target, Effect data)
+    {
+        PlayerStatus player = target as PlayerStatus;
+        PlayerMovement movement = target.GetComponent<PlayerMovement>();
+
+        if (movement.Speed >= 6f)
+        {
+            movement.Speed *= data.magnitude;
+            player.WearStatus(this, data.duration, data.magnitude);
+        }
+    }
+
+    public override void StatusEnd (StatusController target) { }
+
+    public override void NormalizeValues (StatusController target, float value) 
+    {
+        PlayerStatus player = target as PlayerStatus;
+        PlayerMovement movement = target.GetComponent<PlayerMovement>();
+        movement.Speed /= value;
+    }
 }
 
 public class None : EffectBase
