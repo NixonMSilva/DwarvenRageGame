@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   itemName: Poison Resistance Potion
-  itemDescription: Placeholder
+  itemDescription: "\u201CTe deixa resistente a veneno, \xE9 claro. Voc\xEA sabe
+    ler, n\xE3o \xE9?\u201D"
   worldMesh: {fileID: 2534964839176971238, guid: 72ccdb6727a5c1b40b3f692ea7166cbb, type: 3}
   materialList:
   - {fileID: 2100000, guid: e963347ecaf05e4468b1f17a11d39cae, type: 2}
@@ -24,5 +25,6 @@ MonoBehaviour:
   scaleZ: 1
   icon: {fileID: 21300000, guid: 101b1ddb6b071bb45b90df7ab4750707, type: 3}
   audioPurchaseName: burp
-  price: 3500
+  audioPickupName: 
+  price: 2000
   effect: {fileID: 11400000, guid: 02e0e8863992c7c41804ee013950edbe, type: 2}

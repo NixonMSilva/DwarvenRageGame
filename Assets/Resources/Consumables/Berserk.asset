@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   itemName: Berserk Potion
-  itemDescription: Placeholder
+  itemDescription: "\u201CDeixa voc\xEA em um estado de f\xFAria e adrenalina, aumentando
+    sua velocidade de agress\xE3o e inibindo a dor.\u201D"
   worldMesh: {fileID: 0}
   materialList: []
   scaleX: 1
@@ -22,5 +23,6 @@ MonoBehaviour:
   scaleZ: 1
   icon: {fileID: 21300000, guid: ad2a410069b61634e8407fe5574de6f1, type: 3}
   audioPurchaseName: berserk
-  price: 3000
+  audioPickupName: 
+  price: 1500
   effect: {fileID: 11400000, guid: 20eb4105689157947897059bd32ddb1c, type: 2}
