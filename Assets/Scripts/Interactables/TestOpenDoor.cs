@@ -38,7 +38,7 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
         {
             if (key == null)
             {
-                UserInterfaceController.instance.ThrowWarningMessage("This door needs a key to open!");
+                UserInterfaceController.instance.ThrowWarningMessage("Esta porta precisa de uma chave para abrir!");
             }
             else
             {
@@ -49,7 +49,7 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
                 }
                 else
                 {
-                    UserInterfaceController.instance.ThrowWarningMessage("This door needs a key to open!");
+                    UserInterfaceController.instance.ThrowWarningMessage("Esta porta precisa de uma chave para abrir!");
                 }
                  
             }

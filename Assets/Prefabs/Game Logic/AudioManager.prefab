@@ -164,15 +164,29 @@ MonoBehaviour:
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
-    name: burp
-    clip: {fileID: 8300000, guid: 6309863f545e0af47b010e303c04a8b7, type: 3}
+    name: bode
+    clip: {fileID: 8300000, guid: 0c5157b247710e3499da1a8bc322a4b1, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
-    name: damage_1
-    clip: {fileID: 8300000, guid: c33a4ecaa61500e4b849c6b94cf1879b, type: 3}
+    name: bode1
+    clip: {fileID: 8300000, guid: 49f5676e7778dab4bbfbf08110b7f427, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: bode2
+    clip: {fileID: 8300000, guid: 0ee66f72d313f5042a767022f83d8564, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: burp
+    clip: {fileID: 8300000, guid: 6309863f545e0af47b010e303c04a8b7, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -215,6 +229,41 @@ MonoBehaviour:
   - audioSource: {fileID: 0}
     name: landing
     clip: {fileID: 8300000, guid: d3ee6a0ca6980964fb33ccaf6eff5992, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Narrador
+    clip: {fileID: 8300000, guid: 6b3199b7e6547874283fcbdfd1021270, type: 3}
+    volume: 0.9
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: narrador1
+    clip: {fileID: 8300000, guid: 1bdb2c33af47bf84c8b40e67d5dc6336, type: 3}
+    volume: 0.9
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: narrador2
+    clip: {fileID: 8300000, guid: 5f72d995975c58f459ef29a204c03c09, type: 3}
+    volume: 0.9
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: narrador3
+    clip: {fileID: 8300000, guid: 8e5a2f4d19ca74045a8c51f04236b9da, type: 3}
+    volume: 0.9
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: player_damage_1
+    clip: {fileID: 8300000, guid: c33a4ecaa61500e4b849c6b94cf1879b, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -383,6 +432,34 @@ MonoBehaviour:
   - audioSource: {fileID: 0}
     name: pig_death
     clip: {fileID: 8300000, guid: 97dfcf999f311fe4ab7e8664f08d9def, type: 3}
+    volume: 0.2
+    pitch: 0.9
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: pig_death_01
+    clip: {fileID: 8300000, guid: f467b9c39dbd755478d0ccbcb66d6c04, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: pig_death_02
+    clip: {fileID: 8300000, guid: 627c6184bc85d3a4ebc4c2e06806ee7c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: pig_death_03
+    clip: {fileID: 8300000, guid: 651e715e40fd6b5489d89b00def9a173, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: pig_death_04
+    clip: {fileID: 8300000, guid: e3d95822ed0ce5140bdebc80cbb05119, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -411,154 +488,154 @@ MonoBehaviour:
   - audioSource: {fileID: 0}
     name: beer
     clip: {fileID: 8300000, guid: 537459b9381df474aa7cf7ed76123a94, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: beer_many
     clip: {fileID: 8300000, guid: dc962772020920a4c882fadb60124100, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: berserk
     clip: {fileID: 8300000, guid: 5c5e02fd896449449a7d6f5fb99545b0, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: brokkr_justice
     clip: {fileID: 8300000, guid: 8b6cfae706f948e47bb3fcac0e967d56, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: draconic_mace
     clip: {fileID: 8300000, guid: 73d5eb1e5853d9741bdff6e3ac3fc3b9, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: draconic_shield
     clip: {fileID: 8300000, guid: 3b060b8ea565ab24598d3d2636dab353, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: drakefire_pistol
     clip: {fileID: 8300000, guid: 124ba219107f6aa4a8b68939965d421a, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: dwarlingar
     clip: {fileID: 8300000, guid: b255d6d7490a7ca41acd4819d44406f8, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: dwarven_king
     clip: {fileID: 8300000, guid: 9c1600ea376e9d64ebf5539e713721c0, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: dwarven_shield
     clip: {fileID: 8300000, guid: 11ea1710b90b7834791e15478b61ad04, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: fortune_1
     clip: {fileID: 8300000, guid: 1eb590a3b6a522b45acf950541f6099d, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: fortune_2
     clip: {fileID: 8300000, guid: dc78fee458f0ced408452c3d70b65e47, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: health_potion
     clip: {fileID: 8300000, guid: 66e3433dce9c341498829096f73d2027, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: hello_boss_1
     clip: {fileID: 8300000, guid: d105d5c58a2e55248b46ee680181b2e8, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: hello_first
     clip: {fileID: 8300000, guid: cb3833439323e994cbcabe1d1f6a7c44, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: jotun
     clip: {fileID: 8300000, guid: f3685f67b7fec6c48be7e029735d938b, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: remark_1
     clip: {fileID: 8300000, guid: a16d5b8f9c0a16046bc370135a82866c, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: remark_2
     clip: {fileID: 8300000, guid: 6405db9a2cbd8684581fb3018311a302, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: remark_3
     clip: {fileID: 8300000, guid: 288eb253016a9ac4da56fd6df5dcb7ab, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: sell_hammer
     clip: {fileID: 8300000, guid: 119594b2eaa82de4bba96376897f730b, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: vengeance
     clip: {fileID: 8300000, guid: dece4c7f76ae999439a1e9fe3f8195e0, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: viking_shield
     clip: {fileID: 8300000, guid: 5152a8c43f8bbf74980c8722872eb486, type: 3}
-    volume: 0.5
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
@@ -649,14 +726,14 @@ MonoBehaviour:
   - audioSource: {fileID: 0}
     name: taunt_1
     clip: {fileID: 8300000, guid: 3fbfaaa9fa63a974e8056b14db8826c4, type: 3}
-    volume: 0.5
+    volume: 0.35
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: taunt_2
     clip: {fileID: 8300000, guid: 802d7fb119d81734296b790b19cefeab, type: 3}
-    volume: 0.5
+    volume: 0.35
     pitch: 1
     loop: 0
     repeatRate: 0
@@ -699,6 +776,69 @@ MonoBehaviour:
     name: troll_final_phase
     clip: {fileID: 8300000, guid: d8d294f2a7354834f87aeea98f5ba36e, type: 3}
     volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Martelo + carne1
+    clip: {fileID: 8300000, guid: 65704a8cd165d784bb15bf19b1436788, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Martelo + carne2
+    clip: {fileID: 8300000, guid: 20554cb617c9a7947b3e2572c8903d58, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Martelo + carne3
+    clip: {fileID: 8300000, guid: adcbb3614b0ee3f4e892bebf75fcd449, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Martelo + carne4
+    clip: {fileID: 8300000, guid: 4c90b659e6d8b354d9248fa01ffc5864, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Martelo + carne5
+    clip: {fileID: 8300000, guid: 18d7233111e85a44e850eede3ef4dd65, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Ossos esmagados
+    clip: {fileID: 8300000, guid: ebe9433bd9e787646b9474278ff62aed, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Mosquete
+    clip: {fileID: 8300000, guid: b5404e96843382b4a9fbd09e9c247778, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Canhao
+    clip: {fileID: 8300000, guid: 5e918890a212b1c468f3751a9a936e45, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: mockery
+    clip: {fileID: 8300000, guid: 6b2ce91932046f34ebcce1a48bb56d6e, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     repeatRate: 0

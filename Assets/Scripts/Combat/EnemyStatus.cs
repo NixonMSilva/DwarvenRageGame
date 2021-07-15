@@ -112,7 +112,7 @@ public class EnemyStatus : StatusController
 
     public override void PlayImpactSound ()
     {
-        AudioManager.instance.PlaySoundRandomAt(gameObject, enemy.Type.impactType);
+        //AudioManager.instance.PlaySoundRandomAt(gameObject, enemy.Type.impactType);
     }
 
     private void PlayDeathSound ()

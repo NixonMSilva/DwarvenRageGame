@@ -20,6 +20,8 @@ public class Weapon : Item
 
     public WeaponEffectType effectType = WeaponEffectType.defaultEffect;
 
+    public WeaponType weaponType = WeaponType.axe;
+
     public float AttackEffect (StatusController attacker, IDamageable target)
     {
         return WeaponEffectProcessor.ProcessWeaponEffectOnDamage(effectType, attacker, target);
@@ -39,4 +41,10 @@ public class Weapon : Item
     {
         WeaponEffectProcessor.ProcessWeaponEffectOnHealthChange(effectType, user);
     }
+}
+
+public enum WeaponType
+{
+    axe,
+    hammer
 }

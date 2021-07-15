@@ -85,6 +85,11 @@ public class EnemyController : MonoBehaviour
     {
         int delta = enemyType.goldDrop + UnityEngine.Random.Range(-enemyType.goldDropVariance, enemyType.goldDropVariance + 1);
         delta = (int)(delta * enemyStatus.Player.GoldDropRate);
+        
+        // Don't do anything if the drop is 0
+        if (delta == 0)
+            return;
+        
         enemyStatus.Player.Equipment.Gold += delta;
         UserInterfaceController.instance.UpdateGoldCount(enemyStatus.Player.Equipment.Gold, delta);
     }

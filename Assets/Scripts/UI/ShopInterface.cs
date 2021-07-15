@@ -164,7 +164,7 @@ public class ShopInterface : MonoBehaviour
     public void EventNotEnoughCash ()
     {
         Debug.Log("Not enough cash, stranger!");
-        UserInterfaceController.instance.ThrowWarningMessage("You don't have enough cash!");
+        UserInterfaceController.instance.ThrowWarningMessage("Sem dinheiro suficiente!");
     }
 
     public void EventShopPurchase (ShopSlot slot)
@@ -234,25 +234,25 @@ public class ShopInterface : MonoBehaviour
     public void EventInventoryFull ()
     {
         Debug.Log("Your inventory is full!");
-        UserInterfaceController.instance.ThrowWarningMessage("Your inventory is full!");
+        UserInterfaceController.instance.ThrowWarningMessage("Seu inventário está cheio!");
     }
 
     public void EventWeaponFull ()
     {
         Debug.Log("Your weapon slots are full!");
-        UserInterfaceController.instance.ThrowWarningMessage("Your weapon slots are full!");
+        UserInterfaceController.instance.ThrowWarningMessage("Seu armazenamento de armas está ocupado!");
     }
 
     public void EventShieldFull ()
     {
         Debug.Log("Your shield slot is occupied!");
-        UserInterfaceController.instance.ThrowWarningMessage("Your shield slot is occupied!");
+        UserInterfaceController.instance.ThrowWarningMessage("Seu armazenamento de escudo está ocupado!");
     }
 
     public void EventRangedFull ()
     {
         Debug.Log("Your ranged slot is occupied!");
-        UserInterfaceController.instance.ThrowWarningMessage("Your ranged slot is occupied!");
+        UserInterfaceController.instance.ThrowWarningMessage("Seu armazenamento de armas à distância está ocupado!");
     }
 
     private void HandleItemPurchase (Consumable purchasedItem, ShopSlot slot)

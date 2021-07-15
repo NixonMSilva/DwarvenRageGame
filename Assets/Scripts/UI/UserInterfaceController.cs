@@ -1,3 +1,4 @@
+using System.Data.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -268,12 +269,64 @@ public class UserInterfaceController : MonoBehaviour
 
     public void CreateItemSlots (int count)
     {
-        float startY = 192f;
+        float screenX = Screen.width;
+        float screenY = Screen.height;
+        float startXLeft, startXRight, startY;
 
-        for (int i = 0; i < count; ++i)
+        float centerX = screenX / 2f;
+        float centerY = screenY / 2f;
+
+        Debug.Log("X: " + screenX + " Y: " + screenY);
+
+        startXLeft = centerX - (centerX * 0.21f);
+        startXRight = centerX + (centerX * 0.07f);
+        startY = centerY - (centerY * 0.6f);
+
+        int i, j;
+        
+        for (i = 0; i < count / 2; ++i)
         {
-            AddItemSlot(inventoryXCoor[i], startY, i);
+            AddItemSlot (startXLeft, startY, i);
+            startXLeft = startXLeft + (centerX * 0.14f);
         }
+
+        for (j = i; j < count; ++j)
+        {
+            AddItemSlot (startXRight, startY, j);
+            startXRight = startXRight + (centerX * 0.14f);
+        }
+        
+        /*
+        if (screenX >= 1920f && screenY >= 1080f)
+        {
+            Debug.Log("Here 1!");
+            startY = 192f;
+            startX = 768f;
+            for (int i = 0; i < count; ++i)
+            {
+                AddItemSlot(startX, startY, i);
+                startX += 128f;
+            }
+        }
+        else
+        {
+            Debug.Log("Here 2!");
+            startX = centerX - 128f;
+            startY = centerY - 240f;
+            int i, j;
+            for (i = 0; i < count / 2; ++i)
+            {
+                AddItemSlot(startX, startY, i);
+                startX += 86f;
+            }
+
+            startX = centerX + 43;
+            for (j = i; j < count; ++j)
+            {
+                AddItemSlot(startX, startY, j);
+                startX += 86f;
+            }
+        } */
     }
 
     public void AddItemSlot (float coorX, float coorY, int count)
@@ -524,6 +577,10 @@ public class UserInterfaceController : MonoBehaviour
 
     public void PlayGoldAnimation (int value)
     {
+        // Don't do anything if there's no change
+        if (value == 0)
+            return;
+        
         if (value > 0)
             AudioManager.instance.PlaySound("gold_pickup");
         else

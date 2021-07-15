@@ -47,9 +47,8 @@ public class SkullProjectile : ProjectileController
         }
     }
 
-    private bool IsTroll(GameObject obj)
+    private bool IsTroll (GameObject obj)
     {
-        Debug.Log("Checking");
         return obj.gameObject.name.Contains("Troll");
     }
 }

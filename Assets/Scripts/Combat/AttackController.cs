@@ -34,6 +34,10 @@ public class AttackController : MonoBehaviour
 
     private bool hasBerserk;
 
+    private int attackAnimVariation = 0;
+
+    private string[] attacks = {"attack", "attack_1", "attack_2", "attack_3", "attack_4"};
+
     [SerializeField] private bool canAttack = true;
 
     [SerializeField] private bool canAttackRanged = true;
@@ -161,8 +165,20 @@ public class AttackController : MonoBehaviour
     {
         if (!status.IsBlocking && canAttack)
         {
-           anim.Play("attack");
-           canAttack = false;
+            if (isPlayer)
+            {
+                if (attackAnimVariation >= 5)
+                    attackAnimVariation = 0;
+                
+                anim.Play(attacks[attackAnimVariation]);
+                attackAnimVariation++;    
+            }
+            else
+            {
+                anim.Play("attack");
+            }
+            
+            canAttack = false;
         }
     }
 
@@ -187,6 +203,15 @@ public class AttackController : MonoBehaviour
             {
                 AudioManager.instance.PlaySound("weapon_swing_light");
             }
+            //Martelo + carne
+        }
+    }
+
+    private void PlayCriticalSound()
+    {
+        if (isPlayer)
+        {
+            AudioManager.instance.PlaySound("Ossos esmagados");
         }
     }
 
@@ -237,8 +262,20 @@ public class AttackController : MonoBehaviour
 
     public void FireRangedAttack ()
     {
-        // Criar proj�til
+        // Creates ranged projectile
         CreateProjectile();
+        PlayRangedSound();
+    }
+
+    private void PlayRangedSound()
+    {
+        if (isPlayer)
+        {
+            if (equipment.PlayerRanged.fireSound != "")
+            {
+                AudioManager.instance.PlaySound(equipment.PlayerRanged.fireSound);
+            }
+        }
     }
 
     // Usually used by the player
@@ -296,6 +333,7 @@ public class AttackController : MonoBehaviour
             if (hitEntity.TryGetComponent(out IDamageable damagedObj))
             {
                 damagedObj.CheckForBlock(attackPoint);
+                PlayConnectSound(attackPoint);
                 damagedObj.PlayImpactSound();
                 if (isPlayer)
                 {
@@ -304,6 +342,7 @@ public class AttackController : MonoBehaviour
                     if (TryForCritical())
                     {
                         Debug.Log("Critical Hit!");
+                        PlayCriticalSound();
                         damageModifier *= 2f;
                     }
                     damagedObj.TakeDamage(damage * damageModifier, equipment.PlayerWeapon.damageType);
@@ -323,6 +362,24 @@ public class AttackController : MonoBehaviour
                     }
                 }
                 
+            }
+        }
+    }
+
+    private void PlayConnectSound(Transform obj)
+    {
+        if (isPlayer)
+        {
+            switch (equipment.PlayerWeapon.weaponType)
+            {
+                default:
+                    break;
+                case WeaponType.axe:
+                    AudioManager.instance.PlaySoundRandomAt(obj.position, "axe_on_flesh");
+                    break;
+                case WeaponType.hammer:
+                    AudioManager.instance.PlaySoundRandomAt(obj.position, "axe_on_flesh");
+                    break;
             }
         }
     }

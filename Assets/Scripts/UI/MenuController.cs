@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
+
+    [SerializeField] private GameObject loadingScreen;
+        
 	private void Awake ()
 	{
 		Time.timeScale = 1f;
@@ -15,6 +18,11 @@ public class MenuController : MonoBehaviour
     private void Start ()
     {
         InputHandler.instance.LockCursor(false);
+    }
+
+    public void ShowLoadingScreen()
+    {
+        loadingScreen.SetActive(true);
     }
     
     public void PlayGame()

@@ -34,14 +34,14 @@ public class ChestController : MonoBehaviour
     {
         Inventory inventory = GameObject.Find("Player").GetComponent<Inventory>();
         inventory.AddItem(item);
-        UserInterfaceController.instance.ThrowWarningMessage(item.itemName + "acquired!");
+        UserInterfaceController.instance.ThrowWarningMessage(item.itemName + "adquirido!");
     }
     
     public void AddWeapon (Weapon weapon)
     {
         Inventory inventory = GameObject.Find("Player").GetComponent<Inventory>();
         inventory.AddWeapon(weapon);
-        UserInterfaceController.instance.ThrowWarningMessage(weapon.itemName + "acquired!");
+        UserInterfaceController.instance.ThrowWarningMessage(weapon.itemName + "adquirido!");
     }
 
     public void PlayChestSound()

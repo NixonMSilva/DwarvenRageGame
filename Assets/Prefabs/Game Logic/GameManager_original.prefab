@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920458272636603221}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -78,12 +78,12 @@ MonoBehaviour:
   sfxVolume: 1
   playerData:
     health: 100
-    armor: 0
+    armor: 100
     sheet: {fileID: 11400000, guid: be1ff71b032fcb341a8b34e6a4c5d68b, type: 2}
     playerWeapon: {fileID: 11400000, guid: d7f9b597e617a2e4cb40d53880f0f8f2, type: 2}
     playerShield: {fileID: 0}
     playerRanged: {fileID: 11400000, guid: c1e4462c97d7a0946a5095bcdc8f4918, type: 2}
-    gold: 0
+    gold: 666
     weaponList: []
     itemList:
     - {fileID: 11400000, guid: 9e034040ca838b24c98d89d2292e14d3, type: 2}

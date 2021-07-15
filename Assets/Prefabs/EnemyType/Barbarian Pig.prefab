@@ -475,6 +475,7 @@ MonoBehaviour:
   enemyType: {fileID: 11400000, guid: 6ef58d41bfd915b45ad15c86302805fb, type: 2}
   deathExtraEffectPoint: {fileID: 0}
   deathExtraEffectFX: {fileID: 0}
+  deathExtraEffectRange: 0
   useFromDatabase: 0
   lootSpawnPoint: {fileID: 1531512025494053896}
 --- !u!114 &7952555473772359236
@@ -489,6 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0654dd7af7367944889efba781e314f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: {fileID: 0}
   maxHealth: 200
   health: 200
   maxArmor: 100
@@ -518,6 +520,7 @@ MonoBehaviour:
   firePointB: {fileID: 0}
   attackRange: 2
   attackSpeed: 3
+  powerAttackSpeedMult: 0.7
   damageableLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -546,7 +549,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.6
-  m_BaseOffset: -0.03
+  m_BaseOffset: 0.03
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!65 &4438881461718070356

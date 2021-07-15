@@ -201,8 +201,11 @@ public class PlayerStatus : StatusController
             PlayDamageSound();
         }
 
-        // Blink
-        DamageBlink(type);
+        // Blink screen
+        if (IsBlocking())
+            BlockBlink();
+        else
+            DamageBlink(type);
 
         //Debug.Log("Health reduced:" + newValue);
         DeduceHealth(newValue);
@@ -221,6 +224,11 @@ public class PlayerStatus : StatusController
         }
     }
 
+    private void BlockBlink()
+    {
+        UserInterfaceController.instance.ShowDamagePanel(Color.white);
+    }
+
     private void UpdateCharacterUI ()
     {
         UserInterfaceController.instance?.UpdateCharacterFrame(Health, MaxHealth, Armor, MaxArmor);
@@ -231,7 +239,7 @@ public class PlayerStatus : StatusController
         float verify = UnityEngine.Random.Range(0f, 1f);
         if (verify <= 0.5f)
         {
-            AudioManager.instance.PlaySoundRandom("damage");
+            AudioManager.instance.PlaySoundRandom("player_damage");
         }
     }
 

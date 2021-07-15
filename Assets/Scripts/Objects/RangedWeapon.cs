@@ -26,4 +26,6 @@ public class RangedWeapon : Item
     public float cooldown = 10f;
     public GameObject projectile;
     public AnimatorOverrideController animationSet;
+
+    public string fireSound;
 }
