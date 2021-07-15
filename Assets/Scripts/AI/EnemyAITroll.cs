@@ -13,6 +13,14 @@ public class EnemyAITroll : BossAI
 
     private float originalPainThreshold = 0f;
 
+    [SerializeField] private bool isPlayerOnPlatform = false;
+
+    public bool PlayerOnPlatform
+    {
+        get => isPlayerOnPlatform;
+        set => isPlayerOnPlatform = value;
+    }
+
     private void Start ()
     {
         originalPainThreshold = status.PainThreshold;
@@ -21,8 +29,14 @@ public class EnemyAITroll : BossAI
 
     private new void Update ()
     {
-        base.Update();
+        if (!isPlayerOnPlatform && !CanAttackPlatform())
+            base.Update();
         
+        if (!isAttacking && isPlayerOnPlatform && CanAttackPlatform())
+        {
+            AttackPlatform();
+        }
+
         if (canTaunt && !status.IsDying)
         {
             Taunt();
@@ -45,6 +59,11 @@ public class EnemyAITroll : BossAI
         }
     }
 
+    private bool CanAttackPlatform ()
+    {
+        return (Vector3.Distance(transform.position, playerPoint) <= 35f);
+    }
+
     public override void AttackPlayer ()
     {
         if (!alreadyAttacked)
@@ -59,6 +78,23 @@ public class EnemyAITroll : BossAI
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }        
+    }
+
+    private void AttackPlatform ()
+    {
+        if (!alreadyAttacked)
+        {
+            playerPoint = player.transform.position;
+            LookAtPlayer();
+            StopForAttack();
+            
+            anim.Play("Attack");
+
+            isAttacking = true;
+
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
     }
 
     private void Taunt ()

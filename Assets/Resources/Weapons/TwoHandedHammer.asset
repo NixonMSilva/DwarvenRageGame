@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TwoHandedHammer
   m_EditorClassIdentifier: 
   id: 23
-  itemName: "Belgren\u2019s Hammer"
+  itemName: Martelo do Belgren
   itemDescription: "O fiel martelo de Belgren, gasto por\xE9m eficaz!"
   worldMesh: {fileID: 6555520670264125538, guid: 93e067b37e0ab8a40a39680f1e524e46, type: 3}
   materialList:
@@ -34,7 +34,7 @@ MonoBehaviour:
   isTwoHanded: 1
   protections:
   - type: 0
-    resistance: 1
+    resistance: 0.75
   - type: 1
     resistance: 0.1
   - type: 2

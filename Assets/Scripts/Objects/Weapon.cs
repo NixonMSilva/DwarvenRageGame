@@ -46,5 +46,7 @@ public class Weapon : Item
 public enum WeaponType
 {
     axe,
-    hammer
+    hammer,
+    ice,
+    fire
 }
