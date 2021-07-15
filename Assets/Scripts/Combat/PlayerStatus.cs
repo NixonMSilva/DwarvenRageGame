@@ -10,16 +10,10 @@ public class PlayerStatus : StatusController
 
     private Transform lastAttackPoint;
 
-    private Collider blockCollider;
+    [SerializeField] private Transform testPoint;
 
     [SerializeField] private float goldDropRate = 1f;
-
-    public Collider BlockCollider
-    {
-        get => blockCollider;
-        set => blockCollider = value;
-    }
-
+    
     public override float Health
     {
         get { return health; }
@@ -211,6 +205,98 @@ public class PlayerStatus : StatusController
         DeduceHealth(newValue);
     }
 
+    public override void TakeDamage (float value, DamageType type, Vector3 point)
+    {
+        float newValue = value;
+        bool blockedIncomingHit = false;
+
+        // If resistance type is registered
+        if (_resistances.ContainsKey(type))
+            newValue *= (1f - _resistances[type]);
+
+        if (IsBlocking() && CanBlockAttackAngle(point))
+        {
+            blockedIncomingHit = true;
+            // Plays block hit animation
+            if (equipment.PlayerShield != null)
+                animator.Play("player_block_hit");
+            else
+                animator.Play("player_block_shieldless_hit");
+
+            // If player is not using two handed
+            if (!equipment.IsTwoHanded && equipment.PlayerShield != null)
+            {
+                // Apply damage reduction
+                newValue -= newValue * equipment.PlayerShield.protections[(int) type].resistance;
+                AudioManager.instance.PlaySoundRandom("shield_block");
+            }
+            else
+            {
+                // Without shield, use weapon protections
+                newValue -= newValue * equipment.PlayerWeapon.protections[(int) type].resistance;
+            }
+        }
+        else
+        {
+            // Play damage sound
+            PlayDamageSound();
+        }
+
+        // Blink screen
+        if (blockedIncomingHit && type == DamageType.physical)
+            BlockBlink();
+        else
+            DamageBlink(type);
+
+        //Debug.Log("Health reduced:" + newValue);
+        DeduceHealth(newValue);
+    }
+
+    public override void TakeDamage (float value, DamageType type, Effect effect, Vector3 point)
+    {
+        // Apply effect
+        for (int i = 0; i < _activeDOTs.Count; ++i)
+        {
+            if (_activeDOTs[i].Type == effect.dotDamageType)
+            {
+                _activeDOTs[i].ResetTimer();
+                return;
+            }
+        }
+
+        EffectProcessor.ProcessEffect(effect, this);
+        
+        // Damage processing
+        TakeDamage(value, type, point);
+    }
+
+    private bool CanBlockAttackAngle (Vector3 point)
+    {
+        Vector3 planifiedPoint = new Vector3(point.x, transform.position.y, point.z);
+
+        Vector3 playerForwardVector = transform.forward;
+        Vector3 attackVector = (planifiedPoint - transform.position).normalized;
+
+        float angle = Vector3.SignedAngle(transform.forward, attackVector, Vector3.up);
+        
+        /*
+        float angle = Vector3.SignedAngle((transform.forward - transform.position).normalized, 
+            (planifiedPoint - transform.position).normalized, Vector3.up);*/
+        
+        Debug.Log("Vectors: " + playerForwardVector + " | " 
+                  + attackVector + "\nAngle: " + angle);
+        
+        Debug.DrawRay(transform.position, transform.forward, Color.red, 5f);
+        Debug.DrawRay(transform.position, attackVector, Color.green, 5f);
+        
+        if (Mathf.Abs(angle) <= blockAngle)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
     public override void TakeDamageIgnoreBlock (float value, DamageType type)
     {
         float newValue = value;
@@ -273,12 +359,16 @@ public class PlayerStatus : StatusController
         lastAttackPoint = attackPoint;
     }
     
-    private void OnDrawGizmosSelected ()
+    private void OnDrawGizmos ()
     {
-        if (attack == null || attack.AttackPoint == null)
+        /*
+        if (testPoint == null)
             return;
 
         Gizmos.color = Color.cyan;
-        Gizmos.DrawRay(attack.AttackPoint.position - transform.forward, transform.forward);
+        Gizmos.DrawRay(transform.position, transform.forward);
+        Gizmos.color = Color.green;
+        Vector3 v = new Vector3(testPoint.position.x, transform.position.y, testPoint.position.z);
+        Gizmos.DrawRay(v, transform.position - v); */
     }
 }

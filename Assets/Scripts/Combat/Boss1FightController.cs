@@ -14,6 +14,8 @@ public class Boss1FightController : BossFightController
 
     [SerializeField] private SkinnedMeshRenderer trollBodyMesh;
 
+    [SerializeField] private EnemyStatus bossHealth;
+    
     [SerializeField] private GameObject platform;
 
     private PigSpawner spawner;
@@ -21,7 +23,13 @@ public class Boss1FightController : BossFightController
     public float BloodBar
     {
         get => bloodBarProgress;
-        set => bloodBarProgress = value;
+        set
+        {
+            bloodBarProgress = value;
+
+            if (bloodBarProgress >= 100f)
+                bloodBarProgress = 100f;
+        }
     }
 
     private new void Awake ()
@@ -31,6 +39,11 @@ public class Boss1FightController : BossFightController
         spawner = GetComponent<PigSpawner>();
 
         originalResistance = bossStatus.Sheet;
+    }
+
+    private void Update ()
+    {
+        UserInterfaceController.instance.UpdateBossBar(bossHealth.Health / bossHealth.MaxHealth);
     }
 
     private new void Start ()
@@ -69,7 +82,7 @@ public class Boss1FightController : BossFightController
     
     public void FillProgressBar ()
     {
-        bloodBarProgress += percentagePerKill;
+        BloodBar += percentagePerKill;
         UserInterfaceController.instance.UpdateProgressBar(bloodBarProgress);
     }
 

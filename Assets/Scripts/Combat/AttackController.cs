@@ -354,11 +354,15 @@ public class AttackController : MonoBehaviour
                     Effect attackEffect = GetComponent<EnemyController>().Type.damageEffect;
                     if (attackEffect != null)
                     {
-                        damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType, attackEffect);
+                        // Damages the player
+                        damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType, attackEffect, attackPoint.position);
+                        //damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType, attackEffect);
                     }
                     else
                     {
-                        damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType);
+                        // Damages the player (without effect)
+                        damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType, attackPoint.position);
+                        //damagedObj.TakeDamage(damage, GetComponent<EnemyController>().Type.damageType);
                     }
                 }
                 

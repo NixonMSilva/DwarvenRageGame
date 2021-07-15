@@ -9,6 +9,8 @@ public class EnemyStatus : StatusController
     public event System.Action<EnemyStatus> OnDeath;
 
     public event System.Action OnDeathEffect;
+    
+    public event System.Action<float, float> OnHealthChange;
 
     private NavMeshAgent agent;
 
@@ -24,6 +26,24 @@ public class EnemyStatus : StatusController
     {
         get { return agent.speed; }
         set { agent.speed = value; }
+    }
+    
+    public override float Health
+    {
+        get => health;
+        set 
+        { 
+            health = value; 
+            if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
+            else if (health < 0f)
+            {
+                health = 0f;
+            }
+            OnHealthChange?.Invoke(health, maxHealth);
+        }
     }
 
     public EnemyController Enemy
