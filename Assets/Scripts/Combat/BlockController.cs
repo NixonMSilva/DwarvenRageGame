@@ -21,8 +21,6 @@ public class BlockController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         status = GetComponent<StatusController>();
-        
-        Debug.Log("Animator gotten");
     }
 
     private void Start ()

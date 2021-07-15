@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class EnemyAITroll : BossAI
 {
@@ -15,10 +17,18 @@ public class EnemyAITroll : BossAI
 
     [SerializeField] private bool isPlayerOnPlatform = false;
 
+    [SerializeField] private bool isAttackingPlatform = false;
+
     public bool PlayerOnPlatform
     {
         get => isPlayerOnPlatform;
         set => isPlayerOnPlatform = value;
+    }
+
+    public bool IsAttackingPlatform
+    {
+        get => isAttackingPlatform;
+        set => isAttackingPlatform = value;
     }
 
     private void Start ()
@@ -29,10 +39,10 @@ public class EnemyAITroll : BossAI
 
     private new void Update ()
     {
-        if (!isPlayerOnPlatform && !CanAttackPlatform())
+        if (!isAttackingPlatform)
             base.Update();
-        
-        if (!isAttacking && isPlayerOnPlatform && CanAttackPlatform())
+
+        if (!status.IsDying && !isAttacking && isPlayerOnPlatform && CanAttackPlatform())
         {
             AttackPlatform();
         }
@@ -61,7 +71,7 @@ public class EnemyAITroll : BossAI
 
     private bool CanAttackPlatform ()
     {
-        return (Vector3.Distance(transform.position, playerPoint) <= 35f);
+        return (Vector3.Distance(transform.position, player.position) <= 15f);
     }
 
     public override void AttackPlayer ()
@@ -84,17 +94,17 @@ public class EnemyAITroll : BossAI
     {
         if (!alreadyAttacked)
         {
-            playerPoint = player.transform.position;
-            LookAtPlayer();
-            StopForAttack();
+            isAttackingPlatform = true;
             
-            anim.Play("Attack");
+            playerPoint = player.transform.position;
+            StopForAttack();
+
+            anim.Play("Troll_Attack_Platform");
 
             isAttacking = true;
-
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
+        }        
     }
 
     private void Taunt ()
