@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DwarvenWarhammer
   m_EditorClassIdentifier: 
   id: 20
-  itemName: "Brokkr\u2019s Justice"
+  itemName: Justica de Brokkr
   itemDescription: "Uma obra prima, perfeita para distribuir justi\xE7a. Tem uma
     chance de recuperar uma quantidade de vida ao atacar."
   worldMesh: {fileID: -3292925553009838691, guid: c767656752e700e49808232e2fd2f296, type: 3}
@@ -25,13 +25,13 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: b52794f4c0c80c84f8dce26a0bfa691b, type: 3}
   audioPurchaseName: brokkr_justice
   audioPickupName: 
-  price: 6250
+  price: 8000
   posX: -0.00117
   posY: 0.00052
   posZ: 0.00003
-  damage: 40
+  damage: 38
   damageType: 0
-  criticalChance: 0.01
+  criticalChance: 0.05
   isTwoHanded: 0
   protections:
   - type: 0

@@ -35,6 +35,11 @@ public class MenuController : MonoBehaviour
         Application.Quit();
     }
 
+    public void ReturnToMenu ()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void SetQuality (int qualityIndex)
     {
         Debug.Log(qualityIndex);

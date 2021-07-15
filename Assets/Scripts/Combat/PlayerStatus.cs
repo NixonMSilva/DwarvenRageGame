@@ -202,10 +202,28 @@ public class PlayerStatus : StatusController
         }
 
         // Blink screen
-        if (IsBlocking())
+        if (IsBlocking() && type == DamageType.physical)
             BlockBlink();
         else
             DamageBlink(type);
+
+        //Debug.Log("Health reduced:" + newValue);
+        DeduceHealth(newValue);
+    }
+
+    public override void TakeDamageIgnoreBlock (float value, DamageType type)
+    {
+        float newValue = value;
+    
+        // If resistance type is registered
+        if (_resistances.ContainsKey(type))
+            newValue *= (1f - _resistances[type]);
+        
+        // Play damage sound
+        PlayDamageSound();
+
+        // Blink screen
+        DamageBlink(type);
 
         //Debug.Log("Health reduced:" + newValue);
         DeduceHealth(newValue);

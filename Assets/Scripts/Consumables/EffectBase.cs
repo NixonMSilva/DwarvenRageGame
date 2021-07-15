@@ -370,7 +370,7 @@ public class BrokrrEffect : WeaponEffect
         float diceRoll = Random.Range(0f, 1f);
         if (diceRoll <= 0.15f)
         {
-            attacker.Health += attacker.MaxHealth * 0.3f;
+            attacker.Health += attacker.MaxHealth * 0.15f;
         }
         // Return 1 so it doesn't change the original damage throughput 
         return 1f;
@@ -440,8 +440,10 @@ public class VengeanceEffect : WeaponEffect
 
     public override float ApplyEffectOnDamage (StatusController attacker, IDamageable target)
     {
+        /*
         float damageIncrease = vengeanceCap - (attacker.Health / attacker.MaxHealth);
-        return damageIncrease;
+        return damageIncrease; */
+        return 1f;
     }
 
     public override void ApplyEffectOnEquip (StatusController user)
@@ -452,15 +454,16 @@ public class VengeanceEffect : WeaponEffect
     public override void ApplyEffectOnUnequip (StatusController user)
     {
         // Normalize attack speed
-        user.Attack.AttackSpeed = 1f;
+        /* user.Attack.AttackSpeed = 1f; */
     }
 
     public override void ApplyEffectOnHealthChange (StatusController user)
     {
+        /*
         // Increase attack speed
         PlayerStatus player = user as PlayerStatus;
         float attackSpeed = vengeanceCap - (player.Health / player.MaxHealth);
-        player.Attack.AttackSpeed = attackSpeed;
+        player.Attack.AttackSpeed = attackSpeed; */
     }
 }
 

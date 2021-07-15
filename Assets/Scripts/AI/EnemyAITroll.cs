@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class EnemyAITroll : BossAI
 {
@@ -13,6 +15,22 @@ public class EnemyAITroll : BossAI
 
     private float originalPainThreshold = 0f;
 
+    [SerializeField] private bool isPlayerOnPlatform = false;
+
+    [SerializeField] private bool isAttackingPlatform = false;
+
+    public bool PlayerOnPlatform
+    {
+        get => isPlayerOnPlatform;
+        set => isPlayerOnPlatform = value;
+    }
+
+    public bool IsAttackingPlatform
+    {
+        get => isAttackingPlatform;
+        set => isAttackingPlatform = value;
+    }
+
     private void Start ()
     {
         originalPainThreshold = status.PainThreshold;
@@ -21,8 +39,14 @@ public class EnemyAITroll : BossAI
 
     private new void Update ()
     {
-        base.Update();
-        
+        if (!isAttackingPlatform)
+            base.Update();
+
+        if (!status.IsDying && !isAttacking && isPlayerOnPlatform && CanAttackPlatform())
+        {
+            AttackPlatform();
+        }
+
         if (canTaunt && !status.IsDying)
         {
             Taunt();
@@ -45,6 +69,11 @@ public class EnemyAITroll : BossAI
         }
     }
 
+    private bool CanAttackPlatform ()
+    {
+        return (Vector3.Distance(transform.position, player.position) <= 15f);
+    }
+
     public override void AttackPlayer ()
     {
         if (!alreadyAttacked)
@@ -54,6 +83,23 @@ public class EnemyAITroll : BossAI
 
             float diceRoll = Random.Range(0f, 1f);
             anim.Play(diceRoll < 0.2f ? "PowerAttack" : "Attack");
+
+            isAttacking = true;
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }        
+    }
+
+    private void AttackPlatform ()
+    {
+        if (!alreadyAttacked)
+        {
+            isAttackingPlatform = true;
+            
+            playerPoint = player.transform.position;
+            StopForAttack();
+
+            anim.Play("Troll_Attack_Platform");
 
             isAttacking = true;
             alreadyAttacked = true;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BlockController : MonoBehaviour
 {
-    private Animator anim;
+    [SerializeField] private Animator anim;
 
     private StatusController status;
 
@@ -37,7 +37,8 @@ public class BlockController : MonoBehaviour
         if (canBlock)
         {
             status.IsBlocking = true;
-            anim.SetBool("isBlocking", true);
+            if (anim != null)
+                anim.SetBool("isBlocking", true);
         }
     }
 
@@ -46,7 +47,8 @@ public class BlockController : MonoBehaviour
         if (canBlock)
         {
             status.IsBlocking = false;
-            anim.SetBool("isBlocking", false);
+            if (anim != null)
+                anim.SetBool("isBlocking", false);
         }
     }
 

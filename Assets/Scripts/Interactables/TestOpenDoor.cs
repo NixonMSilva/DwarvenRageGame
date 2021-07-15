@@ -31,7 +31,7 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
 
         if (key != null)
         {
-            Debug.Log(key.IsFired);    
+            //Debug.Log(key.IsFired);    
         }
         
         if (isLocked)

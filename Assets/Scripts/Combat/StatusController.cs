@@ -184,6 +184,18 @@ public class StatusController : MonoBehaviour, IDamageable
 
         EffectProcessor.ProcessEffect(effect, this);
     }
+    
+    public virtual void TakeDamageIgnoreBlock (float value, DamageType type)
+    {
+        float newValue = value;
+    
+        // If resistance type is registered
+        if (_resistances.ContainsKey(type))
+            newValue *= (1f - _resistances[type]);
+        
+        //Debug.Log("Health reduced:" + newValue);
+        DeduceHealth(newValue);
+    }
 
     public void WearStatus (EffectBase effect, float duration, Action onEnd)
     {
@@ -225,7 +237,7 @@ public class StatusController : MonoBehaviour, IDamageable
         () =>
         {
             // On tick
-            TakeDamage(magnitude, type);
+            TakeDamageIgnoreBlock(magnitude, type);
         });
     }
 

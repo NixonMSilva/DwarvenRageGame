@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: FireResistance
   m_EditorClassIdentifier: 
   id: 4
-  itemName: Fire Resistance Potion
-  itemDescription: Placeholder
+  itemName: Poc. de Res. a Fogo
+  itemDescription: "Concede resist\xEAncia tempor\xE1ria a fogo, queimadura, queima\xE7\xE3o
+    e gastrite."
   worldMesh: {fileID: 2534964839176971238, guid: 72ccdb6727a5c1b40b3f692ea7166cbb, type: 3}
   materialList:
   - {fileID: 2100000, guid: e963347ecaf05e4468b1f17a11d39cae, type: 2}
@@ -24,5 +25,6 @@ MonoBehaviour:
   scaleZ: 1
   icon: {fileID: 21300000, guid: f6f41ea27f56d0546ab7a84442a7311b, type: 3}
   audioPurchaseName: burp
-  price: 3500
+  audioPickupName: 
+  price: 2000
   effect: {fileID: 11400000, guid: 75006ff1a0bc26b4db4632024e1ace3d, type: 2}

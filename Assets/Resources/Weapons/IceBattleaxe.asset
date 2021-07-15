@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IceBattleaxe
   m_EditorClassIdentifier: 
   id: 21
-  itemName: Frozen Skull Battleaxe
+  itemName: "Machado Jot\xFCnn"
   itemDescription: "Rel\xEDquia dos gigantes de gelo. Seus ataques causam lentid\xE3o
     nos inimigos."
   worldMesh: {fileID: -5538598741637245090, guid: b4556f68fbb80e4489dd5898a6ce41b6, type: 3}
@@ -28,17 +28,17 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: fbd17414c608f784d8bf0efd352fd50d, type: 3}
   audioPurchaseName: jotun
   audioPickupName: 
-  price: 12500
+  price: 33000
   posX: 0.001494
   posY: 0.000778
   posZ: 0.000206
-  damage: 25
-  damageType: 0
-  criticalChance: 0.01
+  damage: 125
+  damageType: 3
+  criticalChance: 0.05
   isTwoHanded: 1
   protections:
   - type: 0
-    resistance: 1
+    resistance: 0.75
   - type: 1
     resistance: 0.1
   - type: 2
@@ -52,3 +52,4 @@ MonoBehaviour:
   - type: 6
     resistance: 0.1
   effectType: 3
+  weaponType: 2

@@ -17,6 +17,9 @@ public class SceneLoader : MonoBehaviour
         
         // Show the loading screen
         UserInterfaceController.instance.ShowLoadingMenu();
+        
+        // Destroy all running sounds
+        AudioManager.instance.DestroyAllSounds();
 
         // Start the loading operation
         StartCoroutine((LoadAsynchronously(index)));
@@ -29,6 +32,9 @@ public class SceneLoader : MonoBehaviour
         
         // Show the loading screen
         UserInterfaceController.instance.ShowLoadingMenu();
+        
+        // Destroy all running sounds
+        AudioManager.instance.DestroyAllSounds();
 
         // Start the loading operation
         StartCoroutine((LoadAsynchronously(index)));

@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1039e04b7005e6744aac4351b459063a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!114 &5972964833955649106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392e8e9267b6a624684045b7fe297761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 0}
+  attack: {fileID: 5072104305726538638}
   maxHealth: 100
   health: 0
   maxArmor: 100

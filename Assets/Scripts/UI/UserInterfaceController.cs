@@ -276,7 +276,7 @@ public class UserInterfaceController : MonoBehaviour
         float centerX = screenX / 2f;
         float centerY = screenY / 2f;
 
-        Debug.Log("X: " + screenX + " Y: " + screenY);
+        //Debug.Log("X: " + screenX + " Y: " + screenY);
 
         startXLeft = centerX - (centerX * 0.21f);
         startXRight = centerX + (centerX * 0.07f);

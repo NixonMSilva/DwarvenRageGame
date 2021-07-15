@@ -167,6 +167,15 @@ public class AudioManager : MonoBehaviour
         soundSource.Play();
         Destroy(soundObject, (soundSource.clip.length + 0.1f));
     }
+    
+    public void DestroyAllSounds ()
+    {
+        AudioSource[] allSources = GetComponentsInChildren<AudioSource>();
+        foreach (AudioSource audio in allSources)
+        {
+            Destroy(audio);
+        }
+    }
 
     public void ConfigureAudioSource (AudioSource source, Sound sound, bool isDirectional)
     {

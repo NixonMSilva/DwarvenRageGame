@@ -83,12 +83,11 @@ public class EnemyStatus : StatusController
             // If resistance type is registered
             if (_resistances.ContainsKey(type))
                 newValue *= (1f - _resistances[type]);
-
-            PlayDamageSound();
-
+            
             float diceRoll = Random.Range(0f, 1f);
             if (diceRoll <= painThreshold)
             {
+                PlayDamageSound();
                 PlayDamageAnimation();
             }
 
@@ -139,7 +138,7 @@ public class EnemyStatus : StatusController
         if (hasHit) 
         {
             bloodSystem = Instantiate(enemy.Type.bloodParticle, hit.point, Quaternion.identity, gameObject.transform).GetComponent<ParticleSystem>();
-            Debug.Log(hit.collider.gameObject);
+            //Debug.Log(hit.collider.gameObject);
             Debug.DrawRay(hit.point, Vector3.up * 100, Color.red, 10f);
         }
         else
