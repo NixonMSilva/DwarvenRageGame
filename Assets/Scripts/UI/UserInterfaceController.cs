@@ -58,7 +58,14 @@ public class UserInterfaceController : MonoBehaviour
 
     private GameObject progressFrame;
     private TextMeshProUGUI progressTitle;
-    private Slider progressSlider;
+    private TextMeshProUGUI progressValue;
+    private Image progressIcon;
+
+    private GameObject bossBar;
+    private Slider bossSlider;
+    private Image bossIcon;
+    
+    //private Slider progressSlider;
 
     private GameObject sceneLoader;
     private Slider sceneSlider;
@@ -78,7 +85,7 @@ public class UserInterfaceController : MonoBehaviour
     [SerializeField] private Sprite playerHurt;
     [SerializeField] private Sprite playerVeryHurt;
     [SerializeField] private Sprite playerVeryDrunk;
-    
+
     private GameObject warningRoot;
     [SerializeField] private GameObject warningPrefab;
 
@@ -132,8 +139,14 @@ public class UserInterfaceController : MonoBehaviour
         goldAnimPoint = GameObject.Find("GoldAnimation");
 
         progressFrame = GameObject.Find("ProgressBar");
-        progressSlider = progressFrame.GetComponent<Slider>();
-        progressTitle = progressFrame.GetComponentInChildren<TextMeshProUGUI>();
+        //progressSlider = progressFrame.GetComponent<Slider>();
+        progressTitle = GameObject.Find("ProgressText").GetComponentInChildren<TextMeshProUGUI>();
+        progressValue = GameObject.Find("ProgressTextValue").GetComponentInChildren<TextMeshProUGUI>();
+        progressIcon = GameObject.Find("ProgressIcon").GetComponentInChildren<Image>();
+
+        bossBar = GameObject.Find("BossBar");
+        bossSlider = bossBar.GetComponent<Slider>();
+        bossIcon = GameObject.Find("BossIcon").GetComponent<Image>();
 
         deathScreen = GameObject.Find("DeathMenu");
 
@@ -143,9 +156,9 @@ public class UserInterfaceController : MonoBehaviour
 
         _itemSprites = new List<Image>();
         _itemStackTexts = new List<TextMeshProUGUI>();
-        
+
         warningRoot = GameObject.Find("WarningTextPoint");
-        
+
         sceneLoader = GameObject.Find("LoadingMenu");
         sceneSlider = sceneLoader.GetComponentInChildren<Slider>();
     }
@@ -159,7 +172,7 @@ public class UserInterfaceController : MonoBehaviour
         InputHandler.instance.OnEscapePressed += PauseMenu;
     }
 
-    public void WipeInterface()
+    public void WipeInterface ()
     {
         HideTooltip();
         HideDeathMenu();
@@ -167,6 +180,7 @@ public class UserInterfaceController : MonoBehaviour
         HideProgressMenu();
         HideLoadingMenu();
         HidePauseMenu();
+        HideBossBar();
     }
 
     private void OnDestroy ()
@@ -283,19 +297,19 @@ public class UserInterfaceController : MonoBehaviour
         startY = centerY - (centerY * 0.6f);
 
         int i, j;
-        
+
         for (i = 0; i < count / 2; ++i)
         {
-            AddItemSlot (startXLeft, startY, i);
+            AddItemSlot(startXLeft, startY, i);
             startXLeft = startXLeft + (centerX * 0.14f);
         }
 
         for (j = i; j < count; ++j)
         {
-            AddItemSlot (startXRight, startY, j);
+            AddItemSlot(startXRight, startY, j);
             startXRight = startXRight + (centerX * 0.14f);
         }
-        
+
         /*
         if (screenX >= 1920f && screenY >= 1080f)
         {
@@ -363,7 +377,7 @@ public class UserInterfaceController : MonoBehaviour
 
                 _itemSprites[i].sprite = _sprites[i];
                 _itemSprites[i].color = Color.white;
-                
+
                 if (_itemStacks[i] > 0)
                 {
                     // If the stack has more than 1 item, draw the text
@@ -374,7 +388,7 @@ public class UserInterfaceController : MonoBehaviour
                     // If it doesn't, the text should be empty
                     _itemStackTexts[i].text = "";
                 }
-                
+
             }
             else
             {
@@ -429,11 +443,11 @@ public class UserInterfaceController : MonoBehaviour
     }
 
     public void ShowRangedSlot ()
-    {        
+    {
         rangedSlotParent.SetActive(true);
     }
 
-    public void HideRangedSlot()
+    public void HideRangedSlot ()
     {
         rangedSlotParent.SetActive(false);
     }
@@ -459,12 +473,12 @@ public class UserInterfaceController : MonoBehaviour
 
     }
 
-    public void ShowFortuneIcon()
+    public void ShowFortuneIcon ()
     {
 
     }
 
-    public void HideFortuneIcon()
+    public void HideFortuneIcon ()
     {
 
     }
@@ -487,6 +501,26 @@ public class UserInterfaceController : MonoBehaviour
     public void HidePoisonResistanceIcon ()
     {
 
+    }
+
+    public void ShowBossBar ()
+    {
+        bossBar.SetActive(true);
+    }
+
+    public void HideBossBar ()
+    {
+        bossBar.SetActive(false);
+    }
+
+    public void UpdateBossBar (float value)
+    {
+        bossSlider.value = value;
+    }
+
+    public void SetBossBarIcon (Sprite icon)
+    {
+        bossIcon.sprite = icon;
     }
 
     public void UpdateHealthBar (float newHealthValue)
@@ -516,7 +550,7 @@ public class UserInterfaceController : MonoBehaviour
             // Hurt
             characterImage.sprite = playerHurt;
         }
-        else if (health/maxHealth <= 0.25f)
+        else if (health / maxHealth <= 0.25f)
         {
             // Very hurt
             characterImage.sprite = playerVeryHurt;
@@ -544,12 +578,12 @@ public class UserInterfaceController : MonoBehaviour
         characterFrame.SetActive(false);
     }
 
-    public void ShowArmorFrame () 
+    public void ShowArmorFrame ()
     {
         armorFrame.SetActive(true);
     }
 
-    public void UpdateArmor (float newArmorValue) 
+    public void UpdateArmor (float newArmorValue)
     {
         armorValue.text = Mathf.FloorToInt(newArmorValue).ToString() + "%";
     }
@@ -580,7 +614,7 @@ public class UserInterfaceController : MonoBehaviour
         // Don't do anything if there's no change
         if (value == 0)
             return;
-        
+
         if (value > 0)
             AudioManager.instance.PlaySound("gold_pickup");
         else
@@ -627,8 +661,13 @@ public class UserInterfaceController : MonoBehaviour
     public void ShowProgressMenu (string title)
     {
         progressFrame.SetActive(true);
-        progressSlider.value = 0f;
+        progressValue.text = "0%";
         progressTitle.text = title;
+    }
+
+    public void SetProgressIcon (Sprite icon)
+    {
+        progressIcon.sprite = icon;
     }
 
     public void HideProgressMenu ()
@@ -641,9 +680,10 @@ public class UserInterfaceController : MonoBehaviour
         progressTitle.text = title;
     }
 
-    public void UpdateProgressBar(float value)
+    public void UpdateProgressBar (float value)
     {
-        progressSlider.value = value;
+        //progressSlider.value = value;
+        progressValue.text = value.ToString() + "%";
     }
     
     public void ThrowWarningMessage (string message)
