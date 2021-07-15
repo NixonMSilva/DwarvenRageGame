@@ -10,4 +10,9 @@ public class TestPassLevel : MonoBehaviour
         SceneManager.LoadScene(2);
         AudioManager.instance.PlaySound("door_open");
     }
+
+    public void BackMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

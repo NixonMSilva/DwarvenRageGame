@@ -40,5 +40,10 @@ public class MenuController : MonoBehaviour
         Debug.Log(qualityIndex);
         QualitySettings.SetQualityLevel(qualityIndex);
     }
+
+    public void Sound()
+    {
+        AudioManager.instance.PlaySound("Som_teclas_menu");
+    }
     
 }
