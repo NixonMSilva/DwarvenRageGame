@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System;
-using System.ComponentModel.Design.Serialization;
 
 public class PickableBase : MonoBehaviour, IPickable
 {
     [SerializeField] private float rotationRate = 5f;
 
     public event Action<IPickable> OnPickUp;
+
+    [SerializeField] private UnityEvent OnPickUpUnity;
 
     [SerializeField] public Consumable item;
 
@@ -84,6 +84,7 @@ public class PickableBase : MonoBehaviour, IPickable
     public virtual void HandlePickUp ()
     {
         OnPickUp?.Invoke(this);
+        OnPickUpUnity?.Invoke();
         Destroy(gameObject);
     }
 

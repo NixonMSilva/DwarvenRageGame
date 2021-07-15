@@ -197,10 +197,6 @@ public class EnemyAI : MonoBehaviour
         Vector3 lookPosition = player.transform.position - transform.position;
         lookPosition.y = 0;
         transform.rotation = Quaternion.LookRotation(lookPosition);
-        /*
-        Quaternion targetRotation = Quaternion.LookRotation(playerPoint - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime); */
-        //transform.LookAt(lookPosition);
     }    
 
     protected void ResetAttack()
