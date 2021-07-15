@@ -25,6 +25,9 @@ public class StatusController : MonoBehaviour, IDamageable
     protected bool isDying = false;
 
     protected float speed = 0f;
+    
+    // In degrees
+    [SerializeField] protected float blockAngle = 45f;
 
     [SerializeField] protected Resistance resistanceSheet;
 
@@ -195,6 +198,16 @@ public class StatusController : MonoBehaviour, IDamageable
         
         //Debug.Log("Health reduced:" + newValue);
         DeduceHealth(newValue);
+    }
+
+    public virtual void TakeDamage (float value, DamageType type, Vector3 point)
+    {
+        TakeDamage(value, type);
+    }
+
+    public virtual void TakeDamage (float value, DamageType type, Effect effect, Vector3 point)
+    {
+        TakeDamage(value, type, effect);
     }
 
     public void WearStatus (EffectBase effect, float duration, Action onEnd)
