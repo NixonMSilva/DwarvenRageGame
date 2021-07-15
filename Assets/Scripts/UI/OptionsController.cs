@@ -5,10 +5,17 @@ using UnityEngine.UI;
 
 public class OptionsController : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
+    [SerializeField] private Slider vslider;
+
+    [SerializeField] private Slider sslider;
     
     public void ChangeVolume ()
     {
-        GameManager.instance.sfxVolume = slider.value;
+        GameManager.instance.sfxVolume = vslider.value;
+    }
+
+    public void ChangeSensitivity ()
+    {
+        InputHandler.instance.mouseSensitivity = sslider.value;
     }
 }
