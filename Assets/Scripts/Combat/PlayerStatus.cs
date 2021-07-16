@@ -155,6 +155,7 @@ public class PlayerStatus : StatusController
 
     protected override void Die ()
     {
+        //AudioManager.instance.PlaySound("morreu_player");
         isDying = true;
         UserInterfaceController.instance.HidePlayerInterface();
         UserInterfaceController.instance.DeathMenu();
