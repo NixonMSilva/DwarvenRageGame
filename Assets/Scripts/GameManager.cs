@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     // Player data
     public PlayerData? playerData = null;
+    [SerializeField] private PlayerData defaultPlayerData;
     
     // Event data
     public PickableController pickables;
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
     // Input handler
     private InputHandler currentInput = null;
 
-    public void SaveCurrentSceneStatus()
+    public void SaveCurrentSceneStatus ()
     {   
         var player = GameObject.Find("Player");
         var playerEquipment = player.GetComponent<PlayerEquipment>();
@@ -52,6 +53,11 @@ public class GameManager : MonoBehaviour
         var playerInventory = player.GetComponent<Inventory>();
 
         Player = new PlayerData(player.transform, playerStatus, playerEquipment, playerInventory);
+    }
+
+    public void PurgeData ()
+    {
+        playerData = defaultPlayerData;
     }
 
     public void SaveGame ()
