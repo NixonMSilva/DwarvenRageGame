@@ -15,4 +15,14 @@ public class TestPassLevel : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void Credito()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void Jogo()
+    {
+        SceneManager.LoadScene(1);
+    }
 }

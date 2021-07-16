@@ -1,6 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 public class SaveController : MonoBehaviour
 {
@@ -39,15 +41,22 @@ public class SaveController : MonoBehaviour
 
     [SerializeField] private bool canLoadGame = true;
 
-    // Start is called before the first frame update
+    [SerializeField] private Resistance defaultResistances;
 
-    private void Start() 
+    public GameObject Player
     {
-        if (canLoadGame)
-            LoadGame();
-    }
+        get => player;
 
-    private void Awake() 
+        set
+        {
+            player = value;
+            
+            if (player != null)
+                hasPlayer = true;
+        }
+    }
+    
+    private void Awake () 
     {
         player = GameObject.Find("Player");
 
@@ -64,7 +73,7 @@ public class SaveController : MonoBehaviour
         itemsStack = new List<int>();
         
     }
-    
+
     public void SaveGame ()
     {
         if (hasPlayer)
@@ -103,7 +112,7 @@ public class SaveController : MonoBehaviour
             EnemySpawnManager enemyController = GameObject.Find("Enemies").GetComponent<EnemySpawnManager>();
             EventController eventController = GameObject.Find("Events").GetComponent<EventController>();
 
-            sceneNumber = GameManager.instance.GetSceneNumber();
+            sceneNumber = SceneManager.GetActiveScene().buildIndex;
 
             if (pickableController)
                 savePickableStatus[sceneNumber] = pickableController.GetPickedList();
@@ -176,6 +185,56 @@ public class SaveController : MonoBehaviour
 
             eventController?.SetTriggeredList(data.eventStatus[sceneNumber]);
         }
+    }
+
+    public PlayerData LoadGameData ()
+    {
+        GameData data = SaveSystem.LoadPlayer();
+        PlayerData loadingPlayer = new PlayerData();
+        
+        if (data == null)
+            return null;
+
+        loadingPlayer.sceneIndex = data.sceneNumber;
+
+        loadingPlayer.posX = data.position[0];
+        loadingPlayer.posY = data.position[1];
+        loadingPlayer.posZ = data.position[2];
+
+        loadingPlayer.health = data.health;
+        loadingPlayer.armor = data.armor;
+
+        loadingPlayer.gold = data.gold;
+        
+        // Get all equipped items
+        loadingPlayer.playerWeapon = GetWeapon(data.weapon);
+        loadingPlayer.playerRanged = GetRanged(data.ranged);
+        loadingPlayer.playerShield = GetShield(data.shield);
+
+        // Get all weapons
+        for (int i = 0; i < data.weaponsId.Length; ++i)
+        {
+            loadingPlayer.weaponList.Add(GetWeapon(data.weaponsId[i]));
+            Debug.Log(loadingPlayer.weaponList[i].itemName);
+        }
+
+        // Get all items
+        for (int i = 0; i < data.itemId.Length; ++i)
+        {
+            Consumable newItem = GetItem(data.itemId[i]);
+            loadingPlayer.itemList.Add(newItem);
+            loadingPlayer.itemStack.Add(data.itemStack[i]);
+        }
+
+        // Get all scene statuses
+        loadingPlayer.pickableStatus = data.pickupStatus[data.sceneNumber];
+        loadingPlayer.enemyStatus = data.enemyStatus[data.sceneNumber];
+        loadingPlayer.eventStatus = data.eventStatus[data.sceneNumber];
+        
+        // Get the resistance
+        loadingPlayer.sheet = defaultResistances;
+
+        return loadingPlayer;
     }
 
     private Weapon GetWeapon (int id)

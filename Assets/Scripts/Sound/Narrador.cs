@@ -1,38 +1,57 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Narrador : MonoBehaviour
 {
+    [SerializeField] GameObject video1;
+    [SerializeField] GameObject video2;
+    
+    TestPassLevel passLevel;
+
+    [SerializeField] private UnityEvent onVideoEnd;
+    
+
+    private void Awake ()
+    {
+        passLevel = GetComponent<TestPassLevel>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
-        StartCoroutine(waiter());
-
-        
+        StartCoroutine(Waiter());
     }
 
-    IEnumerator waiter()
-{
+    IEnumerator Waiter()
+    {
+        AudioManager.instance.PlaySound("fireplace");
+        AudioManager.instance.PlaySound("Narrador");
 
-    AudioManager.instance.PlaySound("Narrador");
+       
+        yield return new WaitForSeconds(38); //narrador.lenght
+        
+        video1.SetActive(false);
 
-   
-    yield return new WaitForSeconds(38);
+        video2.SetActive(true);
+        AudioManager.instance.PlaySound("narrador1");
 
-   
-     AudioManager.instance.PlaySound("narrador1");
+        //Wait for 2 seconds
+        yield return new WaitForSeconds(17);
 
-    //Wait for 2 seconds
-    yield return new WaitForSeconds(17);
+        AudioManager.instance.PlaySound("narrador2");
 
-    AudioManager.instance.PlaySound("narrador2");
+        yield return new WaitForSeconds(15);   
 
-    yield return new WaitForSeconds(15);   
+        AudioManager.instance.PlaySound("narrador3"); 
 
-    AudioManager.instance.PlaySound("narrador3"); 
-}
+        yield return new WaitForSeconds(22); 
 
-    // Update is called once per frame
+        AudioManager.instance.DestroyAllSounds();
+
+        onVideoEnd?.Invoke();
+    }
+
 }

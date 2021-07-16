@@ -1,0 +1,599 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &135032520055744939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3531326284261917660}
+  - component: {fileID: 5411016910764155598}
+  - component: {fileID: 1752007046655598997}
+  m_Layer: 0
+  m_Name: Voz1 (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3531326284261917660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135032520055744939}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 47.5, y: 4.82, z: -212.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 613873096059385337}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5411016910764155598
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135032520055744939}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.68541, y: 5.6283627, z: 9.844032}
+  m_Center: {x: 5.9885483, y: 0.54113483, z: 8.343777}
+--- !u!114 &1752007046655598997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135032520055744939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fala: Porco Burros invadirem local - Belgren
+  speech:
+    audioSource: {fileID: 0}
+    name: Porco Burros invadirem local - Belgren
+    clip: {fileID: 8300000, guid: 8a13317a15e94d542b78061e2cdb8d04, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+--- !u!1 &613873096059385336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613873096059385337}
+  m_Layer: 0
+  m_Name: Falas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &613873096059385337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096059385336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 121.22, y: 0, z: 196.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 613873097778936076}
+  - {fileID: 613873096993230643}
+  - {fileID: 613873096358830285}
+  - {fileID: 613873096351613299}
+  - {fileID: 613873097490905698}
+  - {fileID: 613873097152853493}
+  - {fileID: 613873096068538702}
+  - {fileID: 3531326284261917660}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &613873096068538701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613873096068538702}
+  - component: {fileID: 613873096068538696}
+  - component: {fileID: 613873096068538703}
+  m_Layer: 0
+  m_Name: Voz1 (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &613873096068538702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096068538701}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 47.5, y: 4.82, z: -212.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 613873096059385337}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &613873096068538696
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096068538701}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.68541, y: 5.6283627, z: 9.844032}
+  m_Center: {x: 5.9885483, y: 0.54113483, z: 8.343777}
+--- !u!114 &613873096068538703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096068538701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fala: Porco Burros invadirem local - Belgren
+  speech:
+    audioSource: {fileID: 0}
+    name: Porco Burros invadirem local - Belgren
+    clip: {fileID: 8300000, guid: 8a13317a15e94d542b78061e2cdb8d04, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+--- !u!1 &613873096351613298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613873096351613299}
+  - component: {fileID: 613873096351613293}
+  - component: {fileID: 613873096351613292}
+  m_Layer: 0
+  m_Name: Voz1 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &613873096351613299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096351613298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -407.6, y: 12.42, z: -251.29}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 613873096059385337}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &613873096351613293
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096351613298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.68541, y: 5.6283627, z: 14.784275}
+  m_Center: {x: 5.9885483, y: 0.54113483, z: 16.451132}
+--- !u!114 &613873096351613292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096351613298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fala: Levar barris - Belgren
+  speech:
+    audioSource: {fileID: 0}
+    name: Levar barris - Belgren
+    clip: {fileID: 8300000, guid: a79e20fa91ce18844ad6726b87f6304b, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+--- !u!1 &613873096358830284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613873096358830285}
+  - component: {fileID: 613873096358830287}
+  - component: {fileID: 613873096358830286}
+  m_Layer: 0
+  m_Name: Voz1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &613873096358830285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096358830284}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -272.95, y: 5.02, z: -247.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 613873096059385337}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &613873096358830287
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096358830284}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9850769, y: 5.6283627, z: 4.5444756}
+  m_Center: {x: 10.338715, y: 0.54113483, z: 12.065866}
+--- !u!114 &613873096358830286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096358830284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fala: Esse palco tem muita historia - Belgren
+  speech:
+    audioSource: {fileID: 0}
+    name: Esse palco tem muita historia - Belgren
+    clip: {fileID: 8300000, guid: 4aa314f00930d1b478741b656482ffc6, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+--- !u!1 &613873096993230646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613873096993230643}
+  - component: {fileID: 613873096993230642}
+  - component: {fileID: 613873096993230641}
+  - component: {fileID: 613873096993230640}
+  - component: {fileID: 613873096993230647}
+  m_Layer: 0
+  m_Name: Livro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &613873096993230643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096993230646}
+  m_LocalRotation: {x: 0.68675447, y: 0.71295595, z: -0.10974253, w: -0.08954716}
+  m_LocalPosition: {x: -92.990005, y: 2.72, z: -381.71002}
+  m_LocalScale: {x: 0.55852, y: 0.55852, z: 0.5585201}
+  m_Children: []
+  m_Father: {fileID: 613873096059385337}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 1.919, y: 196.175, z: 88.128}
+--- !u!33 &613873096993230642
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096993230646}
+  m_Mesh: {fileID: 1403195421428513884, guid: 58aabb22108647040a199b6520acc96c, type: 3}
+--- !u!65 &613873096993230641
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096993230646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.918635, y: 10.945878, z: 8.111303}
+  m_Center: {x: 2.3815901, y: -0.096652046, z: 4.8599215}
+--- !u!114 &613873096993230640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096993230646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b217de412186d4e860a3b8a3f1c746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPressEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 613873096993230647}
+        m_TargetAssemblyTypeName: TestInteractable, Game
+        m_MethodName: Interagir
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  defaultTooltipText: Interagir
+  hideOnAction: 1
+--- !u!114 &613873096993230647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873096993230646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c021be6ddc5c644824cdcaabee2adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fala: Belgren voz 07
+--- !u!1 &613873097152853492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613873097152853493}
+  - component: {fileID: 613873097152853495}
+  - component: {fileID: 613873097152853494}
+  m_Layer: 0
+  m_Name: Voz1 (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &613873097152853493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873097152853492}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -141.94, y: 4.82, z: -232.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 613873096059385337}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &613873097152853495
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873097152853492}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.7201366, y: 5.3402567, z: 4.2067986}
+  m_Center: {x: 2.0059118, y: 0.39708185, z: 11.162394}
+--- !u!114 &613873097152853494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873097152853492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fala: Mantimentos cheiro de porco - Belgren
+  speech:
+    audioSource: {fileID: 0}
+    name: Mantimentos cheiro de porco - Belgren
+    clip: {fileID: 8300000, guid: 8ac09af4474f4ce40aab6b8ebca9d456, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+--- !u!1 &613873097490905697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613873097490905698}
+  - component: {fileID: 613873097490905692}
+  - component: {fileID: 613873097490905699}
+  m_Layer: 0
+  m_Name: Voz1 (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &613873097490905698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873097490905697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7, y: 4.82, z: -195.37}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 613873096059385337}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &613873097490905692
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873097490905697}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.68541, y: 5.6283627, z: 4.2067976}
+  m_Center: {x: 5.9885483, y: 0.54113483, z: 11.162394}
+--- !u!114 &613873097490905699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873097490905697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fala: Artefatos dos Dwalingar - Belgren
+  speech:
+    audioSource: {fileID: 0}
+    name: Artefatos dos Dwalingar - Belgren
+    clip: {fileID: 8300000, guid: 5ea55fb422862f849976411db5e50c07, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+--- !u!1 &613873097778936083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613873097778936076}
+  - component: {fileID: 613873097778936078}
+  - component: {fileID: 613873097778936077}
+  m_Layer: 0
+  m_Name: Voz1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &613873097778936076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873097778936083}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -90.05, y: 4.58, z: -466.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 613873096059385337}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &613873097778936078
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873097778936083}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 105.141655, y: 28.268282, z: 1.7371826}
+  m_Center: {x: -1.9775658, y: 11.861094, z: 0.3685913}
+--- !u!114 &613873097778936077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613873097778936083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fala: Belgren voz 08
+  speech:
+    audioSource: {fileID: 0}
+    name: Belgren voz 08
+    clip: {fileID: 8300000, guid: 9c602afef66641b42b82850b45ba0553, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    repeatRate: 0

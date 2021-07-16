@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool debugVector = false;
 
+    private bool willMoveOnLoad = false;
+
     public float Speed
     {
         get { return speed; }
@@ -69,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
             */
             InputHandler.instance.OnJumpPressed         += HandleJump;
         }
+    }
+
+    public void SetExactPosition (Vector3 position)
+    {
+        transform.position = position;
     }
 
     private void HandleHorizontalInput (float value)
@@ -104,9 +111,8 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void Update ()
     {
         isGrounded = CheckGround();
 
@@ -115,7 +121,8 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f; //-2 pra garantir que o player vá para o chão, já que a esfera pode ou nao estar no chao exatamente
         }
 
-        Vector3 movement = transform.right * xMove + transform.forward * zMove;
+        // Normalize movement to avoid faster diagonal strafing 
+        Vector3 movement = (transform.right * xMove + transform.forward * zMove).normalized;
 
         character.Move(speed * Time.deltaTime * movement);
 

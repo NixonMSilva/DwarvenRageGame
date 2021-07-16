@@ -216,6 +216,7 @@ public class UserInterfaceController : MonoBehaviour
     public void DeathMenu ()
     {
         pauseMenu.SetActive(false);
+        InputHandler.instance.OnEscapePressed -= PauseMenu;
         ShowDeathMenu();
         InputHandler.instance.LockCursor(false);
     }

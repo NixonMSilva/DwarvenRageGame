@@ -24,7 +24,7 @@ public class GameData
     public int[] itemStack;
 
     // Scene data
-    public bool sceneNumber;
+    public int sceneNumber;
     public bool[][] enemyStatus;
     public bool[][] pickupStatus;
     public bool[][] eventStatus;
@@ -50,8 +50,9 @@ public class GameData
         itemId = data.itemsId.ToArray();
         itemStack = data.itemsStack.ToArray();
 
-        pickupStatus = data.savePickableStatus;
+        sceneNumber = data.sceneNumber;
         enemyStatus = data.saveEnemyStatus;
+        pickupStatus = data.savePickableStatus;
         eventStatus = data.saveEventStatus;
     }
     
