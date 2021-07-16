@@ -8,6 +8,7 @@ public class Falas : MonoBehaviour
     private Collider[] colliderList;
 
     [SerializeField] string fala;
+    [SerializeField] private Sound speech;
 
     private void Start ()
     {
@@ -21,7 +22,7 @@ public class Falas : MonoBehaviour
             AudioManager.instance.PlaySound(fala);
             foreach (Collider collider in colliderList)
             {
-            collider.enabled = false;
+                collider.enabled = false;
             }
         }
     }

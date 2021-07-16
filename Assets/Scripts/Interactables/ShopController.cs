@@ -68,7 +68,7 @@ public class ShopController : MonoBehaviour
             switch (type)
             {
                 case ShopType.postBoss1Shop:
-                    AudioManager.instance.PlaySoundInVolume(soundSource, "loja_boss");
+                    AudioManager.instance.PlaySoundInVolume(soundSource, "belgren_e_hanok_dps_troll");
                     break;
                 default:
                     PlayDefaultHello();
