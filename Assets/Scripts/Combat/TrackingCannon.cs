@@ -11,6 +11,8 @@ public class TrackingCannon : MonoBehaviour
     
     [SerializeField] private Boss1FightController bossFight;
 
+    [SerializeField] private Sprite cannonIcon;
+
     private Rotater rotationEvent;
     private TooltipController cannonTooltip;
 
@@ -52,12 +54,13 @@ public class TrackingCannon : MonoBehaviour
     {
         cannonTooltip.SetTooltipText("Atirar");
         UserInterfaceController.instance.ShowProgressMenu("Blood Collected");
+        UserInterfaceController.instance.SetProgressIcon(cannonIcon);
         UserInterfaceController.instance.UpdateProgressBar(bossFight.BloodBar);
     }
 
     private void BloodNotFull()
     {
-        Debug.Log("Blood bar is not full!");
+        
     }
 
     private void Fire ()

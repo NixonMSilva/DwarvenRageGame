@@ -173,6 +173,7 @@ public class AudioManager : MonoBehaviour
         AudioSource[] allSources = GetComponentsInChildren<AudioSource>();
         foreach (AudioSource audio in allSources)
         {
+            audio.Stop();
             Destroy(audio);
         }
     }
