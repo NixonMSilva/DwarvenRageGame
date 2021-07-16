@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
 using System.Linq;
-using JetBrains.Annotations;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+    
     [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private List<Shield> _shields;
-    public static GameManager instance;
+    
     [SerializeField] private int sceneNumber = 1;
     
     // Shop settings
@@ -20,7 +22,18 @@ public class GameManager : MonoBehaviour
     public float sfxVolume = 1f;
 
     // Player data
-    [CanBeNull] public PlayerData playerData = null;
+    public PlayerData? playerData = null;
+    
+    // Event data
+    public PickableController pickables;
+    public EnemySpawnManager enemies;
+    public EventController events;
+    
+    // Saving data
+    [SerializeField] private SaveController save;
+    [SerializeField] private SceneLoader loader;
+
+    public bool isLoadingGame = false;
 
     public PlayerData Player
     {
@@ -38,7 +51,92 @@ public class GameManager : MonoBehaviour
         var playerStatus = player.GetComponent<PlayerStatus>();
         var playerInventory = player.GetComponent<Inventory>();
 
-        Player = new PlayerData(playerStatus, playerEquipment, playerInventory);
+        Player = new PlayerData(player.transform, playerStatus, playerEquipment, playerInventory);
+    }
+
+    public void SaveGame ()
+    {
+        save.Player = GameObject.Find("Player");
+        save.SaveGame();
+    }
+
+    public void LoadGame ()
+    {
+        SceneManager.sceneLoaded += ProcessLoad;
+        
+        isLoadingGame = true;
+        
+        PlayerData newPlayer = save.LoadGameData();
+
+        if (newPlayer != null)
+            Player = newPlayer;
+        
+        loader.LoadSceneWithoutData (Player.sceneIndex);
+    }
+
+    private void ProcessLoad (Scene scene, LoadSceneMode mode)
+    {
+        if (!isLoadingGame)
+        {
+            Debug.Log("Not a load operation!");
+            return;
+        }
+
+        ValidateSceneData ();
+
+        isLoadingGame = false;
+        SceneManager.sceneLoaded -= ProcessLoad;
+    }
+
+    private void ValidateSceneData ()
+    {
+        // Validate pickable / enemies / event data
+        pickables = GameObject.Find("Pickables").GetComponent<PickableController>();
+        enemies = GameObject.Find("Enemies").GetComponent<EnemySpawnManager>();
+        events = GameObject.Find("Events").GetComponent<EventController>();
+        
+        if (pickables != null)
+            pickables.SetPickedList(playerData.pickableStatus);
+        
+        if (enemies != null)
+            enemies.SetKilledList(playerData.enemyStatus);
+        
+        if (events != null)
+            events.SetTriggeredList(playerData.eventStatus);
+
+        /*
+        Vector3 savedPos = new Vector3(playerData.posX, playerData.posY, playerData.posZ);
+        
+        GameObject playerObj = GameObject.Find("Player");
+        
+        playerObj.transform.position = savedPos;
+        
+        playerObj.GetComponent<PlayerMovement>().SetExactPosition(savedPos) */;
+
+        // Hyper jerryrigging
+        Invoke(nameof(MovePlayer), 0.1f);
+    }
+
+    private void MovePlayer ()
+    {
+        Vector3 savedPos = new Vector3(playerData.posX, playerData.posY, playerData.posZ);
+        
+        GameObject playerObj = GameObject.Find("Player");
+        
+        playerObj.GetComponent<PlayerMovement>().SetExactPosition(savedPos);
+        
+        /*
+        // Move the player to the correct position
+        Vector3 savedPos = new Vector3(playerData.posX, playerData.posY, playerData.posZ);
+        
+        GameObject playerObj = GameObject.Find("Player");
+        
+        playerObj.transform.position = savedPos;
+        
+        Debug.Log("Saved position: " + savedPos + " | Curr pos: " + playerObj.transform.position);
+        */
+        
+        isLoadingGame = false;
     }
 
     public int GetSceneNumber () => sceneNumber;
@@ -59,6 +157,9 @@ public class GameManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
+
+        save = GetComponent<SaveController>();
+        loader = GetComponent<SceneLoader>();
     }
 
     public Weapon GetWeaponById (int id)
@@ -85,6 +186,4 @@ public class GameManager : MonoBehaviour
     {
         sceneNumber = id;
     }
-    
-    
 }

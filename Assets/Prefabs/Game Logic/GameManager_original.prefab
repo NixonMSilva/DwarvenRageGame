@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1920458272636603219}
   - component: {fileID: 1920458272636603220}
   - component: {fileID: 1920458272636603218}
+  - component: {fileID: 1465905841}
+  - component: {fileID: 1533197467}
   m_Layer: 0
   m_Name: GameManager_original
   m_TagString: Untagged
@@ -58,6 +60,7 @@ MonoBehaviour:
   itemsId: 
   itemsStack: 
   canLoadGame: 0
+  defaultResistances: {fileID: 11400000, guid: be1ff71b032fcb341a8b34e6a4c5d68b, type: 2}
 --- !u!114 &1920458272636603218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,11 +75,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weapons: []
   _shields: []
-  sceneNumber: 1
+  sceneNumber: 2
   timesShopped: 0
   musicVolume: 1
   sfxVolume: 1
   playerData:
+    sceneIndex: 0
+    posX: 0
+    posY: 0
+    posZ: 0
+    rotX: 0
+    rotY: 0
+    rotZ: 0
+    rotW: 0
     health: 100
     armor: 100
     sheet: {fileID: 11400000, guid: be1ff71b032fcb341a8b34e6a4c5d68b, type: 2}
@@ -88,3 +99,37 @@ MonoBehaviour:
     itemList:
     - {fileID: 11400000, guid: 9e034040ca838b24c98d89d2292e14d3, type: 2}
     itemStack: 03000000
+    pickableStatus: 
+    enemyStatus: 
+    eventStatus: 
+  pickables: {fileID: 0}
+  enemies: {fileID: 0}
+  events: {fileID: 0}
+  save: {fileID: 1920458272636603220}
+  loader: {fileID: 1465905841}
+  isLoadingGame: 0
+--- !u!114 &1465905841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920458272636603221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9342d4092b58eff4f84adda98fa2bf05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1533197467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920458272636603221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b2807838ab209419b627ee580bc254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerRef: {fileID: 0}
