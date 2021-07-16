@@ -32,7 +32,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SaveController save;
     [SerializeField] private SceneLoader loader;
 
+    // Loading control
     public bool isLoadingGame = false;
+    private int canCorrectPosition = 0;
+    private Vector3 loadingPos;
+    private GameObject playerCache = null;
 
     public PlayerData Player
     {
@@ -42,6 +46,52 @@ public class GameManager : MonoBehaviour
 
     // Input handler
     private InputHandler currentInput = null;
+    
+    private void Awake() 
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+
+        save = GetComponent<SaveController>();
+        loader = GetComponent<SceneLoader>();
+    }
+
+    private void Update ()
+    {
+        /*
+        if (canCorrectPosition <= 0)
+            return;
+        else
+        {
+            if (playerCache != null && playerCache.transform.position != loadingPos)
+            {
+                Debug.Log("Position change noted! Correcting...");
+                Debug.Log("Saved position: " + loadingPos + " | Curr pos: " + playerCache.transform.position);
+                Debug.Log("Iteration no.: " + canCorrectPosition);
+                
+                var characterController = playerCache.GetComponent<CharacterController>();
+                characterController.enabled = false;
+                playerCache.transform.position = loadingPos;
+                characterController.enabled = true;
+                
+                canCorrectPosition++;
+            }
+
+            if (canCorrectPosition >= 50)
+            {
+                canCorrectPosition = 0;
+            }
+        }
+        */
+    }
 
     public void SaveCurrentSceneStatus ()
     {   
@@ -61,20 +111,30 @@ public class GameManager : MonoBehaviour
     public void SaveGame ()
     {
         save.Player = GameObject.Find("Player");
+        Debug.Log("Saving...");
         save.SaveGame();
     }
 
     public void LoadGame ()
     {
-        SceneManager.sceneLoaded += ProcessLoad;
-        
-        isLoadingGame = true;
-        
         PlayerData newPlayer = save.LoadGameData();
 
         if (newPlayer != null)
+        {
             Player = newPlayer;
+        }
+        else
+        {
+            // Reload the scene if there's no save file
+            Debug.Log("Reloaded Scene");
+            loader.ReloadScene();
+            return;
+        }
         
+        SceneManager.sceneLoaded += ProcessLoad;
+        
+        isLoadingGame = true;
+
         loader.LoadSceneWithoutData (Player.sceneIndex);
     }
 
@@ -85,6 +145,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Not a load operation!");
             return;
         }
+        
+        Debug.Log("Loaded scene from save data");
 
         ValidateSceneData ();
 
@@ -118,17 +180,19 @@ public class GameManager : MonoBehaviour
         playerObj.GetComponent<PlayerMovement>().SetExactPosition(savedPos) */;
 
         // Hyper jerryrigging
-        Invoke(nameof(MovePlayer), 0.1f);
+        //Invoke(nameof(MovePlayer), 0.1f);
+        MovePlayer();
     }
 
     private void MovePlayer ()
     {
         Vector3 savedPos = new Vector3(playerData.posX, playerData.posY, playerData.posZ);
-        
-        GameObject playerObj = GameObject.Find("Player");
-        
-        playerObj.GetComponent<PlayerMovement>().SetExactPosition(savedPos);
-        
+        playerCache = GameObject.Find("Player");
+        var characterController = playerCache.GetComponent<CharacterController>();
+        characterController.enabled = false;
+        playerCache.transform.position = savedPos;
+        characterController.enabled = true;
+
         /*
         // Move the player to the correct position
         Vector3 savedPos = new Vector3(playerData.posX, playerData.posY, playerData.posZ);
@@ -136,9 +200,9 @@ public class GameManager : MonoBehaviour
         GameObject playerObj = GameObject.Find("Player");
         
         playerObj.transform.position = savedPos;
-        
-        Debug.Log("Saved position: " + savedPos + " | Curr pos: " + playerObj.transform.position);
         */
+        
+        Debug.Log("Saved position: " + savedPos + " | Curr pos: " + playerCache.transform.position);
         
         isLoadingGame = false;
     }
@@ -148,23 +212,6 @@ public class GameManager : MonoBehaviour
     public List<Weapon> GetWeapons () => _weapons;
 
     public List<Shield> GetShields () => _shields;
-
-    private void Awake() 
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-        DontDestroyOnLoad(gameObject);
-
-        save = GetComponent<SaveController>();
-        loader = GetComponent<SceneLoader>();
-    }
 
     public Weapon GetWeaponById (int id)
     {
