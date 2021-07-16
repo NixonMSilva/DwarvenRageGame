@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Narrador : MonoBehaviour
 {
+    [SerializeField] GameObject video1;
+
+    GameObject video2;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +22,11 @@ public class Narrador : MonoBehaviour
     AudioManager.instance.PlaySound("Narrador");
 
    
-    yield return new WaitForSeconds(38);
+    yield return new WaitForSeconds(38); //narrador.lenght
+    
+    video1.SetActive(false);
 
-   
-     AudioManager.instance.PlaySound("narrador1");
+    AudioManager.instance.PlaySound("narrador1");
 
     //Wait for 2 seconds
     yield return new WaitForSeconds(17);
