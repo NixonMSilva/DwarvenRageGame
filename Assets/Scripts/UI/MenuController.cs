@@ -51,4 +51,9 @@ public class MenuController : MonoBehaviour
         AudioManager.instance.PlaySound("Som_teclas_menu");
     }
     
+    public void PlayCredits ()
+    {
+        SceneManager.LoadScene(3);
+    }
+    
 }
