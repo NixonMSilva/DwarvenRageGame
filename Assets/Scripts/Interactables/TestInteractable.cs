@@ -5,7 +5,7 @@ using UnityEngine;
 public class TestInteractable : MonoBehaviour, IInteractable
 {
     SaveController manager;
-    [SerializeField] private string fala;
+
     private int aleatorio;
     private void Awake() 
     {
@@ -31,10 +31,5 @@ public class TestInteractable : MonoBehaviour, IInteractable
             break;
         }
         
-    }
-
-    public void Interagir()
-    {
-        AudioManager.instance.PlaySound(fala);
     }
 }

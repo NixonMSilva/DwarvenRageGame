@@ -45,9 +45,6 @@ public class SceneLoader : MonoBehaviour
         // Stop player from inputting into the character
         InputHandler.instance.LockCursor(false);
 
-        // Destroy all running sounds
-        AudioManager.instance.DestroyAllSounds();
-        
         // Start the loading operation
         StartCoroutine((LoadAsynchronouslyOnMenu(index)));
     }
