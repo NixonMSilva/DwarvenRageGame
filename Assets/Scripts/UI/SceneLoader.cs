@@ -39,7 +39,14 @@ public class SceneLoader : MonoBehaviour
         // Start the loading operation
         StartCoroutine((LoadAsynchronously(index)));
     }
-    
+
+    public void LoadSceneWithPurge (int index)
+    {
+        GameManager.instance.PurgeData();
+        
+        LoadSceneWithoutData(index);
+    }
+
     public void LoadSceneOnMenu (int index)
     {
         // Stop player from inputting into the character
@@ -80,7 +87,6 @@ public class SceneLoader : MonoBehaviour
         
         // Updates scene number in manager
         GameManager.instance.SetCurrentScene(index);
-        
     }
     
     IEnumerator LoadAsynchronouslyOnMenu (int index)
@@ -108,6 +114,5 @@ public class SceneLoader : MonoBehaviour
         
         // Updates scene number in manager
         GameManager.instance.SetCurrentScene(index);
-        
     }
 }

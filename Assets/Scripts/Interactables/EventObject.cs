@@ -7,7 +7,7 @@ public class EventObject : MonoBehaviour
 {
     public event Action<EventObject> OnExecution;
 
-    private bool isFired = false;
+    [SerializeField] private bool isFired = false;
 
     [SerializeField] private EventType type;
 
@@ -47,6 +47,11 @@ public class EventObject : MonoBehaviour
         {
             collider.enabled = false;
         }
+    }
+
+    public void HideTooltip ()
+    {
+        Destroy(GetComponent<TooltipController>());
     }
 
 }

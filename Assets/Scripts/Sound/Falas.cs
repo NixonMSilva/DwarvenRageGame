@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Falas : MonoBehaviour
@@ -8,6 +6,7 @@ public class Falas : MonoBehaviour
     private Collider[] colliderList;
 
     [SerializeField] string fala;
+    [SerializeField] private Sound speech;
 
     private void Start ()
     {
@@ -21,12 +20,12 @@ public class Falas : MonoBehaviour
             AudioManager.instance.PlaySound(fala);
             foreach (Collider collider in colliderList)
             {
-            collider.enabled = false;
+                collider.enabled = false;
             }
         }
     }
 
-    public void Ler()
+    public void Ler ()
     {
         AudioManager.instance.PlaySound(fala);
     }

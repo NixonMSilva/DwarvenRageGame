@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class TooltipController : MonoBehaviour
 {
-    public UnityEvent OnPressEvent;
+    [SerializeField] private UnityEvent OnPressEvent;
 
     [SerializeField] private string defaultTooltipText = "<tooltip text not set>";
 
@@ -43,7 +43,7 @@ public class TooltipController : MonoBehaviour
                 HideTooltip();
             }
                 
-            OnPressEvent.Invoke();
+            OnPressEvent?.Invoke();
         }
     }
 

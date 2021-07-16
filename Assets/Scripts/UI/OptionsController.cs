@@ -8,6 +8,8 @@ public class OptionsController : MonoBehaviour
     [SerializeField] private Slider vslider;
 
     [SerializeField] private Slider sslider;
+
+    [SerializeField] private Slider vmslider;
     
     public void ChangeVolume ()
     {
@@ -17,5 +19,10 @@ public class OptionsController : MonoBehaviour
     public void ChangeSensitivity ()
     {
         InputHandler.instance.mouseSensitivity = sslider.value;
+    }
+
+    public void ChangeMusicVolume ()
+    {
+        AudioManager.instance.MusicVolume = vmslider.value;
     }
 }

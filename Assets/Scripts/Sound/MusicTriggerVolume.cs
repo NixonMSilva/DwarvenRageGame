@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class MusicTriggerVolume : MonoBehaviour
 {
-    [SerializeField] private string music;
+    [SerializeField] private AudioClip clip;
+
+    [SerializeField] private MusicController controller;
+
+    private void Awake ()
+    {
+        controller = GameObject.Find("MusicPlayer").GetComponent<MusicController>();
+    }
 
     public void OnTriggerEnter (Collider other)
     {
-        if (music == null)
+        if (clip == null)
         {
-            Debug.LogWarning("Music not set for Music Trigger Volume!");
+            Debug.LogWarning("Music clip not set for Music Trigger Volume!");
             return;
         }
 
         // Play only when the player enters
         if (other.CompareTag("Player"))
         {
-            AudioManager.instance?.PlayMusic(music);
+            controller.Music.Stop();
+            controller.Music.clip = clip;
+            controller.Music.Play();
         }
     }
 

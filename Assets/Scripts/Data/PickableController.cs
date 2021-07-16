@@ -23,6 +23,7 @@ public class PickableController : MonoBehaviour
         {
             item.OnPickUp += HandleItemPickup;
         }
+        
     }
 
     private void HandleItemPickup (IPickable sender)

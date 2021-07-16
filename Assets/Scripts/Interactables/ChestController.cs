@@ -18,9 +18,9 @@ public class ChestController : MonoBehaviour
     public void ChestEffect()
     {
         onOpen.Invoke();
+        GetComponent<EventObject>().SetFired(true);
         // Destroy the chest
-        Destroy(tooltip);
-        Destroy(this);
+        DestroyChest();
     }
 
     public void AddGold (int amount)
@@ -47,5 +47,11 @@ public class ChestController : MonoBehaviour
     public void PlayChestSound()
     {
         AudioManager.instance.PlaySoundAt(gameObject, "chest_open");
+    }
+
+    public void DestroyChest ()
+    {
+        Destroy(tooltip);
+        Destroy(this);
     }
 }
