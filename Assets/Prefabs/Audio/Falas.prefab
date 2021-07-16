@@ -1,5 +1,71 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &135032520055744939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3531326284261917660}
+  - component: {fileID: 5411016910764155598}
+  - component: {fileID: 1752007046655598997}
+  m_Layer: 0
+  m_Name: Voz1 (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3531326284261917660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135032520055744939}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 47.5, y: 4.82, z: -212.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 613873096059385337}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5411016910764155598
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135032520055744939}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.68541, y: 5.6283627, z: 9.844032}
+  m_Center: {x: 5.9885483, y: 0.54113483, z: 8.343777}
+--- !u!114 &1752007046655598997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135032520055744939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fala: Porco Burros invadirem local - Belgren
+  speech:
+    audioSource: {fileID: 0}
+    name: Porco Burros invadirem local - Belgren
+    clip: {fileID: 8300000, guid: 8a13317a15e94d542b78061e2cdb8d04, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    repeatRate: 0
 --- !u!1 &613873096059385336
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +100,7 @@ Transform:
   - {fileID: 613873097490905698}
   - {fileID: 613873097152853493}
   - {fileID: 613873096068538702}
+  - {fileID: 3531326284261917660}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

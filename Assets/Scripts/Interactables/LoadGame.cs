@@ -13,6 +13,6 @@ public class LoadGame : MonoBehaviour, IInteractable
 
     public void OnInteraction ()
     {
-        managerRef.LoadGame();
+        GameManager.instance.LoadGame();
     }
 }

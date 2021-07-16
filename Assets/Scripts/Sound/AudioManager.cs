@@ -12,6 +12,21 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource currentMusic = null;
 
+    private float musicVolume = 1f;
+
+    public event Action<float> onMusicVolumeChange;
+
+    public float MusicVolume
+    {
+        get => musicVolume;
+        set
+        {
+            musicVolume = value;
+            onMusicVolumeChange.Invoke(musicVolume);
+        }
+    }
+    
+
     private void Awake ()
     {
         if (instance == null)

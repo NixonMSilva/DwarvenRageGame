@@ -385,10 +385,10 @@ public class AttackController : MonoBehaviour
                     AudioManager.instance.PlaySoundRandomAt(obj.position, "axe_on_flesh");
                     break;
                 case WeaponType.fire:
-                    AudioManager.instance.PlaySoundAt(obj.position, "axe_fire");
+                    AudioManager.instance.PlaySoundRandomAt(obj.position, "axe_fire");
                     break;
                 case WeaponType.ice:
-                    AudioManager.instance.PlaySoundAt(obj.position, "axe_ice");
+                    AudioManager.instance.PlaySoundRandomAt(obj.position, "axe_ice");
                     break;
             }
         }

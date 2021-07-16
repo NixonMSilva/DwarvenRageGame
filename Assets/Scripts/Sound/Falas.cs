@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Falas : MonoBehaviour
@@ -27,7 +25,7 @@ public class Falas : MonoBehaviour
         }
     }
 
-    public void Ler()
+    public void Ler ()
     {
         AudioManager.instance.PlaySound(fala);
     }

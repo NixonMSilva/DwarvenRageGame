@@ -248,13 +248,15 @@ public class Slow : EffectBase
 
     public override void ApplyEffect (StatusController target, Effect data)
     {
-        PlayerStatus player = target as PlayerStatus;
-        PlayerMovement movement = target.GetComponent<PlayerMovement>();
-
-        if (movement.Speed >= 6f)
+        if (target.TryGetComponent<PlayerMovement>(out var movement))
         {
-            movement.Speed *= data.magnitude;
-            player.WearStatus(this, data.duration, data.magnitude);
+            PlayerStatus player = target as PlayerStatus;
+            if (movement.Speed >= 6f)
+            {
+                movement.Speed *= data.magnitude;
+                player.WearStatus(this, data.duration, data.magnitude);
+            }
+            
         }
     }
 
