@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
         set
         {
             musicVolume = value;
-            onMusicVolumeChange.Invoke(musicVolume);
+            onMusicVolumeChange?.Invoke(musicVolume);
         }
     }
     
