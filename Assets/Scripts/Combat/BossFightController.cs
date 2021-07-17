@@ -70,7 +70,7 @@ public class BossFightController : MonoBehaviour
         // Initializes boss battle
         bossAI.FightStage = 0;
         
-        //
+        // Initializes the boss UI
         UserInterfaceController.instance.ShowBossBar();
         UserInterfaceController.instance.UpdateBossBar(1f);
         UserInterfaceController.instance.SetBossBarIcon(bossIcon);

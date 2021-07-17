@@ -27,6 +27,9 @@ public class MusicTriggerVolume : MonoBehaviour
             controller.Music.Stop();
             controller.Music.clip = clip;
             controller.Music.Play();
+            
+            // Destroy the volume
+            Destroy(this, 0.5f);
         }
     }
 
