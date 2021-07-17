@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             // Play the jump sound 75% of the times
-            if (UnityEngine.Random.Range(0f, 1f) <= 0.75f)
+            if (UnityEngine.Random.Range(0f, 1f) <= 0.5f)
                 AudioManager.instance.PlaySoundRandom("jump");
 
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
