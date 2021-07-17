@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -266,6 +266,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338601768}
     m_Modifications:
+    - target: {fileID: 3360212073238254129, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 3360212073240678609, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.000015258789
@@ -540,7 +544,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh119004
+  m_Name: pb_Mesh83100
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -988,6 +992,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (20)
@@ -1030,8 +1038,8 @@ Transform:
   - {fileID: 1213081221}
   - {fileID: 1821020938}
   - {fileID: 1990892933}
-  - {fileID: 1902848893}
-  - {fileID: 865723604}
+  - {fileID: 865723603}
+  - {fileID: 1902848892}
   - {fileID: 392236312}
   - {fileID: 55832349}
   - {fileID: 382642972}
@@ -1217,6 +1225,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (9)
@@ -1287,6 +1299,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (15)
@@ -1802,7 +1818,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 922504495148913520, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 922504495148913520, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1844,6 +1860,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (1)
@@ -2099,6 +2119,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (16)
@@ -2190,7 +2214,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-329382
+  m_Name: pb_Mesh84630
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2528,6 +2552,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (7)
@@ -4584,7 +4612,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 4efd1f3fc6ae5f5428e3ef9efbb8091f, type: 3}
 --- !u!4 &183890652 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8476799888378585243, guid: 4efd1f3fc6ae5f5428e3ef9efbb8091f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 183890651}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &185086666
@@ -5045,6 +5073,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (18)
@@ -5136,7 +5168,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91434
+  m_Name: pb_Mesh83994
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5865,6 +5897,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1650457473}
     m_Modifications:
+    - target: {fileID: 2655985386039440223, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 2655985386041864639, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_LocalPosition.y
       value: -7.9000254
@@ -5887,7 +5923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7416528411542457826, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7416528411542457826, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8013,7 +8049,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91146
+  m_Name: pb_Mesh83754
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8301,7 +8337,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh120032
+  m_Name: pb_Mesh84118
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8885,6 +8921,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (6)
@@ -9471,7 +9511,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91808
+  m_Name: pb_Mesh84322
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9872,7 +9912,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh92154
+  m_Name: pb_Mesh84624
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10461,7 +10501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: addf7a6197386114191875e48b9682f8, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: addf7a6197386114191875e48b9682f8, type: 3}
       propertyPath: m_LocalScale.x
@@ -10603,7 +10643,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh119830
+  m_Name: pb_Mesh83916
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11033,7 +11073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_LocalScale.x
@@ -11237,7 +11277,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-327942
+  m_Name: pb_Mesh84628
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11746,7 +11786,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-558104
+  m_Name: pb_Mesh83146
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12164,6 +12204,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (8)
@@ -12318,7 +12362,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-339130
+  m_Name: pb_Mesh-184234
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12482,7 +12526,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-336164
+  m_Name: pb_Mesh-178760
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12719,6 +12763,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (11)
@@ -12736,7 +12784,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91162
+  m_Name: pb_Mesh83770
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12900,7 +12948,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-543282
+  m_Name: pb_Mesh83846
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13179,6 +13227,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 229179252}
     m_Modifications:
+    - target: {fileID: 214073479737608145, guid: b53cded640bb45149953d584225ae3b3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 1457143306518621213, guid: b53cded640bb45149953d584225ae3b3, type: 3}
       propertyPath: m_Name
       value: Luz_parede_vermelho
@@ -13241,6 +13293,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338601768}
     m_Modifications:
+    - target: {fileID: 2655985386039440223, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 3610670897527298195, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_Name
       value: Luz_parede_roxo (2)
@@ -13355,6 +13411,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho
@@ -16267,7 +16327,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh119354
+  m_Name: pb_Mesh83450
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16432,6 +16492,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338601768}
     m_Modifications:
+    - target: {fileID: 2655985386039440223, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 3610670897527298195, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_Name
       value: Luz_parede_roxo (1)
@@ -16575,7 +16639,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-381986
+  m_Name: pb_Mesh-227372
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16968,7 +17032,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh90798
+  m_Name: pb_Mesh83466
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17932,9 +17996,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82fd0a3286d03e44ca0a1a5a1bdbe899, type: 3}
---- !u!4 &745479106 stripped
+--- !u!4 &745479105 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 9101600076125204811, guid: 82fd0a3286d03e44ca0a1a5a1bdbe899, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 745479104}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &748971779
@@ -18457,6 +18521,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1113277034}
     m_Modifications:
+    - target: {fileID: 2655985386039440223, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 3610670897527298195, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_Name
       value: Luz_parede_roxo
@@ -18645,7 +18713,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 922504495148913520, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 922504495148913520, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18687,6 +18755,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (2)
@@ -18768,7 +18840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: addf7a6197386114191875e48b9682f8, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: addf7a6197386114191875e48b9682f8, type: 3}
       propertyPath: m_LocalScale.x
@@ -18960,7 +19032,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91374
+  m_Name: pb_Mesh83930
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19319,7 +19391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_LocalScale.x
@@ -19706,6 +19778,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1662775033}
     m_Modifications:
+    - target: {fileID: 3360212073238254129, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 4062675382223944189, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_Name
       value: Luz_teto_roxo (2)
@@ -20304,7 +20380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &864591024
 Transform:
   m_ObjectHideFlags: 0
@@ -20396,9 +20472,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4efd1f3fc6ae5f5428e3ef9efbb8091f, type: 3}
---- !u!4 &865723604 stripped
+--- !u!4 &865723603 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8476799888378585243, guid: 4efd1f3fc6ae5f5428e3ef9efbb8091f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 865723602}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &865945748
@@ -20414,7 +20490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_LocalScale.x
@@ -21304,7 +21380,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-322886
+  m_Name: pb_Mesh-166068
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21473,6 +21549,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Luz_teto_azul (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2001400379639807029, guid: 6128c0962ca435746be4ba654eea4f7b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d0528a89cb5627e4ba1fd891be01b819, type: 2}
     - target: {fileID: 6481065671350665864, guid: 6128c0962ca435746be4ba654eea4f7b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -21658,13 +21738,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2020770781}
     m_Modifications:
+    - target: {fileID: 2655985386039440223, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 3610670897527298195, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_Name
       value: Luz_parede_roxo (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7416528411542457826, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7416528411542457826, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_LocalScale.x
@@ -22343,7 +22427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3388016649200502900, guid: f3c77a9bd70a01a46b32c46c75d226cf, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3388016649200502900, guid: f3c77a9bd70a01a46b32c46c75d226cf, type: 3}
       propertyPath: m_LocalScale.x
@@ -22595,7 +22679,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh120084
+  m_Name: pb_Mesh84170
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23054,7 +23138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_LocalScale.x
@@ -23335,7 +23419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7824695366574320780, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7824695366574320780, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23645,7 +23729,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-328806
+  m_Name: pb_Mesh84626
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23816,7 +23900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_LocalScale.x
@@ -25106,6 +25190,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1113277034}
     m_Modifications:
+    - target: {fileID: 2655985386039440223, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 3610670897527298195, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_Name
       value: Luz_parede_roxo (1)
@@ -25361,7 +25449,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-507264
+  m_Name: pb_Mesh82756
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30518,7 +30606,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh90990
+  m_Name: pb_Mesh83602
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30985,7 +31073,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh89850
+  m_Name: pb_Mesh82728
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -31283,7 +31371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_LocalScale.x
@@ -31548,7 +31636,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91636
+  m_Name: pb_Mesh84186
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -31719,7 +31807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_LocalScale.x
@@ -31933,8 +32021,8 @@ Transform:
   - {fileID: 1733545525}
   - {fileID: 1558672417}
   - {fileID: 1212878768}
-  - {fileID: 1392113756}
-  - {fileID: 745479106}
+  - {fileID: 745479105}
+  - {fileID: 1392113755}
   - {fileID: 1492729109}
   - {fileID: 1820411495}
   - {fileID: 881423858}
@@ -33334,7 +33422,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3105775802304703074, guid: 2b39ae7bd99b97f429d0822a875df19a, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3105775802304703074, guid: 2b39ae7bd99b97f429d0822a875df19a, type: 3}
       propertyPath: m_LocalScale.x
@@ -33413,7 +33501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: 34897616fb7d56545848659df4e0d916, type: 3}
       propertyPath: m_LocalScale.x
@@ -33830,7 +33918,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh119792
+  m_Name: pb_Mesh-243034
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33994,7 +34082,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh119872
+  m_Name: pb_Mesh83958
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -34319,13 +34407,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2020770781}
     m_Modifications:
+    - target: {fileID: 2655985386039440223, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 3610670897527298195, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_Name
       value: Luz_parede_roxo
       objectReference: {fileID: 0}
     - target: {fileID: 7416528411542457826, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7416528411542457826, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_LocalScale.x
@@ -35482,7 +35574,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3105775802304703074, guid: 2b39ae7bd99b97f429d0822a875df19a, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3105775802304703074, guid: 2b39ae7bd99b97f429d0822a875df19a, type: 3}
       propertyPath: m_LocalScale.x
@@ -35726,12 +35818,12 @@ Transform:
   - {fileID: 682686111}
   - {fileID: 1641450522}
   - {fileID: 1751932823}
-  - {fileID: 2140616542}
   - {fileID: 1073998750}
   - {fileID: 1259430072}
   - {fileID: 1438823219}
   - {fileID: 10411506}
   - {fileID: 492145132}
+  - {fileID: 2140616542}
   - {fileID: 1053158562}
   - {fileID: 716782895}
   - {fileID: 1759807951}
@@ -36325,7 +36417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: addf7a6197386114191875e48b9682f8, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: addf7a6197386114191875e48b9682f8, type: 3}
       propertyPath: m_LocalScale.x
@@ -37592,7 +37684,7 @@ PrefabInstance:
     - target: {fileID: 3360212073238254129, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 30ef741e424ca3845bdf57cb85ab8855, type: 2}
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 4062675382223944189, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_Name
       value: Luz_teto_roxo (1)
@@ -38039,9 +38131,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82fd0a3286d03e44ca0a1a5a1bdbe899, type: 3}
---- !u!4 &1392113756 stripped
+--- !u!4 &1392113755 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 9101600076125204811, guid: 82fd0a3286d03e44ca0a1a5a1bdbe899, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1392113754}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1404727111 stripped
@@ -47432,7 +47524,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91544
+  m_Name: pb_Mesh84106
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -57294,6 +57386,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (5)
@@ -57669,7 +57765,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91996
+  m_Name: pb_Mesh84460
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -57834,13 +57930,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2020770781}
     m_Modifications:
+    - target: {fileID: 3360212073238254129, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 4062675382223944189, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_Name
       value: Luz_teto_roxo
       objectReference: {fileID: 0}
     - target: {fileID: 7824695366574320780, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7824695366574320780, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_LocalScale.x
@@ -59641,7 +59741,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 922504495148913520, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 922504495148913520, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59973,6 +60073,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1662775033}
     m_Modifications:
+    - target: {fileID: 2655985386039440223, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 3610670897527298195, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_Name
       value: Luz_parede_roxo (4)
@@ -60380,7 +60484,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-625490
+  m_Name: pb_Mesh83894
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -60780,6 +60884,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1113277034}
     m_Modifications:
+    - target: {fileID: 2655985386039440223, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 3610670897527298195, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_Name
       value: Luz_parede_roxo (3)
@@ -60842,6 +60950,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1113277034}
     m_Modifications:
+    - target: {fileID: 2655985386039440223, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 3610670897527298195, guid: dd0fa9161abb50b409e6a75d007b1fde, type: 3}
       propertyPath: m_Name
       value: Luz_parede_roxo (1)
@@ -61039,7 +61151,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91132
+  m_Name: pb_Mesh83740
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -61335,7 +61447,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-395292
+  m_Name: pb_Mesh-240604
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -61510,7 +61622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3388016649200502900, guid: f3c77a9bd70a01a46b32c46c75d226cf, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3388016649200502900, guid: f3c77a9bd70a01a46b32c46c75d226cf, type: 3}
       propertyPath: m_LocalScale.x
@@ -62559,7 +62671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: addf7a6197386114191875e48b9682f8, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: addf7a6197386114191875e48b9682f8, type: 3}
       propertyPath: m_LocalScale.x
@@ -62799,6 +62911,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1113277034}
     m_Modifications:
+    - target: {fileID: 3360212073238254129, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 4062675382223944189, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_Name
       value: Luz_teto_roxo (1)
@@ -66245,6 +66361,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1662775033}
     m_Modifications:
+    - target: {fileID: 3360212073238254129, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 4062675382223944189, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_Name
       value: Luz_teto_roxo (1)
@@ -66306,7 +66426,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh118736
+  m_Name: pb_Mesh82832
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -66622,6 +66742,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338601768}
     m_Modifications:
+    - target: {fileID: 3360212073238254129, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 4062675382223944189, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_Name
       value: Luz_teto_roxo (2)
@@ -66713,7 +66837,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 922504495148913520, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 922504495148913520, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_LocalPosition.x
@@ -66755,6 +66879,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (3)
@@ -66777,6 +66905,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Luz_teto_azul (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 2001400379639807029, guid: 6128c0962ca435746be4ba654eea4f7b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d0528a89cb5627e4ba1fd891be01b819, type: 2}
     - target: {fileID: 2001400379642101461, guid: 6128c0962ca435746be4ba654eea4f7b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.299999
@@ -67178,7 +67310,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh89792
+  m_Name: pb_Mesh82666
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -67404,7 +67536,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-539414
+  m_Name: pb_Mesh83276
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -67760,13 +67892,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 229179252}
     m_Modifications:
+    - target: {fileID: 214073479737608145, guid: b53cded640bb45149953d584225ae3b3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 1457143306518621213, guid: b53cded640bb45149953d584225ae3b3, type: 3}
       propertyPath: m_Name
       value: Luz_parede_vermelho
       objectReference: {fileID: 0}
     - target: {fileID: 4670148543514769772, guid: b53cded640bb45149953d584225ae3b3, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4670148543514769772, guid: b53cded640bb45149953d584225ae3b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -68431,9 +68567,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4efd1f3fc6ae5f5428e3ef9efbb8091f, type: 3}
---- !u!4 &1902848893 stripped
+--- !u!4 &1902848892 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8476799888378585243, guid: 4efd1f3fc6ae5f5428e3ef9efbb8091f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1902848891}
   m_PrefabAsset: {fileID: 0}
 --- !u!43 &1905664031
@@ -68442,7 +68578,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh119618
+  m_Name: pb_Mesh83714
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -68680,7 +68816,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh90474
+  m_Name: pb_Mesh83214
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -69227,7 +69363,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3105775802304703074, guid: 2b39ae7bd99b97f429d0822a875df19a, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3105775802304703074, guid: 2b39ae7bd99b97f429d0822a875df19a, type: 3}
       propertyPath: m_LocalScale.x
@@ -69301,7 +69437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: addf7a6197386114191875e48b9682f8, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5057058669514077598, guid: addf7a6197386114191875e48b9682f8, type: 3}
       propertyPath: m_LocalScale.x
@@ -69368,7 +69504,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh90270
+  m_Name: pb_Mesh83024
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -69869,7 +70005,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-532192
+  m_Name: pb_Mesh83650
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -70238,6 +70374,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (10)
@@ -70762,7 +70902,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91904
+  m_Name: pb_Mesh84392
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -71276,7 +71416,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh89776
+  m_Name: pb_Mesh82650
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -71941,7 +72081,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-533804
+  m_Name: pb_Mesh84198
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -72235,6 +72375,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (17)
@@ -72323,6 +72467,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1662775033}
     m_Modifications:
+    - target: {fileID: 3360212073238254129, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 4062675382223944189, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_Name
       value: Luz_teto_roxo (3)
@@ -72447,13 +72595,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1650457473}
     m_Modifications:
+    - target: {fileID: 3360212073238254129, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00ca0c6cf26031747bb553ac2db37e57, type: 2}
     - target: {fileID: 4062675382223944189, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_Name
       value: Luz_teto_roxo
       objectReference: {fileID: 0}
     - target: {fileID: 7824695366574320780, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7824695366574320780, guid: 2567d039f8f39e04fa7b4ffa51be63c0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -72785,7 +72937,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh90874
+  m_Name: pb_Mesh83526
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -73092,6 +73244,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690963446093032909, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 813f93445981d7544aed386e1068f219, type: 2}
     - target: {fileID: 6357402301353510401, guid: 86c3904b8695d3b4ba59ecfd93455564, type: 3}
       propertyPath: m_Name
       value: Luz_teto_vermelho (19)
@@ -73174,7 +73330,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 4efd1f3fc6ae5f5428e3ef9efbb8091f, type: 3}
 --- !u!4 &2140616542 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8476799888378585243, guid: 4efd1f3fc6ae5f5428e3ef9efbb8091f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 2140616541}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2141759956
@@ -73520,7 +73676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1548114637565413499, guid: c45c77125286bdb48a6ecdb9011c3323, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1548114637565413499, guid: c45c77125286bdb48a6ecdb9011c3323, type: 3}
       propertyPath: m_LocalScale.x
