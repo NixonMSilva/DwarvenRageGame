@@ -44,9 +44,14 @@ public class ChestController : MonoBehaviour
         UserInterfaceController.instance.ThrowWarningMessage(weapon.itemName + "adquirido!");
     }
 
-    public void PlayChestSound()
+    public void PlayChestSound ()
     {
         AudioManager.instance.PlaySoundAt(gameObject, "chest_open");
+    }
+
+    public void DisableTooltip ()
+    {
+        tooltip.IsDisabled = true;
     }
 
     public void DestroyChest ()

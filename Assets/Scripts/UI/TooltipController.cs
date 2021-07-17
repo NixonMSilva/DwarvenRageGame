@@ -20,6 +20,12 @@ public class TooltipController : MonoBehaviour
 
     [SerializeField] private bool hideOnAction = true;
 
+    public bool IsDisabled
+    {
+        get => isDisabled;
+        set => isDisabled = value;
+    }
+
     private void Awake ()
     {
         currentTooltipText = defaultTooltipText;
