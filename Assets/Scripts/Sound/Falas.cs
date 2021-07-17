@@ -17,6 +17,7 @@ public class Falas : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            AudioManager.instance.DestroyAllSounds();
             AudioManager.instance.PlaySound(fala);
             foreach (Collider collider in colliderList)
             {
