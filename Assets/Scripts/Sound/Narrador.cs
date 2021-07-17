@@ -47,7 +47,7 @@ public class Narrador : MonoBehaviour
 
         AudioManager.instance.PlaySound("narrador3"); 
 
-        yield return new WaitForSeconds(25); 
+        yield return new WaitForSeconds(22); 
 
         AudioManager.instance.DestroyAllSounds();
 
