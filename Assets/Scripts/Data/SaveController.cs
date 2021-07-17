@@ -212,6 +212,7 @@ public class SaveController : MonoBehaviour
         loadingPlayer.playerShield = GetShield(data.shield);
 
         // Get all weapons
+        loadingPlayer.weaponList.Clear();
         for (int i = 0; i < data.weaponsId.Length; ++i)
         {
             loadingPlayer.weaponList.Add(GetWeapon(data.weaponsId[i]));
@@ -219,6 +220,8 @@ public class SaveController : MonoBehaviour
         }
 
         // Get all items
+        loadingPlayer.itemList.Clear();
+        loadingPlayer.itemStack.Clear();
         for (int i = 0; i < data.itemId.Length; ++i)
         {
             Consumable newItem = GetItem(data.itemId[i]);

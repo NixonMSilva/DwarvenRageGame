@@ -1,11 +1,15 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
     [SerializeField] private AudioSource music;
 
-    private AudioClip defaultClip;
+    [SerializeField] private AudioClip[] clipList;
+
+    private int currentClip = 0;
+    private bool onSitatuon = false;
 
     public AudioSource Music
     {
@@ -18,15 +22,28 @@ public class MusicController : MonoBehaviour
         if (music.clip == null)
             return;
         
-        defaultClip = music.clip;
         music.volume = 0.3f * AudioManager.instance.MusicVolume;
         music = GetComponent<AudioSource>();
         AudioManager.instance.onMusicVolumeChange += ChangeMusicVolume;
     }
+
+    private void Start ()
+    {
+        // Play first song
+        music.clip = clipList[0];
+        music.Play();
+
+        // Invoke NextShuflle
+        Invoke(nameof(NextShuffle), music.clip.length);
+    }
     
     public void SwitchToMusic (AudioClip clip)
     {
+        music.Stop();
         music.clip = clip;
+        music.Play();
+        music.loop = true;
+        onSitatuon = true;
     }
 
     private void OnDestroy ()
@@ -41,8 +58,36 @@ public class MusicController : MonoBehaviour
 
     public void ResetMusic ()
     {
-        music.Stop();
-        music.clip = defaultClip;
-        music.Play();
+        // Only reset if there's music in the queue
+        if (currentClip < clipList.Length)
+        {
+            music.Stop();
+            music.clip = clipList[currentClip];
+            music.Play();
+            music.loop = false;
+            onSitatuon = false;
+        }
     }
+
+    public void NextShuffle ()
+    {
+        if (!onSitatuon)
+        {
+            // Only shuffles if there's music in the queue
+            if (clipList.Length < 1)
+                return;
+        
+            music.Stop();
+            currentClip++;
+            if (currentClip >= clipList.Length)
+                currentClip = 0;
+            music.clip = clipList[currentClip];
+            music.Play();
+        }
+        
+        
+        // Invoke again when the current music is over
+        Invoke(nameof(NextShuffle), music.clip.length - music.time);
+    }
+    
 }

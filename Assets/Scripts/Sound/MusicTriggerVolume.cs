@@ -29,10 +29,9 @@ public class MusicTriggerVolume : MonoBehaviour
         // Play only when the player enters
         if (other.CompareTag("Player"))
         {
-            controller.Music.Stop();
-            controller.Music.clip = clip;
-            controller.Music.Play();
-            
+            // Switches the music
+            controller.SwitchToMusic(clip);
+
             // Set activated status so it doesn't play again
             wasActivated = true;
         }

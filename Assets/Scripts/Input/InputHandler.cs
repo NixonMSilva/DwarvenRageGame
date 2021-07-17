@@ -24,6 +24,9 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private KeyCode itemKey3           = KeyCode.Alpha3;
     [SerializeField] private KeyCode itemKey4           = KeyCode.Alpha4;
 
+    [SerializeField] private KeyCode changeWeaponUp     = KeyCode.E;
+    [SerializeField] private KeyCode changeWeaponDown   = KeyCode.Q;
+
     [Space(20)]
     [SerializeField] private float powerAttackThreshold = 0.5f;
 
@@ -209,6 +212,11 @@ public class InputHandler : MonoBehaviour
             {
                 OnWeaponScroll?.Invoke(false);
             }
+            
+            // Weapon scroll alt
+            
+            if (Input.GetKeyDown(changeWeaponDown))
+                OnWeaponScroll?.Invoke(true);
 
         }
         else
