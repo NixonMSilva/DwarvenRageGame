@@ -106,6 +106,7 @@ public class EnemyController : MonoBehaviour
         {
             case "Fat Pig":
                 GameObject blood = Instantiate(deathExtraEffectFX, deathExtraEffectPoint.transform.position, Quaternion.identity);
+                AudioManager.instance.PlaySound("fat_pig_explosion");
                 Collider[] hit = Physics.OverlapSphere(deathExtraEffectPoint.transform.position, deathExtraEffectRange, enemyAttack.Damageables);
                 foreach  (Collider obj in hit)
                 {

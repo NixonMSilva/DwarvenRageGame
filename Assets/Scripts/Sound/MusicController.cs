@@ -15,6 +15,9 @@ public class MusicController : MonoBehaviour
 
     private void Awake ()
     {
+        if (music.clip == null)
+            return;
+        
         defaultClip = music.clip;
         music.volume = 0.3f * AudioManager.instance.MusicVolume;
         music = GetComponent<AudioSource>();
