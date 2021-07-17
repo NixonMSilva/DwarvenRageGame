@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
     [SerializeField] private AudioSource music;
 
-    [SerializeField] private AudioClip[] clipList;
+    [SerializeField] private AudioClip[] clipList = {};
 
     private int currentClip = 0;
     private bool onSitatuon = false;
@@ -29,11 +30,15 @@ public class MusicController : MonoBehaviour
 
     private void Start ()
     {
+        // If there's no music, then do not process
+        if (clipList.Length == 0)
+            return;
+        
         // Play first song
         music.clip = clipList[0];
         music.Play();
 
-        // Invoke NextShuflle
+        // Invoke NextShuffle
         Invoke(nameof(NextShuffle), music.clip.length);
     }
     
