@@ -56,6 +56,13 @@ public class EnemyAI : MonoBehaviour
 
     protected void Update()
     {
+        // Cull enemy AI if the player is too distant
+        if (Vector3.SqrMagnitude(player.position - transform.position) > 8000f)
+        {
+            Debug.DrawRay(transform.position, Vector3.up * 50f, Color.cyan, 0.5f);
+            return;
+        }
+
         // If the enemy is not dying, the perform AI routines
         if (!status.IsDying && !isAttacking && !isBeingStaggered)
         {
@@ -210,6 +217,8 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, Mathf.Sqrt(8000f));
     }
 
 }

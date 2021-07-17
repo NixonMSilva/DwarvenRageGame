@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd918e83038bb74aa0c557a802efadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFired: 0
   type: 2
   _children: []
 --- !u!114 &4696980649792353182
@@ -181,7 +182,31 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 3556796671652223957}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Pause
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Falas, Game
+        m_MethodName: Ler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4696980649792353183}
+        m_TargetAssemblyTypeName: EventObject, Game
+        m_MethodName: HandleExecution
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

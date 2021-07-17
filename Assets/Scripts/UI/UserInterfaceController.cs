@@ -248,6 +248,7 @@ public class UserInterfaceController : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         HidePlayerInterface();
+        HideShopMenu();
         Time.timeScale = 0f;
         isPauseMenuOn = true;
     }
