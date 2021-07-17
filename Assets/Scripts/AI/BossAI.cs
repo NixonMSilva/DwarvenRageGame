@@ -90,6 +90,11 @@ public class BossAI : EnemyAI
     
     public virtual void HandleStageChange (int stage)
     {
-        
+        switch (stage)
+        {
+            case 0:
+                anim.SetBool("hasStarted", true);
+                return;
+        }
     }
 }
