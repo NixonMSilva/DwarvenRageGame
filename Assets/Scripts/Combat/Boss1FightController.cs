@@ -56,7 +56,7 @@ public class Boss1FightController : BossFightController
         base.OnDestroy();
     }
     
-    public override void HandleStageChange(int stage)
+    public override void HandleStageChange (int stage)
     {
         switch (stage)
         {
@@ -86,7 +86,7 @@ public class Boss1FightController : BossFightController
         UserInterfaceController.instance.UpdateProgressBar(bloodBarProgress);
     }
 
-    public void DisableSpawner()
+    public void DisableSpawner ()
     {
         spawner.enabled = false;
     }
@@ -96,12 +96,12 @@ public class Boss1FightController : BossFightController
         bossStatus.Resistances = newResistance.BuildSheet();
     }
 
-    public void ResetResistance()
+    public void ResetResistance ()
     {
         bossStatus.Resistances = originalResistance.BuildSheet();
     }
 
-    public void ResetColor()
+    public void ResetColor ()
     {
         trollBodyMesh.material = bossMaterials[0];
     }

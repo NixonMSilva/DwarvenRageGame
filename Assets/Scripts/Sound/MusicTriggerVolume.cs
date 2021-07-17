@@ -8,6 +8,8 @@ public class MusicTriggerVolume : MonoBehaviour
 
     [SerializeField] private MusicController controller;
 
+    private bool wasActivated = false;
+
     private void Awake ()
     {
         controller = GameObject.Find("MusicPlayer").GetComponent<MusicController>();
@@ -15,6 +17,9 @@ public class MusicTriggerVolume : MonoBehaviour
 
     public void OnTriggerEnter (Collider other)
     {
+        if (wasActivated)
+            return;
+        
         if (clip == null)
         {
             Debug.LogWarning("Music clip not set for Music Trigger Volume!");
@@ -28,8 +33,8 @@ public class MusicTriggerVolume : MonoBehaviour
             controller.Music.clip = clip;
             controller.Music.Play();
             
-            // Destroy the volume
-            Destroy(this, 0.5f);
+            // Set activated status so it doesn't play again
+            wasActivated = true;
         }
     }
 

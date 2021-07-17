@@ -22,7 +22,7 @@ public class SkullProjectile : ProjectileController
                 // Break the invulnerability of the troll
                 if (IsTroll(other.gameObject))
                 {
-                    var boss = GameObject.Find("BossFight").GetComponent<Boss1FightController>();
+                    var boss = GameObject.FindObjectOfType<Boss1FightController>();
                     boss.ResetResistance();
                     boss.ResetColor();
                 }

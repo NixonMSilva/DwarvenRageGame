@@ -48,7 +48,13 @@ public class BossFightController : MonoBehaviour
         isBossDefeated = true; 
         OnBossDeath.Invoke();
     }
-    
+
+    public void BossDisable ()
+    {
+        isBossDefeated = true;
+        OnBossDeath.Invoke();
+    }
+
     private void HandleBossHealthChange (float newValue, float maxValue)
     {
         float currValue = newValue / maxValue;
@@ -59,7 +65,7 @@ public class BossFightController : MonoBehaviour
     public void OnTriggerEnter (Collider other)
     {
         // Only run if the fight stage is not activated (-1)
-        if ((other.CompareTag("Player") || other.CompareTag("Projectile")) && bossAI.FightStage == -1)
+        if ((other.CompareTag("Player") || other.CompareTag("Projectile")) && bossAI.FightStage == -1 && isBossDefeated == false)
         {
             StartBattle();
         }

@@ -22,6 +22,9 @@ public static class EventDisablingProcessor
                 break;
             case EventType.item:
                 break;
+            case EventType.encounter:
+                DisableEncounter(obj);
+                break;
         }
     }
 
@@ -41,6 +44,12 @@ public static class EventDisablingProcessor
        {
            eventObj.HideModel();
        }
+    }
+
+    private static void DisableEncounter (GameObject obj)
+    {
+        // Invoke all events from the boss' death
+        obj.GetComponent<BossFightController>().BossDisable();
     }
 
     private static void SetFired (GameObject obj)

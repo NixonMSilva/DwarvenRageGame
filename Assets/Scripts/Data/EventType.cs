@@ -6,5 +6,6 @@ public enum EventType
 {
     chest,
     door,
-    item
+    item,
+    encounter
 }
