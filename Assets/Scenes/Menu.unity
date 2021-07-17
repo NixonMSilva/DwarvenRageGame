@@ -536,7 +536,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 313285906}
         m_TargetAssemblyTypeName: MenuController, Game
-        m_MethodName: Sound
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -717,7 +717,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 313285906}
         m_TargetAssemblyTypeName: MenuController, Game
-        m_MethodName: Sound
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2429,7 +2429,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 313285906}
         m_TargetAssemblyTypeName: MenuController, Game
-        m_MethodName: Sound
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3462,6 +3462,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 313285906}
+    - target: {fileID: 8556784333921688871, guid: 4fc3f4a223bd92f489e63012d2a215c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8556784333984569672, guid: 4fc3f4a223bd92f489e63012d2a215c2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
