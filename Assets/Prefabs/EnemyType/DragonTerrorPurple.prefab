@@ -378,7 +378,7 @@ MonoBehaviour:
   blockAngle: 45
   resistanceSheet: {fileID: 11400000, guid: 4151573f6f046cc46a8d7a278a62b6e0, type: 2}
   _activeDOTs: []
-  painThreshold: 0.25
+  painThreshold: 0
   thisLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -398,7 +398,7 @@ MonoBehaviour:
   blood: {fileID: 0}
   firePointA: {fileID: 0}
   firePointB: {fileID: 0}
-  attackRange: 2.5
+  attackRange: 5
   attackSpeed: 1
   powerAttackSpeedMult: 0.7
   damageableLayer:
@@ -477,9 +477,9 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
   isPatrolling: 0
-  timeBetweenAttacks: 2
+  timeBetweenAttacks: 1.5
   sightRange: 120
-  attackRange: 9
+  attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
   rotationSpeed: 10
@@ -1078,8 +1078,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5030836385550429382}
-  m_LocalRotation: {x: 3.899154e-13, y: 0.0000000039851895, z: -0.00000018231106,
-    w: 1}
+  m_LocalRotation: {x: 3.899154e-13, y: 0.0000000039851895, z: -0.00000018231106, w: 1}
   m_LocalPosition: {x: -66.73839, y: 7.1054274e-15, z: 1.2167823e-14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
