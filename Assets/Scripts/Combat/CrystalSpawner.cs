@@ -38,9 +38,9 @@ public class CrystalSpawner : MonoBehaviour
     {
         isOnCooldown = true;
 
-        float spawnX = UnityEngine.Random.Range(crystalSpawnLimiterMin.position.x, crystalSpawnLimiterMin.position.z);
+        float spawnX = UnityEngine.Random.Range(crystalSpawnLimiterMin.position.x, crystalSpawnLimiterMax.position.x);
         float spawnY = crystalSpawnLimiterMax.position.y;
-        float spawnZ = UnityEngine.Random.Range(crystalSpawnLimiterMax.position.x, crystalSpawnLimiterMax.position.z);
+        float spawnZ = UnityEngine.Random.Range(crystalSpawnLimiterMin.position.z, crystalSpawnLimiterMax.position.z);
 
         Vector3 spawnPos = new Vector3(spawnX, spawnY, spawnZ);
 
