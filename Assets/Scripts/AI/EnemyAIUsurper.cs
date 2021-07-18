@@ -43,6 +43,7 @@ public class EnemyAIUsurper : BossAI
             if (IsPlayerInAttackRange())
             {
                 MakeNextDecision();
+                playerFixedPoint = player.position;
             }
             else
             {
@@ -53,20 +54,32 @@ public class EnemyAIUsurper : BossAI
         {
             StandStill();
         }
+
+        if (isAttacking || status.IsDying)
+        {
+            LookAtFixedPoint(playerFixedPoint);
+            
+            if (status.IsDying)
+                StandStill();
+        }
     }
 
     private void MakeNextDecision ()
     {
-        // Dice roll for the decision
-        float diceRoll = UnityEngine.Random.Range(0f, 100f);
-        
-        // Attack type or block
-        int decision = ProcessDecision(FightStage, diceRoll);
-        
         // Do nothing if on decision cooldown
         if (alreadyAttacked)
             return;
         
+        // Dice roll for the decision
+        float diceRoll = UnityEngine.Random.Range(0f, 100f);
+        
+        Debug.Log("Dice roll: " + diceRoll);
+        
+        // Pick decision
+        int decision = ProcessDecision(FightStage, diceRoll);
+        
+        Debug.Log ("Decision taken: " + decision);
+
         // If is flying
         if (isFlying)
         {
@@ -116,6 +129,7 @@ public class EnemyAIUsurper : BossAI
 
         for (int i = 0; i < weightList.Length; ++i)
         {
+            Debug.Log(i);
             if (weightList[i] <= roll)
                 return i;
         }
@@ -232,9 +246,21 @@ public class EnemyAIUsurper : BossAI
     {
         float currentHealthPercentage = health / maxHealth;
 
-        if (currentHealthPercentage < 60f)
+        // Don't reprocess if the fight stage is 4 (flight)
+        if (FightStage == 4)
+            return;
+        
+        // Flight triggers
+        if (currentHealthPercentage < 65f && FightStage == 1)
         {
-            // Flight
+            FightStage = 4;
+        }
+        else if (currentHealthPercentage < 45f && FightStage == 2)
+        {
+            FightStage = 4;
+        }
+        else if (currentHealthPercentage < 25f && FightStage == 3)
+        {
             FightStage = 4;
         }
     }
@@ -256,6 +282,9 @@ public class EnemyAIUsurper : BossAI
     {
         switch (stage)
         {
+            case 0:
+                anim.SetBool("hasStarted", true);
+                break;
             case 1:
                 if (isFlying)
                     Land();
@@ -269,7 +298,8 @@ public class EnemyAIUsurper : BossAI
                     Land();
                 break;
             case 4:
-                Fly();
+                if (isFlying)
+                    Fly();
                 break;
         }
     }

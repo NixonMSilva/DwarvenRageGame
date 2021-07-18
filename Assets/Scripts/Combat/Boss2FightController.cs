@@ -8,12 +8,7 @@ public class Boss2FightController : BossFightController
     
     private bool isBallistaLoading = false;
     private bool isBallistaLoaded = false;
-    
-    private Resistance originalResistance;
-    [SerializeField] private Resistance invulnerabiltyResistance;
-    
-    [SerializeField] private SkinnedMeshRenderer dragonBodyMesh;
-    
+
     [SerializeField] private EnemyStatus bossHealth;
 
     [SerializeField] private CrystalSpawner crystalSpawner;
@@ -27,8 +22,6 @@ public class Boss2FightController : BossFightController
     private new void Awake ()
     {
         base.Awake();
-        
-        originalResistance = bossStatus.Sheet;
     }
 
     private void Update ()

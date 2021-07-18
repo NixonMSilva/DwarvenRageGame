@@ -12,7 +12,7 @@ public class BossAI : EnemyAI
     // -1 Pre-Start | 0 - Intro | 1 - Post-Intro
     [SerializeField] private int fightStage = -1;
 
-    private Vector3 playerFixedPoint;
+    protected Vector3 playerFixedPoint;
 
     public int FightStage
     {
