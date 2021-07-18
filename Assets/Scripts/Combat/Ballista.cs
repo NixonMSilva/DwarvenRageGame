@@ -43,14 +43,13 @@ public class Ballista : MonoBehaviour
         
         float percentage = Mathf.Clamp01(ballistaProgress / ballistaLoadingTime) * 100f;
             
-        UserInterfaceController.instance.UpdateProgressBar(percentage);
+        UserInterfaceController.instance.UpdateProgressBar(Mathf.Round(percentage));
         
         if (ballistaProgress >= ballistaLoadingTime)
         {
             ballistaProgress = ballistaLoadingTime;
             isBallistaLoading = false;
             isBallistaLoaded = true;
-            ballistaTooltip.SetTooltipText("Atirar");
         }
     }
 
@@ -76,7 +75,6 @@ public class Ballista : MonoBehaviour
 
     private void StartBallistaUsage ()
     {
-        ballistaTooltip.SetTooltipText("Carregar");
         UserInterfaceController.instance.ShowProgressMenu("Carregamento da Ballista");
         UserInterfaceController.instance.SetProgressIcon(ballistaIcon);
         UserInterfaceController.instance.UpdateProgressBar(0f);
@@ -84,8 +82,12 @@ public class Ballista : MonoBehaviour
 
     private void Fire ()
     {
-        if (target == null)
+        if (target == null || ballistaProgress < 1f)
             return;
+        
+        // Reset the blood bar
+        ballistaProgress = 0f;
+        isBallistaLoaded = false;
         
         GameObject harpoon = Instantiate(ballistaProjectile, firePoint.position, Quaternion.identity);
         harpoon.GetComponent<ProjectileController>().SetTarget(target.position - transform.position);
@@ -93,12 +95,8 @@ public class Ballista : MonoBehaviour
         // Play cannon sound
         AudioManager.instance.PlaySound("Canhao");
 
-        // Reset the blood bar
-        ballistaProgress = 0f;
-        isBallistaLoaded = false;
-        
+
         UserInterfaceController.instance.UpdateProgressBar(0f);
-        ballistaTooltip.SetTooltipText("Carregar");
     }
 
     private void LookAtTarget ()

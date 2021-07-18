@@ -18,8 +18,7 @@ public class BossAI : EnemyAI
     {
         get => fightStage;
         set 
-        { 
-            //Debug.Log("Stage changed!");
+        {
             fightStage = value;
             onFightStageChange?.Invoke(fightStage);
             HandleStageChange(fightStage);

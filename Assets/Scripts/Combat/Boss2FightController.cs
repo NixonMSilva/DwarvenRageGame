@@ -34,10 +34,13 @@ public class Boss2FightController : BossFightController
                 // Dragon fly
                 EnableCrystalSpawning();
                 break;
+            case 5:
+                EnableCrystalSpawning();
+                break;
         }
     }
 
-    private void EnableCrystalSpawning ()
+    public void EnableCrystalSpawning ()
     {
         if (crystalSpawner != null)
         {
@@ -46,7 +49,7 @@ public class Boss2FightController : BossFightController
         }
     }
     
-    private void DisableCrystalSpawning ()
+    public void DisableCrystalSpawning ()
     {
         if (crystalSpawner != null)
         {

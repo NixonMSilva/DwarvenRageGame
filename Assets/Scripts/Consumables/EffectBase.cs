@@ -267,6 +267,7 @@ public class Slow : EffectBase
         PlayerStatus player = target as PlayerStatus;
         PlayerMovement movement = target.GetComponent<PlayerMovement>();
         movement.Speed /= value;
+        target.TakeDamageIgnoreBlock(30f, DamageType.ice);
     }
 }
 
