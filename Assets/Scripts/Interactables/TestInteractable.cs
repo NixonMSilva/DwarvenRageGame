@@ -20,6 +20,7 @@ public class TestInteractable : MonoBehaviour, IInteractable
 
     public void Conversar ()
     {
+        AudioManager.instance.DestroyAllSounds();
         aleatorio = Random.Range(1, 3);
         switch(aleatorio)
         {
@@ -35,6 +36,7 @@ public class TestInteractable : MonoBehaviour, IInteractable
 
     public void Interagir()
     {
+        AudioManager.instance.DestroyAllSounds();
         AudioManager.instance.PlaySound(fala);
     }
 }
