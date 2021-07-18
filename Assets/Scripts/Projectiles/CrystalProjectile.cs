@@ -1,18 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrystalProjectile : MonoBehaviour
+public class CrystalProjectile : ProjectileController
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnTriggerEnter (Collider other)
     {
+        // Don't do anything if it's the boss
+        if (other.gameObject.CompareTag("Boss"))
+            return;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.OnTriggerEnter(other);
     }
 }

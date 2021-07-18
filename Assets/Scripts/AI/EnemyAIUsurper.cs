@@ -10,10 +10,8 @@ public class EnemyAIUsurper : BossAI
 
     private bool isBlocking = false;
     
-    private bool isFlying = false;
+    [SerializeField] private bool isFlying = false;
 
-    private float sqrAttackDistance;
-    
     // 0 - Basic | Breath | Claw | Block
     private float[] weights = { 30f, 50f, 70f, 95f };
     private float[] weights2 = { 40f, 60f, 80f, 95f };
@@ -21,7 +19,6 @@ public class EnemyAIUsurper : BossAI
 
     private void Start ()
     {
-        sqrAttackDistance = attackRange * attackRange;
         status.OnHealthChange += CheckHealth;
     }
 
@@ -39,15 +36,20 @@ public class EnemyAIUsurper : BossAI
         // Process normally if the enemy can act or it's not blocking or the fight stage is invalid
         if (CanAct() && !status.IsBlocking && IsFightStageValid())
         {
+            // Update speed for animation purposes
+            UpdateSpeed();
+            
             // Updates to check if the player is in attack range
             if (IsPlayerInAttackRange())
             {
-                MakeNextDecision();
+                StandStill();
                 playerFixedPoint = player.position;
+                MakeNextDecision();
             }
             else
             {
-                ChasePlayer();
+                if (!isAttacking)
+                    ChasePlayer();
             }
         }
         else
@@ -72,13 +74,9 @@ public class EnemyAIUsurper : BossAI
         
         // Dice roll for the decision
         float diceRoll = UnityEngine.Random.Range(0f, 100f);
-        
-        Debug.Log("Dice roll: " + diceRoll);
-        
+
         // Pick decision
         int decision = ProcessDecision(FightStage, diceRoll);
-        
-        Debug.Log ("Decision taken: " + decision);
 
         // If is flying
         if (isFlying)
@@ -87,29 +85,12 @@ public class EnemyAIUsurper : BossAI
             return;
         }
 
-        switch (decision)
-        {
-            case 0:
-                AttackPlayer();
-                break;
-            case 1:
-                AttackPlayer();
-                break;
-            case 2:
-                AttackPlayer();
-                break;
-            case 3:
-                Block();
-                break;
-            default:
-                AttackPlayer();
-                break;
-        }
+        DecisionPicker(decision);
     }
 
     private int ProcessDecision (int stage, float roll, Action callback = null)
     {
-        float[] weightList = new float[1];
+        float[] weightList = new float[4];
 
         switch (stage)
         {
@@ -129,30 +110,36 @@ public class EnemyAIUsurper : BossAI
 
         for (int i = 0; i < weightList.Length; ++i)
         {
-            Debug.Log(i);
-            if (weightList[i] <= roll)
+            if (weightList[i] > roll)
+            {
                 return i;
+            }
         }
 
         return 0;
     }
-    
-    /*
-    public override void AttackPlayer ()
+
+    private void DecisionPicker (int value)
     {
-        if (!alreadyAttacked)
+        switch (value)
         {
-            playerPoint = player.transform.position;
-            StopForAttack();
-
-            float diceRoll = UnityEngine.Random.Range(0f, 1f);
-            anim.Play(diceRoll > 0.2f ? "attack_left" : "attack_right");
-
-            isAttacking = true;
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }        
-    } */
+            case 0:
+                AttackNormal();
+                break;
+            case 1:
+                AttackBreath();
+                break;
+            case 2:
+                AttackClaw();
+                break;
+            case 3:
+                Block();
+                break;
+            default:
+                AttackPlayer();
+                break;
+        }
+    }
 
     private void AttackNormal ()
     {
@@ -170,7 +157,7 @@ public class EnemyAIUsurper : BossAI
     {
         StopForAttack();
         
-        anim.Play("Fly Flame Attack");
+        anim.Play("Flame Attack");
         
         isAttacking = true;
         alreadyAttacked = true;
@@ -205,26 +192,39 @@ public class EnemyAIUsurper : BossAI
     
     public void Fly ()
     {
-        isFlying = true;
+        Debug.Log("Fly!");
+        StandStill();
+        anim.Play("Take Off");
         anim.SetBool("isFlying", true);
     }
 
     public void Land ()
     {
+        StandStill();
         isFlying = false;
         anim.SetBool("isFlying", false);
     }
     
     private void CastFireballs ()
     {
+        StopForAttack();
+        
         anim.Play("Fly Flame Attack");
+
+        isAttacking = true;
+        alreadyAttacked = true;
+        
+        ResetAttackTimer();
     }
-    
-    private void ResetAttackTimer () { Invoke(nameof(ResetAttack), timeBetweenAttacks); }
+
+    private void ResetAttackTimer ()
+    {
+        Invoke(nameof(ResetAttack), timeBetweenAttacks);
+    }
     
     public override bool IsPlayerInAttackRange ()
     {
-        return (sqrAttackDistance <= Vector3.SqrMagnitude(player.position - transform.position));
+        return (attackRange >= (Vector3.Distance(transform.position, player.position)));
     }
 
     private void StandStill ()
@@ -246,36 +246,37 @@ public class EnemyAIUsurper : BossAI
     {
         float currentHealthPercentage = health / maxHealth;
 
-        // Don't reprocess if the fight stage is 4 (flight)
-        if (FightStage == 4)
+        // Don't reprocess if the fight stage is 4 or above (flight)
+        if (FightStage >= 4)
             return;
         
         // Flight triggers
-        if (currentHealthPercentage < 65f && FightStage == 1)
+        if (currentHealthPercentage < 0.95f && FightStage == 1)
         {
-            FightStage = 4;
+            FightStage += 3;
         }
-        else if (currentHealthPercentage < 45f && FightStage == 2)
+        else if (currentHealthPercentage < 0.45f && FightStage == 2)
         {
-            FightStage = 4;
+            FightStage += 3;
         }
-        else if (currentHealthPercentage < 25f && FightStage == 3)
+        else if (currentHealthPercentage < 0.25f && FightStage == 3)
         {
-            FightStage = 4;
+            FightStage += 3;
         }
     }
 
     public bool IsFightStageValid ()
     {
-        return (FightStage >= 1);
+        if (FightStage >= 1 && FightStage < 4)
+            return true;
+        return false;
     }
     
-    private void OnDrawGizmosSelected()
+    private new void ResetAttack ()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
+        alreadyAttacked = false;
+        // In case he gets stuck into attack mode
+        isAttacking = false;
     }
 
     public override void HandleStageChange (int stage)
@@ -298,9 +299,26 @@ public class EnemyAIUsurper : BossAI
                     Land();
                 break;
             case 4:
-                if (isFlying)
+                if (!isFlying)
+                    Fly();
+                break;
+            case 5:
+                if (!isFlying)
+                    Fly();
+                break;
+            case 6:
+                if (!isFlying)
                     Fly();
                 break;
         }
     }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+    
 }
