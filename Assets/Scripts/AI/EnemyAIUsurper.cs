@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class EnemyAIUsurper : BossAI
 {
@@ -13,8 +13,8 @@ public class EnemyAIUsurper : BossAI
     private bool isFlying = false;
 
     private float sqrAttackDistance;
-
     
+    // 0 - Basic | Breath | Claw | Block
     private float[] weights = { 30f, 50f, 70f, 95f };
     private float[] weights2 = { 40f, 60f, 80f, 95f };
     private float[] weights3 = { 60f, 70f, 80f, 90f };
@@ -57,10 +57,73 @@ public class EnemyAIUsurper : BossAI
 
     private void MakeNextDecision ()
     {
-        // Attack type or block
+        // Dice roll for the decision
+        float diceRoll = UnityEngine.Random.Range(0f, 100f);
         
+        // Attack type or block
+        int decision = ProcessDecision(FightStage, diceRoll);
+        
+        // Do nothing if on decision cooldown
+        if (alreadyAttacked)
+            return;
+        
+        // If is flying
+        if (isFlying)
+        {
+            CastFireballs();
+            return;
+        }
+
+        switch (decision)
+        {
+            case 0:
+                AttackPlayer();
+                break;
+            case 1:
+                AttackPlayer();
+                break;
+            case 2:
+                AttackPlayer();
+                break;
+            case 3:
+                Block();
+                break;
+            default:
+                AttackPlayer();
+                break;
+        }
+    }
+
+    private int ProcessDecision (int stage, float roll, Action callback = null)
+    {
+        float[] weightList = new float[1];
+
+        switch (stage)
+        {
+            case 1:
+                weightList = weights;
+                break;
+            case 2:
+                weightList = weights2;
+                break;
+            case 3:
+                weightList = weights3;
+                break;
+            default:
+                weightList = weights;
+                break;
+        }
+
+        for (int i = 0; i < weightList.Length; ++i)
+        {
+            if (weightList[i] <= roll)
+                return i;
+        }
+
+        return 0;
     }
     
+    /*
     public override void AttackPlayer ()
     {
         if (!alreadyAttacked)
@@ -68,28 +131,86 @@ public class EnemyAIUsurper : BossAI
             playerPoint = player.transform.position;
             StopForAttack();
 
-            float diceRoll = Random.Range(0f, 1f);
+            float diceRoll = UnityEngine.Random.Range(0f, 1f);
             anim.Play(diceRoll > 0.2f ? "attack_left" : "attack_right");
 
             isAttacking = true;
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }        
+    } */
+
+    private void AttackNormal ()
+    {
+        StopForAttack();
+
+        anim.Play("Basic Attack");
+        
+        isAttacking = true;
+        alreadyAttacked = true;
+        
+        ResetAttackTimer();
     }
+
+    private void AttackBreath ()
+    {
+        StopForAttack();
+        
+        anim.Play("Fly Flame Attack");
+        
+        isAttacking = true;
+        alreadyAttacked = true;
+        
+        ResetAttackTimer();
+    }
+
+    private void AttackClaw ()
+    {
+        StopForAttack();
+        
+        anim.Play("Claw Attack");
+        
+        isAttacking = true;
+        alreadyAttacked = true;
+
+        ResetAttackTimer();
+    }
+    
+    
+    private void Block ()
+    {
+        StopForAttack();
+        
+        anim.Play("Defend");
+        
+        isAttacking = true;
+        alreadyAttacked = true;
+
+        ResetAttackTimer();
+    }
+    
+    public void Fly ()
+    {
+        isFlying = true;
+        anim.SetBool("isFlying", true);
+    }
+
+    public void Land ()
+    {
+        isFlying = false;
+        anim.SetBool("isFlying", false);
+    }
+    
+    private void CastFireballs ()
+    {
+        anim.Play("Fly Flame Attack");
+    }
+    
+    private void ResetAttackTimer () { Invoke(nameof(ResetAttack), timeBetweenAttacks); }
     
     public override bool IsPlayerInAttackRange ()
     {
         return (sqrAttackDistance <= Vector3.SqrMagnitude(player.position - transform.position));
-    }
-
-    private bool CanBlock ()
-    {
-        if (Random.Range(0f, 1f) >= 98f)
-        {
-            return true;
-        }
-
-        return false;
     }
 
     private void StandStill ()
@@ -105,26 +226,6 @@ public class EnemyAIUsurper : BossAI
     public void DeactivateBlockingStatus()
     {
         status.IsBlocking = false;
-    }
-
-    public void LeapForFatalAttack ()
-    {
-        // Leap for fatal attack
-    }
-
-    public void SpawnFlames ()
-    {
-        // Spawn flames    
-    }
-    
-    public void Fly ()
-    {
-        
-    }
-
-    public void Land ()
-    {
-        
     }
 
     public void CheckHealth (float health, float maxHealth)
@@ -155,7 +256,21 @@ public class EnemyAIUsurper : BossAI
     {
         switch (stage)
         {
-            
+            case 1:
+                if (isFlying)
+                    Land();
+                break;
+            case 2:
+                if (isFlying)
+                    Land();
+                break;
+            case 3:
+                if (isFlying)
+                    Land();
+                break;
+            case 4:
+                Fly();
+                break;
         }
     }
 }

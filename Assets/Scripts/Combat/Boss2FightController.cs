@@ -16,6 +16,8 @@ public class Boss2FightController : BossFightController
     
     [SerializeField] private EnemyStatus bossHealth;
 
+    [SerializeField] private CrystalSpawner crystalSpawner;
+
     public bool BallistaLoaded
     {
         get => isBallistaLoaded;
@@ -45,6 +47,7 @@ public class Boss2FightController : BossFightController
             isBallistaLoaded = true;
         }
     }
+
     public override void HandleStageChange (int stage)
     {
         switch (stage)
@@ -52,22 +55,35 @@ public class Boss2FightController : BossFightController
             default:
                 break;
             case 1:
-                // Trigger some audio
-                // Do something
+                DisableCrystalSpawning();
                 break;
             case 2:
                 // Trigger some audio
                 // Do something
+                DisableCrystalSpawning();
                 break;
             case 3:
                 // Trigger some audio
                 // Do something
+                DisableCrystalSpawning();
                 break;
             case 4:
                 // Dragon fly
-                // Crystal 
+                EnableCrystalSpawning();
                 break;
         }
+    }
+
+    private void EnableCrystalSpawning ()
+    {
+        if (crystalSpawner != null)
+            crystalSpawner.CanSpawnCrystal = true;
+    }
+    
+    private void DisableCrystalSpawning ()
+    {
+        if (crystalSpawner != null)
+            crystalSpawner.CanSpawnCrystal = false;
     }
     
 }
