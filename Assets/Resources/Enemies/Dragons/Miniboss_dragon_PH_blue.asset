@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1ab2dbed5f8474295afd6854ce5fea, type: 3}
+  m_Name: Miniboss_dragon_PH_blue
+  m_EditorClassIdentifier: 
+  enemyName: Fat Pig
+  maxHealth: 480
+  attackDamage: 30
+  drops:
+  - item: {fileID: 7163305338665221067, guid: 57eac5d66a838f94d8c48dba3080f25c, type: 3}
+    dropChance: 0.75
+  goldDrop: 250
+  goldDropVariance: 50
+  damageType: 0
+  damageEffect: {fileID: 0}
+  soundIdle: pig_idle
+  soundAttack: pig_attack
+  soundDamage: pig_hit
+  soundDeath: pig_death
+  impactType: axe_on_flesh
+  bloodParticle: {fileID: 2170997142744102009, guid: eb3b0c93a71d4c148afcc8e2d2d0991b, type: 3}
+  bloodColor: {r: 1, g: 0, b: 0, a: 1}
