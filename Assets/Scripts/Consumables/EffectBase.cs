@@ -471,7 +471,7 @@ public class VengeanceEffect : WeaponEffect
 
 public class DwalingarEffect : WeaponEffect
 {
-    float value = 25f;
+    float value = 50f;
 
     public DwalingarEffect () { }
 
