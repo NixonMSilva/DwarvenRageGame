@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     private int canCorrectPosition = 0;
     private Vector3 loadingPos;
     private GameObject playerCache = null;
-
     public PlayerData Player
     {
         get => playerData;
@@ -49,6 +48,7 @@ public class GameManager : MonoBehaviour
     
     private void Awake() 
     {
+
         if(instance == null)
         {
             instance = this;
