@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de1ab2dbed5f8474295afd6854ce5fea, type: 3}
-  m_Name: boss_dragon_PH_red
+  m_Name: Red_proto_dragon
   m_EditorClassIdentifier: 
-  enemyName: Fat Pig
-  maxHealth: 1000
-  attackDamage: 40
+  enemyName: Barbarian Pig
+  maxHealth: 140
+  attackDamage: 5
   drops:
   - item: {fileID: 7163305338665221067, guid: 57eac5d66a838f94d8c48dba3080f25c, type: 3}
-    dropChance: 0.75
-  goldDrop: 250
-  goldDropVariance: 50
+    dropChance: 0.3
+  goldDrop: 124
+  goldDropVariance: 24
   damageType: 0
   damageEffect: {fileID: 0}
   soundIdle: pig_idle
