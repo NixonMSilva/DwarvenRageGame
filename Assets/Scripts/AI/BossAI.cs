@@ -68,7 +68,7 @@ public class BossAI : EnemyAI
         return Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
     }
 
-    private void LookAtFixedPoint (Vector3 point)
+    protected void LookAtFixedPoint (Vector3 point)
     {
         Debug.DrawRay(point, Vector3.up * 100f, Color.cyan, 10f);
         Vector3 lookPosition = point - transform.position;
@@ -78,12 +78,12 @@ public class BossAI : EnemyAI
         transform.rotation = lookRotation;
     }
 
-    private new void ChasePlayer ()
+    protected new void ChasePlayer ()
     {
         agent.SetDestination(player.position);
     }
 
-    private bool CanAct ()
+    protected bool CanAct ()
     {
         return (!status.IsDying && !isAttacking && !isBeingStaggered);
     }

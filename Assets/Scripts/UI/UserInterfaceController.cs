@@ -64,6 +64,10 @@ public class UserInterfaceController : MonoBehaviour
     private GameObject bossBar;
     private Slider bossSlider;
     private Image bossIcon;
+
+    private GameObject buttonsPanel;
+    private GameObject optionsPanel;
+    private GameObject tutorialPanel;
     
     //private Slider progressSlider;
 
@@ -151,6 +155,10 @@ public class UserInterfaceController : MonoBehaviour
         deathScreen = GameObject.Find("DeathMenu");
 
         shopScreen = GameObject.Find("ShopMenu");
+        
+        buttonsPanel = GameObject.Find("Resume");
+        optionsPanel = GameObject.Find("OptionsPanel");
+        tutorialPanel = GameObject.Find("Tutorial");
 
         _itemSlots = new List<GameObject>();
 
@@ -247,6 +255,7 @@ public class UserInterfaceController : MonoBehaviour
     public void DrawPauseMenu ()
     {
         pauseMenu.SetActive(true);
+        buttonsPanel.SetActive(true);
         HidePlayerInterface();
         HideShopMenu();
         Time.timeScale = 0f;
@@ -255,6 +264,12 @@ public class UserInterfaceController : MonoBehaviour
 
     public void HidePauseMenu ()
     {
+        // Hide the other panels
+        buttonsPanel.SetActive(false);
+        optionsPanel.SetActive(false);
+        tutorialPanel.SetActive(false);
+        
+        // Hide the menu per se
         pauseMenu.SetActive(false);
         ShowPlayerInterface();
         isPauseMenuOn = false;
