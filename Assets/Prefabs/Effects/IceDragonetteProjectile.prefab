@@ -132,9 +132,9 @@ MonoBehaviour:
   - Ground
   - Damageable
   - Wall
-  damageValue: 25
+  damageValue: 10
   damageType: 1
-  effect: {fileID: 11400000, guid: 9a8ec763869c21b4ba129942adfe04f0, type: 2}
+  effect: {fileID: 0}
   bleedOnImpact: 0
 --- !u!1001 &1672067005005192312
 PrefabInstance:
@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6845721243341664975, guid: c5ec77d67f3e55146a420dd56d368c4f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 175763b757c0c5647b295137b888a598, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5ec77d67f3e55146a420dd56d368c4f, type: 3}
 --- !u!4 &5465350532977911204 stripped
