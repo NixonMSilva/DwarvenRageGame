@@ -84,7 +84,7 @@ public class BossFightController : MonoBehaviour
     
     public virtual void HandleStageChange(int stage)
     {
-        Debug.Log("Parent stage change");
+        //Debug.Log("Parent stage change");
     }
 
     public int GetStage() => bossAI.FightStage;
