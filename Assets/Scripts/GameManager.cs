@@ -126,7 +126,6 @@ public class GameManager : MonoBehaviour
         else
         {
             // Reload the scene if there's no save file
-            Debug.Log("Reloaded Scene");
             loader.ReloadScene();
             return;
         }

@@ -9,7 +9,7 @@ public class CrystalProjectile : ProjectileController
     {
         // Destruir o projétil caso este se perca por 10 segundos
         Destroy(gameObject, 15f);
-        rigidBody.velocity = new Vector3(0f, 40f, 0f);
+        rigidBody.velocity = new Vector3(0f, 55f, 0f);
     }
     
     public override void OnTriggerEnter (Collider other)

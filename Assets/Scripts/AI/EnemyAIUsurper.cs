@@ -72,19 +72,19 @@ public class EnemyAIUsurper : BossAI
                         ChasePlayer();
                 } 
             }
-            else
+        }
+        else
+        {
+            if (isFlying)
             {
                 if (!isAttacking)
                 {
+                    Debug.Log("Fly Flame Attack!");
                     LookAtFixedPoint(playerFixedPoint);
                     CastFireballs();
                 }
                     
             }
-            
-        }
-        else
-        {
             StandStill();
         }
 
@@ -155,7 +155,7 @@ public class EnemyAIUsurper : BossAI
         switch (value)
         {
             case 0:
-                AttackBreath();
+                AttackNormal();
                 break;
             case 1:
                 AttackBreath();
