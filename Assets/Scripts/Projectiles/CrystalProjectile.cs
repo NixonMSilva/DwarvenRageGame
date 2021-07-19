@@ -9,7 +9,7 @@ public class CrystalProjectile : ProjectileController
     {
         // Destruir o projétil caso este se perca por 10 segundos
         Destroy(gameObject, 15f);
-        rigidBody.velocity = new Vector3(0f, 75f, 0f);
+        rigidBody.velocity = new Vector3(0f, -75f, 0f);
         transform.rotation = Quaternion.Euler(new Vector3(180f, 0f, 0f));
     }
     

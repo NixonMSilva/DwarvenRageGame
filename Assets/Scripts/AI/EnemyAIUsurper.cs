@@ -22,6 +22,7 @@ public class EnemyAIUsurper : BossAI
     private bool[] stageTriggers = { false, false, false };
 
     [SerializeField] private Transform rootBoneTransform;
+    [SerializeField] private Transform playerHeightTransform;
 
     public bool Flying
     {
@@ -260,8 +261,7 @@ public class EnemyAIUsurper : BossAI
     private void SpawnFireballsFlying ()
     {
         Vector3 target = rootBoneTransform.forward;
-        float random = UnityEngine.Random.Range(0.05f, 0.75f) /
-                       (Vector3.Distance(rootBoneTransform.forward, player.transform.position));
+        float random = UnityEngine.Random.Range(0.05f, 3f);
         target.y = random - target.y;
         attack.CreateProjectile(target);
     }
@@ -345,12 +345,13 @@ public class EnemyAIUsurper : BossAI
         return (!status.IsDying && !isAttacking && !isBeingStaggered && !isLocked);
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos ()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         Gizmos.color = Color.magenta;
-        Gizmos.DrawRay(rootBoneTransform.position, rootBoneTransform.forward * 30f);
+        Gizmos.DrawRay(rootBoneTransform.position, rootBoneTransform.forward * 9f);
+        Gizmos.color = Color.green;
     }
     
 }
