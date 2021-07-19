@@ -79,7 +79,7 @@ public class EnemyAIUsurper : BossAI
             {
                 if (!isAttacking)
                 {
-                    Debug.Log("Fly Flame Attack!");
+                    playerFixedPoint = player.position;
                     LookAtFixedPoint(playerFixedPoint);
                     CastFireballs();
                 }
@@ -254,7 +254,16 @@ public class EnemyAIUsurper : BossAI
     
     private void SpawnFireballs ()
     {
-        attack.CreateProjectile(rootBoneTransform.forward);
+        attack.CreateProjectile(rootBoneTransform.forward + (Vector3.down * 0.15f));
+    }
+    
+    private void SpawnFireballsFlying ()
+    {
+        Vector3 target = rootBoneTransform.forward;
+        float random = UnityEngine.Random.Range(0.05f, 0.75f) /
+                       (Vector3.Distance(rootBoneTransform.forward, player.transform.position));
+        target.y = random - target.y;
+        attack.CreateProjectile(target);
     }
 
     private void ResetAttackTimer ()
