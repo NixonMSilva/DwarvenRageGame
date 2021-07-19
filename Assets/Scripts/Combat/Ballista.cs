@@ -6,6 +6,7 @@ public class Ballista : MonoBehaviour
 {
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform target;
+    [SerializeField] private Transform firePoint2;
 
     [SerializeField] private GameObject ballistaProjectile;
     
@@ -75,7 +76,7 @@ public class Ballista : MonoBehaviour
 
     private void StartBallistaUsage ()
     {
-        UserInterfaceController.instance.ShowProgressMenu("Carregamento da Ballista");
+        UserInterfaceController.instance.ShowProgressMenu("Carregamento da Balista");
         UserInterfaceController.instance.SetProgressIcon(ballistaIcon);
         UserInterfaceController.instance.UpdateProgressBar(0f);
     }
@@ -90,12 +91,12 @@ public class Ballista : MonoBehaviour
         isBallistaLoaded = false;
         
         GameObject harpoon = Instantiate(ballistaProjectile, firePoint.position, Quaternion.identity);
-        harpoon.GetComponent<ProjectileController>().SetTarget(target.position - transform.position);
+        harpoon.GetComponent<ProjectileController>().SetTarget(firePoint2.position - firePoint.position);
+        harpoon.GetComponent<ProjectileController>().FaceTowards(firePoint.position, firePoint2.position);
         
         // Play cannon sound
         AudioManager.instance.PlaySound("Canhao");
-
-
+        
         UserInterfaceController.instance.UpdateProgressBar(0f);
     }
 

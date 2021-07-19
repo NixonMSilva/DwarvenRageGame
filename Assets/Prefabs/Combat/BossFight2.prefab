@@ -104,7 +104,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4617540929629672579}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 221.4, y: -59.3, z: -28.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -246,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4617540930044564377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.181, y: 2.31, z: 3.814}
+  m_LocalPosition: {x: -0.18, y: 4.11, z: -5.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5160690314946248470}
@@ -577,6 +577,14 @@ PrefabInstance:
       propertyPath: bossFight
       value: 
       objectReference: {fileID: 4617540929629672604}
+    - target: {fileID: 6787723956782847298, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
+      propertyPath: firePoint2
+      value: 
+      objectReference: {fileID: 4617540930044564374}
+    - target: {fileID: 6787723956782847298, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
+      propertyPath: ballistaLoadingTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7378208461174707302, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.5

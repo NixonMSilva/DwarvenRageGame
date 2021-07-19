@@ -2,11 +2,6 @@ using UnityEngine;
 
 public class BallistaProjectile : ProjectileController
 {
-
-    private new void Start ()
-    {
-        base.Start();
-    }
     
     public override void OnTriggerEnter (Collider other)
     {
