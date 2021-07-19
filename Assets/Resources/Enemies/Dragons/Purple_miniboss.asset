@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Purple_miniboss
   m_EditorClassIdentifier: 
   enemyName: Terror Dragon
-  maxHealth: 1500
-  attackDamage: 15
+  maxHealth: 2500
+  attackDamage: 35
   drops:
   - item: {fileID: 7163305338665221067, guid: 57eac5d66a838f94d8c48dba3080f25c, type: 3}
-    dropChance: 0.75
-  goldDrop: 5000
+    dropChance: 1
+  goldDrop: 15000
   goldDropVariance: 0
   damageType: 0
   damageEffect: {fileID: 0}

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 25
   itemName: Maca Draconica
-  itemDescription: "A for\xE7a de um drag\xE3o forjada em arma! Tem uma chance de
-    fornecer resist\xEAncia a fogo e se usada com o Escudo Drac\xF4nico seu dano
-    aumenta!"
+  itemDescription: "Ma\xE7a de 1 m\xE3o e a for\xE7a de um drag\xE3o forjada em arma!
+    Tem uma chance de fornecer resist\xEAncia a fogo e se usada com o Escudo Drac\xF4nico
+    seu dano aumenta!"
   worldMesh: {fileID: -2072928189253646510, guid: 208ebcc9230fe0b4c88a6b5cfad5aee7, type: 3}
   materialList:
   - {fileID: 2100000, guid: 2532e4bd7a172eb48b50aee7a417fc35, type: 2}
@@ -26,12 +26,12 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 5139d6a89ef93d042ab5a2ab4c37ee1d, type: 3}
   audioPurchaseName: draconic_mace
   audioPickupName: 
-  price: 50000
+  price: 45000
   posX: -0.00117
   posY: 0.00052
   posZ: 0.00003
-  damage: 125
-  damageType: 0
+  damage: 170
+  damageType: 6
   criticalChance: 0.05
   isTwoHanded: 0
   protections:

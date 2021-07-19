@@ -1440,7 +1440,7 @@ MonoBehaviour:
   blockAngle: 45
   resistanceSheet: {fileID: 11400000, guid: 1a884b7ead3f8834fa51ea9a98bbe058, type: 2}
   _activeDOTs: []
-  painThreshold: 0.25
+  painThreshold: 0
   thisLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -1460,13 +1460,13 @@ MonoBehaviour:
   blood: {fileID: 0}
   firePointA: {fileID: 0}
   firePointB: {fileID: 0}
-  attackRange: 4
+  attackRange: 5
   attackSpeed: 1
   powerAttackSpeedMult: 0.7
   damageableLayer:
     serializedVersion: 2
     m_Bits: 128
-  attackDamage: 25
+  attackDamage: 50
   currentAttackDamage: 0
   equipment: {fileID: 0}
   projectile: {fileID: 0}
@@ -1583,9 +1583,9 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
   isPatrolling: 0
-  timeBetweenAttacks: 2
+  timeBetweenAttacks: 1.5
   sightRange: 125
-  attackRange: 8
+  attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
   rotationSpeed: 10

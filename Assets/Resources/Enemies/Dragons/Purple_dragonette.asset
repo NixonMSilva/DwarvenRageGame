@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Purple_dragonette
   m_EditorClassIdentifier: 
   enemyName: Purple Dragonette
-  maxHealth: 220
+  maxHealth: 270
   attackDamage: 25
   drops:
   - item: {fileID: 7163305338665221067, guid: 57eac5d66a838f94d8c48dba3080f25c, type: 3}
-    dropChance: 0.5
+    dropChance: 0.6
   goldDrop: 500
   goldDropVariance: 100
-  damageType: 0
-  damageEffect: {fileID: 0}
+  damageType: 1
+  damageEffect: {fileID: 11400000, guid: 633cf6337b7ed304b9b0f4d7f6c9142a, type: 2}
   soundIdle: pig_idle
   soundAttack: pig_attack
   soundDamage: pig_hit

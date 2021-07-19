@@ -9,6 +9,8 @@ public class EnemyAIUsurper : BossAI
     [SerializeField] private Transform attackPoint;
 
     private bool isBlocking = false;
+
+    private bool isLocked = false;
     
     [SerializeField] private bool isFlying = false;
 
@@ -17,6 +19,22 @@ public class EnemyAIUsurper : BossAI
     private float[] weights2 = { 40f, 60f, 80f, 95f };
     private float[] weights3 = { 60f, 70f, 80f, 90f };
 
+    private bool[] stageTriggers = { false, false, false };
+
+    [SerializeField] private Transform rootBoneTransform;
+
+    public bool Flying
+    {
+        get => isFlying;
+        set => isFlying = value;
+    }
+
+    public bool Locked
+    {
+        get => isLocked;
+        set => isLocked = value;
+    }
+    
     private void Start ()
     {
         status.OnHealthChange += CheckHealth;
@@ -36,21 +54,34 @@ public class EnemyAIUsurper : BossAI
         // Process normally if the enemy can act or it's not blocking or the fight stage is invalid
         if (CanAct() && !status.IsBlocking && IsFightStageValid())
         {
-            // Update speed for animation purposes
-            UpdateSpeed();
-            
-            // Updates to check if the player is in attack range
-            if (IsPlayerInAttackRange())
+            if (!isFlying)
             {
-                StandStill();
-                playerFixedPoint = player.position;
-                MakeNextDecision();
+                // Update speed for animation purposes
+                UpdateSpeed();
+            
+                // Updates to check if the player is in attack range
+                if (IsPlayerInAttackRange())
+                {
+                    StandStill();
+                    playerFixedPoint = player.position;
+                    MakeNextDecision();
+                }
+                else
+                {
+                    if (!isAttacking)
+                        ChasePlayer();
+                } 
             }
             else
             {
                 if (!isAttacking)
-                    ChasePlayer();
+                {
+                    LookAtFixedPoint(playerFixedPoint);
+                    CastFireballs();
+                }
+                    
             }
+            
         }
         else
         {
@@ -124,13 +155,13 @@ public class EnemyAIUsurper : BossAI
         switch (value)
         {
             case 0:
-                AttackNormal();
+                AttackBreath();
                 break;
             case 1:
                 AttackBreath();
                 break;
             case 2:
-                AttackClaw();
+                AttackBreath();
                 break;
             case 3:
                 Block();
@@ -169,7 +200,8 @@ public class EnemyAIUsurper : BossAI
     {
         StopForAttack();
         
-        anim.Play("Claw Attack");
+        anim.Play("Basic Attack");
+        //anim.Play("Claw Attack");
         
         isAttacking = true;
         alreadyAttacked = true;
@@ -194,15 +226,18 @@ public class EnemyAIUsurper : BossAI
     {
         Debug.Log("Fly!");
         StandStill();
-        anim.Play("Take Off");
+        FightStage = 4;
         anim.SetBool("isFlying", true);
+        
     }
 
     public void Land ()
     {
+        Debug.Log("Land!");
         StandStill();
-        isFlying = false;
+        FightStage = 1;
         anim.SetBool("isFlying", false);
+        isFlying = false;
     }
     
     private void CastFireballs ()
@@ -215,6 +250,11 @@ public class EnemyAIUsurper : BossAI
         alreadyAttacked = true;
         
         ResetAttackTimer();
+    }
+    
+    private void SpawnFireballs ()
+    {
+        attack.CreateProjectile(rootBoneTransform.forward);
     }
 
     private void ResetAttackTimer ()
@@ -246,22 +286,24 @@ public class EnemyAIUsurper : BossAI
     {
         float currentHealthPercentage = health / maxHealth;
 
-        // Don't reprocess if the fight stage is 4 or above (flight)
-        if (FightStage >= 4)
-            return;
-        
         // Flight triggers
-        if (currentHealthPercentage < 0.95f && FightStage == 1)
+        if (currentHealthPercentage < 0.95f && stageTriggers[0] == false && !isFlying)
         {
-            FightStage += 3;
+            stageTriggers[0] = true;
+            Fly();
+            
         }
-        else if (currentHealthPercentage < 0.45f && FightStage == 2)
+
+        if (currentHealthPercentage < 0.5f && stageTriggers[1] == false && !isFlying)
         {
-            FightStage += 3;
+            stageTriggers[1] = true;
+            Fly();
         }
-        else if (currentHealthPercentage < 0.25f && FightStage == 3)
+
+        if (currentHealthPercentage < 0.3f && stageTriggers[2] == false && !isFlying)
         {
-            FightStage += 3;
+            stageTriggers[2] = true;
+            Fly();
         }
     }
 
@@ -286,39 +328,20 @@ public class EnemyAIUsurper : BossAI
             case 0:
                 anim.SetBool("hasStarted", true);
                 break;
-            case 1:
-                if (isFlying)
-                    Land();
-                break;
-            case 2:
-                if (isFlying)
-                    Land();
-                break;
-            case 3:
-                if (isFlying)
-                    Land();
-                break;
-            case 4:
-                if (!isFlying)
-                    Fly();
-                break;
-            case 5:
-                if (!isFlying)
-                    Fly();
-                break;
-            case 6:
-                if (!isFlying)
-                    Fly();
-                break;
         }
     }
     
+    private new bool CanAct ()
+    {
+        return (!status.IsDying && !isAttacking && !isBeingStaggered && !isLocked);
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawRay(rootBoneTransform.position, rootBoneTransform.forward * 30f);
     }
     
 }

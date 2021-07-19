@@ -1866,6 +1866,7 @@ MonoBehaviour:
   maxArmor: 100
   armor: 0
   isBlocking: 0
+  blockAngle: 45
   resistanceSheet: {fileID: 11400000, guid: 4151573f6f046cc46a8d7a278a62b6e0, type: 2}
   _activeDOTs: []
   painThreshold: 0.25
@@ -1884,7 +1885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcfbeebfe97d63448bd26a9b306b513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: {fileID: 11400000, guid: 6ef58d41bfd915b45ad15c86302805fb, type: 2}
+  enemyType: {fileID: 11400000, guid: 0cfb4daa41df14540b0202837b71f486, type: 2}
   deathExtraEffectPoint: {fileID: 0}
   deathExtraEffectFX: {fileID: 0}
   deathExtraEffectRange: 0

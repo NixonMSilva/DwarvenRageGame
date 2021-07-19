@@ -591,7 +591,7 @@ MonoBehaviour:
   blockAngle: 45
   resistanceSheet: {fileID: 11400000, guid: 4151573f6f046cc46a8d7a278a62b6e0, type: 2}
   _activeDOTs: []
-  painThreshold: 0.25
+  painThreshold: 0
   thisLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcfbeebfe97d63448bd26a9b306b513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: {fileID: 11400000, guid: 6ef58d41bfd915b45ad15c86302805fb, type: 2}
+  enemyType: {fileID: 11400000, guid: 68ac6ba9cd44dba46ac1f009f8d3ce8f, type: 2}
   deathExtraEffectPoint: {fileID: 0}
   deathExtraEffectFX: {fileID: 0}
   deathExtraEffectRange: 0

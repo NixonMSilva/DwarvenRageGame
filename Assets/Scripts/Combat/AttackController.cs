@@ -310,6 +310,17 @@ public class AttackController : MonoBehaviour
         attackProjectileData.SetTarget(point);
         attackProjectileData.FaceTowards(AttackPoint.position, point);
     }
+    
+    public void CreateProjectile (Vector3 target)
+    {
+        GameObject attackProjectile;
+        Vector3 point = target;
+        attackProjectile = Instantiate(projectile, attackPoint.position, Quaternion.identity);
+        ProjectileController attackProjectileData = attackProjectile.GetComponent<ProjectileController>();
+        attackProjectileData.SetCaster(gameObject);
+        attackProjectileData.SetTarget(point);
+        attackProjectileData.FaceTowards(AttackPoint.position, point);
+    }
 
     public void RegisterAttack (float damage)
     {

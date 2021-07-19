@@ -27,9 +27,9 @@ public class ProjectileController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
     }
 
-    private void Start ()
+    protected void Start ()
     {
-        // Destruir o projétil caso este se perca por 10
+        // Destruir o projétil caso este se perca por 10 segundos
         Destroy(gameObject, 10f);
     }
 
