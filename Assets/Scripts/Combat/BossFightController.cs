@@ -76,6 +76,9 @@ public class BossFightController : MonoBehaviour
         // Initializes boss battle
         bossAI.FightStage = 0;
         
+        // Get ready
+        bossAI.Anim.SetBool("hasStarted", true);
+        
         // Initializes the boss UI
         UserInterfaceController.instance.ShowBossBar();
         UserInterfaceController.instance.UpdateBossBar(1f);
@@ -84,7 +87,7 @@ public class BossFightController : MonoBehaviour
     
     public virtual void HandleStageChange(int stage)
     {
-        //Debug.Log("Parent stage change");
+        
     }
 
     public int GetStage() => bossAI.FightStage;

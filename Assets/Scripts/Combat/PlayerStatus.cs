@@ -155,7 +155,7 @@ public class PlayerStatus : StatusController
 
     protected override void Die ()
     {
-        //AudioManager.instance.PlaySound("morreu_player");
+        AudioManager.instance.PlaySound("belgren_death");
         isDying = true;
         UserInterfaceController.instance.HidePlayerInterface();
         UserInterfaceController.instance.DeathMenu();
@@ -322,6 +322,12 @@ public class PlayerStatus : StatusController
         {
             case DamageType.poison:
                 UserInterfaceController.instance.ShowDamagePanel(new Color(0.3f, 1f, 0f));
+                break;
+            case DamageType.fire:
+                UserInterfaceController.instance.ShowDamagePanel(new Color(1f, 0.35f, 0f));
+                break;
+            case DamageType.ice:
+                UserInterfaceController.instance.ShowDamagePanel(new Color(0.25f, 0.25f, 1f));
                 break;
             default:
                 UserInterfaceController.instance.ShowDamagePanel(Color.red);

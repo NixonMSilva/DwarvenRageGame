@@ -89,6 +89,5 @@ public class BossAI : EnemyAI
     
     public virtual void HandleStageChange (int stage)
     {
-    
     }
 }
