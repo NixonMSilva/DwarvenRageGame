@@ -366,6 +366,39 @@ public class PlayerStatus : StatusController
         lastAttackPoint = attackPoint;
     }
     
+    public override void WearStatus (EffectBase effect, float duration, float originalValue)
+    {
+        EffectController effectTimeout = gameObject.AddComponent<EffectController>();
+        effectTimeout.SetTimer(duration, () =>
+        {
+            effect.NormalizeValues(this, originalValue);
+            Destroy(effectTimeout);
+        },
+        () => {
+            UpdateEffectIcons(effect.Type, effectTimeout.Percentage);
+        });
+        
+    }
+
+    private void UpdateEffectIcons (EffectType effect, float percentage)
+    {
+        switch (effect)
+        {
+            case EffectType.berserk:
+                UserInterfaceController.instance.UpdateBerserkIcon(percentage);
+                break;
+            case EffectType.fortune:
+                UserInterfaceController.instance.UpdateFortuneIcon(percentage);
+                break;
+            case EffectType.fireResistance:
+                UserInterfaceController.instance.UpdateFireResistanceIcon(percentage);
+                break;
+            case EffectType.poisonResistance:
+                UserInterfaceController.instance.UpdatePoisonResistanceIcon(percentage);
+                break;
+        }
+    }
+
     private void OnDrawGizmos ()
     {
         /*
