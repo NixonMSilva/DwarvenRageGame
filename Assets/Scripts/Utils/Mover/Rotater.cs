@@ -10,8 +10,8 @@ public class Rotater : MonoBehaviour
     private Quaternion? destination;
     private Quaternion startRotation;
 
-    private float totalMoveDuration;
-    private float elapsedMoveDuration;
+    [SerializeField] private float totalMoveDuration;
+    [SerializeField] private float elapsedMoveDuration;
 
     private Action completeCallback;
     
@@ -29,7 +29,10 @@ public class Rotater : MonoBehaviour
         transform.rotation = Interpolate(startRotation, destination.Value, movePercentage);
 
         if (elapsedMoveDuration >= totalMoveDuration)
+        {
             completeCallback.Invoke();
+            ResetTarget();
+        }
     }
 
     public void MoveTo (Quaternion nextRotation, Action onComplete = null)
@@ -50,6 +53,11 @@ public class Rotater : MonoBehaviour
             nextRotation.eulerAngles = new Vector3(0f, nextRotation.eulerAngles.y, 0f);    
         }
         MoveTo(nextRotation, onComplete);
+    }
+
+    private void ResetTarget ()
+    {
+        destination = null;
     }
 
     private Quaternion Interpolate (Quaternion start, Quaternion end, float percentage) => Quaternion.Slerp(start, end, percentage);

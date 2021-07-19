@@ -44,6 +44,12 @@ public class EnemyAI : MonoBehaviour
     protected float currSpeed;
     protected Vector3 playerPoint;
 
+    public Animator Anim
+    {
+        get => anim;
+        set => anim = value;
+    }
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;

@@ -8,8 +8,9 @@ public class SaveGame : MonoBehaviour, IInteractable
     [SerializeField] private GameManager managerRef;
     private void Start() 
     {
-        OnInteraction();
+        //OnInteraction();
     }
+    
     private void Awake ()
     {
         managerRef = GameObject.Find("GameManager").GetComponent<GameManager>();
