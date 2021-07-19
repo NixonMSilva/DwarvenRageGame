@@ -503,6 +503,7 @@ MonoBehaviour:
   maxArmor: 100
   armor: 0
   isBlocking: 0
+  blockAngle: 45
   resistanceSheet: {fileID: 11400000, guid: 4151573f6f046cc46a8d7a278a62b6e0, type: 2}
   _activeDOTs: []
   painThreshold: 0.25
@@ -521,7 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcfbeebfe97d63448bd26a9b306b513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: {fileID: 11400000, guid: 6ef58d41bfd915b45ad15c86302805fb, type: 2}
+  enemyType: {fileID: 11400000, guid: dfa05fbf0306f284d821394d102a4fe7, type: 2}
   deathExtraEffectPoint: {fileID: 0}
   deathExtraEffectFX: {fileID: 0}
   deathExtraEffectRange: 0
@@ -552,7 +553,7 @@ MonoBehaviour:
   attackDamage: 25
   currentAttackDamage: 0
   equipment: {fileID: 0}
-  projectile: {fileID: 4471353545854071841, guid: 3df1cd01600fa8c4892969c0038880a9, type: 3}
+  projectile: {fileID: 4471353545854071841, guid: 7e1aced21f15af84d921f42e7252b5f9, type: 3}
   canAttack: 1
   canAttackRanged: 1
 --- !u!114 &2999152392757689882
@@ -583,8 +584,8 @@ MonoBehaviour:
   walkPointRange: 15
   isPatrolling: 0
   timeBetweenAttacks: 1
-  sightRange: 30
-  attackRange: 15
+  sightRange: 50
+  attackRange: 50
   playerInSightRange: 0
   playerInAttackRange: 0
   rotationSpeed: 10
