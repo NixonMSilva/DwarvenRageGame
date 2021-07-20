@@ -362,7 +362,7 @@ RectTransform:
   - {fileID: 2084881636}
   - {fileID: 2086607919}
   m_Father: {fileID: 313285905}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -457,72 +457,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253492644}
   m_CullTransparentMesh: 1
---- !u!1 &279585163
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 279585165}
-  - component: {fileID: 279585164}
-  m_Layer: 0
-  m_Name: Video Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!328 &279585164
-VideoPlayer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 279585163}
-  m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 26eb16fa9f6bb9049b1899db61c8845e, type: 3}
-  m_TargetCameraAlpha: 1
-  m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 714e4b23371e4a24eb2f500f1aef4d20, type: 2}
-  m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 0}
-  m_TargetMaterialProperty: _MainTex
-  m_RenderMode: 2
-  m_AspectRatio: 2
-  m_DataSource: 0
-  m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
-  m_TargetAudioSources:
-  - {fileID: 0}
-  m_DirectAudioVolumes:
-  - 1
-  m_Url: 
-  m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
-  m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
-  m_Looping: 1
-  m_WaitForFirstFrame: 1
-  m_FrameReadyEventEnabled: 0
-  m_VideoShaders: []
---- !u!4 &279585165
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 279585163}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 551.45984, y: -17716.836, z: -2766.3386}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &313285901
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +549,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1836399919}
   - {fileID: 1506806654}
   - {fileID: 252945212}
   - {fileID: 977517838}
@@ -799,7 +734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 791031299360746743, guid: 10265def65f74514eb5b48af8c1f0e1b, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 791031299360746743, guid: 10265def65f74514eb5b48af8c1f0e1b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1418,8 +1353,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Obrigado por jogar
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2009,7 +1944,7 @@ RectTransform:
   - {fileID: 464685383}
   - {fileID: 1043791215}
   m_Father: {fileID: 313285905}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2253,7 +2188,7 @@ RectTransform:
   - {fileID: 649899510}
   - {fileID: 49977065}
   m_Father: {fileID: 313285905}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2449,7 +2384,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 313285905}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2766,6 +2701,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802842148}
   m_CullTransparentMesh: 1
+--- !u!1 &1836399918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1836399919}
+  - component: {fileID: 1836399921}
+  - component: {fileID: 1836399920}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1836399919
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836399918}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 313285905}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.39672852, y: 4.8911743}
+  m_SizeDelta: {x: 16.296, y: 9.7823}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1836399920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836399918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1836399921
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836399918}
+  m_CullTransparentMesh: 1
 --- !u!1 &1857148567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2841,9 +2851,10 @@ MonoBehaviour:
     dos Reis - (Narrador)\r\n\tIkaro Siqueira Rodrigues Vitor - (Troll)\n\tIkaro
     Siqueira Rodrigues Vitor - (Narrador Trailer)\r\n\r\nEfeitos Sonoros:\r\n\r\n\tIkaro
     Siqueira Rodrigues Vitor\r\n\t\r\nM\xFAsicas:\r\n\r\n\tIkaro Siqueira Rodrigues
-    Vitor(Creditos e Trailer)\n\t\n\tMusic: [Metalicious,HalloftheMetalKing,Metal,Valhalla,
+    Vitor(Creditos)\n\t\n\tMusic: [Metalicious,HalloftheMetalKing,Metal,Valhalla,
     \t\tThrough the White Steppes] by Alexander \t\t\t\tNakarada(www.serpentsoundstudios.com)\r\n\tLicensed
-    under Creative Commons BY Attribution 4.0 \t\tLicense\r\n \n\r\n\nColaboradores:\n\n\tInstituto
+    under Creative Commons BY Attribution 4.0 \t\tLicense\r\n \n\r\tKarl Casey @
+    White Bat Audio - Torn Flesh\n\tKarl Casey @ White Bat Audio - Fight Like Hell\n\nColaboradores:\n\n\tInstituto
     Gonfer\n\tFl\xE1vio Luz (Icone de Moeda do vendedor e Pintura do porco barbaro)\n\nPlaytesters:\n\n\tCalebe
     Colussi\n\tRaul Gonzales\n\tLuiz Celso Arruda Filho\n\tDalmo Fonseca Costa\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssets
     Utilizados: Armas, Monstros, Decora\xE7\xF5es e outros.\r\n\r\nCutelo: Butcher
@@ -2890,7 +2901,8 @@ MonoBehaviour:
     ArtCoding\n\nSkybox: Real Stars Skybox Lite -> Geoff Dallimore\r\n\nArte do Menu:
     Tobyfredson\r\n\r\nCampfire: jhepic\r\n\nTenda: Medieval Tent Small -> kawetofe\r\n\r\nFire
     Effect : Procedural Fire - > Hovl Studio\r\n\nPotion: Mini Fantasy Pack -> Robot
-    Skeleton\r\n\t\r\nBalista: Siege Ballista -> ShaoChiChen\r\n"
+    Skeleton\r\n\t\r\nBalista: Siege Ballista -> ShaoChiChen\r\n\nBloodGushFx(Brain
+    Material) -> RRFreelance/PiXelBurnerq"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}

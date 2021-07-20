@@ -226,7 +226,7 @@ public class StatusController : MonoBehaviour, IDamageable
         });
     }
 
-    public void WearStatus (EffectBase effect, float duration, float originalValue)
+    public virtual void WearStatus (EffectBase effect, float duration, float originalValue)
     {
         ActionOnTimer timeout = gameObject.AddComponent<ActionOnTimer>();
         timeout.SetTimer(duration, () =>

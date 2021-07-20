@@ -73,6 +73,17 @@ public class UserInterfaceController : MonoBehaviour
 
     private GameObject sceneLoader;
     private Slider sceneSlider;
+    
+    // Effects
+
+    private GameObject effectsPanel;
+    
+    private CanvasGroup effectFortune;
+    private CanvasGroup effectPoisonRes;
+    private CanvasGroup effectFireRes;
+    private CanvasGroup effectBerserk;
+
+    //
 
     private readonly string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
 
@@ -159,6 +170,14 @@ public class UserInterfaceController : MonoBehaviour
         buttonsPanel = GameObject.Find("Resume");
         optionsPanel = GameObject.Find("OptionsPanel");
         tutorialPanel = GameObject.Find("Tutorial");
+        
+        // Effects
+        effectsPanel = GameObject.Find("EffectPanel");
+        
+        effectFireRes = GameObject.Find("EffectFireRes").GetComponent<CanvasGroup>();
+        effectPoisonRes = GameObject.Find("EffectPoisonRes").GetComponent<CanvasGroup>();
+        effectBerserk = GameObject.Find("EffectBerserk").GetComponent<CanvasGroup>();
+        effectFortune = GameObject.Find("EffectFortune").GetComponent<CanvasGroup>();
 
         _itemSlots = new List<GameObject>();
 
@@ -189,6 +208,7 @@ public class UserInterfaceController : MonoBehaviour
         HideLoadingMenu();
         HidePauseMenu();
         HideBossBar();
+        HideEffectPanel();
     }
 
     private void OnDestroy ()
@@ -296,6 +316,7 @@ public class UserInterfaceController : MonoBehaviour
         ShowHealthBar();
         ShowCharacterFrame();
         ShowGoldFrame();
+        ShowEffectPanel();
     }
 
     public void CreateItemSlots (int count)
@@ -480,44 +501,24 @@ public class UserInterfaceController : MonoBehaviour
         rangedCooldownSlider.value = value;
     }
 
-    public void ShowBerserkIcon ()
+    public void UpdateBerserkIcon (float value)
     {
-
+        effectBerserk.alpha = value;
     }
 
-    public void HideBerserkIcon ()
+    public void UpdateFortuneIcon (float value)
     {
-
+        effectFortune.alpha = value;
     }
 
-    public void ShowFortuneIcon ()
+    public void UpdateFireResistanceIcon (float value)
     {
-
+        effectFireRes.alpha = value;
     }
 
-    public void HideFortuneIcon ()
+    public void UpdatePoisonResistanceIcon (float value)
     {
-
-    }
-
-    public void ShowFireResistanceIcon ()
-    {
-
-    }
-
-    public void HideFireResistanceIcon ()
-    {
-
-    }
-
-    public void ShowPoisonResistanceIcon ()
-    {
-
-    }
-
-    public void HidePoisonResistanceIcon ()
-    {
-
+        effectPoisonRes.alpha = value;
     }
 
     public void ShowBossBar ()
@@ -723,6 +724,16 @@ public class UserInterfaceController : MonoBehaviour
     public void UpdateLoadingSlider(float value)
     {
         sceneSlider.value = value;
+    }
+
+    public void ShowEffectPanel ()
+    {
+        effectsPanel.SetActive(true);
+    }
+
+    public void HideEffectPanel ()
+    {
+        effectsPanel.SetActive(false);
     }
 
     // 0 - Out | 1 - In

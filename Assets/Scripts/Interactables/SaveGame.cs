@@ -2,17 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class SaveGame : MonoBehaviour, IInteractable
 { 
     [SerializeField] private GameManager managerRef;
-
-    [SerializeField] private UnityEvent onGameStart;
     private void Start() 
     {
-        onGameStart?.Invoke();
+        //OnInteraction();
     }
+    
     private void Awake ()
     {
         managerRef = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -21,6 +19,5 @@ public class SaveGame : MonoBehaviour, IInteractable
     public void OnInteraction ()
     {
         managerRef.SaveGame();
-        
     }
 }

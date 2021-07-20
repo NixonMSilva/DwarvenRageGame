@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a346678176c998c4792e091cdb337199, type: 2}
+  - {fileID: 2100000, guid: 414975f43c69e7e40876fe9994b4f71b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   - Damageable
   - Wall
   damageValue: 5
-  damageType: 1
+  damageType: 4
   effect: {fileID: 11400000, guid: 078c379681fbfe94abba3b0fdc19c65f, type: 2}
   bleedOnImpact: 0
 --- !u!1001 &1672067005005192312
@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6845721243341664975, guid: c5ec77d67f3e55146a420dd56d368c4f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 414975f43c69e7e40876fe9994b4f71b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5ec77d67f3e55146a420dd56d368c4f, type: 3}
 --- !u!4 &5465350532977911204 stripped

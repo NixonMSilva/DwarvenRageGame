@@ -1916,7 +1916,7 @@ MonoBehaviour:
   attackDamage: 25
   currentAttackDamage: 0
   equipment: {fileID: 0}
-  projectile: {fileID: 4471353545854071841, guid: 3df1cd01600fa8c4892969c0038880a9, type: 3}
+  projectile: {fileID: 4471353545854071841, guid: e55095c736f633646a48f97cd0e96d1b, type: 3}
   canAttack: 1
   canAttackRanged: 1
 --- !u!114 &538278745119255409
@@ -1947,8 +1947,8 @@ MonoBehaviour:
   walkPointRange: 15
   isPatrolling: 0
   timeBetweenAttacks: 1
-  sightRange: 30
-  attackRange: 15
+  sightRange: 50
+  attackRange: 50
   playerInSightRange: 0
   playerInAttackRange: 0
   rotationSpeed: 10

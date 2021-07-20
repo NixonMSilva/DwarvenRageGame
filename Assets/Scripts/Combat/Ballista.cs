@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ballista : MonoBehaviour
@@ -16,11 +14,13 @@ public class Ballista : MonoBehaviour
     
     [SerializeField] private float ballistaLoadingTime;
     
-    private float ballistaProgress = 0f;
+    [SerializeField] private float ballistaProgress = 0f;
     
-    private bool isBallistaLoading = false;
-    private bool isBallistaLoaded = false;
+    [SerializeField] private bool isBallistaLoading = false;
+    [SerializeField] private bool isBallistaLoaded = false;
 
+    [SerializeField] private float percentage;
+    
     private Rotater rotationEvent;
     private TooltipController ballistaTooltip;
 
@@ -42,8 +42,8 @@ public class Ballista : MonoBehaviour
     {
         ballistaProgress += Time.deltaTime;
         
-        float percentage = Mathf.Clamp01(ballistaProgress / ballistaLoadingTime) * 100f;
-            
+        percentage = Mathf.Clamp01(ballistaProgress / ballistaLoadingTime) * 100f;
+
         UserInterfaceController.instance.UpdateProgressBar(Mathf.Round(percentage));
         
         if (ballistaProgress >= ballistaLoadingTime)
@@ -57,12 +57,12 @@ public class Ballista : MonoBehaviour
     public void BallistaInteraction ()
     {
         // Only interact if the boss battle has started or if he isn't defeated
-        if (bossFight.GetStage() > 0 && !bossFight.IsBossDefeated)
+        if (bossFight.GetStage() > 0 && !bossFight.IsBossDefeated && (percentage == 0f || percentage == 100f))
         {
             if (noUses++ == 0)
                 StartBallistaUsage();
             
-            if (isBallistaLoaded)
+            if (percentage >= 100f)
             {
                 LookAtTarget();
             }
@@ -85,18 +85,18 @@ public class Ballista : MonoBehaviour
     {
         if (target == null || ballistaProgress < 1f)
             return;
-        
-        // Reset the blood bar
-        ballistaProgress = 0f;
-        isBallistaLoaded = false;
-        
+
         GameObject harpoon = Instantiate(ballistaProjectile, firePoint.position, Quaternion.identity);
         harpoon.GetComponent<ProjectileController>().SetTarget(firePoint2.position - firePoint.position);
         harpoon.GetComponent<ProjectileController>().FaceTowards(firePoint.position, firePoint2.position);
         
         // Play cannon sound
         AudioManager.instance.PlaySound("Canhao");
-        
+
+        // Reset the loading bar
+        ballistaProgress = 0f;
+        percentage = 0f;
+        isBallistaLoaded = false;
         UserInterfaceController.instance.UpdateProgressBar(0f);
     }
 
