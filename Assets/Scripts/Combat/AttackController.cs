@@ -43,7 +43,9 @@ public class AttackController : MonoBehaviour
     [SerializeField] private bool canAttackRanged = true;
 
     private float rangedCooldown;
-
+    
+    private HashSet<IDamageable> damagedObjects = new HashSet<IDamageable>();
+    
     public float Damage
     {
         get { return attackDamage; }
@@ -291,7 +293,6 @@ public class AttackController : MonoBehaviour
             attackProjectileData.SetTarget(point - firePointB.position);
             attackProjectileData.FaceTowards(AttackPoint.position, point);
             Debug.DrawLine(firePointB.position, point, Color.green, 10f);
-            //Debug.DrawRay(firePointB.position, point, Color.magenta, 10f);
         }
         else
         {
@@ -330,7 +331,7 @@ public class AttackController : MonoBehaviour
         // remove duplicates - in case some object has
         // more than one collider, it will count as
         // n hits where n is the number of colliders
-        // from this object the histcan has touched
+        // from this object the hit scan has touched
         List<GameObject> hitEntities = new List<GameObject>();
 
         foreach (Collider hit in hitObjects)
@@ -338,10 +339,14 @@ public class AttackController : MonoBehaviour
 
         hitEntities = hitEntities.Distinct().ToList();
 
+        damagedObjects.Clear();
+
         // Apply damage to the entities hit
         foreach (GameObject hitEntity in hitEntities)
         {
-            if (hitEntity.TryGetComponent(out IDamageable damagedObj))
+            IDamageable damagedObj = hitEntity.GetComponentInParent<IDamageable>();
+            
+            if (damagedObj != null && damagedObjects.Add(damagedObj))
             {
                 damagedObj.CheckForBlock(attackPoint);
                 PlayConnectSound(attackPoint);
@@ -352,7 +357,7 @@ public class AttackController : MonoBehaviour
 
                     if (TryForCritical())
                     {
-                        Debug.Log("Critical Hit!");
+                        //Debug.Log("Critical Hit!");
                         PlayCriticalSound();
                         damageModifier *= 2f;
                     }

@@ -44,7 +44,7 @@ public class Boss2FightController : BossFightController
     {
         if (crystalSpawner != null)
         {
-            Debug.Log("Crystal spawner active");
+            //Debug.Log("Crystal spawner active");
             crystalSpawner.CanSpawnCrystal = true;
         }
     }
@@ -53,7 +53,7 @@ public class Boss2FightController : BossFightController
     {
         if (crystalSpawner != null)
         {
-            Debug.Log("Crystal spawner deactivated");
+            //Debug.Log("Crystal spawner deactivated");
             crystalSpawner.CanSpawnCrystal = false;
         }
     }

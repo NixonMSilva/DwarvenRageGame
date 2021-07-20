@@ -24,6 +24,8 @@ public class EnemyAIUsurper : BossAI
     [SerializeField] private Transform rootBoneTransform;
     [SerializeField] private Transform playerHeightTransform;
 
+    [SerializeField] private float delta;
+ 
     public bool Flying
     {
         get => isFlying;
@@ -225,7 +227,7 @@ public class EnemyAIUsurper : BossAI
     
     public void Fly ()
     {
-        Debug.Log("Fly!");
+        //Debug.Log("Fly!");
         StandStill();
         FightStage = 4;
         anim.SetBool("isFlying", true);
@@ -234,7 +236,7 @@ public class EnemyAIUsurper : BossAI
 
     public void Land ()
     {
-        Debug.Log("Land!");
+        //Debug.Log("Land!");
         StandStill();
         FightStage = 1;
         anim.SetBool("isFlying", false);
@@ -255,14 +257,39 @@ public class EnemyAIUsurper : BossAI
     
     private void SpawnFireballs ()
     {
-        attack.CreateProjectile(rootBoneTransform.forward + (Vector3.down * 0.15f));
+        Vector3 target = rootBoneTransform.forward;
+        for (int i = 0; i < 3; ++i)
+        {
+            float random = UnityEngine.Random.Range(0.05f, 1.5f);
+            target.y = -random - target.y;
+        }
+
+        attack.CreateProjectile(target);
     }
     
     private void SpawnFireballsFlying ()
     {
         Vector3 target = rootBoneTransform.forward;
-        float random = UnityEngine.Random.Range(0.05f, 3f);
-        target.y = random - target.y;
+        Vector3 groundedTarget = rootBoneTransform.position;
+        groundedTarget.y = player.transform.position.y;
+
+        float opposite = player.transform.position.y - rootBoneTransform.position.y;
+        float adjacent = Vector3.Distance(groundedTarget, player.transform.position);
+        float tangent = opposite / adjacent;
+        
+        //Debug.Log("Opposite: " + opposite + " | Adjacent: " + adjacent + " | Tangent: " + tangent);
+            
+        float random = UnityEngine.Random.Range(0.05f, 1.5f);
+        
+        target.y = tangent; //-(rootBoneTransform.position.y / player.transform.position.y);
+        attack.CreateProjectile(target);
+        target.y = tangent + delta;
+        attack.CreateProjectile(target);
+        target.y = tangent + (delta * 0.5f);
+        attack.CreateProjectile(target);
+        target.y = tangent - delta;
+        attack.CreateProjectile(target);
+        target.y = tangent - (delta * 0.5f);
         attack.CreateProjectile(target);
     }
 
