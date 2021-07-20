@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class EnemyAIUsurper : BossAI
 {
+    [SerializeField] private bool canTaunt = true;
+    
+    [SerializeField] private float tauntCooldown = 30f;
+
     [SerializeField] private Transform attackPoint;
 
     private bool isBlocking = false;
@@ -51,8 +55,14 @@ public class EnemyAIUsurper : BossAI
     protected new void Update()
     {
         // Cull if player is too distant
-        if (Vector3.SqrMagnitude(player.position - transform.position) > 22000f)
+        if (Vector3.SqrMagnitude(player.position - transform.position) > 25000f)
             return;
+
+        if (isLocked)
+            return;
+        
+        if (isFlying && status.IsDying)
+            anim.Play("DieFlight");
 
         // Process normally if the enemy can act or it's not blocking or the fight stage is invalid
         if (CanAct() && !status.IsBlocking && IsFightStageValid())
@@ -73,7 +83,7 @@ public class EnemyAIUsurper : BossAI
                 {
                     if (!isAttacking)
                         ChasePlayer();
-                } 
+                }
             }
         }
         else
@@ -91,6 +101,11 @@ public class EnemyAIUsurper : BossAI
             StandStill();
         }
 
+        if (canTaunt && !status.IsDying)
+        {
+            Taunt();
+        }
+
         if (isAttacking || status.IsDying)
         {
             LookAtFixedPoint(playerFixedPoint);
@@ -98,6 +113,19 @@ public class EnemyAIUsurper : BossAI
             if (status.IsDying)
                 StandStill();
         }
+    }
+
+    private void Taunt ()
+    {
+        // Taunt logic
+        canTaunt = false;
+        AudioManager.instance.PlaySoundRandom("dragon_taunt");
+        ActionOnTimer onTimeAction = gameObject.AddComponent<ActionOnTimer>();
+        onTimeAction.SetTimer(tauntCooldown, () =>
+        {
+            canTaunt = true;
+            Destroy(onTimeAction);
+        });
     }
 
     private void MakeNextDecision ()
@@ -231,16 +259,13 @@ public class EnemyAIUsurper : BossAI
         StandStill();
         FightStage = 4;
         anim.SetBool("isFlying", true);
-        
     }
 
     public void Land ()
     {
-        //Debug.Log("Land!");
         StandStill();
         FightStage = 1;
         anim.SetBool("isFlying", false);
-        isFlying = false;
     }
     
     private void CastFireballs ()
@@ -327,6 +352,7 @@ public class EnemyAIUsurper : BossAI
         {
             stageTriggers[0] = true;
             Fly();
+            PlayScreamSound();
             
         }
 
@@ -334,12 +360,16 @@ public class EnemyAIUsurper : BossAI
         {
             stageTriggers[1] = true;
             Fly();
+            PlayScreamSound();
+            
         }
 
         if (currentHealthPercentage < 0.3f && stageTriggers[2] == false && !isFlying)
         {
             stageTriggers[2] = true;
             Fly();
+            PlayScreamSound();
+            
         }
     }
 
@@ -370,6 +400,16 @@ public class EnemyAIUsurper : BossAI
     private new bool CanAct ()
     {
         return (!status.IsDying && !isAttacking && !isBeingStaggered && !isLocked);
+    }
+
+    public void PlayScreamSound ()
+    {
+        AudioManager.instance.PlaySoundAt(gameObject, "dragon_scream");
+    }
+
+    public void PlayBiteSound ()
+    {
+        AudioManager.instance.PlaySoundAt(gameObject, "dragon_bite");
     }
 
     private void OnDrawGizmos ()

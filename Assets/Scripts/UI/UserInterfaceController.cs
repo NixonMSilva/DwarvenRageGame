@@ -208,7 +208,6 @@ public class UserInterfaceController : MonoBehaviour
         HideLoadingMenu();
         HidePauseMenu();
         HideBossBar();
-        HideEffectPanel();
     }
 
     private void OnDestroy ()
@@ -305,6 +304,7 @@ public class UserInterfaceController : MonoBehaviour
         HideHealthBar();
         HideCharacterFrame();
         HideGoldFrame();
+        HideEffectPanel();
     }
 
     public void ShowPlayerInterface ()

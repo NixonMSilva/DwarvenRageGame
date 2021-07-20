@@ -23,7 +23,6 @@ public class MusicController : MonoBehaviour
         if (music.clip == null)
             return;
         
-        music.volume = 0.3f * AudioManager.instance.MusicVolume;
         music = GetComponent<AudioSource>();
     }
 

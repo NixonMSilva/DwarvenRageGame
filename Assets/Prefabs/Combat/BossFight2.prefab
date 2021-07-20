@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crystalPrefab: {fileID: 4471353545854071841, guid: c5c90394bc7613641aaa8dd33657b008, type: 3}
-  spawnMinTime: 0.2
-  spawnMaxTime: 1
+  spawnMinTime: 0.05
+  spawnMaxTime: 0.25
   crystalSpawnLimiterMin: {fileID: 4617540930165501293}
   crystalSpawnLimiterMax: {fileID: 4617540929623639385}
 --- !u!1 &4617540929623639384
@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 4617540929629672607}
   - component: {fileID: 4617540929629672577}
   - component: {fileID: 4617540929629672604}
+  - component: {fileID: 654409504}
   m_Layer: 0
   m_Name: BossFight2
   m_TagString: Untagged
@@ -159,18 +160,6 @@ MonoBehaviour:
   OnBossDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 4617540929629672577}
         m_TargetAssemblyTypeName: EventObject, Game
         m_MethodName: HandleExecution
@@ -195,18 +184,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TestOpenDoor, Game
-        m_MethodName: UnlockDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2326651675921874016}
         m_TargetAssemblyTypeName: Ballista, Game
         m_MethodName: DisableBallista
@@ -219,9 +196,59 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  bossIcon: {fileID: 21300000, guid: e5789b1aa71b7714f91b238ca6a3d6b1, type: 3}
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: dragon_boss_death
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  bossIcon: {fileID: 21300000, guid: 5f9e8e1d113ba5c43a67da0a4918bfaf, type: 3}
   bossHealth: {fileID: 0}
   crystalSpawner: {fileID: 4617540929372718702}
+--- !u!114 &654409504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4617540929629672579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b569e3d8f11f01f47a6391740290b62a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 284b10825d2589f47a5a04d2c7e7f0c6, type: 3}
+  controller: {fileID: 0}
 --- !u!1 &4617540930044564377
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +376,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 919132147596100548, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
+      propertyPath: m_Radius
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147596100548, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147596100548, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
+      propertyPath: m_Center.z
+      value: 2.14
+      objectReference: {fileID: 0}
     - target: {fileID: 1641690268492949738, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.5
@@ -459,7 +498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171828424131466804, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.13098
+      value: -45.55
       objectReference: {fileID: 0}
     - target: {fileID: 4171828424131466804, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -467,11 +506,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171828424131466804, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.924194
+      value: 38.56
       objectReference: {fileID: 0}
     - target: {fileID: 4171828424131466804, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8777465
+      value: 0.9456898
       objectReference: {fileID: 0}
     - target: {fileID: 4171828424131466804, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -479,7 +518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171828424131466804, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.47912535
+      value: -0.32507056
       objectReference: {fileID: 0}
     - target: {fileID: 4171828424131466804, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -491,7 +530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171828424131466804, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -57.257
+      value: -37.94
       objectReference: {fileID: 0}
     - target: {fileID: 4171828424131466804, guid: 60c7fdc03204fa34ba9518f7db8b605e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

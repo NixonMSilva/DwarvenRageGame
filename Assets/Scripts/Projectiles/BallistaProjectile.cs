@@ -13,7 +13,6 @@ public class BallistaProjectile : ProjectileController
             {
                 if (enemy.Flying)
                 {
-                    Debug.Log("Here!");
                     enemy.Land();
                 }
             }

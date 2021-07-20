@@ -21,6 +21,8 @@ public class ProjectileController : MonoBehaviour
     protected Vector3 target;
 
     protected Rigidbody rigidBody;
+    
+    private HashSet<IDamageable> damagedObjects = new HashSet<IDamageable>();
 
     private void Awake ()
     {
@@ -31,6 +33,7 @@ public class ProjectileController : MonoBehaviour
     {
         // Destruir o projétil caso este se perca por 10 segundos
         Destroy(gameObject, 10f);
+        damagedObjects.Clear();
     }
 
     public virtual void OnTriggerEnter (Collider other)
@@ -43,7 +46,7 @@ public class ProjectileController : MonoBehaviour
         {
             IDamageable target = other.gameObject.GetComponentInParent<IDamageable>();
             
-            if (target != null)
+            if (target != null && damagedObjects.Add(target))
             {
                 // Check if the target isn't blocking
                 target.CheckForBlock(transform);
@@ -62,6 +65,7 @@ public class ProjectileController : MonoBehaviour
                 {
                     target.SpawnBlood(transform.position);
                 }
+                Debug.Log("1 attack");
             }
             Destroy(gameObject);
         }
