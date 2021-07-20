@@ -86,7 +86,7 @@ public class Berserker : EffectBase
     {
         target.Attack.Berserk = true;
         target.Attack.TemporaryDamage = target.Attack.Damage * data.magnitude;
-        target.WearStatus(this, data.duration);
+        target.WearStatus (this, data.duration, 0f);
 
         // If it's the player, double the speed as well
         if (target.gameObject.CompareTag("Player"))
@@ -102,7 +102,12 @@ public class Berserker : EffectBase
         target.Speed = target.DefaultSpeed;
     }
 
-    public override void NormalizeValues (StatusController target, float value) { }
+    public override void NormalizeValues (StatusController target, float value)
+    {
+        target.Attack.Berserk = false;
+        target.Attack.TemporaryDamage = target.Attack.Damage;
+        target.Speed = target.DefaultSpeed;
+    }
 }
 
 public class FireResistance : EffectBase

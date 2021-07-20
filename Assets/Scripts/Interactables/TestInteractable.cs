@@ -8,6 +8,9 @@ public class TestInteractable : MonoBehaviour, IInteractable
     SaveController manager;
     [SerializeField] private string fala;
     private int aleatorio;
+
+    [SerializeField] private SceneLoader sceneLoader;
+    
     private void Awake() 
     {
         manager = GameObject.Find("GameManager").GetComponent<SaveController>();
@@ -53,6 +56,6 @@ public class TestInteractable : MonoBehaviour, IInteractable
        
         yield return new WaitForSeconds(22); 
 
-        SceneManager.LoadScene(6);
+        sceneLoader.LoadSceneWithPurge(6);
     }
 }

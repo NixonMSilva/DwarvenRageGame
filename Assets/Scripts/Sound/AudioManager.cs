@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
         set
         {
             musicVolume = value;
-            Debug.Log("Changing music volume to " + value);
+            //Debug.Log("Changing music volume to " + value);
             onMusicVolumeChange?.Invoke(musicVolume);
         }
     }
@@ -252,6 +252,8 @@ public class AudioManager : MonoBehaviour
     private Sound PickRandomSound (string name)
     {
         List<Sound> allSounds = _sounds.FindAll(sound => sound.name.Contains(name));
+        if (allSounds.Count == 0)
+            return null;
         int randomIndex = UnityEngine.Random.Range(0, allSounds.Count);
         return allSounds[randomIndex];
     }

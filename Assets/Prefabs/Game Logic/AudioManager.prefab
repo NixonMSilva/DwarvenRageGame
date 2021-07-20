@@ -1097,7 +1097,7 @@ MonoBehaviour:
   - audioSource: {fileID: 0}
     name: dragon_boss_death
     clip: {fileID: 8300000, guid: 0b71f22b6ffc1924d92dd30c6363b39f, type: 3}
-    volume: 0.5
+    volume: 0.3
     pitch: 1
     loop: 0
     repeatRate: 0
@@ -1112,6 +1112,13 @@ MonoBehaviour:
     name: cant_leave_without
     clip: {fileID: 8300000, guid: 9666e133a2e7bf64f92c6d27563e3ab6, type: 3}
     volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: dragon_flame_attack
+    clip: {fileID: 8300000, guid: e944456bb27445f468a375dccdc19a7d, type: 3}
+    volume: 0.3
     pitch: 1
     loop: 0
     repeatRate: 0

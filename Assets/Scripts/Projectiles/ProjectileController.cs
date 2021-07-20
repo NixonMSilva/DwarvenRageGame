@@ -65,7 +65,7 @@ public class ProjectileController : MonoBehaviour
                 {
                     target.SpawnBlood(transform.position);
                 }
-                Debug.Log("1 attack");
+                //Debug.Log("1 attack");
             }
             Destroy(gameObject);
         }

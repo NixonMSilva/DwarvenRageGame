@@ -58,7 +58,7 @@ public class ShopController : MonoBehaviour
 
     private void PlayRudeComment ()
     {   
-        Debug.Log("Cheapskate");
+        //Debug.Log("Cheapskate");
     }
 
     private void PlayHello ()

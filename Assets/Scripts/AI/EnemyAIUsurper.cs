@@ -220,7 +220,7 @@ public class EnemyAIUsurper : BossAI
         StopForAttack();
         
         anim.Play("Flame Attack");
-        
+
         isAttacking = true;
         alreadyAttacked = true;
         
@@ -283,12 +283,20 @@ public class EnemyAIUsurper : BossAI
     private void SpawnFireballs ()
     {
         Vector3 target = rootBoneTransform.forward;
-        for (int i = 0; i < 3; ++i)
-        {
-            float random = UnityEngine.Random.Range(0.05f, 1.5f);
-            target.y = -random - target.y;
-        }
+        Vector3 groundedTarget = rootBoneTransform.position;
+        groundedTarget.y = player.transform.position.y;
 
+        float opposite = player.transform.position.y - rootBoneTransform.position.y;
+        float adjacent = Vector3.Distance(groundedTarget, player.transform.position);
+        float tangent = opposite / adjacent;
+        
+        float random = UnityEngine.Random.Range(0.05f, 1.5f);
+        
+        target.y = tangent; //-(rootBoneTransform.position.y / player.transform.position.y);
+        attack.CreateProjectile(target);
+        target.y = tangent + (delta * 0.5f);
+        attack.CreateProjectile(target);
+        target.y = tangent - (delta * 0.5f);
         attack.CreateProjectile(target);
     }
     
