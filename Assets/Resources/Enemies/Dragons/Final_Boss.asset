@@ -19,7 +19,7 @@ MonoBehaviour:
   - item: {fileID: 0}
     dropChance: 1
   goldDrop: 50000
-  goldDropVariance: 50
+  goldDropVariance: 0
   damageType: 0
   damageEffect: {fileID: 0}
   soundIdle: pig_idle
@@ -27,5 +27,6 @@ MonoBehaviour:
   soundDamage: pig_hit
   soundDeath: dragon_death
   impactType: axe_on_flesh
-  bloodParticle: {fileID: 2170997142744102009, guid: eb3b0c93a71d4c148afcc8e2d2d0991b, type: 3}
+  bloodParticle: {fileID: 2170997142744102009, guid: eb3b0c93a71d4c148afcc8e2d2d0991b,
+    type: 3}
   bloodColor: {r: 1, g: 0, b: 0, a: 1}

@@ -74,6 +74,24 @@ public class SaveController : MonoBehaviour
         
     }
 
+    private void Update () 
+    {
+        player = GameObject.Find("Player");
+
+        if (player)
+        {
+            hasPlayer = true;
+        }
+
+        savePickableStatus = new bool[maxScenes][];
+        saveEnemyStatus = new bool[maxScenes][];
+        saveEventStatus = new bool[maxScenes][];
+
+        itemsId = new List<int>();
+        itemsStack = new List<int>();
+        
+    }
+
     public void SaveGame ()
     {
         if (hasPlayer)
