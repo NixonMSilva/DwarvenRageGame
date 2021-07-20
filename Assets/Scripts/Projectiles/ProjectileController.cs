@@ -41,8 +41,9 @@ public class ProjectileController : MonoBehaviour
         // Collide if it's on the collidable layer or it isn't the caster;
         if (_canCollideWith.Contains(layerName) && !other.gameObject.Equals(caster))
         {
-            IDamageable target;
-            if (other.gameObject.TryGetComponent<IDamageable>(out target))
+            IDamageable target = other.gameObject.GetComponentInParent<IDamageable>();
+            
+            if (target != null)
             {
                 // Check if the target isn't blocking
                 target.CheckForBlock(transform);
