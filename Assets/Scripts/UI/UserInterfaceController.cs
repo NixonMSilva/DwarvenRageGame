@@ -68,6 +68,8 @@ public class UserInterfaceController : MonoBehaviour
     private GameObject buttonsPanel;
     private GameObject optionsPanel;
     private GameObject tutorialPanel;
+
+    private CanvasGroup blackCanvas;
     
     //private Slider progressSlider;
 
@@ -170,6 +172,8 @@ public class UserInterfaceController : MonoBehaviour
         buttonsPanel = GameObject.Find("Resume");
         optionsPanel = GameObject.Find("OptionsPanel");
         tutorialPanel = GameObject.Find("Tutorial");
+
+        blackCanvas = GameObject.Find("Black").GetComponent<CanvasGroup>();
         
         // Effects
         effectsPanel = GameObject.Find("EffectPanel");
@@ -734,6 +738,16 @@ public class UserInterfaceController : MonoBehaviour
     public void HideEffectPanel ()
     {
         effectsPanel.SetActive(false);
+    }
+
+    public void FadeOut (float duration)
+    {
+        StartCoroutine(CanvasFade(blackCanvas, duration, 0f, 1f));
+    }
+
+    public void FadeIn (float duration)
+    {
+        StartCoroutine(CanvasFade(blackCanvas, duration, 1f, 0f));
     }
 
     // 0 - Out | 1 - In
