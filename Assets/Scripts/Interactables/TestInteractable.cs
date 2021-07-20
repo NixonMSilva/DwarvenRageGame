@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TestInteractable : MonoBehaviour, IInteractable
 {
@@ -38,5 +39,20 @@ public class TestInteractable : MonoBehaviour, IInteractable
     {
         AudioManager.instance.DestroyAllSounds();
         AudioManager.instance.PlaySound(fala);
+    }
+
+    public void Salvar()
+    {
+        StartCoroutine(Fim());
+    }
+
+    IEnumerator Fim()
+    {
+        AudioManager.instance.DestroyAllSounds();
+        AudioManager.instance.PlaySound(fala);
+       
+        yield return new WaitForSeconds(22); 
+
+        SceneManager.LoadScene(6);
     }
 }
