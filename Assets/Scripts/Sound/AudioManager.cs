@@ -252,7 +252,7 @@ public class AudioManager : MonoBehaviour
     private Sound PickRandomSound (string name)
     {
         List<Sound> allSounds = _sounds.FindAll(sound => sound.name.Contains(name));
-        int randomIndex = UnityEngine.Random.Range(0, allSounds.Count - 1);
+        int randomIndex = UnityEngine.Random.Range(0, allSounds.Count);
         return allSounds[randomIndex];
     }
 

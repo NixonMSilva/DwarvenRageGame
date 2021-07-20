@@ -8,13 +8,15 @@ public class GoToCredits : MonoBehaviour
     void Start()
     {
         StartCoroutine(Fim());
+        
     }
 
     IEnumerator Fim()
     {
         
-        yield return new WaitForSeconds(7); 
-
+        yield return new WaitForSeconds(5f); 
+        UserInterfaceController.instance?.FadeOut(3f);
+        yield return new WaitForSeconds(4f); 
         SceneManager.LoadScene(3);
     }  
     
