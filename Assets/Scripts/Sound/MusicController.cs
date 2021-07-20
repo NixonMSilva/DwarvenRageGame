@@ -25,11 +25,13 @@ public class MusicController : MonoBehaviour
         
         music.volume = 0.3f * AudioManager.instance.MusicVolume;
         music = GetComponent<AudioSource>();
-        AudioManager.instance.onMusicVolumeChange += ChangeMusicVolume;
     }
 
     private void Start ()
     {
+        AudioManager.instance.onMusicVolumeChange += ChangeMusicVolume;
+        music.volume = 0.3f * AudioManager.instance.MusicVolume;
+        
         // If there's no music, then do not process
         if (clipList.Length == 0)
             return;
@@ -58,6 +60,7 @@ public class MusicController : MonoBehaviour
 
     public void ChangeMusicVolume (float volume)
     {
+        Debug.Log("Here!");
         music.volume = 0.3f * volume;
     }
 
