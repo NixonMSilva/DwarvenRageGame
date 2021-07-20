@@ -111,7 +111,7 @@ public class EnemyAITroll : BossAI
     {
         // Taunt logic
         canTaunt = false;
-        AudioManager.instance.PlaySoundRandomAt(gameObject, "taunt");
+        AudioManager.instance.PlaySoundRandomAt(gameObject, "troll_taunt");
         ActionOnTimer onTimeAction = gameObject.AddComponent<ActionOnTimer>();
         onTimeAction.SetTimer(tauntCooldown, () =>
         {
