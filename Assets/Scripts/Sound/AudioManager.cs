@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource currentMusic = null;
 
-    private float musicVolume = 1f;
+    [SerializeField] private float musicVolume = 1f;
 
     public event Action<float> onMusicVolumeChange;
 
@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
         set
         {
             musicVolume = value;
+            Debug.Log("Changing music volume to " + value);
             onMusicVolumeChange?.Invoke(musicVolume);
         }
     }

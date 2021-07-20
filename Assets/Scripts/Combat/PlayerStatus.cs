@@ -155,6 +155,11 @@ public class PlayerStatus : StatusController
 
     protected override void Die ()
     {
+        GameObject music = GameObject.Find("MusicPlayer");
+        if (music != null)
+        {
+            music.GetComponent<MusicController>().Music.Stop();
+        }
         AudioManager.instance.PlaySound("belgren_death");
         isDying = true;
         UserInterfaceController.instance.HidePlayerInterface();
