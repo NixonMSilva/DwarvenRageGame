@@ -248,7 +248,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 3.8
   m_Radius: 1.2
-  m_SlopeLimit: 90
+  m_SlopeLimit: 60
   m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -377,8 +377,10 @@ MonoBehaviour:
   maxArmor: 100
   armor: 0
   isBlocking: 0
+  blockAngle: 45
   resistanceSheet: {fileID: 11400000, guid: be1ff71b032fcb341a8b34e6a4c5d68b, type: 2}
   _activeDOTs: []
+  testPoint: {fileID: 0}
   goldDropRate: 1
 --- !u!95 &5072104305726538643
 Animator:

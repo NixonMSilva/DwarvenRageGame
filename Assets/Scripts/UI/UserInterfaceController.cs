@@ -1,13 +1,15 @@
-using System.Data.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class UserInterfaceController : MonoBehaviour
 {
+
+    #region Variables
     public static UserInterfaceController instance;
 
     private TextMeshProUGUI tooltipText;
@@ -85,7 +87,10 @@ public class UserInterfaceController : MonoBehaviour
     private CanvasGroup effectFireRes;
     private CanvasGroup effectBerserk;
 
-    //
+    // Hitmark
+
+    private CanvasGroup hitmarkSprite;
+    [SerializeField] private float hitmarkDuration = 0.33f;
 
     private readonly string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
 
@@ -105,6 +110,8 @@ public class UserInterfaceController : MonoBehaviour
 
     private GameObject warningRoot;
     [SerializeField] private GameObject warningPrefab;
+
+    #endregion
 
     private void Awake ()
     {
@@ -192,6 +199,9 @@ public class UserInterfaceController : MonoBehaviour
 
         sceneLoader = GameObject.Find("LoadingMenu");
         sceneSlider = sceneLoader.GetComponentInChildren<Slider>();
+
+        // Hitmark
+        hitmarkSprite = GameObject.Find("Hitmark").GetComponent<CanvasGroup>();
     }
 
     private void Start ()
@@ -663,7 +673,7 @@ public class UserInterfaceController : MonoBehaviour
     public void ShowDamagePanel (Color color)
     {
         damageFrame.color = color;
-        StartCoroutine(CanvasFadeUpDown(damageCanvas, 0.1f, damageCanvas.alpha, 0.25f));
+        StartCoroutine(ElementFadeMirror(damageCanvas, 0.1f, damageCanvas.alpha, 0.25f));
     }
 
     public void HideDeathMenu ()
@@ -742,16 +752,49 @@ public class UserInterfaceController : MonoBehaviour
 
     public void FadeOut (float duration)
     {
-        StartCoroutine(CanvasFade(blackCanvas, duration, 0f, 1f));
+        StartCoroutine(ElementFade(blackCanvas, duration, 0f, 1f));
     }
 
     public void FadeIn (float duration)
     {
-        StartCoroutine(CanvasFade(blackCanvas, duration, 1f, 0f));
+        StartCoroutine(ElementFade(blackCanvas, duration, 0f, 1f));
     }
 
-    // 0 - Out | 1 - In
-    IEnumerator CanvasFade (CanvasGroup canvasGroup, float duration, float startAlpha, float endAlpha)
+    public void ShowHitmark ()
+    {
+        ShowHitmark(hitmarkDuration);
+    }
+
+    private void ShowHitmark (float duration)
+    {
+        StartCoroutine(ElementFadeMirror(hitmarkSprite, duration, 0f, 1f));
+    }
+
+    private IEnumerator ElementFade (CanvasGroup element, float duration, float start, float end)
+    {
+        float startTime = Time.time;
+        float endTime = Time.time + duration;
+        float elapsedTime = 0f;
+
+        while (Time.time <= endTime)
+        {
+            elapsedTime = Time.time - startTime;
+            var percentage = 1 / (duration / elapsedTime);
+            if (start > end)
+            {
+                element.alpha = start - percentage;
+            }
+            else
+            {
+                element.alpha = start + percentage;
+            }
+            yield return new WaitForEndOfFrame();
+        }
+
+        element.alpha = end;
+    }
+
+    IEnumerator ElementFadeMirror (CanvasGroup canvasGroup, float duration, float start, float end)
     {
         float startTime = Time.time;
         float endTime = Time.time + duration;
@@ -761,43 +804,17 @@ public class UserInterfaceController : MonoBehaviour
         {
             elapsedTime = Time.time - startTime; // update the elapsed time
             var percentage = 1 / (duration / elapsedTime); // calculate how far along the timeline we are
-            if (startAlpha > endAlpha) // if we are fading out/down 
+            if (start > end) // if we are fading out/down 
             {
-                canvasGroup.alpha = startAlpha - percentage;
+                canvasGroup.alpha = start - percentage;
             }
             else // if we are fading in/up
             {
-                canvasGroup.alpha = startAlpha + percentage;
+                canvasGroup.alpha = start + percentage;
             }
             yield return new WaitForEndOfFrame();
         }
-
-        canvasGroup.alpha = endAlpha;
+        canvasGroup.alpha = end;
+        StartCoroutine(ElementFade(canvasGroup, duration, canvasGroup.alpha, 0f));
     }
-
-    IEnumerator CanvasFadeUpDown (CanvasGroup canvasGroup, float duration, float startAlpha, float endAlpha)
-    {
-        float startTime = Time.time;
-        float endTime = Time.time + duration;
-        float elapsedTime = 0f;
-
-        while (Time.time <= endTime)
-        {
-            elapsedTime = Time.time - startTime; // update the elapsed time
-            var percentage = 1 / (duration / elapsedTime); // calculate how far along the timeline we are
-            if (startAlpha > endAlpha) // if we are fading out/down 
-            {
-                canvasGroup.alpha = startAlpha - percentage;
-            }
-            else // if we are fading in/up
-            {
-                canvasGroup.alpha = startAlpha + percentage;
-            }
-            yield return new WaitForEndOfFrame();
-        }
-        canvasGroup.alpha = endAlpha;
-        StartCoroutine(CanvasFade(canvasGroup, duration, canvasGroup.alpha, 0f));
-    }
-
-
 }

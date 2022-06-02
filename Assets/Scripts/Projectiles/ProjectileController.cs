@@ -65,7 +65,12 @@ public class ProjectileController : MonoBehaviour
                 {
                     target.SpawnBlood(transform.position);
                 }
-                //Debug.Log("1 attack");
+
+                // If the player threw / fired the object, then show hitmark
+                if (caster.CompareTag("Player"))
+                {
+                    UserInterfaceController.instance.ShowHitmark();
+                }
             }
             Destroy(gameObject);
         }
