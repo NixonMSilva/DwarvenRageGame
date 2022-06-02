@@ -9838,23 +9838,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57eac5d66a838f94d8c48dba3080f25c, type: 3}
---- !u!1 &1898339828 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 990903062578996557, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-  m_PrefabInstance: {fileID: 164138211034424022}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &1898339829
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898339828}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!4 &1901548783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4560606091946767469, guid: a700a8e3740cec149a8d7c980119a31d, type: 3}
@@ -10318,10 +10301,6 @@ PrefabInstance:
     - target: {fileID: 5037688688927949923, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6028954437784152088, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_Color.a
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8604090087165243256, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_AnchorMax.x

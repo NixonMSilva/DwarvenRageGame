@@ -1,39 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class OptionsController : MonoBehaviour
 {
-    [SerializeField] private Slider vslider;
+    [SerializeField] private Slider sfxVolumeSlider;
 
-    [SerializeField] private Slider sslider;
+    [SerializeField] private Slider musicVolumeSlider;
 
-    [SerializeField] private Slider vmslider;
+    [SerializeField] private Slider mouseSensitivitySlider;
+    
 
     public void Start ()
     {
         // Changes the sliders to their values based on global variables
-        vslider.value = GameManager.instance.sfxVolume;
-        sslider.value = InputHandler.instance.mouseSensitivity;
-        vmslider.value = AudioManager.instance.MusicVolume;
+        sfxVolumeSlider.value = GameManager.instance.sfxVolume;
+        musicVolumeSlider.value = AudioManager.instance.MusicVolume;
+        mouseSensitivitySlider.value = InputHandler.instance.mouseSensitivity;
     }
 
-    public void ChangeVolume ()
+    public void ChangeSfxVolume ()
     {
         // Change the volume for sound effects
-        GameManager.instance.sfxVolume = vslider.value;
-    }
-
-    public void ChangeSensitivity ()
-    {
-        // Change the mouse look sensitivity
-        InputHandler.instance.mouseSensitivity = sslider.value;
+        GameManager.instance.sfxVolume = sfxVolumeSlider.value;
     }
 
     public void ChangeMusicVolume ()
     {
         // Change the volume for music
-        AudioManager.instance.MusicVolume = vmslider.value;
+        AudioManager.instance.MusicVolume = musicVolumeSlider.value;
+    }
+
+    public void ChangeSensitivity ()
+    {
+        // Change the mouse look sensitivity
+        InputHandler.instance.mouseSensitivity = mouseSensitivitySlider.value;
     }
 }

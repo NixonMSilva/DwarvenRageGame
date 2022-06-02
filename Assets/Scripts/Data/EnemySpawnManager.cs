@@ -6,9 +6,11 @@ using System.Linq;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    [SerializeField] private List<EnemyStatus> _enemyList;
+    // [SerializeField] private List<EnemyStatus> _enemyList;
 
     [SerializeField] private List<bool> _wasNotKilled;
+
+    [SerializeField] private List<EnemySpawnData> _spawnList;
 
     [SerializeField] private PlayerStatus player;
 
@@ -16,31 +18,26 @@ public class EnemySpawnManager : MonoBehaviour
 
     private PlayerStatus Player
     {
-        get { return player;  }
+        get { return player; }
     }
 
     private void Awake ()
     {
         player = GameObject.Find("Player").GetComponent<PlayerStatus>();
 
-        for (int i = 0; i < _enemyList.Count; ++i)
+        for (int i = 0; i < _spawnList.Count; ++i)
         {
-            _wasNotKilled.Add(true);
-        }
-
-        foreach (EnemyStatus enemy in _enemyList)
-        {
-            enemy.OnDeath += HandleEnemyDeath;
+            _spawnList[i].isAlive = true;
+            _spawnList[i].status.OnDeath += HandleEnemyDeath;
+            _spawnList[i].status.UniqueId = i;
         }
     }
 
-    private void HandleEnemyDeath (EnemyStatus sender)
+    private void HandleEnemyDeath (int sender)
     {
-        // Update the enemy list
-        string name = sender.gameObject.name;
-        string[] subs = name.Split(limits);
-        int enemyId = Int32.Parse(subs[1]);
-        _wasNotKilled[enemyId - 1] = false;
+        // Updates the enemy list
+        int senderIndex = _spawnList.FindIndex(t => t.id == sender);
+        _spawnList[senderIndex].isAlive = false;
     }
 
     public void SetKilledList (bool[] arr)
@@ -49,24 +46,37 @@ public class EnemySpawnManager : MonoBehaviour
         if (arr == null)
             return;
 
-        _wasNotKilled = arr.ToList();
-        for (int i = 0; i < _wasNotKilled.Count; ++i)
+        for (int i = 0; i < arr.Length && i < _spawnList.Count; ++i)
         {
-            if (!_wasNotKilled[i])
+            if (!arr[i])
             {
-                Destroy(_enemyList[i].gameObject);
+                _spawnList[i].isAlive = false;       
+                Destroy(_spawnList[i].status.gameObject);
             }
         }
     }
 
     public bool[] GetKilledList ()
     {
-        return _wasNotKilled.ToArray();
+        List<bool> killedList = new List<bool>();
+        foreach (EnemySpawnData enemy in _spawnList)
+        {
+            killedList.Add(enemy.isAlive);
+        }
+        return killedList.ToArray();
     }
 
     [ContextMenu("Autofill Enemies")]
     void AutofillEnemies ()
     {
-        _enemyList = GetComponentsInChildren<EnemyStatus>().ToList();
+        _spawnList.Clear();
+        EnemyStatus[] enemyStatuses = GetComponentsInChildren<EnemyStatus>();
+        foreach (EnemyStatus enemy in enemyStatuses)
+        {
+            EnemySpawnData spawnData = new EnemySpawnData(enemy);
+            
+            spawnData.id = _spawnList.Count;
+            _spawnList.Add(spawnData);
+        }
     }
 }

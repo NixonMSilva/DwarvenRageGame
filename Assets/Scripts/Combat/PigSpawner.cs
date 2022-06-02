@@ -61,7 +61,7 @@ public class PigSpawner : MonoBehaviour
         spawnCount--;
     }
 
-    private void HandleSpawnedDeath (EnemyStatus obj)
+    private void HandleSpawnedDeath (int obj)
     {
         onSpawnedDeath.Invoke();
     }

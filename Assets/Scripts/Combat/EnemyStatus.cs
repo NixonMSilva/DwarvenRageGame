@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class EnemyStatus : StatusController
 {
-    public event System.Action<EnemyStatus> OnDeath;
+    public event System.Action<int> OnDeath;
 
     public event System.Action OnDeathEffect;
     
@@ -21,6 +21,8 @@ public class EnemyStatus : StatusController
 
     [SerializeField] private float painThreshold = 0.25f;
     [SerializeField] private LayerMask thisLayer;
+
+    [SerializeField] private int _uniqueId;
 
     public override float Speed
     {
@@ -62,6 +64,12 @@ public class EnemyStatus : StatusController
         set { painThreshold = value; }
     }
 
+    public int UniqueId
+    {
+        get { return _uniqueId; }
+        set { _uniqueId = value; }
+    }
+
     private void Awake ()
     {
         Health = maxHealth;
@@ -89,7 +97,7 @@ public class EnemyStatus : StatusController
 
     public void HandleDeath ()
     {
-        OnDeath?.Invoke(this);
+        OnDeath?.Invoke(UniqueId);
         // Handles the death for different types of enemies
         OnDeathEffect?.Invoke();
     }

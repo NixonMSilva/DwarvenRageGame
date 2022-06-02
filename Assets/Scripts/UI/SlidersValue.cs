@@ -7,17 +7,16 @@ using TMPro;
 
 public class SlidersValue : MonoBehaviour
 {
-    // Start is called before the first frame update
-    TextMeshProUGUI sliderValue;
-    void Start()
+    [SerializeField] private Slider slider;
+    [SerializeField] private TextMeshProUGUI sliderValueText;
+
+    private void Start ()
     {
-        sliderValue = GetComponent<TextMeshProUGUI>();
+        TextUpdate();
     }
 
-    // Update is called once per frame
-    public void textUpdate(float value)
+    public void TextUpdate ()
     {
-        Debug.Log(value);
-        sliderValue.text = Mathf.RoundToInt(value)  + "";
+        sliderValueText.text = Mathf.RoundToInt(((slider.value - slider.minValue) / (slider.maxValue - slider.minValue)) * 100).ToString();
     }
 }

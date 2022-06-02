@@ -33,7 +33,7 @@ public class InputHandler : MonoBehaviour
     private float mouseX, mouseY;
 
     [SerializeField]
-    [Range(10f, 1200f)]
+    [Range(100f, 1200f)]
     public float mouseSensitivity = 600f;
 
     public event Action<float> OnHorizontalPressed;
