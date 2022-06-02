@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-
     public static InputHandler instance;
 
     [Header("Key Binding")]
@@ -102,7 +101,6 @@ public class InputHandler : MonoBehaviour
             // Directional Input
             horizontalInput = Input.GetAxisRaw("Horizontal");
             verticalInput = Input.GetAxisRaw("Vertical");
-
 
             OnHorizontalPressed?.Invoke(Mathf.Abs(horizontalInput) >= 0.05f ? horizontalInput : 0f);
             OnVerticalPressed?.Invoke(Mathf.Abs(verticalInput) >= 0.05f ? verticalInput : 0f);
