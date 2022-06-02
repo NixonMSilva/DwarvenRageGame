@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
     public void SaveGame ()
     {
         save.Player = GameObject.Find("Player");
-        Debug.Log("Saving...");
+        //Debug.Log("Saving...");
         save.SaveGame();
     }
 

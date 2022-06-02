@@ -9,7 +9,7 @@ public class TomahawkProjectile : ProjectileController
 
     private Vector3 angularVelocity;
 
-    private void Start ()
+    private new void Start ()
     {
         // Destroy projectile after 10 seconds
         Destroy(gameObject, 10f);

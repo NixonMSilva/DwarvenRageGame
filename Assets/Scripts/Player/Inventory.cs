@@ -143,7 +143,7 @@ public class Inventory : MonoBehaviour
     
     public bool AddItem (Consumable item, int quantity)
     {
-        Debug.Log(FirstWhereStackIsNotFull(item.id));
+        //Debug.Log(FirstWhereStackIsNotFull(item.id));
         if (_itemSlots.Contains(item) && FirstWhereStackIsNotFull(item.id) != -1)
         {
             // If the item exists then check if

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 
 public class EnemyStatus : StatusController
 {
@@ -23,6 +20,8 @@ public class EnemyStatus : StatusController
     [SerializeField] private LayerMask thisLayer;
 
     [SerializeField] private int _uniqueId;
+
+    [SerializeField] private RagdollController? _ragdoll;
 
     public override float Speed
     {
@@ -88,10 +87,24 @@ public class EnemyStatus : StatusController
     protected override void Die ()
     {
         // Enemy death
+
         isDying = true;
-        animator.Play("Death");
+        //animator.Play("Death");
+        animator.SetBool("isDying", true);
+
         PlayDeathSound();
         HandleDeath();
+
+        // Disable NavMeshAgent
+        agent.enabled = false;
+
+        // Start Ragdolling
+        if (_ragdoll)
+        {
+            animator.enabled = false;
+            _ragdoll.StartRagdoll();
+        }
+
         Destroy(gameObject, 10f);
     }
 
@@ -113,6 +126,7 @@ public class EnemyStatus : StatusController
                 newValue *= (1f - _resistances[type]);
             
             float diceRoll = Random.Range(0f, 1f);
+
             if (diceRoll <= painThreshold)
             {
                 PlayDamageSound();

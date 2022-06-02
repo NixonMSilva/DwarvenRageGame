@@ -62,6 +62,10 @@ public class EnemyAI : MonoBehaviour
 
     protected void Update()
     {
+        // Doesn't process anything if it's dying
+
+        if (status.IsDying) { return; }
+
         // Cull enemy AI if the player is too distant
         if (Vector3.SqrMagnitude(player.position - transform.position) > 8000f)
         {

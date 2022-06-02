@@ -6,11 +6,7 @@ using System.Linq;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    // [SerializeField] private List<EnemyStatus> _enemyList;
-
-    [SerializeField] private List<bool> _wasNotKilled;
-
-    [SerializeField] private List<EnemySpawnData> _spawnList;
+    [SerializeField] private List<EnemySpawnData> _spawnList = new List<EnemySpawnData>();
 
     [SerializeField] private PlayerStatus player;
 
@@ -31,6 +27,12 @@ public class EnemySpawnManager : MonoBehaviour
             _spawnList[i].status.OnDeath += HandleEnemyDeath;
             _spawnList[i].status.UniqueId = i;
         }
+    }
+
+    private void OnDisable ()
+    {
+        for (int i = 0; i < _spawnList.Count; ++i)
+            _spawnList[i].status.OnDeath -= HandleEnemyDeath;
     }
 
     private void HandleEnemyDeath (int sender)
