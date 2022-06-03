@@ -35,7 +35,7 @@ public class SaveController : MonoBehaviour
     public List<int> itemsId;
     public List<int> itemsStack;
 
-    private GameObject player;
+    [SerializeField] private GameObject player;
     
     bool hasPlayer = false;  
 
@@ -126,20 +126,20 @@ public class SaveController : MonoBehaviour
             itemsId = playerInventory.GetItemList();
             itemsStack = playerInventory.GetItemStacks();
 
-            PickableController pickableController = GameObject.Find("Pickables").GetComponent<PickableController>();
+            PickableSpawnManager pickableController = GameObject.Find("Pickables").GetComponent<PickableSpawnManager>();
             EnemySpawnManager enemyController = GameObject.Find("Enemies").GetComponent<EnemySpawnManager>();
-            EventController eventController = GameObject.Find("Events").GetComponent<EventController>();
+            EventSpawnManager eventController = GameObject.Find("Events").GetComponent<EventSpawnManager>();
 
             sceneNumber = SceneManager.GetActiveScene().buildIndex;
 
             if (pickableController)
-                savePickableStatus[sceneNumber] = pickableController.GetPickedList();
+                savePickableStatus[sceneNumber] = pickableController.GetActiveList();
 
             if (enemyController)
-                saveEnemyStatus[sceneNumber] = enemyController.GetKilledList();
+                saveEnemyStatus[sceneNumber] = enemyController.GetActiveList();
 
             if (eventController)
-                saveEventStatus[sceneNumber] = eventController.GetTriggeredList();
+                saveEventStatus[sceneNumber] = eventController.GetActiveList();
 
             SaveSystem.Save(this);
         }
@@ -191,17 +191,17 @@ public class SaveController : MonoBehaviour
                 playerInventory.AddItem(GetItem(data.itemId[i]), data.itemStack[i]);
             }
 
-            PickableController pickableController = GameObject.Find("Pickables").GetComponent<PickableController>();
+            PickableSpawnManager pickableController = GameObject.Find("Pickables").GetComponent<PickableSpawnManager>();
             EnemySpawnManager enemyController = GameObject.Find("Enemies").GetComponent<EnemySpawnManager>();
-            EventController eventController = GameObject.Find("Events").GetComponent<EventController>();
+            EventSpawnManager eventController = GameObject.Find("Events").GetComponent<EventSpawnManager>();
 
             sceneNumber = GameManager.instance.GetSceneNumber();
 
-            pickableController?.SetPickedList(data.pickupStatus[sceneNumber]);
+            pickableController?.SetActiveList(data.pickupStatus[sceneNumber]);
 
-            enemyController?.SetKilledList(data.enemyStatus[sceneNumber]);
+            enemyController?.SetActiveList(data.enemyStatus[sceneNumber]);
 
-            eventController?.SetTriggeredList(data.eventStatus[sceneNumber]);
+            eventController?.SetActiveList(data.eventStatus[sceneNumber]);
         }
     }
 

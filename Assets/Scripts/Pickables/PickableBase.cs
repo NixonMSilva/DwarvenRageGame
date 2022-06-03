@@ -2,15 +2,27 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 
-public class PickableBase : MonoBehaviour, IPickable
+public class PickableBase : MonoBehaviour, IPickable, IManageable
 {
     [SerializeField] private float rotationRate = 5f;
 
     public event Action<IPickable> OnPickUp;
 
+    public event Action<int> OnStatusChange;
+
     [SerializeField] private UnityEvent OnPickUpUnity;
 
     [SerializeField] public Consumable item;
+
+    [SerializeField] private int _uniqueId;
+
+    public int UniqueId
+    {
+        get { return _uniqueId; }
+        set { _uniqueId = value; }
+    }
+
+    public GameObject AttachedObject => gameObject;
 
     private void Update ()
     {
@@ -51,24 +63,6 @@ public class PickableBase : MonoBehaviour, IPickable
                 if (target.Armor >= target.MaxArmor)
                     return false;
                 break;
-            case EffectType.berserk:
-                break;
-            case EffectType.fortune:
-                break;
-            case EffectType.fireResistance:
-                break;
-            case EffectType.poisonResistance:
-                break;
-            case EffectType.addMaxHealth:
-                break;
-            case EffectType.addMaxArmor:
-                break;
-            case EffectType.poison:
-                break;
-            case EffectType.burning:
-                break;
-            case EffectType.none:
-                break;
             default:
                 throw new ArgumentException();
         }
@@ -85,6 +79,7 @@ public class PickableBase : MonoBehaviour, IPickable
     {
         OnPickUp?.Invoke(this);
         OnPickUpUnity?.Invoke();
+        OnStatusChange?.Invoke(UniqueId);
         Destroy(gameObject);
     }
 
@@ -97,7 +92,9 @@ public class PickableBase : MonoBehaviour, IPickable
     }
 
     public string GetName () => gameObject.name;
-    
-        
 
+    public void DestroyObject ()
+    {
+        Destroy(gameObject);
+    }
 }

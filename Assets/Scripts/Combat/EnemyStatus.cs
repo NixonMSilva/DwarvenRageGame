@@ -1,13 +1,16 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyStatus : StatusController
+public class EnemyStatus : StatusController, IManageable
 {
-    public event System.Action<int> OnDeath;
+    public event Action<int> OnDeath;
 
-    public event System.Action OnDeathEffect;
+    public event Action OnDeathEffect;
     
-    public event System.Action<float, float> OnHealthChange;
+    public event Action<float, float> OnHealthChange;
+
+    public event Action<int> OnStatusChange;
 
     private NavMeshAgent agent;
 
@@ -69,6 +72,8 @@ public class EnemyStatus : StatusController
         set { _uniqueId = value; }
     }
 
+    public GameObject AttachedObject => gameObject;
+
     private void Awake ()
     {
         Health = maxHealth;
@@ -110,7 +115,10 @@ public class EnemyStatus : StatusController
 
     public void HandleDeath ()
     {
+        // Basic death event invocation 
         OnDeath?.Invoke(UniqueId);
+        // Propagates death status to the spawn manager
+        OnStatusChange?.Invoke(UniqueId);
         // Handles the death for different types of enemies
         OnDeathEffect?.Invoke();
     }
@@ -125,7 +133,7 @@ public class EnemyStatus : StatusController
             if (_resistances.ContainsKey(type))
                 newValue *= (1f - _resistances[type]);
             
-            float diceRoll = Random.Range(0f, 1f);
+            float diceRoll = UnityEngine.Random.Range(0f, 1f);
 
             if (diceRoll <= painThreshold)
             {
@@ -189,5 +197,10 @@ public class EnemyStatus : StatusController
         }
         
         Destroy(bloodSystem.gameObject, bloodSystem.main.duration + 0.1f);
+    }
+
+    public void DestroyObject ()
+    {
+        Destroy(gameObject);
     }
 }

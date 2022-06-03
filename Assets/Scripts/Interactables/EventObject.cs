@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventObject : MonoBehaviour
+public class EventObject : MonoBehaviour, IManageable
 {
     public event Action<EventObject> OnExecution;
+
+    public event Action<int> OnStatusChange;
 
     [SerializeField] private bool isFired = false;
 
@@ -13,15 +15,21 @@ public class EventObject : MonoBehaviour
 
     [SerializeField] public List<GameObject> _children = new List<GameObject>();
 
+    [SerializeField] private int _uniqueId;
+
     public bool IsFired
     {
         get => isFired;
         set => isFired = value;
     }
+    public int UniqueId { get => _uniqueId; set => _uniqueId = value; }
+
+    public GameObject AttachedObject => gameObject;
 
     public void HandleExecution ()
     {
         OnExecution?.Invoke(this);
+        OnStatusChange?.Invoke(UniqueId);
         isFired = true;
     }
 
@@ -54,4 +62,9 @@ public class EventObject : MonoBehaviour
         Destroy(GetComponent<TooltipController>());
     }
 
+    public void DestroyObject ()
+    {
+        // Doesn't destroy the event as you just disable it
+        DisableEvent();
+    }
 }

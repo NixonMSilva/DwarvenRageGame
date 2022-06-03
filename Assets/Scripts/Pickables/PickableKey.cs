@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickableKey : PickableBase
 {
-    public override void HandlePickUp()
+    public override void HandlePickUp ()
     {
         Destroy (gameObject);
     }
