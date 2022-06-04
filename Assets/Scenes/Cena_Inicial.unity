@@ -8340,9 +8340,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 948521827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 197b78fadabb7c448b6fd59f63a94b1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  voiceLineName: mockery
+  voiceLineCaptions: 
+  voiceLineAudio:
+    audioSource: {fileID: 0}
+    name: mockery
+    clip: {fileID: 8300000, guid: 6b2ce91932046f34ebcce1a48bb56d6e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
 --- !u!65 &948521829
 BoxCollider:
   m_ObjectHideFlags: 0

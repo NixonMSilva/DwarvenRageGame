@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Narrador : MonoBehaviour
+public class Narrator : MonoBehaviour
 {
     [SerializeField] GameObject video1;
     [SerializeField] GameObject video2;

@@ -5,25 +5,33 @@ using UnityEngine;
 
 public class SFXTriggerVolume : MonoBehaviour
 {
-    [SerializeField] private AudioClip audioClip;
+    [SerializeField] protected string audioName;
+    [SerializeField] protected AudioClip audioClip;
 
-    private Collider[] _colliderList;
+    protected Collider[] _colliderList;
 
     private void Awake()
     {
         _colliderList = GetComponentsInChildren<Collider>();
     }
 
-    public void OnTriggerEnter(Collider other)
+    // Triggers the volume when the player enters it
+    protected virtual void OnTriggerEnter (Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            AudioManager.instance.PlaySound(audioClip.name);
-            foreach (Collider collider in _colliderList)
-            {
-                collider.enabled = false;
-            }
-            Destroy(gameObject, audioClip.length);
+            PlaySFX();
         }
+    }
+
+    // Reproduce the SFX audio attached to the script
+    private void PlaySFX ()
+    {
+        AudioManager.instance.PlaySound(audioClip.name);
+        foreach (Collider collider in _colliderList)
+        {
+            collider.enabled = false;
+        }
+        Destroy(gameObject, audioClip.length);
     }
 }

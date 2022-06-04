@@ -303,6 +303,8 @@ public class Inventory : MonoBehaviour
         return nextWeapon;
     }
 
+    // DEPRECATED: Was used when there were plans of having three weapon slots
+    /*
     private Weapon EquipWeaponAtSlot (int slot, Weapon swappedWeapon)
     {
         Weapon weaponBeingEquipped = _weaponSlots[slot];
@@ -310,6 +312,7 @@ public class Inventory : MonoBehaviour
         UpdateWeaponSlots();
         return weaponBeingEquipped;
     }
+    */
 
     private void DrawWeaponSlots ()
     {

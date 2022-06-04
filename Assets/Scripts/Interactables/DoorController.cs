@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class TestOpenDoor : MonoBehaviour, IInteractable
+public class DoorController : MonoBehaviour, IInteractable
 {
     private GameObject player;
     private CharacterController characterController;
 
     [SerializeField] private EventObject key;
     [SerializeField] private bool isLocked = false;
+
+    [SerializeField] private string lockedMessage = "This door needs a key to open!";
 
     private EnemySpawnManager enemies;
     private bool[] boss;
@@ -38,7 +40,7 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
         {
             if (key == null)
             {
-                UserInterfaceController.instance.ThrowWarningMessage("Esta porta precisa de uma chave para abrir!");
+                UserInterfaceController.instance.ThrowWarningMessage(lockedMessage);
             }
             else
             {
@@ -49,7 +51,7 @@ public class TestOpenDoor : MonoBehaviour, IInteractable
                 }
                 else
                 {
-                    UserInterfaceController.instance.ThrowWarningMessage("Esta porta precisa de uma chave para abrir!");
+                    UserInterfaceController.instance.ThrowWarningMessage(lockedMessage);
                 }
                  
             }
