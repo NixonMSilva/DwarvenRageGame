@@ -23,6 +23,12 @@ public class MusicTriggerVolume : SFXTriggerVolume
     private void PlayMusic ()
     {
         // Switches the music and disabble all volume colliders
+        if (audioClip == null)
+        {
+            Debug.LogWarning("AudioClip for MusicTriggerVolume on " + gameObject.name + " not set!");
+            return;
+        }
+
         controller.SwitchToMusic(audioClip);
         foreach (Collider collider in _colliderList)
         {

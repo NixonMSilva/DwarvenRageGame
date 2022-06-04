@@ -7068,11 +7068,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 844216831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6c021be6ddc5c644824cdcaabee2adc, type: 3}
+  m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fala: 
-  sceneLoader: {fileID: 0}
+  audioName: bode1
+  audioClip: {fileID: 8300000, guid: 49f5676e7778dab4bbfbf08110b7f427, type: 3}
+  voiceLineCaptions: 
 --- !u!114 &844216833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7089,8 +7090,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 844216832}
-        m_TargetAssemblyTypeName: TestInteractable, Game
-        m_MethodName: Conversar
+        m_TargetAssemblyTypeName: SpeechLineTriggerVolume, Game
+        m_MethodName: PlayVoiceLine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8343,16 +8344,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voiceLineName: mockery
+  audioName: mockery
+  audioClip: {fileID: 8300000, guid: 6b2ce91932046f34ebcce1a48bb56d6e, type: 3}
   voiceLineCaptions: 
-  voiceLineAudio:
-    audioSource: {fileID: 0}
-    name: mockery
-    clip: {fileID: 8300000, guid: 6b2ce91932046f34ebcce1a48bb56d6e, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    repeatRate: 0
 --- !u!65 &948521829
 BoxCollider:
   m_ObjectHideFlags: 0

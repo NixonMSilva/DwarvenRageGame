@@ -1097,21 +1097,28 @@ MonoBehaviour:
   - audioSource: {fileID: 0}
     name: dragon_boss_death
     clip: {fileID: 8300000, guid: 0b71f22b6ffc1924d92dd30c6363b39f, type: 3}
-    volume: 0.3
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: belgren_elixir_taken
     clip: {fileID: 8300000, guid: 7683c50800120d440b3e03c2528918f0, type: 3}
-    volume: 0.5
+    volume: 0.85
     pitch: 1
     loop: 0
     repeatRate: 0
   - audioSource: {fileID: 0}
     name: cant_leave_without
     clip: {fileID: 8300000, guid: 9666e133a2e7bf64f92c6d27563e3ab6, type: 3}
-    volume: 0.5
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: belgren_exit_dungeon
+    clip: {fileID: 8300000, guid: 3464891010bf6a84c98187cc76f3c50e, type: 3}
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0
@@ -1119,6 +1126,41 @@ MonoBehaviour:
     name: dragon_flame_attack
     clip: {fileID: 8300000, guid: e944456bb27445f468a375dccdc19a7d, type: 3}
     volume: 0.3
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: mountain_heart
+    clip: {fileID: 8300000, guid: 420f5954812aa1242933304723235ec2, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: mockery
+    clip: {fileID: 8300000, guid: 6b2ce91932046f34ebcce1a48bb56d6e, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: bode1
+    clip: {fileID: 8300000, guid: 49f5676e7778dab4bbfbf08110b7f427, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: Porcos Burros invadirem local - Belgren
+    clip: {fileID: 8300000, guid: 8a13317a15e94d542b78061e2cdb8d04, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+  - audioSource: {fileID: 0}
+    name: De volta para porta
+    clip: {fileID: 8300000, guid: c532b8355282ac74ea36b5dfe7686f39, type: 3}
+    volume: 0.7
     pitch: 1
     loop: 0
     repeatRate: 0

@@ -15,8 +15,14 @@ public class SpeechLineTriggerVolume : SFXTriggerVolume
     }
 
     // Reproduce the voice line audio attached to the script
-    private void PlayVoiceLine ()
+    public void PlayVoiceLine ()
     {
+        if (audioClip == null)
+        {
+            Debug.LogWarning("AudioClip for SpeechLineTriggerVolume on " + gameObject.name + " not set!");
+            return;
+        }
+
         AudioManager.instance.DestroyAllSounds();
         AudioManager.instance.PlaySound(audioName);
         foreach (Collider collider in _colliderList)

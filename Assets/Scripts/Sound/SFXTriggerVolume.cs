@@ -27,6 +27,12 @@ public class SFXTriggerVolume : MonoBehaviour
     // Reproduce the SFX audio attached to the script
     private void PlaySFX ()
     {
+        if (audioClip == null)
+        {
+            Debug.LogWarning("AudioClip for SFXTriggerVolume on " + gameObject.name + " not set!");
+            return;
+        }
+
         AudioManager.instance.PlaySound(audioClip.name);
         foreach (Collider collider in _colliderList)
         {
