@@ -36,6 +36,8 @@ public class InputHandler : MonoBehaviour
     [Range(100f, 1200f)]
     public float mouseSensitivity = 600f;
 
+    public bool isLookYInverted = false;
+
     public event Action<float> OnHorizontalPressed;
     public event Action<float> OnVerticalPressed;
 
@@ -88,7 +90,11 @@ public class InputHandler : MonoBehaviour
         //================================================================
 
         mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        if (!isLookYInverted)
+            mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        else
+            mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime * -1f;
 
         if (!isOnMenu)
         {

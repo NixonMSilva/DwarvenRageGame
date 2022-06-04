@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     // Game settings
     public float musicVolume = 1f;
     public float sfxVolume = 1f;
+    public float voiceoverVolume = 1f;
 
     // Player data
     public PlayerData? playerData = null;
