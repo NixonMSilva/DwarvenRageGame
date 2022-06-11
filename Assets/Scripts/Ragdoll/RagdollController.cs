@@ -9,6 +9,8 @@ public class RagdollController : MonoBehaviour
 
     [SerializeField] Rigidbody _pelvis;
 
+    [SerializeField] RagdollStartType _ragdollType = RagdollStartType.none;
+
     private void Awake ()
     {
         FillBones();
@@ -40,6 +42,8 @@ public class RagdollController : MonoBehaviour
                 });
             }
         }
+
+        _pelvis.ApplyRagdollEffect(_ragdollType);
     }
 
     public void ApplyForceToPelvis ()
