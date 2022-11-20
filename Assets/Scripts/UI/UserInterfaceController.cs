@@ -91,6 +91,10 @@ public class UserInterfaceController : MonoBehaviour
 
     private CanvasGroup hitmarkSprite;
     [SerializeField] private float hitmarkDuration = 0.33f;
+    
+    // Subtitles
+    
+    private CanvasGroup subtitleGroup;
 
     private readonly string[] slotKeyCode = { "[1]", "[2]", "[3]", "[4]", "[5]" };
 
@@ -107,6 +111,8 @@ public class UserInterfaceController : MonoBehaviour
     [SerializeField] private Sprite playerHurt;
     [SerializeField] private Sprite playerVeryHurt;
     [SerializeField] private Sprite playerVeryDrunk;
+    
+    [SerializeField] private GameObject subtitlePrefab;
 
     private GameObject warningRoot;
     [SerializeField] private GameObject warningPrefab;
@@ -199,6 +205,9 @@ public class UserInterfaceController : MonoBehaviour
 
         sceneLoader = GameObject.Find("LoadingMenu");
         sceneSlider = sceneLoader.GetComponentInChildren<Slider>();
+        
+        // Subtitles
+        subtitleGroup = GameObject.Find("SubtitlesGroup").GetComponent<CanvasGroup>();
 
         // Hitmark
         hitmarkSprite = GameObject.Find("Hitmark").GetComponent<CanvasGroup>();
@@ -768,6 +777,27 @@ public class UserInterfaceController : MonoBehaviour
     private void ShowHitmark (float duration)
     {
         StartCoroutine(ElementFadeMirror(hitmarkSprite, duration, 0f, 1f));
+    }
+
+    public void ShowSubtitle (float duration, string text)
+    {
+        Debug.Log("Show subtitle called!");
+        
+        GameObject newSubtitle = Instantiate(subtitlePrefab, subtitleGroup.transform);
+        newSubtitle.GetComponent<TextMeshProUGUI>().text = text;
+
+        StartCoroutine(HideSubtitles(newSubtitle, duration));
+    }
+
+    private IEnumerator HideSubtitles(GameObject subtitle, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        Animator anim = subtitle.GetComponent<Animator>();
+        if (anim)
+        {
+            anim.Play(("subtitles_out"));
+        }
+        Destroy(subtitle, 1f);
     }
 
     private IEnumerator ElementFade (CanvasGroup element, float duration, float start, float end)

@@ -10,7 +10,7 @@ public class SFXTriggerVolume : MonoBehaviour
 
     protected Collider[] _colliderList;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _colliderList = GetComponentsInChildren<Collider>();
     }
