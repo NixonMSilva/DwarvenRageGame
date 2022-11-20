@@ -13,7 +13,6 @@ public class Narrator : MonoBehaviour
 
     [SerializeField] private UnityEvent onVideoEnd;
     
-
     private void Awake ()
     {
         passLevel = GetComponent<TestPassLevel>();

@@ -5,7 +5,6 @@ using TMPro;
 
 public class OptionsController : MonoBehaviour
 {
-
     #region Variables
 
     [SerializeField] private GameObject _displayTab;
@@ -21,6 +20,7 @@ public class OptionsController : MonoBehaviour
 
     [SerializeField] private TMP_Dropdown _resolutionsDropDown;
     [SerializeField] private Toggle _fullscreenToggle;
+    [SerializeField] private Toggle _subtitlesToggle;
 
     private Resolution[] _resolutions;
 
@@ -45,9 +45,10 @@ public class OptionsController : MonoBehaviour
         Debug.Log("Current setting: " + names[qualityIndex]);
     }
 
-    public void SetFullscreen (bool toggleStatus)
+    public void SetFullscreen ()
     {
-        Screen.fullScreen = toggleStatus;
+        Screen.fullScreen = !Screen.fullScreen;
+        Debug.Log("Fullscreen status: " + Screen.fullScreen);
     }
 
     public void SetResolution (int resolutionIndex)
@@ -56,7 +57,7 @@ public class OptionsController : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void GetResolutionsData ()
+    private void GetResolutionsData ()
     {
         _resolutions = Screen.resolutions;
         _resolutionsDropDown.ClearOptions();
@@ -80,6 +81,12 @@ public class OptionsController : MonoBehaviour
         _resolutionsDropDown.AddOptions(options);
         _resolutionsDropDown.value = currentResolutionIndex;
         _resolutionsDropDown.RefreshShownValue();
+    }
+
+    public void SetSubtitles ()
+    {
+        GameManager.instance.showSubtitles = !GameManager.instance.showSubtitles;
+        Debug.Log("Subtitle status: " + GameManager.instance.showSubtitles);
     }
 
     private void UpdateDisplayStatus ()

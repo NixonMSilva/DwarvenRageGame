@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public float sfxVolume = 1f;
     public float voiceoverVolume = 1f;
 
+    public bool showSubtitles = true;
+
     // Player data
     public PlayerData? playerData = null;
     [SerializeField] private PlayerData defaultPlayerData;
