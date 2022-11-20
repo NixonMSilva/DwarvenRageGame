@@ -16,10 +16,6 @@ public class GameManager : MonoBehaviour
     public int timesShopped = 0;
 
     // Game settings
-    public float musicVolume = 1f;
-    public float sfxVolume = 1f;
-    public float voiceoverVolume = 1f;
-
     public bool showSubtitles = true;
 
     // Player data

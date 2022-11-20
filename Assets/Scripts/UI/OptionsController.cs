@@ -107,21 +107,21 @@ public class OptionsController : MonoBehaviour
     public void ChangeSfxVolume (float value)
     {
         // Change the volume for sound effects
-        GameManager.instance.sfxVolume = _audioSfxVolumeSlider.value;
+        AudioManager.instance.SFXVolume = _audioSfxVolumeSlider.value;
     }
 
     public void ChangeVoiceoverVolume (float value)
     {
         // Change the volume for voiceovers
-        GameManager.instance.voiceoverVolume = _audioVoiceoverVolumeSlider.value;
+        AudioManager.instance.VoiceoverVolume = _audioVoiceoverVolumeSlider.value;
     }
 
     private void UpdateAudioSliders ()
     {
         // Changes the sliders to their values based on global variables
-        _audioSfxVolumeSlider.value = GameManager.instance.sfxVolume;
+        _audioSfxVolumeSlider.value = AudioManager.instance.SFXVolume;
         _audioMusicVolumeSlider.value = AudioManager.instance.MusicVolume;
-        _audioVoiceoverVolumeSlider.value = GameManager.instance.voiceoverVolume;
+        _audioVoiceoverVolumeSlider.value = AudioManager.instance.VoiceoverVolume;
     }
 
     #endregion

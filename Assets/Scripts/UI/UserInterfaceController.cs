@@ -735,7 +735,13 @@ public class UserInterfaceController : MonoBehaviour
 
     public void ShowLoadingMenu()
     {
+        // Wipe all subtitles during scene transition
+        WipeSubtitles();
+        
+        // Reset loading progress bar
         UpdateLoadingSlider(0f);
+        
+        // Show scene loader
         sceneLoader.SetActive(true);     
     }
     
@@ -781,15 +787,13 @@ public class UserInterfaceController : MonoBehaviour
 
     public void ShowSubtitle (float duration, string text)
     {
-        Debug.Log("Show subtitle called!");
-        
         GameObject newSubtitle = Instantiate(subtitlePrefab, subtitleGroup.transform);
         newSubtitle.GetComponent<TextMeshProUGUI>().text = text;
 
         StartCoroutine(HideSubtitles(newSubtitle, duration));
     }
 
-    private IEnumerator HideSubtitles(GameObject subtitle, float duration)
+    private IEnumerator HideSubtitles (GameObject subtitle, float duration)
     {
         yield return new WaitForSeconds(duration);
         Animator anim = subtitle.GetComponent<Animator>();
@@ -798,6 +802,14 @@ public class UserInterfaceController : MonoBehaviour
             anim.Play(("subtitles_out"));
         }
         Destroy(subtitle, 1f);
+    }
+
+    private void WipeSubtitles ()
+    {
+        foreach (Transform t in subtitleGroup.gameObject.GetComponentsInChildren<Transform>())
+        {
+            Destroy(t.gameObject);
+        }
     }
 
     private IEnumerator ElementFade (CanvasGroup element, float duration, float start, float end)
