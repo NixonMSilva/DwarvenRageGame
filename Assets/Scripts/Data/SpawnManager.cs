@@ -28,7 +28,7 @@ public class SpawnManager : MonoBehaviour
     /// Handles the status change (on death of enemies / pickable picked / event triggered) 
     /// and deactivate the corresponding spawn data on the list.
     /// </summary>
-    /// <param name="id">Unique ID attached to the enemy being deactivated.</param>
+    /// <param name="id">Unique ID attached to the entity being deactivated.</param>
     public void HandleSpawnStatusChange (int id)
     {
         int senderIndex = _spawnList.FindIndex(t => t.id == id);
@@ -38,7 +38,7 @@ public class SpawnManager : MonoBehaviour
     /// <summary>
     /// Gets the active list of enemies / pickables / events in order to save data via the SaveManager 
     /// class. </summary>
-    /// <returns>A boolean array containin the active status of the objects.</returns>
+    /// <returns>A boolean array containing the active status of the objects.</returns>
     public bool[] GetActiveList ()
     {
         List<bool> activeList = new List<bool>();

@@ -1,5 +1,7 @@
 using System.Collections;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections.Generic;
 
 public class SpeechLineTriggerVolume : SFXTriggerVolume
@@ -13,6 +15,9 @@ public class SpeechLineTriggerVolume : SFXTriggerVolume
     
     // Base delay between voiceline splits
     [SerializeField] private float baseDelay = 0.07f;
+    
+    // Event to call when the subtitles finish playing (and the audio)
+    [SerializeField] private UnityEvent unityCallback;
 
     // Triggers the volume when the player enters it
     protected override void OnTriggerEnter (Collider other)
@@ -57,5 +62,12 @@ public class SpeechLineTriggerVolume : SFXTriggerVolume
             UserInterfaceController.instance.ShowSubtitle(sub.duration, sub.caption);
             yield return new WaitForSeconds(sub.duration + baseDelay);
         }
+        CallEventOnComplete();
+    }
+    
+    // Performs something on complete
+    private void CallEventOnComplete ()
+    {
+        unityCallback?.Invoke();
     }
 }

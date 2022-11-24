@@ -4,16 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GoToCredits : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        StartCoroutine(Fim());
-        
+        StartCoroutine(End());
     }
 
-    IEnumerator Fim()
+    IEnumerator End ()
     {
-        
         yield return new WaitForSeconds(5f); 
         UserInterfaceController.instance?.FadeOut(3f);
         yield return new WaitForSeconds(4f); 

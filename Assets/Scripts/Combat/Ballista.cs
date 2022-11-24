@@ -76,7 +76,7 @@ public class Ballista : MonoBehaviour
 
     private void StartBallistaUsage ()
     {
-        UserInterfaceController.instance.ShowProgressMenu("Carregamento da Balista");
+        UserInterfaceController.instance.ShowProgressMenu("Ballista Loading");
         UserInterfaceController.instance.SetProgressIcon(ballistaIcon);
         UserInterfaceController.instance.UpdateProgressBar(0f);
     }
