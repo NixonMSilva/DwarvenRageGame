@@ -1250,6 +1250,7 @@ MonoBehaviour:
   seller: {fileID: 0}
   sellerInventory: {fileID: 0}
   loadedList: {fileID: 11400000, guid: 96f957cd809f73c46ad50b6a4847e4ee, type: 2}
+  localization: {fileID: 11400000, guid: ff6765ac378765744b5746b46c21444d, type: 2}
 --- !u!1 &714692814
 GameObject:
   m_ObjectHideFlags: 0
@@ -10594,6 +10595,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261354194190548535, guid: 4fc3f4a223bd92f489e63012d2a215c2, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274394959035152623, guid: 4fc3f4a223bd92f489e63012d2a215c2, type: 3}
+      propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282490404926781519, guid: 4fc3f4a223bd92f489e63012d2a215c2, type: 3}

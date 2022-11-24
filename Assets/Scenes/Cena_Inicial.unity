@@ -7073,7 +7073,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioName: bode1
   audioClip: {fileID: 8300000, guid: 49f5676e7778dab4bbfbf08110b7f427, type: 3}
-  voiceLineCaptions: 
+  voiceLineCaptions:
+  - caption: Hold on! You will spit and ram against that healer who gave you only
+      one month left of life!
+    duration: 10
+  - caption: I swear on Thor!
+    duration: 4
+  playAutomatically: 0
+  baseDelay: 0.07
 --- !u!114 &844216833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7101,7 +7108,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  defaultTooltipText: Conversar
+  defaultTooltipText: Talk
   hideOnAction: 1
 --- !u!65 &844216834
 BoxCollider:
@@ -8346,7 +8353,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioName: mockery
   audioClip: {fileID: 8300000, guid: 6b2ce91932046f34ebcce1a48bb56d6e, type: 3}
-  voiceLineCaptions: 
+  voiceLineCaptions:
+  - caption: So we have a smartass over here...
+    duration: 4
+  - caption: Learned that from the elves, huh?
+    duration: 4
+  - caption: Now go... and play the game, moron!
+    duration: 4
+  playAutomatically: 1
+  baseDelay: 0.07
 --- !u!65 &948521829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11271,6 +11286,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5037688688927949923, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298751037357575086, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298751037357575086, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298751037357575086, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8778101976559593677, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}

@@ -338,7 +338,11 @@ public class EnemyAIUsurper : BossAI
 
     private void StandStill ()
     {
-        agent.SetDestination(transform.position);
+        agent.angularSpeed = 0f;
+        if (agent.isOnNavMesh)
+        {
+            agent.isStopped = true;
+        }
     }
 
     public void ActivateBlockingStatus ()

@@ -8,6 +8,9 @@ using TMPro;
 
 public class ShopInterface : MonoBehaviour
 {
+    
+    #region variables
+    
     [SerializeField] private List<ShopSlot> _buySlots;
     [SerializeField] private List<ShopSlot> _sellItemSlots;
     [SerializeField] private List<ShopSlot> _sellWeaponSlots;
@@ -25,7 +28,11 @@ public class ShopInterface : MonoBehaviour
     private Inventory inventory;
     private PlayerEquipment equipment;
 
+    // Manager data
     private GameManager manager;
+    
+    // Localization data
+    [SerializeField] private LocalizationSO localization;
 
     public Inventory PlayerInventory
     {
@@ -36,6 +43,10 @@ public class ShopInterface : MonoBehaviour
     {
         get { return equipment; }
     }
+    
+    #endregion
+    
+    #region methods
 
     private void Awake ()
     {
@@ -163,8 +174,8 @@ public class ShopInterface : MonoBehaviour
 
     public void EventNotEnoughCash ()
     {
-        Debug.Log("Not enough cash, stranger!");
-        UserInterfaceController.instance.ThrowWarningMessage("Sem dinheiro suficiente!");
+        // Debug.Log("Not enough cash, stranger!");
+        UserInterfaceController.instance.ThrowWarningMessage(localization.GetElement("shop_no_cash"));
     }
 
     public void EventShopPurchase (ShopSlot slot)
@@ -233,26 +244,22 @@ public class ShopInterface : MonoBehaviour
 
     public void EventInventoryFull ()
     {
-        Debug.Log("Your inventory is full!");
-        UserInterfaceController.instance.ThrowWarningMessage("Seu inventário está cheio!");
+        UserInterfaceController.instance.ThrowWarningMessage(localization.GetElement("shop_inventory_full"));
     }
 
     public void EventWeaponFull ()
     {
-        Debug.Log("Your weapon slots are full!");
-        UserInterfaceController.instance.ThrowWarningMessage("Seu armazenamento de armas está ocupado!");
+        UserInterfaceController.instance.ThrowWarningMessage(localization.GetElement("shop_weapon_full"));
     }
 
     public void EventShieldFull ()
     {
-        Debug.Log("Your shield slot is occupied!");
-        UserInterfaceController.instance.ThrowWarningMessage("Seu armazenamento de escudo está ocupado!");
+        UserInterfaceController.instance.ThrowWarningMessage(localization.GetElement("shop_shield_full"));
     }
 
     public void EventRangedFull ()
     {
-        Debug.Log("Your ranged slot is occupied!");
-        UserInterfaceController.instance.ThrowWarningMessage("Seu armazenamento de armas à distância está ocupado!");
+        UserInterfaceController.instance.ThrowWarningMessage(localization.GetElement("shop_ranged_full"));
     }
 
     private void HandleItemPurchase (Consumable purchasedItem, ShopSlot slot)
@@ -436,5 +443,7 @@ public class ShopInterface : MonoBehaviour
         else
             UserInterfaceController.instance.HideShopMenu(true);
     }
+    
+    #endregion
 
 }

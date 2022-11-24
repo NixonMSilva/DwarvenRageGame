@@ -26,6 +26,8 @@ public class EnemyStatus : StatusController, IManageable
 
     [SerializeField] private RagdollController? _ragdoll;
 
+    [SerializeField] private bool _hasDirectDeath = false;
+
     public override float Speed
     {
         get { return agent.speed; }
@@ -94,8 +96,11 @@ public class EnemyStatus : StatusController, IManageable
         // Enemy death
 
         isDying = true;
-        //animator.Play("Death");
-        animator.SetBool("isDying", true);
+
+        if (_hasDirectDeath)
+            animator.Play("Death");
+        else
+            animator.SetBool("isDying", true);
 
         PlayDeathSound();
         HandleDeath();

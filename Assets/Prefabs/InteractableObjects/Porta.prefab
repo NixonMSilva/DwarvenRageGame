@@ -316,6 +316,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0fd327045bd07a4eba5d0f2b16c7a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: {fileID: 0}
+  isLocked: 0
+  lockedMessage: This door needs a key to open!
   teleportLocation: {fileID: 1548114638792597584}
 --- !u!114 &5165532309329836236
 MonoBehaviour:
@@ -344,7 +347,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  defaultTooltipText: Entrar
+  defaultTooltipText: Open
+  hideOnAction: 1
 --- !u!1 &1547641866357512742
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +473,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0fd327045bd07a4eba5d0f2b16c7a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: {fileID: 0}
+  isLocked: 0
+  lockedMessage: This door needs a key to open!
   teleportLocation: {fileID: 1548114639532913204}
 --- !u!114 &5165532309224284388
 MonoBehaviour:
@@ -497,7 +504,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  defaultTooltipText: Entrar
+  defaultTooltipText: Open
+  hideOnAction: 1
 --- !u!1 &1548114637565413500
 GameObject:
   m_ObjectHideFlags: 0

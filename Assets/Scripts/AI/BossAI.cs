@@ -54,7 +54,11 @@ public class BossAI : EnemyAI
         else if (status.IsDying)
         {
             LookAtFixedPoint(playerFixedPoint);
-            agent.SetDestination(transform.position);
+            agent.angularSpeed = 0f;
+            if (agent.isOnNavMesh)
+            {
+                agent.isStopped = true;
+            }
         }
         else
         {

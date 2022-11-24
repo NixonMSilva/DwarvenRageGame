@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     // Game settings
     public bool showSubtitles = true;
+    public Language selectedLanguage = Language.English;
 
     // Player data
     public PlayerData? playerData = null;

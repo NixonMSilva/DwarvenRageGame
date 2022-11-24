@@ -10942,6 +10942,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6298751037357575086, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298751037357575086, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298751037357575086, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8604090087165243256, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -10959,6 +10971,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8604090087620630311, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778101976559593677, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778101976559593677, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -23211,7 +23231,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioName: Belgren_salvando_bode
   audioClip: {fileID: 8300000, guid: 9ad0ff54e282c5c4e9b00f0f8580a6e5, type: 3}
-  voiceLineCaptions: 
+  voiceLineCaptions:
+  - caption: Stay calm friend! I have the elixir that will heal you!
+    duration: 8
+  - caption: That's it old friend! Today is a new day... Tomorrow we'll be dining
+      roasted pig!
+    duration: 10
+  playAutomatically: 1
+  baseDelay: 0.07
 --- !u!4 &4771793488136802475
 Transform:
   m_ObjectHideFlags: 0
