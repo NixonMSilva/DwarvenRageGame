@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class ShopController : MonoBehaviour
 {
@@ -9,7 +8,9 @@ public class ShopController : MonoBehaviour
     [SerializeField] private ShopType type = ShopType.normalShop;
 
     [SerializeField] private AudioSource soundSource;
-    
+
+    [SerializeField] private SpeechLineTriggerVolume[] speechLines;
+
     private bool boughtSomething = false;
 
     private int noBeersBought = 0;
@@ -68,7 +69,7 @@ public class ShopController : MonoBehaviour
             switch (type)
             {
                 case ShopType.postBoss1Shop:
-                    AudioManager.instance.PlaySoundInVolume(soundSource, "belgren_e_hanok_dps_troll");
+                    speechLines[0].PlayVoiceLine();
                     break;
                 default:
                     PlayDefaultHello();
@@ -88,13 +89,15 @@ public class ShopController : MonoBehaviour
         if (GameManager.instance.timesShopped == 0)
         {
             // Intro Hello
-            AudioManager.instance.PlaySoundInVolume(soundSource, "hello_first");
+            speechLines[1].PlayVoiceLine();
             
         }
         else
         {
             // Random hello
-            AudioManager.instance.PlaySoundInVolumeRandom(soundSource, "remark");
+            int randomHello = Random.Range(2, 5);
+            if (randomHello < speechLines.Length)
+                speechLines[randomHello].PlayVoiceLine();
         }
     }
 

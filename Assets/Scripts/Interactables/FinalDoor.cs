@@ -13,6 +13,6 @@ public class FinalDoor : MonoBehaviour
 
     private void LoadFinalScene ()
     {
-        sceneLoader.LoadScene(scene);
+        sceneLoader.LoadSceneWithData(scene);
     }
 }

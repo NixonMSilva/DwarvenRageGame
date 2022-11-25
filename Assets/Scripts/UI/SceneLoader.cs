@@ -7,14 +7,11 @@ using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void LoadScene (int index)
+    private void LoadScene (int index)
     {
         // Stop player from inputting into the character
         InputHandler.instance.LockCursor(false);
 
-        // Saves all the status on the current scene for the next one
-        GameManager.instance.SaveCurrentSceneStatus();
-        
         // Show the loading screen
         UserInterfaceController.instance.ShowLoadingMenu();
         
@@ -25,19 +22,17 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine((LoadAsynchronously(index)));
     }
 
+    public void LoadSceneWithData(int index)
+    {
+        // Saves all the status on the current scene for the next one
+        GameManager.instance.SaveCurrentSceneStatus();
+        
+        LoadScene(index);
+    }
+
     public void LoadSceneWithoutData (int index)
     {
-        // Stop player from inputting into the character
-        InputHandler.instance.LockCursor(false);
-        
-        // Show the loading screen
-        UserInterfaceController.instance.ShowLoadingMenu();
-        
-        // Destroy all running sounds
-        AudioManager.instance.DestroyAllSounds();
-
-        // Start the loading operation
-        StartCoroutine((LoadAsynchronously(index)));
+        LoadScene(index);
     }
 
     public void LoadSceneWithPurge (int index)

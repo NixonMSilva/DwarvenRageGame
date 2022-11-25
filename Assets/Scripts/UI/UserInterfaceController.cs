@@ -787,10 +787,16 @@ public class UserInterfaceController : MonoBehaviour
 
     public void ShowSubtitle (float duration, string text)
     {
-        GameObject newSubtitle = Instantiate(subtitlePrefab, subtitleGroup.transform);
-        newSubtitle.GetComponent<TextMeshProUGUI>().text = text;
-
-        StartCoroutine(HideSubtitles(newSubtitle, duration));
+        if (subtitleGroup)
+        {
+            GameObject newSubtitle = Instantiate(subtitlePrefab, subtitleGroup.transform);
+            
+            if (newSubtitle)
+            {
+                newSubtitle.GetComponent<TextMeshProUGUI>().text = text;
+                StartCoroutine(HideSubtitles(newSubtitle, duration));
+            }
+        }
     }
 
     private IEnumerator HideSubtitles (GameObject subtitle, float duration)

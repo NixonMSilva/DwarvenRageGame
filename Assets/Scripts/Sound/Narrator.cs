@@ -8,49 +8,26 @@ public class Narrator : MonoBehaviour
 {
     [SerializeField] GameObject video1;
     [SerializeField] GameObject video2;
-    
-    TestPassLevel passLevel;
-
-    [SerializeField] private UnityEvent onVideoEnd;
-    
-    private void Awake ()
-    {
-        passLevel = GetComponent<TestPassLevel>();
-    }
+    [SerializeField] private SpeechLineTriggerVolume initialTrigger;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         StartCoroutine(Waiter());
     }
 
-    IEnumerator Waiter()
+    IEnumerator Waiter ()
     {
         AudioManager.instance.PlaySound("fireplace");
-        AudioManager.instance.PlaySound("Narrador");
-
-       
-        yield return new WaitForSeconds(38); //narrador.lenght
+        
+        yield return new WaitForSeconds(1f);
+        
+        initialTrigger.PlayVoiceLine();
+        
+        yield return new WaitForSeconds(38f); //narrador.lenght
         
         video1.SetActive(false);
-
         video2.SetActive(true);
-        AudioManager.instance.PlaySound("narrador1");
-
-        //Wait for 2 seconds
-        yield return new WaitForSeconds(17);
-
-        AudioManager.instance.PlaySound("narrador2");
-
-        yield return new WaitForSeconds(15);   
-
-        AudioManager.instance.PlaySound("narrador3"); 
-
-        yield return new WaitForSeconds(22); 
-
-        AudioManager.instance.DestroyAllSounds();
-
-        onVideoEnd?.Invoke();
     }
 
 }

@@ -7,7 +7,6 @@ using System.Collections.Generic;
 public class SpeechLineTriggerVolume : SFXTriggerVolume
 {
     // Used for the captions controller
-    //[SerializeField] [TextArea] private string[] voiceLineCaptions;
     [SerializeField] private Subtitle[] voiceLineCaptions;
     
     // Check if it's triggered through interaction or automatically
@@ -38,7 +37,7 @@ public class SpeechLineTriggerVolume : SFXTriggerVolume
         }
 
         // Play voice line sounds
-        AudioManager.instance.DestroyAllSounds();
+        AudioManager.instance.DestroyAllVoicelines();
         AudioManager.instance.PlayVoiceover(audioClip.name);
         
         // Show subtitles if they're enabled
