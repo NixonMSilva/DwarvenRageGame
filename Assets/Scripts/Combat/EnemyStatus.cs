@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 
-public class EnemyStatus : StatusController
+public class EnemyStatus : StatusController, IManageable
 {
-    public event System.Action<EnemyStatus> OnDeath;
+    public event Action<int> OnDeath;
 
-    public event System.Action OnDeathEffect;
+    public event Action OnDeathEffect;
     
-    public event System.Action<float, float> OnHealthChange;
+    public event Action<float, float> OnHealthChange;
+
+    public event Action<int> OnStatusChange;
 
     private NavMeshAgent agent;
 
@@ -21,6 +21,12 @@ public class EnemyStatus : StatusController
 
     [SerializeField] private float painThreshold = 0.25f;
     [SerializeField] private LayerMask thisLayer;
+
+    [SerializeField] private int _uniqueId;
+
+    [SerializeField] private RagdollController? _ragdoll;
+
+    [SerializeField] private bool _hasDirectDeath = false;
 
     public override float Speed
     {
@@ -62,6 +68,14 @@ public class EnemyStatus : StatusController
         set { painThreshold = value; }
     }
 
+    public int UniqueId
+    {
+        get { return _uniqueId; }
+        set { _uniqueId = value; }
+    }
+
+    public GameObject AttachedObject => gameObject;
+
     private void Awake ()
     {
         Health = maxHealth;
@@ -80,16 +94,36 @@ public class EnemyStatus : StatusController
     protected override void Die ()
     {
         // Enemy death
+
         isDying = true;
-        animator.Play("Death");
+
+        if (_hasDirectDeath)
+            animator.Play("Death");
+        else
+            animator.SetBool("isDying", true);
+
         PlayDeathSound();
         HandleDeath();
+
+        // Disable NavMeshAgent
+        agent.enabled = false;
+
+        // Start Ragdolling
+        if (_ragdoll)
+        {
+            animator.enabled = false;
+            _ragdoll.StartRagdoll();
+        }
+
         Destroy(gameObject, 10f);
     }
 
     public void HandleDeath ()
     {
-        OnDeath?.Invoke(this);
+        // Basic death event invocation 
+        OnDeath?.Invoke(UniqueId);
+        // Propagates death status to the spawn manager
+        OnStatusChange?.Invoke(UniqueId);
         // Handles the death for different types of enemies
         OnDeathEffect?.Invoke();
     }
@@ -104,7 +138,8 @@ public class EnemyStatus : StatusController
             if (_resistances.ContainsKey(type))
                 newValue *= (1f - _resistances[type]);
             
-            float diceRoll = Random.Range(0f, 1f);
+            float diceRoll = UnityEngine.Random.Range(0f, 1f);
+
             if (diceRoll <= painThreshold)
             {
                 PlayDamageSound();
@@ -167,5 +202,10 @@ public class EnemyStatus : StatusController
         }
         
         Destroy(bloodSystem.gameObject, bloodSystem.main.duration + 0.1f);
+    }
+
+    public void DestroyObject ()
+    {
+        Destroy(gameObject);
     }
 }

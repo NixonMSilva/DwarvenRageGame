@@ -36,6 +36,9 @@ public class EnemyController : MonoBehaviour
         enemyStatus.Health      = enemyType.maxHealth;
 
         _colliders = gameObject.GetComponentsInChildren<Collider>();
+        List<Collider> _tempColliderList = _colliders.ToList();
+        _tempColliderList.RemoveAll(col => col.gameObject.layer == LayerMask.NameToLayer("Ragdoll"));
+        _colliders = _tempColliderList.ToArray();
 
         if (useFromDatabase)
         {

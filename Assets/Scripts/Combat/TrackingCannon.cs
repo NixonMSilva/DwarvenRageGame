@@ -52,7 +52,7 @@ public class TrackingCannon : MonoBehaviour
 
     private void StartCannonUsage()
     {
-        cannonTooltip.SetTooltipText("Atirar");
+        cannonTooltip.SetTooltipText("Fire Cannon");
         UserInterfaceController.instance.ShowProgressMenu("Blood Collected");
         UserInterfaceController.instance.SetProgressIcon(cannonIcon);
         UserInterfaceController.instance.UpdateProgressBar(bossFight.BloodBar);

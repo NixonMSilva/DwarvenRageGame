@@ -13,8 +13,12 @@ public class AudioManager : MonoBehaviour
     private AudioSource currentMusic = null;
 
     [SerializeField] private float musicVolume = 1f;
+    [SerializeField] private float sfxVolume = 1f;
+    [SerializeField] private float voiceoverVolume = 1f;
 
     public event Action<float> onMusicVolumeChange;
+    public event Action<float> onSFXVolumeChange;
+    public event Action<float> onVoiceoverVolumeChange;
 
     public float MusicVolume
     {
@@ -27,6 +31,26 @@ public class AudioManager : MonoBehaviour
         }
     }
     
+    public float SFXVolume
+    {
+        get => sfxVolume;
+        set
+        {
+            sfxVolume = value;
+            onSFXVolumeChange?.Invoke(sfxVolume);
+        }
+    }
+
+    public float VoiceoverVolume
+    {
+        get => voiceoverVolume;
+        set
+        {
+            voiceoverVolume = value;
+            onVoiceoverVolumeChange?.Invoke(voiceoverVolume);
+        }
+    }
+
 
     private void Awake ()
     {
@@ -71,7 +95,7 @@ public class AudioManager : MonoBehaviour
     private void ConfigureMusic(AudioSource source, Sound sound)
     {
         source.clip = sound.clip;
-        source.volume = sound.volume * GameManager.instance.musicVolume;
+        source.volume = sound.volume * MusicVolume;
         source.pitch = sound.pitch;
         source.spatialBlend = 0f;
     }
@@ -94,7 +118,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
         AudioSource soundSource = gameObject.AddComponent<AudioSource>();
-        ConfigureAudioSource(soundSource, s, false);
+        ConfigureAudioSource(soundSource, s, false, AudioType.SFX);
         soundSource.Play();
         Destroy(soundSource, soundSource.clip.length + 0.1f);
         
@@ -108,7 +132,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
         AudioSource soundSource = gameObject.AddComponent<AudioSource>();
-        ConfigureAudioSource(soundSource, sound, false);
+        ConfigureAudioSource(soundSource, sound, false, AudioType.SFX);
         soundSource.Play();
         if (!sound.loop)
             Destroy(soundSource, soundSource.clip.length + 0.1f);
@@ -134,7 +158,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
         AudioSource soundSource = source.AddComponent<AudioSource>();
-        ConfigureAudioSource(soundSource, s, true);
+        ConfigureAudioSource(soundSource, s, true, AudioType.SFX);
         soundSource.Play();
         Destroy(soundSource, (soundSource.clip.length + 0.1f));
     }
@@ -147,7 +171,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
         AudioSource soundSource = source.AddComponent<AudioSource>();
-        ConfigureAudioSource(soundSource, sound, true);
+        ConfigureAudioSource(soundSource, sound, true, AudioType.SFX);
         soundSource.Play();
         Destroy(soundSource, (soundSource.clip.length + 0.1f));
     }
@@ -163,7 +187,7 @@ public class AudioManager : MonoBehaviour
         GameObject soundObject = new GameObject("AudioPoint");
         soundObject.transform.position = source;
         AudioSource soundSource = soundObject.AddComponent<AudioSource>();
-        ConfigureAudioSource(soundSource, s, true);
+        ConfigureAudioSource(soundSource, s, true, AudioType.SFX);
         soundSource.Play();
         Destroy(soundObject, (soundSource.clip.length + 0.1f));
     }
@@ -179,9 +203,23 @@ public class AudioManager : MonoBehaviour
         GameObject soundObject = new GameObject("AudioPoint");
         soundObject.transform.position = source;
         AudioSource soundSource = soundObject.AddComponent<AudioSource>();
-        ConfigureAudioSource(soundSource, sound, true);
+        ConfigureAudioSource(soundSource, sound, true, AudioType.SFX);
         soundSource.Play();
         Destroy(soundObject, (soundSource.clip.length + 0.1f));
+    }
+
+    public void PlayVoiceover (string voiceoverName)
+    {
+        Sound s = FindSound(voiceoverName);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + voiceoverName + " not found!");
+            return;
+        }
+        AudioSource soundSource = gameObject.AddComponent<AudioSource>();
+        ConfigureAudioSource(soundSource, s, false, AudioType.Voiceover);
+        soundSource.Play();
+        Destroy(soundSource, soundSource.clip.length + 0.1f);
     }
     
     public void DestroyAllSounds ()
@@ -194,10 +232,36 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void ConfigureAudioSource (AudioSource source, Sound sound, bool isDirectional)
+    public void DestroyAllVoicelines ()
+    {
+        AudioSource[] allSources = GetComponentsInChildren<AudioSource>();
+        foreach (AudioSource audio in allSources)
+        {
+            Sound sound = FindSound(audio.name);
+            if (sound is { isVoiceline: true })
+            {
+                StopSound(sound.name);
+            }
+        }
+    }
+
+    public void ConfigureAudioSource (AudioSource source, Sound sound, bool isDirectional, AudioType type)
     {
         source.clip = sound.clip;
-        source.volume = sound.volume * GameManager.instance.sfxVolume;
+        switch (type)
+        {
+            case AudioType.Music:
+                source.volume = sound.volume * MusicVolume;
+                break;
+            case AudioType.SFX:
+                source.volume = sound.volume * SFXVolume;
+                break;
+            case AudioType.Voiceover:
+                source.volume = sound.volume * VoiceoverVolume;
+                break;
+            default:
+                break;
+        }
         source.pitch = sound.pitch;
         if (isDirectional)
         {
@@ -217,14 +281,14 @@ public class AudioManager : MonoBehaviour
     {
         source.Stop();
         Sound sound = FindSound(name);
-        ConfigureAudioSource(source, sound,true);
+        ConfigureAudioSource(source, sound,true, AudioType.SFX);
         source.Play();
     }
     
     public void PlaySoundInVolume (AudioSource source, Sound sound)
     {
         source.Stop();
-        ConfigureAudioSource(source, sound,true);
+        ConfigureAudioSource(source, sound,true, AudioType.SFX);
         source.Play();
     }
 

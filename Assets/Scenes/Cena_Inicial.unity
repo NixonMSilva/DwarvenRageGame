@@ -4784,7 +4784,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 553558187}
         m_TargetAssemblyTypeName: SceneLoader, Game
-        m_MethodName: LoadScene
+        m_MethodName: LoadSceneWithData
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4794,7 +4794,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  defaultTooltipText: Entrar na Montanha
+  defaultTooltipText: Enter City
   hideOnAction: 1
 --- !u!65 &553558189
 BoxCollider:
@@ -6331,6 +6331,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -15.049
       objectReference: {fileID: 0}
+    - target: {fileID: 7801384850018723721, guid: dcd78ebdd8dde2a4cb7fbe1b9abbae33, type: 3}
+      propertyPath: defaultTooltipText
+      value: Enter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801384850984763297, guid: dcd78ebdd8dde2a4cb7fbe1b9abbae33, type: 3}
+      propertyPath: defaultTooltipText
+      value: Enter
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcd78ebdd8dde2a4cb7fbe1b9abbae33, type: 3}
 --- !u!1 &767775823
@@ -7068,11 +7076,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 844216831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6c021be6ddc5c644824cdcaabee2adc, type: 3}
+  m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fala: 
-  sceneLoader: {fileID: 0}
+  audioName: bode1
+  audioClip: {fileID: 8300000, guid: 49f5676e7778dab4bbfbf08110b7f427, type: 3}
+  voiceLineCaptions:
+  - caption: Hold on! You will spit and ram against that healer who gave you only
+      one month left of life!
+    duration: 10
+  - caption: I swear on Thor!
+    duration: 4
+  playAutomatically: 0
+  baseDelay: 0.07
+  unityCallback:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &844216833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7089,8 +7108,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 844216832}
-        m_TargetAssemblyTypeName: TestInteractable, Game
-        m_MethodName: Conversar
+        m_TargetAssemblyTypeName: SpeechLineTriggerVolume, Game
+        m_MethodName: PlayVoiceLine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7100,7 +7119,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  defaultTooltipText: Conversar
+  defaultTooltipText: Talk
   hideOnAction: 1
 --- !u!65 &844216834
 BoxCollider:
@@ -8340,9 +8359,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 948521827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 197b78fadabb7c448b6fd59f63a94b1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 06ac65484361c3b42a9585d905689cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioName: mockery
+  audioClip: {fileID: 8300000, guid: 6b2ce91932046f34ebcce1a48bb56d6e, type: 3}
+  voiceLineCaptions:
+  - caption: So we have a smartass over here...
+    duration: 4
+  - caption: Learned that from the elves, huh?
+    duration: 4
+  - caption: Now go... and play the game, moron!
+    duration: 4
+  playAutomatically: 1
+  baseDelay: 0.07
+  unityCallback:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &948521829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11205,46 +11238,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 132874180735741828, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 132874180735741828, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 132874180735741828, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 132874181027749638, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 132874181027749638, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 132874181027749638, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 132874181153030460, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 132874181153030460, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 132874181235217964, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 132874181235217964, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 164138211792009418, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_Name
       value: UIBase
@@ -11301,6 +11294,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1981330881005809532, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000009536743
+      objectReference: {fileID: 0}
     - target: {fileID: 5037688688927949923, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -11309,23 +11306,27 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8604090087165243256, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+    - target: {fileID: 5695042287516650858, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298751037357575086, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8604090087165243256, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+    - target: {fileID: 6298751037357575086, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8604090087165243256, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
-      propertyPath: m_AnchorMin.x
+    - target: {fileID: 6298751037357575086, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8604090087620630311, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+    - target: {fileID: 8778101976559593677, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8604090087620630311, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
+    - target: {fileID: 8778101976559593677, guid: f07445c9cef69fb4ca203f8597eb3e0c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}

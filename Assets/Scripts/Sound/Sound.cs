@@ -20,4 +20,6 @@ public class Sound
 	public bool loop;
 
     public float repeatRate;
+
+    public bool isVoiceline = false;
 }

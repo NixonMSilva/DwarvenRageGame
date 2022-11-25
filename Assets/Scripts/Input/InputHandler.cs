@@ -5,27 +5,26 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-
     public static InputHandler instance;
 
     [Header("Key Binding")]
     [Space(10)]
-    [SerializeField] private KeyCode attackKey          = KeyCode.Mouse0;
-    [SerializeField] private KeyCode blockKey           = KeyCode.Mouse1;
-    [SerializeField] private KeyCode jumpKey            = KeyCode.Space;
-    [SerializeField] private KeyCode sprintKey          = KeyCode.LeftShift;
-    [SerializeField] private KeyCode interactionKey     = KeyCode.E;
-    [SerializeField] private KeyCode escapeKey          = KeyCode.I;
+    [SerializeField] public KeyCode attackKey          = KeyCode.Mouse0;
+    [SerializeField] public KeyCode blockKey           = KeyCode.Mouse1;
+    [SerializeField] public KeyCode jumpKey            = KeyCode.Space;
+    [SerializeField] public KeyCode sprintKey          = KeyCode.LeftShift;
+    [SerializeField] public KeyCode interactionKey     = KeyCode.E;
+    [SerializeField] public KeyCode escapeKey          = KeyCode.I;
 	
-    [SerializeField] private KeyCode rangedKey          = KeyCode.F;
+    [SerializeField] public KeyCode rangedKey          = KeyCode.F;
 	
-    [SerializeField] private KeyCode itemKey1           = KeyCode.Alpha1;
-    [SerializeField] private KeyCode itemKey2           = KeyCode.Alpha2;
-    [SerializeField] private KeyCode itemKey3           = KeyCode.Alpha3;
-    [SerializeField] private KeyCode itemKey4           = KeyCode.Alpha4;
+    [SerializeField] public KeyCode itemKey1           = KeyCode.Alpha1;
+    [SerializeField] public KeyCode itemKey2           = KeyCode.Alpha2;
+    [SerializeField] public KeyCode itemKey3           = KeyCode.Alpha3;
+    [SerializeField] public KeyCode itemKey4           = KeyCode.Alpha4;
 
-    [SerializeField] private KeyCode changeWeaponUp     = KeyCode.E;
-    [SerializeField] private KeyCode changeWeaponDown   = KeyCode.Q;
+    [SerializeField] public KeyCode changeWeaponUp     = KeyCode.E;
+    [SerializeField] public KeyCode changeWeaponDown   = KeyCode.Q;
 
     [Space(20)]
     [SerializeField] private float powerAttackThreshold = 0.5f;
@@ -34,8 +33,9 @@ public class InputHandler : MonoBehaviour
     private float mouseX, mouseY;
 
     [SerializeField]
-    [Range(10f, 1200f)]
+    [Range(100f, 1200f)]
     public float mouseSensitivity = 600f;
+    [SerializeField] public bool isLookYInverted = false;
 
     public event Action<float> OnHorizontalPressed;
     public event Action<float> OnVerticalPressed;
@@ -89,7 +89,11 @@ public class InputHandler : MonoBehaviour
         //================================================================
 
         mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        if (!isLookYInverted)
+            mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        else
+            mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime * -1f;
 
         if (!isOnMenu)
         {
@@ -102,7 +106,6 @@ public class InputHandler : MonoBehaviour
             // Directional Input
             horizontalInput = Input.GetAxisRaw("Horizontal");
             verticalInput = Input.GetAxisRaw("Vertical");
-
 
             OnHorizontalPressed?.Invoke(Mathf.Abs(horizontalInput) >= 0.05f ? horizontalInput : 0f);
             OnVerticalPressed?.Invoke(Mathf.Abs(verticalInput) >= 0.05f ? verticalInput : 0f);

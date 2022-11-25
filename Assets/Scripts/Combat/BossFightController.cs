@@ -43,7 +43,7 @@ public class BossFightController : MonoBehaviour
         bossStatus.OnDeath -= HandleBossDeath;
     }
 
-    private void HandleBossDeath (EnemyStatus obj)
+    private void HandleBossDeath (int obj)
     {
         isBossDefeated = true; 
         OnBossDeath.Invoke();

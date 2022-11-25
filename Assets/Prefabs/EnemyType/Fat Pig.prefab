@@ -2490,12 +2490,15 @@ MonoBehaviour:
   maxArmor: 100
   armor: 0
   isBlocking: 0
+  blockAngle: 45
   resistanceSheet: {fileID: 11400000, guid: 4151573f6f046cc46a8d7a278a62b6e0, type: 2}
   _activeDOTs: []
   painThreshold: 0.25
   thisLayer:
     serializedVersion: 2
     m_Bits: 0
+  _uniqueId: 0
+  _ragdoll: {fileID: 0}
 --- !u!114 &4408166959182546903
 MonoBehaviour:
   m_ObjectHideFlags: 0

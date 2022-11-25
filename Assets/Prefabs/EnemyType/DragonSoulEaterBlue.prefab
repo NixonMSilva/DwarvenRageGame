@@ -1193,7 +1193,7 @@ NavMeshAgent:
   m_Acceleration: 6
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1226,6 +1226,9 @@ MonoBehaviour:
   thisLayer:
     serializedVersion: 2
     m_Bits: 256
+  _uniqueId: 0
+  _ragdoll: {fileID: 0}
+  _hasDirectDeath: 0
 --- !u!114 &326273680117068480
 MonoBehaviour:
   m_ObjectHideFlags: 0

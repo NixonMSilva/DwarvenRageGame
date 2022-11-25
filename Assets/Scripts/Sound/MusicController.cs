@@ -59,7 +59,6 @@ public class MusicController : MonoBehaviour
 
     public void ChangeMusicVolume (float volume)
     {
-        Debug.Log("Here!");
         music.volume = 0.3f * volume;
     }
 

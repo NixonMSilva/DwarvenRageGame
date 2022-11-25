@@ -16,17 +16,17 @@ public class GameManager : MonoBehaviour
     public int timesShopped = 0;
 
     // Game settings
-    public float musicVolume = 1f;
-    public float sfxVolume = 1f;
+    public bool showSubtitles = true;
+    public Language selectedLanguage = Language.English;
 
     // Player data
     public PlayerData? playerData = null;
     [SerializeField] private PlayerData defaultPlayerData;
     
     // Event data
-    public PickableController pickables;
+    public PickableSpawnManager pickables;
     public EnemySpawnManager enemies;
-    public EventController events;
+    public EventSpawnManager events;
     
     // Saving data
     [SerializeField] private SaveController save;
@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     private int canCorrectPosition = 0;
     private Vector3 loadingPos;
     private GameObject playerCache = null;
+
     public PlayerData Player
     {
         get => playerData;
@@ -64,35 +65,6 @@ public class GameManager : MonoBehaviour
         loader = GetComponent<SceneLoader>();
     }
 
-    private void Update ()
-    {
-        /*
-        if (canCorrectPosition <= 0)
-            return;
-        else
-        {
-            if (playerCache != null && playerCache.transform.position != loadingPos)
-            {
-                Debug.Log("Position change noted! Correcting...");
-                Debug.Log("Saved position: " + loadingPos + " | Curr pos: " + playerCache.transform.position);
-                Debug.Log("Iteration no.: " + canCorrectPosition);
-                
-                var characterController = playerCache.GetComponent<CharacterController>();
-                characterController.enabled = false;
-                playerCache.transform.position = loadingPos;
-                characterController.enabled = true;
-                
-                canCorrectPosition++;
-            }
-
-            if (canCorrectPosition >= 50)
-            {
-                canCorrectPosition = 0;
-            }
-        }
-        */
-    }
-
     public void SaveCurrentSceneStatus ()
     {   
         var player = GameObject.Find("Player");
@@ -110,8 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame ()
     {
-        save.Player = GameObject.Find("Player");
-        Debug.Log("Saving...");
+        save.Player = GameObject.Find("Player"); 
         save.SaveGame();
     }
 
@@ -156,18 +127,18 @@ public class GameManager : MonoBehaviour
     private void ValidateSceneData ()
     {
         // Validate pickable / enemies / event data
-        pickables = GameObject.Find("Pickables").GetComponent<PickableController>();
+        pickables = GameObject.Find("Pickables").GetComponent<PickableSpawnManager>();
         enemies = GameObject.Find("Enemies").GetComponent<EnemySpawnManager>();
-        events = GameObject.Find("Events").GetComponent<EventController>();
+        events = GameObject.Find("Events").GetComponent<EventSpawnManager>();
         
         if (pickables != null)
-            pickables.SetPickedList(playerData.pickableStatus);
+            pickables.SetActiveList(playerData.pickableStatus);
         
         if (enemies != null)
-            enemies.SetKilledList(playerData.enemyStatus);
+            enemies.SetActiveList(playerData.enemyStatus);
         
         if (events != null)
-            events.SetTriggeredList(playerData.eventStatus);
+            events.SetActiveList(playerData.eventStatus);
 
         /*
         Vector3 savedPos = new Vector3(playerData.posX, playerData.posY, playerData.posZ);
@@ -201,7 +172,7 @@ public class GameManager : MonoBehaviour
         playerObj.transform.position = savedPos;
         */
         
-        Debug.Log("Saved position: " + savedPos + " | Curr pos: " + playerCache.transform.position);
+        // Debug.Log("Saved position: " + savedPos + " | Curr pos: " + playerCache.transform.position);
         
         isLoadingGame = false;
     }

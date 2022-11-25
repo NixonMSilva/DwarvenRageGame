@@ -374,7 +374,7 @@ public class PlayerStatus : StatusController
     public override void WearStatus (EffectBase effect, float duration, float originalValue)
     {
         EffectController effectTimeout = gameObject.AddComponent<EffectController>();
-        Debug.Log(effect.Type);
+        //Debug.Log(effect.Type);
         effectTimeout.SetTimer(duration, () =>
         {
             effect.NormalizeValues(this, originalValue);

@@ -50,7 +50,7 @@ public class EnemyAI : MonoBehaviour
         set => anim = value;
     }
 
-    private void Awake()
+    private void Awake ()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponentInChildren<NavMeshAgent>();
@@ -60,12 +60,16 @@ public class EnemyAI : MonoBehaviour
         status = GetComponent<EnemyStatus>();
     }
 
-    protected void Update()
+    protected void Update ()
     {
+        // Doesn't process anything if it's dying
+
+        if (status.IsDying) { return; }
+
         // Cull enemy AI if the player is too distant
         if (Vector3.SqrMagnitude(player.position - transform.position) > 8000f)
         {
-            Debug.DrawRay(transform.position, Vector3.up * 50f, Color.cyan, 0.5f);
+            //Debug.DrawRay(transform.position, Vector3.up * 50f, Color.cyan, 0.5f);
             return;
         }
 
@@ -82,7 +86,7 @@ public class EnemyAI : MonoBehaviour
 
             if (!playerInSightRange && !playerInAttackRange)
             {
-                Patroling();
+                Patroling ();
             }
             else if (playerInSightRange && !playerInAttackRange)
             {
@@ -114,7 +118,7 @@ public class EnemyAI : MonoBehaviour
         anim.SetFloat("speed", currSpeed);
     }
 
-    protected void Patroling()
+    protected void Patroling ()
     {
         if (!playerInSightRange)
         {
@@ -134,7 +138,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    protected Vector3 SearchWalkPoint()
+    protected Vector3 SearchWalkPoint ()
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
@@ -153,13 +157,13 @@ public class EnemyAI : MonoBehaviour
         return transform.position;
     }
 
-    protected void ChasePlayer()
+    protected void ChasePlayer ()
     {
         agent.speed = baseSpeed * 2;
         agent.SetDestination(player.position);
     }
 
-    public virtual void AttackPlayer()
+    public virtual void AttackPlayer ()
     {
         //agent.SetDestination(transform.position);
 

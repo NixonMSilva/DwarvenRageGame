@@ -363,6 +363,9 @@ public class AttackController : MonoBehaviour
                     }
                     damagedObj.TakeDamage(damage * damageModifier, equipment.PlayerWeapon.damageType);
                     damagedObj.SpawnBlood(attackPoint);
+
+                    // Show hitmark
+                    UserInterfaceController.instance.ShowHitmark();
                 }
                 else
                 {
