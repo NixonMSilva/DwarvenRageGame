@@ -2043,6 +2043,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1576980448526870, guid: 6cd36f5ade0ee474ab43ad38e0ba25b6, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1626567122141884, guid: 6cd36f5ade0ee474ab43ad38e0ba25b6, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -7616,7 +7620,7 @@ GameObject:
   - component: {fileID: 887865805}
   m_Layer: 6
   m_Name: Rocks
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9239,6 +9243,10 @@ PrefabInstance:
     - target: {fileID: 6263595851301790073, guid: c6ec68efd9b6fca4c9b1ceed2fd5f4c5, type: 3}
       propertyPath: m_Name
       value: Barrel2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263595851301790073, guid: c6ec68efd9b6fca4c9b1ceed2fd5f4c5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6748384081199004611, guid: c6ec68efd9b6fca4c9b1ceed2fd5f4c5, type: 3}
       propertyPath: m_RootOrder

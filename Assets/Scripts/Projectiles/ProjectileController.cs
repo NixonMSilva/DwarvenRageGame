@@ -14,6 +14,7 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] protected DamageType damageType = DamageType.ranged;
     [SerializeField] protected Effect effect = null;
 
+    [SerializeField] protected ProjectileCollision collisionSounds;
     [SerializeField] protected bool bleedOnImpact;
 
     protected GameObject caster;
@@ -31,7 +32,7 @@ public class ProjectileController : MonoBehaviour
 
     protected void Start ()
     {
-        // Destruir o projétil caso este se perca por 10 segundos
+        // Destruir o proj?til caso este se perca por 10 segundos
         Destroy(gameObject, 10f);
         damagedObjects.Clear();
     }
@@ -72,7 +73,21 @@ public class ProjectileController : MonoBehaviour
                     UserInterfaceController.instance.ShowHitmark();
                 }
             }
+            PlayCollisionSound(other);
             Destroy(gameObject);
+        }
+    }
+
+    protected void PlayCollisionSound (Collider other)
+    {
+        // Play sound referring to the proper hit, if applicable
+        if (collisionSounds)
+        {
+            string soundName = collisionSounds.GetSoundForTag(other.tag);
+            if (soundName != null)
+            {
+                AudioManager.instance.PlaySound(soundName);
+            }
         }
     }
 
@@ -90,6 +105,7 @@ public class ProjectileController : MonoBehaviour
 
     public virtual void FaceTowards (Vector3 origin, Vector3 newTarget)
     {
-        transform.LookAt(newTarget - origin);
+        Quaternion lookRotation = Quaternion.LookRotation(newTarget, Vector3.up);
+        transform.rotation = lookRotation;
     }
 }

@@ -8,6 +8,8 @@ public class EnemyAIRanged : EnemyAI
     private bool hasMovedToNewPoint = true;
     private bool hasAcquiredNewPoint = false;
 
+    [SerializeField] private string projectileCastName;
+
     private Vector3 newPoint;
 
     public override void AttackPlayer ()
@@ -46,7 +48,7 @@ public class EnemyAIRanged : EnemyAI
 
     public void SpawnProjectile ()
     {
-        attack.CreateProjectile(player.transform);
+        attack.CreateProjectile(player.transform, projectileCastName);
     }
 
     private void PerformAttack ()

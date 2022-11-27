@@ -2494,7 +2494,7 @@ GameObject:
   - component: {fileID: 1541949154}
   m_Layer: 8
   m_Name: Troll
-  m_TagString: Untagged
+  m_TagString: EnemyFlesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2626,6 +2626,9 @@ MonoBehaviour:
   thisLayer:
     serializedVersion: 2
     m_Bits: 256
+  _uniqueId: 0
+  _ragdoll: {fileID: 0}
+  _hasDirectDeath: 0
 --- !u!114 &4019368126752441825
 MonoBehaviour:
   m_ObjectHideFlags: 0

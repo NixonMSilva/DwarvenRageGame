@@ -224,7 +224,7 @@ public class AudioManager : MonoBehaviour
     
     public void DestroyAllSounds ()
     {
-        AudioSource[] allSources = GetComponentsInChildren<AudioSource>();
+        AudioSource[] allSources = GetComponents<AudioSource>();
         foreach (AudioSource audio in allSources)
         {
             audio.Stop();
@@ -234,7 +234,7 @@ public class AudioManager : MonoBehaviour
 
     public void DestroyAllVoicelines ()
     {
-        AudioSource[] allSources = GetComponentsInChildren<AudioSource>();
+        AudioSource[] allSources = GetComponents<AudioSource>();
         foreach (AudioSource audio in allSources)
         {
             Sound sound = FindSound(audio.name);
@@ -245,7 +245,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void ConfigureAudioSource (AudioSource source, Sound sound, bool isDirectional, AudioType type)
+    private void ConfigureAudioSource (AudioSource source, Sound sound, bool isDirectional, AudioType type)
     {
         source.clip = sound.clip;
         switch (type)
