@@ -1324,6 +1324,30 @@ MonoBehaviour:
     loop: 0
     repeatRate: 0
     isVoiceline: 1
+  - audioSource: {fileID: 0}
+    name: sick_pig_attack
+    clip: {fileID: 8300000, guid: 7c9b41e5612e10248aca703b2a0cea06, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+    isVoiceline: 0
+  - audioSource: {fileID: 0}
+    name: dragon_breath_poison
+    clip: {fileID: 8300000, guid: dff2d545d82f2f148b091c3b0bc783ca, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+    isVoiceline: 0
+  - audioSource: {fileID: 0}
+    name: hit_wall
+    clip: {fileID: 8300000, guid: 95db02293bc3a844ba12a02290e50994, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    repeatRate: 0
+    isVoiceline: 0
   musicVolume: 0.5
   sfxVolume: 1
   voiceoverVolume: 1

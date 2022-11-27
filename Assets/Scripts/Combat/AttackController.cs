@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using JetBrains.Annotations;
 
 public class AttackController : MonoBehaviour
 {
@@ -301,7 +302,7 @@ public class AttackController : MonoBehaviour
     }
     
     // Usually used by enemies
-    public void CreateProjectile (Transform target)
+    public void CreateProjectile (Transform target, [CanBeNull] string projectileSoundName)
     {
         GameObject attackProjectile;
         Vector3 point = target.position - attackPoint.position;
@@ -310,6 +311,10 @@ public class AttackController : MonoBehaviour
         attackProjectileData.SetCaster(gameObject);
         attackProjectileData.SetTarget(point);
         attackProjectileData.FaceTowards(AttackPoint.position, point);
+        if (projectileSoundName != null)
+        {
+            AudioManager.instance.PlaySoundAt(transform.position, projectileSoundName);
+        }
     }
     
     public void CreateProjectile (Vector3 target)

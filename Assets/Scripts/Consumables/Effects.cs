@@ -9,7 +9,6 @@ public static class EffectProcessor
 {
     private static Dictionary<EffectType, EffectBase> _effects = new Dictionary<EffectType, EffectBase>();
 
-
     private static bool isInitialized;
 
     private static void Initialize ()
@@ -36,11 +35,6 @@ public static class EffectProcessor
     {
         if (isInitialized == false)
             Initialize();
-
-        foreach (KeyValuePair<EffectType, EffectBase> kvp in _effects)
-        {
-            //Debug.Log("Key = {" + kvp.Key + "}, Value = {" + kvp.Value + "}");
-        }
 
         var currentEffect = _effects[effect.type];
         currentEffect.ApplyEffect(target, effect);

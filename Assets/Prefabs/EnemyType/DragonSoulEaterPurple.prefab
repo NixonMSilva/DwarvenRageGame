@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 3249357132338321238}
   m_Layer: 8
   m_Name: DragonSoulEaterPurple
-  m_TagString: Untagged
+  m_TagString: EnemyFlesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -592,6 +592,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   rotationSpeed: 10
+  projectileCastName: dragon_breath_poison
 --- !u!65 &3249357132338321239
 BoxCollider:
   m_ObjectHideFlags: 0

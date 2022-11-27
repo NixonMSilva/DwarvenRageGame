@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 7743084074666549974}
   m_Layer: 8
   m_Name: Barbarian Pig
-  m_TagString: Untagged
+  m_TagString: EnemyFlesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -506,6 +506,7 @@ MonoBehaviour:
     m_Bits: 0
   _uniqueId: 0
   _ragdoll: {fileID: 5796590725270018844}
+  _hasDirectDeath: 0
 --- !u!114 &2605868446395256795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1668,6 +1669,7 @@ MonoBehaviour:
   - {fileID: 402867631}
   - {fileID: 241522459}
   _pelvis: {fileID: 700741877}
+  _ragdollType: 0
 --- !u!1 &3847406082353875352
 GameObject:
   m_ObjectHideFlags: 0

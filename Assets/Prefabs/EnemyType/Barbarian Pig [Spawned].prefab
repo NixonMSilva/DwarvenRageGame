@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 3178126958551870922}
   m_Layer: 8
   m_Name: Barbarian Pig [Spawned]
-  m_TagString: Untagged
+  m_TagString: EnemyFlesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -496,12 +496,16 @@ MonoBehaviour:
   maxArmor: 100
   armor: 0
   isBlocking: 0
+  blockAngle: 45
   resistanceSheet: {fileID: 11400000, guid: 4151573f6f046cc46a8d7a278a62b6e0, type: 2}
   _activeDOTs: []
   painThreshold: 0.25
   thisLayer:
     serializedVersion: 2
     m_Bits: 0
+  _uniqueId: 0
+  _ragdoll: {fileID: 0}
+  _hasDirectDeath: 0
 --- !u!114 &2605868446395256795
 MonoBehaviour:
   m_ObjectHideFlags: 0
