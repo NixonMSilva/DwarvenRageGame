@@ -60,9 +60,12 @@ public class EnemyAIUsurper : BossAI
 
         if (isLocked)
             return;
-        
+
         if (isFlying && status.IsDying)
+        {
             anim.Play("DieFlight");
+            return;
+        }
 
         // Process normally if the enemy can act or it's not blocking or the fight stage is invalid
         if (CanAct() && !status.IsBlocking && IsFightStageValid())
@@ -189,7 +192,10 @@ public class EnemyAIUsurper : BossAI
                 AttackNormal();
                 break;
             case 1:
-                AttackBreath();
+                if (Vector3.Distance(transform.position, player.transform.position) >= 18f)
+                    AttackClaw();
+                else
+                    AttackNormal();
                 break;
             case 2:
                 AttackBreath();
@@ -231,8 +237,7 @@ public class EnemyAIUsurper : BossAI
     {
         StopForAttack();
         
-        anim.Play("Basic Attack");
-        //anim.Play("Claw Attack");
+        anim.Play("Claw Attack");
         
         isAttacking = true;
         alreadyAttacked = true;
@@ -255,7 +260,6 @@ public class EnemyAIUsurper : BossAI
     
     public void Fly ()
     {
-        //Debug.Log("Fly!");
         StandStill();
         FightStage = 4;
         anim.SetBool("isFlying", true);

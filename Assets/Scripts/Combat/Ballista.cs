@@ -86,7 +86,7 @@ public class Ballista : MonoBehaviour
         if (target == null || ballistaProgress < 1f)
             return;
 
-        GameObject harpoon = Instantiate(ballistaProjectile, firePoint.position, Quaternion.identity);
+        GameObject harpoon = Instantiate(ballistaProjectile, firePoint.position, transform.rotation);
         harpoon.GetComponent<ProjectileController>().SetTarget(firePoint2.position - firePoint.position);
         harpoon.GetComponent<ProjectileController>().FaceTowards(firePoint.position, firePoint2.position);
         
